@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login: React.FC = (): JSX.Element => {
 	return (
@@ -16,7 +17,6 @@ const Login: React.FC = (): JSX.Element => {
 						Kilimo Farm Buddy
 					</p>
 				</div>
-
 				<form className="flex flex-col gap-y-[0.5rem] pt-[7rem]">
 					<p className="text-[1.2rem] font-medium">Log in to your account</p>
 					<hr />
@@ -39,11 +39,12 @@ const Login: React.FC = (): JSX.Element => {
                         h-[2.8125rem]">
 							Next
 						</button>
-						<p className="text-[1rem] text-center self-center font-semibold
+						<p
+							className="text-[1rem] text-center self-center font-semibold
                             tracking-[0.02rem] ">
 							Do not have an account?
 							<span className="text-blue-600 px-[1rem]">
-								<a href="">Signup</a>
+								<Link to="/auth/register">Signup</Link>
 							</span>
 						</p>
 					</div>

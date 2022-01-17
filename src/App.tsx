@@ -1,8 +1,8 @@
-import Login from "modules/Auth/Views/Login";
+import Landing from "modules/Auth/Views/Landing";
 import React from "react";
 
 const App: React.FC = (): JSX.Element => {
-	return <Login />;
+	return <Landing />;
 };
 
 export default App;
