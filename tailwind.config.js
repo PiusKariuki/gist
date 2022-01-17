@@ -37,9 +37,7 @@ module.exports = {
 				},
 			},
 			backgroundImage: {
-				mongo: "url('/img/mongo.jpg')",
-				menu: "url('/img/menu.png')",
-				search: "url('/img/search.png')",
+				cow: "url('/img/cow2.png')",
 			},
 		},
 	},
