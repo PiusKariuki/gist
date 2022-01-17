@@ -1,13 +1,8 @@
+import Login from "modules/Auth/Views/Login";
 import React from "react";
 
-function App() {
-  return (
-    <div className="flex justify-center">
-      <h1 className="font-bold text-2xl text-blue-900">
-        React, Typescript and Tailwind with Vitejs!
-      </h1>
-    </div>
-  );
-}
+const App: React.FC = (): JSX.Element => {
+	return <Login />;
+};
 
 export default App;
