@@ -23,6 +23,7 @@ body::-webkit-scrollbar {
 
 @layer components {
   .btn{
-    @apply bg-green-40 rounded-md hover:rounded-3xl border-green-60;
+    @apply bg-green-50 rounded-md hover:rounded-3xl border-green-60 hover:bg-green-40
+           disabled:bg-gray-600 disabled:hover:rounded-md;
   }
 }
