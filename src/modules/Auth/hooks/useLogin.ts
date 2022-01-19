@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState} from "recoil";
 import { Axios } from "shared/http/Http";
-import { user } from "../store/store";
+import { user } from "../../../shared/store/store";
 import Swal from "sweetalert2";
 
 const useLogin = () => {
@@ -10,7 +10,6 @@ const useLogin = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [load, setLoad] = useState(false);
-    console.log(errors);
     
 
 	const handleChange = (e: any) => {

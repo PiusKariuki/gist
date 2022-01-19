@@ -1,15 +1,27 @@
-import { atom, selector } from "recoil";
-import axios from "axios";
-import { Axios } from "shared/http/Http";
+import { atom, AtomEffect } from "recoil";
 
-export const store = atom({
-	key: "store",
-	default: [{ tkn: "" }, { email: "" }, { department: "" }],
-});
+interface Props {
+	setSelf: Function;
+	onSet: Function;
+}
 
-export const login = selector({
-	key: "login",
-	get: async () => {
-		const response = await Axios.post("/register");
-	},
+const localStorageEffect =
+	(key: string) =>
+	({ setSelf, onSet }: { setSelf: any; onSet: any }) => {
+		const savedValue = localStorage.getItem(key);
+		if (savedValue !== null) setSelf(JSON.parse(savedValue));
+		onSet((newValue: any, _: any, isReset: any) => {
+			isReset
+				? localStorage.removeItem(key)
+				: localStorage.setItem(key, JSON.stringify(newValue));
+		});
+	};
+
+export const user = atom({
+	key: "user",
+	default: {},
+	effects_UNSTABLE: [
+		localStorageEffect("current_user"),
+		({ onSet }) => onSet((newUser) => console.log("current user", newUser)),
+	],
 });
