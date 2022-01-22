@@ -4,8 +4,17 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useLogin from "../hooks/useLogin";
 
 const Login: React.FC = (): JSX.Element => {
-	const { errors, email, password, handleChange, login ,load} = useLogin();
-    const {renderSpinner} = useSpinner();
+	const {
+		errors,
+		email,
+		password,
+		handleChange,
+		login,
+		load,
+		mailErrors,
+		passErrors,
+	} = useLogin();
+	const { renderSpinner } = useSpinner();
 
 	return (
 		<div className="w-screen flex flex-col md:flex-row bg-transparent md:gap-x-[3rem]">
@@ -22,7 +31,9 @@ const Login: React.FC = (): JSX.Element => {
 						Kilimo Farm Buddy
 					</p>
 				</div>
-				<form className="flex flex-col gap-y-[0.5rem] pt-[3rem]" onSubmit={login}>
+				<form
+					className="flex flex-col gap-y-[0.5rem] pt-[3rem]"
+					onSubmit={login}>
 					<p className="text-[1.2rem] font-medium">Log in to your account</p>
 					<hr />
 					<label
@@ -35,10 +46,14 @@ const Login: React.FC = (): JSX.Element => {
 						type="text"
 						id="email"
 						name="email"
+						value={email}
 						className="w-[full] border-[0.0625rem]  
                         border-black-70 h-[3.25rem] outline-none rounded-[0.25rem]
                         font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 					/>
+					<p className="text-red-600 font-bold text-[1rem] text-center">
+						{mailErrors || errors?.emailErr}
+					</p>
 					<label
 						htmlFor="pass"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem]">
@@ -49,23 +64,25 @@ const Login: React.FC = (): JSX.Element => {
 						type="password"
 						id="pass"
 						name="pass"
+						value={password}
 						className="w-[full] border-[0.0625rem]  
                         border-black-70 h-[3.25rem] outline-none rounded-[0.25rem]
                         font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 					/>
-                    <p className="text-red-600 font-bold text-[1.3rem] text-center mt-[3rem]">{errors}</p>
-                    {renderSpinner(load)}
-					<div className="flex flex-col md:flex-row mt-[1rem] md:gap-x-[1.5rem]">  
+					<p className="text-red-600 font-bold text-[1rem] text-center">
+						{passErrors || errors?.passErr}
+					</p>
+					{renderSpinner(load)}
+					<div className="flex flex-col md:flex-row mt-[4rem] md:gap-x-[1.5rem] ">
 						<button
-                            disabled={errors!==""&&errors!==undefined}
+							disabled={passErrors.length > 1 || mailErrors.length > 1}
 							type="submit"
 							className=" w-full md:w-[5.625rem] btn bg-green-60 text-white
                             h-[2.8125rem] ">
 							Submit
 						</button>
-						<p
-							className="text-[1rem] text-center self-center font-semibold
-                            tracking-[0.02rem] ">
+						<p className="text-[1rem] text-center self-center font-semibold tracking-[0.02rem]
+                     mt-[2rem] md:mt-[0rem]">
 							Do not have an account?
 							<span className="text-blue-600 px-[1rem]">
 								<Link to="/auth/register">Signup</Link>
@@ -74,9 +91,7 @@ const Login: React.FC = (): JSX.Element => {
 					</div>
 				</form>
 			</div>
-			<div
-				className="hidden md:flex bg-cow md:w-full h-screen bg-center bg-cover bg-no-repeat
-                "></div>
+			<div className="hidden md:flex bg-cow md:w-full h-screen bg-center bg-cover bg-no-repeat" />
 		</div>
 	);
 };

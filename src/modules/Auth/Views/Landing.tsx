@@ -6,7 +6,7 @@ import Register from "../components/Register";
 const Landing: React.FC = (): JSX.Element => {
 	return (
 		<Routes>
-			<Route path="/" element={<Login />} />
+			<Route index element={<Login />} />
 			<Route path="/auth/register" element={<Register />} />
 		</Routes>
 	);
