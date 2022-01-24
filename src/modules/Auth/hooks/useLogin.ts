@@ -3,6 +3,8 @@ import { useSetRecoilState } from "recoil";
 import { Axios } from "shared/http/Http";
 import { user } from "../../../shared/store/store";
 import { emailRegex, sixChars} from "shared/regEx/regEx";
+import { useNavigate } from "react-router-dom";
+
 
 const useLogin = () => {
 	const setUser = useSetRecoilState(user);
@@ -16,6 +18,8 @@ const useLogin = () => {
 	// regex errors
 	const [passErrors, setPassErrors] = useState("");
 	const [mailErrors, setMailErrors] = useState("");
+
+   let navigate = useNavigate();
 
 	const handleChange = (e: any) => {
 		setErrors("");
@@ -51,6 +55,7 @@ const useLogin = () => {
 			setUser(data);
 			setLoad(false);
 			setErrors("");
+         navigate("/dashboard");
 		} catch (e: any) {
 			setErrors(e?.response?.data);
 			setLoad(false);

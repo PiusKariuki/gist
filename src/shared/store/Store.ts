@@ -1,9 +1,5 @@
-import { atom, AtomEffect } from "recoil";
+import { atom } from "recoil";
 
-interface Props {
-	setSelf: Function;
-	onSet: Function;
-}
 
 const localStorageEffect =
 	(key: string) =>
