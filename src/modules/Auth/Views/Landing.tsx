@@ -3,7 +3,7 @@ import Login from "../components/Login";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Register from "../components/Register";
 import Dashboard from "modules/Dashboard/views/Dashboard";
-import { user } from "shared/store/store";
+import { user } from "shared/store/Store";
 import { useRecoilValue } from "recoil";
 
 const RequireAuth: React.FC<{ children: JSX.Element }> = ({ children }) => {
@@ -37,7 +37,7 @@ const Landing: React.FC = (): JSX.Element => {
 			/>
 			<Route path="/auth/register" element={<Register />} />
 			<Route
-				path="/dashboard"
+				path="/dashboard/*"
 				element={
 					<RequireAuth>
 						<Dashboard />

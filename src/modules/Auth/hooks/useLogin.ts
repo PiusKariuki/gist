@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { Axios } from "shared/http/Http";
-import { user } from "../../../shared/store/store";
+import { user } from "../../../shared/store/Store";
 import { emailRegex, sixChars} from "shared/regEx/regEx";
 import { useNavigate } from "react-router-dom";
 
