@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Modal = () => {
+
+
+const Modal: React.FC<{open: boolean}> = ({open}) => {
   return <div></div>;
 };
 
