@@ -38,7 +38,8 @@ module.exports = {
 			},
 			backgroundImage: {
 				cow: "url('/img/cow2.png')",
-				cow3: "url('/img/cow3.png')",        
+				cow3: "url('/img/cow3.png')",
+            cart: "url('/img/cart.png')"       
 			},
 		},
 	},

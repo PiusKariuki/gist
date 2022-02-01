@@ -1,4 +1,4 @@
-import Landing from "modules/Auth/Views/Landing";
+import Landing from "modules/Landing/views/Landing";
 import React from "react";
 
 const App: React.FC = (): JSX.Element => {

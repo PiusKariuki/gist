@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseUrl = "https://kilimo-backend.herokuapp.com";
+export const baseUrl = "http://localhost:5000";
 
 export const Axios = axios.create({
 	baseURL: baseUrl,

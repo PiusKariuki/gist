@@ -2,7 +2,7 @@ import React from "react";
 import Login from "../components/Login";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Register from "../components/Register";
-import Dashboard from "modules/Dashboard/views/Dashboard";
+import Landing from "modules/Landing/views/Landing";
 import { user } from "shared/store/Store";
 import { useRecoilValue } from "recoil";
 
@@ -24,27 +24,27 @@ const AuthStatus: React.FC<{ children: JSX.Element }> = ({ children }) => {
 	return children;
 };
 
-const Landing: React.FC = (): JSX.Element => {
+const Auth: React.FC = (): JSX.Element => {
 	return (
 		<Routes>
 			<Route
 				index
 				element={
 					<AuthStatus>
-						<Login />
+						<Landing />
 					</AuthStatus>
 				}
 			/>
-			<Route path="/auth/register" element={<Register />} />
+			{/* <Route path="/auth/register" element={<Register />} />
 			<Route
 				path="/dashboard/*"
 				element={
 					<RequireAuth>
 						<Dashboard />
 					</RequireAuth>
-				}></Route>
+				}></Route> */}
 		</Routes>
 	);
 };
 
-export default Landing;
+export default Auth;
