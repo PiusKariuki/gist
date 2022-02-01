@@ -29,6 +29,7 @@ module.exports = {
 					80: "#023430",
 				},
 				blue: {
+               20: "#8B5CF6",
 					80: "#001E2B",
 				},
 				black: {
