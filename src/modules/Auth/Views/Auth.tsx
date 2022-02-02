@@ -24,8 +24,8 @@ const AuthStatus: React.FC<{ children: JSX.Element }> = ({ children }) => {
 	return children;
 };
 
-const Auth: React.FC = (): JSX.Element => {
-	return (
+const Auth = () => {
+	// return (
 		// <Routes>
 		// 	<Route
 		// 		index
@@ -44,7 +44,7 @@ const Auth: React.FC = (): JSX.Element => {
 		// 			</RequireAuth>
 		// 		}></Route>
 		// </Routes>
-	);
+	// );
 };
 
 export default Auth;
