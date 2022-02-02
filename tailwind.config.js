@@ -15,7 +15,7 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"Zen Kurenaido"', "sans-serif"],
+				sans: ['"Dosis"', "sans-serif"],
 			},
 			colors: {
 				green: {
@@ -29,10 +29,11 @@ module.exports = {
 					80: "#023430",
 				},
 				blue: {
-               20: "#8B5CF6",
+					20: "#8B5CF6",
 					80: "#001E2B",
 				},
 				black: {
+               40: "#4B5563",
 					70: "#5d6c74",
 					80: "#001E2B",
 				},
@@ -40,7 +41,7 @@ module.exports = {
 			backgroundImage: {
 				cow: "url('/img/cow2.png')",
 				cow3: "url('/img/cow3.png')",
-            cart: "url('/img/cart.png')"       
+				cart: "url('/img/cart.png')",
 			},
 		},
 	},

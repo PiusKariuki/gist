@@ -5,8 +5,6 @@ const useProducts = () => {
    const [products,setProducts] = useState<any>([]);
    const [errors,setErrors] = useState<any>("");
    const [load,setLoad] = useState<boolean>(false);
-
-   console.log(products);
    
    const getProducts = async () => {
       setLoad(true);

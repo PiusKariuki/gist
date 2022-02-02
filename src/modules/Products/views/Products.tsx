@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
-import Cards from "../components/Cards";
+import Cards from "../../../shared/components/ProductCard";
 import useProducts from "../hooks/useProducts";
 
 const Products = () => {
