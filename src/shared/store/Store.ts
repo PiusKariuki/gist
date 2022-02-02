@@ -17,7 +17,7 @@ export const user = atom({
 	key: "user",
 	default: {},
 	effects_UNSTABLE: [
-		localStorageEffect("current_user"),
+		localStorageEffect("gist_user"),
 		({ onSet }) => onSet((newUser) => console.log("current user", newUser)),
 	],
 });

@@ -11,23 +11,26 @@ const Register: React.FC = (): JSX.Element => {
 		password,
 		fname,
 		lname,
-		dept,
-		title,
+		bio,
+		userName,
 		handleChange,
 		register,
 		load,
 		errors,
+      phone
 	} = useRegister();
 	const { renderSpinner } = useSpinner();
 
 	return (
 		<div className="flex flex-col md:flex-row gap-x-[2.5rem]">
 			<div className="hidden lg:flex lg:min-w-[25%] bg-green-60 lg:min-h-screen" />
-
 			<form
 				className="flex flex-col gap-y-[0.1rem] w-full lg:w-[50%] py-[3rem] px-[1rem]"
 				onSubmit={register}>
-				<p className="text-[1.8rem] font-medium">Create your account</p>
+				<p className="text-[2.2rem] text-blue-20 font-semibold mb-[1.5rem] justify-center">
+					GIST SHOP
+				</p>
+				<p className="text-[1rem] font-medium">Create your account</p>
 				{/* email */}
 				<label
 					htmlFor="email"
@@ -42,7 +45,7 @@ const Register: React.FC = (): JSX.Element => {
 					type="text"
 					id="email"
 					name="email"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
                rounded-[0.25rem]  font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 				/>
 				<p className="text-red-600 font-bold text-[1rem] text-center">
@@ -52,7 +55,8 @@ const Register: React.FC = (): JSX.Element => {
 				{/* fname */}
 				<label
 					htmlFor="fname"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] mb-[0.5rem]">
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+               mb-[0.5rem]">
 					First Name
 				</label>
 				<input
@@ -62,13 +66,14 @@ const Register: React.FC = (): JSX.Element => {
 					type="text"
 					id="fname"
 					name="fname"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
                rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 				/>
 				{/* lname */}
 				<label
 					htmlFor="lname"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] mb-[0.5rem]">
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+               mb-[0.5rem]">
 					Last Name
 				</label>
 				<input
@@ -78,56 +83,60 @@ const Register: React.FC = (): JSX.Element => {
 					type="text"
 					id="lname"
 					name="lname"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
                rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 				/>
-				{/* title */}
+				{/* userName */}
 				<label
-					htmlFor="lname"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] mb-[0.5rem]">
-					Job Title
+					htmlFor="userName"
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+               mb-[0.5rem]">
+					userName
 				</label>
 				<input
 					onChange={handleChange}
-					value={title}
+					value={userName}
 					required
 					type="text"
-					id="title"
-					name="title"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
+					id="userName"
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
                rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 				/>
-				{/* dept */}
+				{/* bio */}
 				<label
-					htmlFor="dept"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] mb-[0.5rem]">
-					Department
+					htmlFor="bio"
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+               mb-[0.5rem]">
+					Bio
 				</label>
-				<select
+				<input
 					onChange={handleChange}
-					value={dept}
+					value={bio}
 					required
-					name="dept"
-					id="dept"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-               rounded-[0.25rem] text-[1rem] font-bold text-green-50  px-[1rem]">
-					<option value="dairies" className="font-bold">
-						Dairies
-					</option>
-					<option value="beefs" className="font-bold">
-						Beef
-					</option>
-					<option value="pigs" className="font-bold">
-						Pigs
-					</option>
-					<option value="layers" className="font-bold">
-						Layers
-					</option>
-				</select>
+					id="bio"
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
+               rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+				/>
+				{/* Phone */}
+				<label
+					htmlFor="phone"
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+               mb-[0.5rem]">
+					Phone Number
+				</label>
+				<input
+					onChange={handleChange}
+					value={phone}
+					required
+					id="phone"
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
+               rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+				/>
 				{/* password */}
 				<label
 					htmlFor="pass"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] mb-[0.5rem]">
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+               mb-[0.5rem]">
 					Password
 				</label>
 				<input
@@ -137,34 +146,18 @@ const Register: React.FC = (): JSX.Element => {
 					type="password"
 					id="pass"
 					name="pass"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
+					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
                rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
 				/>
 				<p className="text-red-600 font-bold text-[1rem] text-center">
 					{passError || errors?.password?.message}
 				</p>
-				{/* profilePic */}
-				<label
-					htmlFor="pic"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] mb-[0.5rem]">
-					Profile photo
-				</label>
-				<input
-					onChange={handleChange}
-					required
-					type="file"
-					accept="image/*"
-					id="pic"
-					name="pic"
-					className=" h-[2.25rem] outline-none
-               rounded-[0.25rem] font-bold "
-				/>
 				<div className="mt-[1rem]">{renderSpinner(load)}</div>
 				<button
 					disabled={passError.length > 1 || mailError.length > 1 || load}
 					type="submit"
 					className="btn py-[0.5rem] mt-[3rem] md:max-w-[7rem] text-white text-[1.2rem]
-               font-bold">
+               font-bold ">
 					Submit
 				</button>
 				<p

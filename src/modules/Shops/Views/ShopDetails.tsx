@@ -91,7 +91,7 @@ const ShopDetails = () => {
 					</p>
 					<div
 						className="flex flex-col md:flex-row flex-wrap px-[2rem] py-[3rem] w-screen 
-                  justify-around gap-y-[2.2rem">
+                  justify-around gap-y-[4.2rem]">
 						{shopDetails.length > 0 &&
 							shopDetails.map((product: any, key: number) => (
 								<ProductCard

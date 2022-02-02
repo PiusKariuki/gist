@@ -26,24 +26,24 @@ const AuthStatus: React.FC<{ children: JSX.Element }> = ({ children }) => {
 
 const Auth: React.FC = (): JSX.Element => {
 	return (
-		<Routes>
-			<Route
-				index
-				element={
-					<AuthStatus>
-						<Landing />
-					</AuthStatus>
-				}
-			/>
-			{/* <Route path="/auth/register" element={<Register />} />
-			<Route
-				path="/dashboard/*"
-				element={
-					<RequireAuth>
-						<Dashboard />
-					</RequireAuth>
-				}></Route> */}
-		</Routes>
+		// <Routes>
+		// 	<Route
+		// 		index
+		// 		element={
+		// 			<AuthStatus>
+		// 				<Landing />
+		// 			</AuthStatus>
+		// 		}
+		// 	/>
+		// 	<Route path="/auth/register" element={<Register />} />
+		// 	<Route
+		// 		path="/dashboard/*"
+		// 		element={
+		// 			<RequireAuth>
+		// 				<Dashboard />
+		// 			</RequireAuth>
+		// 		}></Route>
+		// </Routes>
 	);
 };
 

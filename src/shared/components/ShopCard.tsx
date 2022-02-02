@@ -12,15 +12,16 @@ const ShopCard: React.FC<Props> = ({ name, location, image, shopId }) => {
 	return (
 		<div
 			className="flex flex-col relative md:w-[40%] lg:w-[28%] shadow-2xl border-2 rounded-3xl 
-         py-[1.2rem] max-h-[65vh] md:max-h-[80vh] lg:max-h-[80vh]">
+         py-[1.2rem] max-h-[65vh] md:max-h-[80vh] lg:max-h-[80vh] overflow-clip">
 			<div
 				style={{ backgroundImage: `url(/img/${image})` }}
-				className=" bg-contain bg-no-repeat bg-center w-full h-[18rem] md:h-[24rem] relative
-            hover:scale-125 lg:hover:scale-[1.45] z-0 transition ease-in-out  duration-500"
+				className=" bg-contain bg-no-repeat bg-center w-[80%] h-[18rem] md:h-[24rem] relative
+            hover:scale-125 lg:hover:scale-[1.25] z-0 transition ease-in-out  duration-500
+             self-center"
 			/>
 			<div
 				className="flex flex-col text-[1.2rem] md:text-[1.35rem] font-[800] bg-white text-center
-             py-[1rem]  items-center gap-y-[1rem] z-20">
+             py-[1rem]  items-center gap-y-[1rem]">
 				<p className="text-red-600">{name}</p>
 				<p className=" font-[800]">
 					<img

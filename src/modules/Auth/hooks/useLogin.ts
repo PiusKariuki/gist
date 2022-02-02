@@ -34,11 +34,11 @@ const useLogin = () => {
 				break;
 			case "pass":
 				setPassword(e.target.value);
-				if (!e.target.value.match(sixChars)) {
-					setPassErrors("Password should be atleast six characters long");
-				} else {
-					setPassErrors("");
-				}
+				// if (!e.target.value.match(sixChars)) {
+				// 	setPassErrors("Password should be atleast six characters long");
+				// } else {
+				// 	setPassErrors("");
+				// }
 				break;
 		}
 	};
@@ -55,7 +55,7 @@ const useLogin = () => {
 			setUser(data);
 			setLoad(false);
 			setErrors("");
-         navigate("/dashboard");
+         navigate("/");
 		} catch (e: any) {
 			setErrors(e?.response?.data);
 			setLoad(false);

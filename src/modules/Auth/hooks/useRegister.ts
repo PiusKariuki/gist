@@ -11,18 +11,17 @@ const useRegister = () => {
 	const [password, setPassword] = useState("");
 	const [fname, setFname] = useState("");
 	const [lname, setLname] = useState("");
-	const [dept, setDept] = useState("dairies");
-	const [title, setTitle] = useState("");
-	const [pic, setPic] = useState("");
-   const [load,setLoad] = useState(false);
-   // api errors
-   const [errors,setErrors] = useState<any>({});
+	const [bio, setBio] = useState("");
+	const [userName, setUserName] = useState("");
+	const [phone, setPhone] = useState("");
+	const [load, setLoad] = useState(false);
+	// api errors
+	const [errors, setErrors] = useState<any>({});
 	const setUser = useSetRecoilState(user);
 
-
 	const handleChange = (e: any) => {
-      setErrors("");
-		switch (e.target.name) {
+		setErrors("");
+		switch (e.target.id) {
 			case "email":
 				setEmail(e.target.value);
 				let mail = e.target.value.toLowerCase();
@@ -45,14 +44,16 @@ const useRegister = () => {
 			case "lname":
 				setLname(e.target.value);
 				break;
-			case "dept":
-				setDept(e.target.value);
+			case "userName":
+				setUserName(e.target.value);
 				break;
-			case "title":
-				setTitle(e.target.value);
+			case "bio":
+				setBio(e.target.value);
 				break;
-			case "pic":
-				setPic(e.target.files[0]);
+			case "phone":
+				setPhone(e.target.value);
+				break;
+			default:
 				break;
 		}
 	};
@@ -61,21 +62,25 @@ const useRegister = () => {
 		e.preventDefault();
 		setLoad(true);
 		setErrors({});
-          const formData = new FormData();
-					formData.append("firstName", fname);
-					formData.append("lastName", lname);
-					formData.append("email", email);
-					formData.append("profilePicture", pic);
-					formData.append("title", title);
-					formData.append("password", password);
-					formData.append("department", dept);
+      let newUser = {
+         email: email,
+         password: password,
+         firstName: fname,
+         lastName: lname,
+         userName: userName,
+         bio: bio,
+         phonenumber: phone
+      }
 
 		try {
-			const { data } = await Axios.post("/register",formData);
+			const { data } = await Axios.post("/register", newUser);
 			setUser(data);
 			setLoad(false);
 			setErrors("");
 		} catch (e: any) {
+         if(e.response.data?.code===11000){
+            setMailError("This email is already registered")
+         }
 			setErrors(e?.response?.data);
 			setLoad(false);
 		}
@@ -88,13 +93,13 @@ const useRegister = () => {
 		password,
 		fname,
 		lname,
-		dept,
-		title,
-		pic,
+		bio,
+		userName,
 		handleChange,
-      register,
-      load,
-      errors
+		register,
+		load,
+		errors,
+      phone
 	};
 };
 

@@ -37,6 +37,9 @@ module.exports = {
 					70: "#5d6c74",
 					80: "#001E2B",
 				},
+            red: {
+               20: "#F74356"
+            },
 			},
 			backgroundImage: {
 				cow: "url('/img/cow2.png')",
