@@ -16,13 +16,16 @@ const Products = () => {
 			<div className="scroller flex flex-row gap-x-8 overflow-x-auto ">
 				{products.length > 0 &&
 					products.map((product: any, key: number) => (
-						<ViewProduct
-							name={product.name}
-							userName={product.ownerId.userName}
-							img={product.images[0]}
-                     price={product.price}
-							key={key}
-						/>
+						<>
+							<p>wassup</p>
+							<ViewProduct
+								name={product.name}
+								userName={product.ownerId.userName}
+								img={product.images[0]}
+								price={product.price}
+								key={key}
+							/>
+						</>
 					))}
 			</div>
 		</div>
