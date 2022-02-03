@@ -14,17 +14,17 @@ const Products = () => {
 				Recommended products
 			</p>
 			{/* <div className="scroller flex flex-row gap-x-8 overflow-x-auto w-screen"> */}
-			{products.length > 0 &&
-				products.map((product: any, key: number) => (
-					// <ViewProduct
-					// 	name={product.name}
-					// 	userName={product.ownerId.userName}
-					// 	img={product.images[0]}
-					// 	price={product.price}
-					// 	key={key}
-					// />
-					<p className="text-[2rem] text-blue-20 font-[900]">Tf is happening</p>
-				))}
+			{/* {products.map((product: any, key: number) => (
+				<ViewProduct
+					name={product.name}
+					userName={product.ownerId.userName}
+					img={product.images[0]}
+					price={product.price}
+					key={key}
+				/>
+			))} */}
+
+			<p className="text-[2rem] text-blue-20 font-[900]">Tf is happening</p>
 			{/* </div> */}
 		</div>
 	);
