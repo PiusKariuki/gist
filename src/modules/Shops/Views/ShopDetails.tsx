@@ -8,7 +8,7 @@ import {
 	faPhoneSquareAlt,
 	faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import ProductCard from "shared/components/ProductCard";
+
 
 const ShopDetails = () => {
 	const { renderSpinner } = useSpinner();
@@ -92,7 +92,7 @@ const ShopDetails = () => {
 					<div
 						className="flex flex-col md:flex-row flex-wrap px-[2rem] py-[3rem] w-screen 
                   justify-around gap-y-[4.2rem]">
-						{shopDetails.length > 0 &&
+						{/* {shopDetails.length > 0 &&
 							shopDetails.map((product: any, key: number) => (
 								<ProductCard
 									key={key}
@@ -101,7 +101,7 @@ const ShopDetails = () => {
 									price={product.price}
 									quantity={product.quantity}
 								/>
-							))}
+							))} */}
 					</div>
 				</div>
 			) : (

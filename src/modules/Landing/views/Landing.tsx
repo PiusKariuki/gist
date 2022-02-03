@@ -4,7 +4,6 @@ import ShopDetails from "modules/Shops/Views/ShopDetails";
 import Shops from "modules/Shops/Views/Shops";
 import React from "react";
 import { Route, Routes,useLocation,Navigate } from "react-router-dom";
-import Navbar from "shared/components/Navbar";
 import Topbar from "shared/components/Topbar";
 import { user } from "shared/store/Store";
 import { useRecoilValue } from "recoil";

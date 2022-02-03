@@ -18,13 +18,11 @@ const Topbar = () => {
 
 	const { handleChange, input,setInput } = useSearch();
 
-	useEffect(() => {
-		if (searching === false) navigate("/");
-	}, [searching]);
+	
 
 	return (
 		<div
-			className="flex flex-row flex-nowrap w-screen py-[1rem] px-[0.5rem] md:px-[2rem] 
+			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[2rem] 
          gap-x-[1rem]">
 			{/* div wrapper for input and icons */}
 			<p className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold">
