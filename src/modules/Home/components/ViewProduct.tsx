@@ -11,26 +11,25 @@ interface Props {
 
 const ViewProduct: React.FC<Props> = ({ name, price, img, userName }):JSX.Element => {
 	return (
-		// <div
-		// 	className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
-      //    border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative">	
-		// 		<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">
-		// 			{name}
-		// 			<br />
-		// 			<FontAwesomeIcon icon={faUserCircle} size="1x" color="blue" />
-		// 			&nbsp;&nbsp;&nbsp;<span className="">{userName}</span>
-		// 		</p>
-		// 	<div
-		// 		className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-cover rounded-xl
-      //       border-[0.1rem]"
-		// 		style={{ backgroundImage: `url(/img/${img})` }}>
-		// 		<p className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
-      //       bg-black-80 px-[1rem]">
-		// 			$ {price}
-		// 		</p>
-		// 	</div>
-		// </div>
-      <p className="text-[2rem] text-blue-20 font-[900]">Tf is happening</p>
+		<div
+			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
+         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative">	
+				<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">
+					{name}
+					<br />
+					<FontAwesomeIcon icon={faUserCircle} size="1x" color="blue" />
+					&nbsp;&nbsp;&nbsp;<span className="">{userName}</span>
+				</p>
+			<div
+				className="flex relative w-[70vw] h-[40vh] md:w-[25rem] bg-no-repeat bg-center bg-cover rounded-xl
+            border-[0.1rem]"
+				style={{ backgroundImage: `url(/img/${img})` }}>
+				<p className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
+            bg-black-80 px-[1rem]">
+					$ {price}
+				</p>
+			</div>
+		</div>
 	);
 };
 

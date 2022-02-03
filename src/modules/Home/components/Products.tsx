@@ -8,6 +8,8 @@ const Products = () => {
 		getProducts();
 	}, []);
 
+   console.log(products[0])
+
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full w-screen">
 			<p className="text-black-40 text-[2.2rem] font-[600] mb-[2rem]">
@@ -23,8 +25,12 @@ const Products = () => {
 					key={key}
 				/>
 			))} */}
-
-			<p className="text-[2rem] text-blue-20 font-[900]">Tf is happening</p>
+			<ViewProduct
+				name={products[0]?.name}
+				userName={products[0]?.ownerId?.userName}
+				img={products[0]?.images[0]}
+				price={products[0]?.price}
+			/>
 			{/* </div> */}
 		</div>
 	);
