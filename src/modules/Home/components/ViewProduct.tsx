@@ -1,19 +1,24 @@
 import React from "react";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
 	name: string;
 	price: string;
 	img: string;
 	userName: string;
+   id: string;
 }
 
-const ViewProduct: React.FC<Props> = ({ name, price, img, userName }):JSX.Element => {
+const ViewProduct: React.FC<Props> = ({ name, price, img, userName,id }):JSX.Element => {
+   let navigate = useNavigate();
 	return (
 		<div
 			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
-         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative">	
+         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative"
+         onClick={()=>navigate(`/product/${id}`,{replace:true})}
+         >	
 				<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">
 					{name}
 					<br />

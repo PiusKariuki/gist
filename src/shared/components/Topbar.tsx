@@ -1,46 +1,102 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { user } from "shared/store/Store";
-import { useRecoilValue } from "recoil";
+import {
+	faTimes,
+	faArrowRight,
+	faShoppingCart,
+	faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignInAlt, faLock } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import useSearch from "../../modules/Home/hooks/useSearch";
+import { searchInput } from "../../modules/Home/store/Search";
 
-const Topbar: React.FC = (): JSX.Element => {
-	const userObj = useRecoilValue<any>(user);
+const Topbar = () => {
+	const [searching, setSearching] = useState<boolean>(false);
+	let navigate = useNavigate();
+	const setSearch = useSetRecoilState(searchInput);
+
+	const { handleChange, input,setInput } = useSearch();
+
+	useEffect(() => {
+		if (searching === false) navigate("/");
+	}, [searching]);
 
 	return (
 		<div
-			className="flex flex-row bg-transparent px-[1.2rem] md:px-[3rem] py-[1.3rem] text-black
-         text-[1.2rem] front-[400] md:text-[1.8rem] md:font-[600] items-center">
-			<NavLink
-				to="/"
-				className="flex md:flex  text-[1.1rem] font-[500] md:text-[4rem] md:font-[900] 
-            text-blue-20">
-				GIST SHOP
-			</NavLink>
-			<div className="flex flex-row ml-auto gap-x-[2rem] items-center font-light text-blue-20">
-				{/* {userObj?.token?.length < 0 ? ( */}
-					<>
-						<NavLink to="/login" className="">
-							<FontAwesomeIcon icon={faSignInAlt} className="mr-[0.6rem]" />
-							login
-						</NavLink>
-						<NavLink to="/register" className="">
-							<FontAwesomeIcon icon={faLock} className="mr-[0.6rem]" />
-							register
-						</NavLink>
-					</>
-				{/* // ) : (
-				// 	<>
-				// 		<NavLink to="/" className="">
-				// 			View Profile
-				// 		</NavLink>
-				// 		<NavLink to="/" className="">
-				// 			Logout
-				// 		</NavLink>
-				// 	</>
-				// )} */}
+			className="flex flex-row flex-nowrap w-screen py-[1rem] px-[0.5rem] md:px-[2rem] 
+         gap-x-[1rem]">
+			{/* div wrapper for input and icons */}
+			<p className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold">
+				Gist-Shop
+			</p>
+			<div className="relative">
+				<input
+					onFocus={() => {
+						setSearching(true);
+						navigate("/search");
+					}}
+					onBlur={() => {}}
+					onChange={handleChange}
+					className={`${
+						searching
+							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[55vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
+							: " border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[55vw]"
+					}`}
+					placeholder="Search Gist-Shop"
+               value={input}
+				/>
+				<FontAwesomeIcon
+					icon={faTimes}
+					size="1x"
+					color="red"
+					className={`${
+						searching ? "absolute right-[17%] top-[30%]" : "hidden"
+					}`}
+					onClick={() => {
+						setSearch("");
+						setInput("");
+						setSearching(false);
+					}}
+				/>
+				<FontAwesomeIcon
+					icon={faArrowRight}
+					size="1x"
+					color="blue"
+					className={`${
+						searching
+							? "absolute right-[5%] top-[30%]"
+							: "hidden md:absolute right-[5%] top-[30%]"
+					}`}
+				/>
 			</div>
+
+			<button
+				className="hidden md:flex w-[8rem] self-center border-2 border-blue-20 text-[1.2rem]
+            hover:bg-blue-400 rounded-md text-center hover:text-white justify-around py-[0.3rem] 
+            font-[600] ml-auto"
+            onClick={()=>navigate("/login")}
+            >
+				Sign in
+			</button>
+			<FontAwesomeIcon
+				icon={faShoppingCart}
+				color="blue"
+				className={`${
+					searching
+						? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
+						: "self-center md:ml-[2rem]  fa-lg md:fa-3x"
+				}`}
+			/>
+			<FontAwesomeIcon
+				icon={faBars}
+				color="blue"
+				className={`${
+					searching
+						? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
+						: "self-center md:ml-[2rem] fa-lg md:fa-3x"
+				}`}
+			/>
 		</div>
 	);
 };

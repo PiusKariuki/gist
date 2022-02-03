@@ -1,18 +1,16 @@
-import useProducts from "modules/Products/hooks/useProducts";
+import useProducts from "modules/Product/hooks/useProducts";
 import useShop from "modules/Shops/Hooks/useShop";
 import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { searchInput } from "../store/Search";
 import SearchProduct from "./SearchProduct";
 import "../styles/shop.css";
-import { useNavigate } from "react-router-dom";
 import SearchShop from "./SearchShop";
 
 const Searching = () => {
 	const [filteredProducts, setFilteredProducts] = useState<any>([]);
 	const [filteredShops, setFilteredShops] = useState<any>([]);
 	const search = useRecoilValue(searchInput);
-	let navigate = useNavigate();
 	const { getProducts, products } = useProducts();
 	const { shops, getShops } = useShop();
 	useEffect(() => {
@@ -52,6 +50,7 @@ const Searching = () => {
 							img={product.images[0]}
 							userName={product.ownerId.userName}
 							name={product.name}
+                     id={product._id}
 						/>
 					))}
 			</div>

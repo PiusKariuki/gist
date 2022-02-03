@@ -1,16 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
 	img: string;
 	name: string;
 	price: number;
 	userName: string;
+   id: string;
 }
 
-const SearchProduct: React.FC<Props> = ({ name, img, price, userName }) => {
-   
+const SearchProduct: React.FC<Props> = ({ name, img, price, userName,id }) => {
+   let navigate = useNavigate();
 	return (
-		<div className="flex flex-col rounded-2xl shadow-lg  border-[0.2rem] px-[0.3rem] py-[0.4rem]">
+		<div className="flex flex-col rounded-2xl shadow-lg  border-[0.2rem] px-[0.3rem] py-[0.4rem]"
+         onClick={()=>navigate(`/product/${id}`)}>
 			<div
 				style={{ backgroundImage: `url(/img/${img})` }}
 				className="bg-cover bg-center bg-no-repeat w-[14rem] h-[12rem] rounded-2xl"

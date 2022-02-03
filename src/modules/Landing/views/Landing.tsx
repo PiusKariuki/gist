@@ -1,5 +1,5 @@
 import Auth from "modules/Auth/Views/Auth";
-import Products from "modules/Products/views/Products";
+import Products from "modules/Product/views/Product";
 import ShopDetails from "modules/Shops/Views/ShopDetails";
 import Shops from "modules/Shops/Views/Shops";
 import React from "react";
@@ -35,7 +35,7 @@ const AuthStatus: React.FC<{ children: JSX.Element }> = ({ children }) => {
 const Dashboard: React.FC = (): JSX.Element => {
 	return (
 		<div className="flex flex-col overflow-x-clip">
-			<Topbar />
+			{/* <Topbar />
 			<Navbar />
 			<Routes>
             <Route index  element={<Products />}/>
@@ -43,7 +43,7 @@ const Dashboard: React.FC = (): JSX.Element => {
             <Route path="/shops/:shopId" element={<ShopDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-         </Routes>
+         </Routes> */}
 		</div>
 	);
 };
