@@ -33,19 +33,19 @@ module.exports = {
 					80: "#001E2B",
 				},
 				black: {
-               40: "#4B5563",
+					40: "#4B5563",
 					70: "#5d6c74",
 					80: "#001E2B",
 				},
-            red: {
-               20: "#F74356"
-            },
+				red: {
+					20: "#F74356",
+				},
 			},
 			backgroundImage: {
 				cow: "url('/img/cow2.png')",
 				cow3: "url('/img/cow3.png')",
 				cart: "url('/img/cart.png')",
-				hero: "url('/img/hero.png')",
+				hero: "url('/img/61f007d772a3a12ec4b7544a.png')",
 			},
 		},
 	},
