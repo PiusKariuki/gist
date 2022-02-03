@@ -17,7 +17,7 @@ const ViewProduct: React.FC<Props> = ({ name, price, img, userName,id }):JSX.Ele
 		<div
 			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
          border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative"
-         onClick={()=>navigate(`/product/${id}`,{replace:true})}
+         onClick={()=>navigate(`/product/${id}`)}
          >	
 				<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">
 					{name}
