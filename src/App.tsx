@@ -1,9 +1,9 @@
 import Login from "modules/Auth/components/Login";
 import Register from "modules/Auth/components/Register";
 import Home from "modules/Home/views/Home";
-import Landing from "modules/Landing/views/Landing";
 import React from "react";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+
 
 const App: React.FC = (): JSX.Element => {
 	return (

@@ -5,10 +5,23 @@ import {
 	faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import useSearch from "../hooks/useSearch";
+import { searchInput } from "../store/Search";
 
 const Topbar = () => {
 	const [searching, setSearching] = useState<boolean>(false);
+	let navigate = useNavigate();
+	const setSearch = useSetRecoilState(searchInput);
+
+	const { handleChange, input,setInput } = useSearch();
+
+	useEffect(() => {
+		if (searching === false) navigate("/");
+	}, [searching]);
+
 	return (
 		<div
 			className="flex flex-row flex-nowrap w-screen py-[1rem] px-[0.5rem] md:px-[2rem] 
@@ -19,23 +32,32 @@ const Topbar = () => {
 			</p>
 			<div className="relative">
 				<input
-					onFocus={() => setSearching(true)}
-					onBlur={() => setSearching(false)}
+					onFocus={() => {
+						setSearching(true);
+						navigate("/search");
+					}}
+					onBlur={() => {}}
+					onChange={handleChange}
 					className={`${
 						searching
 							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[55vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
 							: " border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[55vw]"
 					}`}
 					placeholder="Search Gist-Shop"
+               value={input}
 				/>
 				<FontAwesomeIcon
 					icon={faTimes}
 					size="1x"
 					color="red"
 					className={`${
-						searching ? "absolute right-[17%] top-[30%] md:hidden" : "hidden"
+						searching ? "absolute right-[17%] top-[30%]" : "hidden"
 					}`}
-					onClick={() => setSearching(false)}
+					onClick={() => {
+						setSearch("");
+						setInput("");
+						setSearching(false);
+					}}
 				/>
 				<FontAwesomeIcon
 					icon={faArrowRight}
