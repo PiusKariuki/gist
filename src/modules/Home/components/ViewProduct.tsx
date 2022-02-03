@@ -13,7 +13,7 @@ const ViewProduct: React.FC<Props> = ({ name, price, img, userName }) => {
 	return (
 		<div
 			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
-         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl flex-shrink-0 w-[28rem] h-[50vh]">	
+         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl">	
 				<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">
 					{name}
 					<br />
