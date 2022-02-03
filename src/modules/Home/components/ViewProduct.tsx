@@ -9,7 +9,7 @@ interface Props {
 	userName: string;
 }
 
-const ViewProduct: React.FC<Props> = ({ name, price, img, userName }) => {
+const ViewProduct: React.FC<Props> = ({ name, price, img, userName }):JSX.Element => {
 	return (
 		// <div
 		// 	className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
