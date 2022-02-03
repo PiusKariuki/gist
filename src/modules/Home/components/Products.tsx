@@ -16,7 +16,7 @@ const Products = () => {
 				Recommended products
 			</p>
 			<div className="scroller flex flex-row gap-x-8 overflow-x-auto w-screen">
-			{products.map((product: any, key: number) => (
+			{/* {products.map((product: any, key: number) => (
 				<ViewProduct
 					name={product?.name}
 					userName={product?.ownerId?.userName}
@@ -24,13 +24,13 @@ const Products = () => {
 					price={product?.price}
 					key={key}
 				/>
-			))}
-			{/* <ViewProduct
+			))} */}
+			<ViewProduct
 				name={products[0]?.name}
 				userName={products[0]?.ownerId?.userName}
 				img={products[0]?.images[0]}
 				price={products[0]?.price}
-			/> */}
+			/>
 			</div>
 		</div>
 	);
