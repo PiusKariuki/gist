@@ -13,11 +13,10 @@ const Products = () => {
 			<p className="text-black-40 text-[2.2rem] font-[600] mb-[2rem]">
 				Recommended products
 			</p>
-			<div className="scroller flex flex-row gap-x-8 overflow-x-auto ">
+			<div className="scroller flex flex-row gap-x-8 overflow-x-auto w-screen h-[40vh]">
 				{products.length > 0 &&
 					products.map((product: any, key: number) => (
 						<>
-							<p>wassup</p>
 							<ViewProduct
 								name={product.name}
 								userName={product.ownerId.userName}

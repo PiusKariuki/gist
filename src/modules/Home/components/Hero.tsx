@@ -10,7 +10,7 @@ const Hero = () => {
 					<span className="text-black-40">Social Shopping Platform.</span>
 				</p>
 				<p className="text-[1.2rem] mt-[1.5rem]">
-					An always love social shopping network, with your favorite brands and
+					An always live social shopping network, with your favorite brands and
 					shops.
 				</p>
 				<button
