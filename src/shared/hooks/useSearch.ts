@@ -12,8 +12,8 @@ const useSearch = () => {
 	const handleChange = (e: any) => {
 		setInput(e.target.value);
       setSearchInput(e.target.value);
-      // if(e.target.value ==="")
-      //    navigate("/")
+      if(e.target.value.length > 0)
+         navigate("/searching")
 	};
 
 	return { handleChange, input,setInput };
