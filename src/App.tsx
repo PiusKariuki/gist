@@ -1,7 +1,9 @@
 import Login from "modules/Auth/components/Login";
 import Register from "modules/Auth/components/Register";
+import Preview from "modules/Home/components/Preview";
 import Home from "modules/Home/views/Home";
 import Product from "modules/Product/views/Product";
+import Searching from "modules/Search/views/Searching";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -9,13 +11,15 @@ import { Route, Routes } from "react-router-dom";
 
 const App: React.FC = (): JSX.Element => {
 	return (
-			<Routes>
-				<Route  path="/" element={<Home />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-            <Route path="/product/:productId" element={<Product/>} />
-			</Routes>
-
+		<Routes>
+			<Route path="/" element={<Home />}>
+				<Route path="/" element={<Preview />} />
+				<Route path="/searching" element={<Searching />} />
+				<Route path="/product/:productId" element={<Product />} />
+			</Route>
+			<Route path="/login" element={<Login />} />
+			<Route path="/register" element={<Register />} />
+		</Routes>
 	);
 };
 

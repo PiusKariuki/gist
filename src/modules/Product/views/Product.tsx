@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
-import Topbar from "shared/components/Topbar";
 import useProducts from "../hooks/useProducts";
 
 const Product: React.FC = (): JSX.Element => {
@@ -19,7 +18,6 @@ const Product: React.FC = (): JSX.Element => {
 		<div
 			className="flex flex-col md:flex-row flex-wrap px-[2rem] py-[1rem]
          justify-around gap-y-[2.2rem]">
-			<Topbar />
 			{renderSpinner(load)}
 			<div className="flex flex-col gap-y-[2rem]">
 				<p className="text-left text-black-40 font-[600] text-[2rem]">

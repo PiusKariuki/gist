@@ -2,10 +2,10 @@ import useProducts from "modules/Product/hooks/useProducts";
 import useShop from "modules/Shops/Hooks/useShop";
 import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { searchInput } from "../store/Search";
-import SearchProduct from "./SearchProduct";
+import { searchInput } from "../../../shared/store/Search";
+import SearchProduct from "../components/SearchProduct";
 import "../styles/shop.css";
-import SearchShop from "./SearchShop";
+import SearchShop from "../components/SearchShop";
 
 const Searching = () => {
 	const [filteredProducts, setFilteredProducts] = useState<any>([]);

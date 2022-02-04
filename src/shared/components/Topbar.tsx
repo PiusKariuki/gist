@@ -5,11 +5,11 @@ import {
 	faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import useSearch from "../../modules/Home/hooks/useSearch";
-import { searchInput } from "../../modules/Home/store/Search";
+import useSearch from "../hooks/useSearch";
+import { searchInput } from "../store/Search";
 
 const Topbar = () => {
 	const [searching, setSearching] = useState<boolean>(false);
@@ -32,7 +32,7 @@ const Topbar = () => {
 				<input
 					onFocus={() => {
 						setSearching(true);
-						navigate("/search");
+						navigate("/searching");
 					}}
 					onBlur={() => {}}
 					onChange={handleChange}
@@ -55,6 +55,7 @@ const Topbar = () => {
 						setSearch("");
 						setInput("");
 						setSearching(false);
+                  navigate("/")
 					}}
 				/>
 				<FontAwesomeIcon
@@ -66,6 +67,9 @@ const Topbar = () => {
 							? "absolute right-[5%] top-[30%]"
 							: "hidden md:absolute right-[5%] top-[30%]"
 					}`}
+               onClick={()=>{
+                  navigate("/searching")
+               }}
 				/>
 			</div>
 
