@@ -6,12 +6,15 @@ import { searchInput } from "../../../shared/store/Search";
 import SearchProduct from "../components/SearchProduct";
 import "../styles/shop.css";
 import SearchShop from "../components/SearchShop";
+import useSpinner from "shared/components/spinner/useSpinner";
+
 
 const Searching = () => {
 	const [filteredProducts, setFilteredProducts] = useState<any>([]);
 	const [filteredShops, setFilteredShops] = useState<any>([]);
 	const search = useRecoilValue(searchInput);
-	const { getProducts, products } = useProducts();
+	const { getProducts, products,load } = useProducts();
+   const {renderSpinner} = useSpinner();
 	const { shops, getShops } = useShop();
 	useEffect(() => {
 		getProducts();
@@ -35,6 +38,7 @@ const Searching = () => {
 
 	return (
 		<div className="flex flex-col px-[2rem] md:px-[3rem]">
+         {renderSpinner(load)}
 			{filteredProducts.length > 0 ? (
 				<p className="text-black-40 font-[800] text-[1.6rem] md:text-[2rem] my-[2rem]">
 					Products

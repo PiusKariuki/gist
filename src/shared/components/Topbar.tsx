@@ -34,7 +34,9 @@ const Topbar = () => {
 						setSearching(true);
 						navigate("/searching");
 					}}
-					onBlur={() => {}}
+					onBlur={() => {
+                  setInput("");
+               }}
 					onChange={handleChange}
 					className={`${
 						searching
