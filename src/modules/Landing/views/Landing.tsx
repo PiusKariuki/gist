@@ -1,14 +1,9 @@
-import Auth from "modules/Auth/Views/Auth";
-import Products from "modules/Product/views/Product";
-import ShopDetails from "modules/Shops/Views/ShopDetails";
-import Shops from "modules/Shops/Views/Shops";
+
 import React from "react";
-import { Route, Routes,useLocation,Navigate } from "react-router-dom";
-import Topbar from "shared/components/Topbar";
+import { useLocation,Navigate } from "react-router-dom";
 import { user } from "shared/store/Store";
 import { useRecoilValue } from "recoil";
-import Login from "modules/Auth/components/Login";
-import Register from "modules/Auth/components/Register";
+
 
 
 const RequireAuth: React.FC<{ children: JSX.Element }> = ({ children }) => {

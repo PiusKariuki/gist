@@ -1,6 +1,6 @@
-import useShop from "modules/Shops/Hooks/useShop";
+import useShop from "modules/shop/Hooks/useShop";
 import React, { useEffect } from "react";
-import ViewShop from "./ViewShop";
+import ViewShop from "../../../shared/components/ViewShop";
 import "../styles/shop.css";
 
 const Shops = () => {
@@ -18,6 +18,7 @@ const Shops = () => {
 							name={shop.name}
 							userName={shop.userId.userName}
 							img={shop.image}
+                     id={shop._id}
                      key={key}
 						/>
 					))}

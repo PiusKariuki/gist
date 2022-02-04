@@ -1,5 +1,5 @@
 import useProducts from "modules/Product/hooks/useProducts";
-import useShop from "modules/Shops/Hooks/useShop";
+import useShop from "modules/shop/Hooks/useShop";
 import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { searchInput } from "../../../shared/store/Search";
@@ -71,6 +71,7 @@ const Searching = () => {
 							img={shop.image}
 							name={shop.name}
 							userName={shop.userId.userName}
+                     id={shop._id}
 						/>
 					))}
 			</div>

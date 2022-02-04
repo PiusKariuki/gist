@@ -14,7 +14,7 @@ const useShopDetails = () => {
 			setLoad(false);
 		} catch (error) {
 			setErrors(error);
-			setLoad(true);
+			setLoad(false);
 		}
 	};
 

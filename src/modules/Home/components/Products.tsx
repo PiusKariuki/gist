@@ -1,6 +1,6 @@
 import useProducts from "modules/Product/hooks/useProducts";
 import React, { useEffect } from "react";
-import ViewProduct from "./ViewProduct";
+import ViewProduct from "../../../shared/components/ViewProduct";
 
 const Products = () => {
 	const { getProducts, products, errors, load } = useProducts();
