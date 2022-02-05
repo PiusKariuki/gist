@@ -16,17 +16,22 @@ export const cartAtom = atom({
 	key: "cartAtom",
 	default: [],
 	effects_UNSTABLE: [
-		localStorageEffect("gist-cart-items"),
-		({ onSet }) => onSet((newUser) => console.log("cart", newUser)),
+		localStorageEffect("gist-cart"),
+		({ onSet }) => onSet((newItem) => console.log("cart", newItem)),
 	],
+});
+
+export const cartOpen = atom({
+	key: "cartOpen",
+	default: false,
 });
 
 export const cartSelector = selector({
 	key: "cartSelector",
 	get: ({ get }) => {
-		const array = get(cartAtom);
+		const arr = get(cartAtom);
 		let total = 0;
-		array.forEach((item: any) => (total += item.price));
-      return total;
+		arr.length>0 && arr.forEach((item: any) => (total += item.price*item.quantity));
+		return total;
 	},
 });

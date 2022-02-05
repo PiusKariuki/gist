@@ -1,3 +1,4 @@
+import useCart from "modules/Cart/hooks/useCart";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
@@ -8,7 +9,8 @@ const Product: React.FC = (): JSX.Element => {
 	const [orders, setOrders] = useState<number>(0);
 	const { getProductById, product, errors, load } = useProducts();
 	const { renderSpinner } = useSpinner();
-	let { productId } = useParams();
+	const { productId } = useParams();
+	const { addToCart } = useCart();
 
 	useEffect(() => {
 		getProductById(productId);
@@ -18,7 +20,7 @@ const Product: React.FC = (): JSX.Element => {
 		<div className="flex flex-col items-center px-[1rem] py-[1rem] md:px-[2rem] gap-[5rem]">
 			<div
 				className="flex flex-col md:flex-row flex-wrap 
-         justify-around md:justify-center gap-y-[2.2rem] md:gap-[2rem] items-center">
+            justify-around md:justify-center gap-y-[2.2rem] md:gap-[2rem] items-center">
 				{renderSpinner(load)}
 				<div className="flex flex-col gap-y-[2rem] self-center">
 					<p className="text-center text-black-40 font-[600] text-[2rem]">
@@ -71,8 +73,18 @@ const Product: React.FC = (): JSX.Element => {
 						</button>
 					</div>
 					<button
+						disabled={orders === 0}
+						onClick={() => {
+							addToCart(
+								orders,
+								product?.price,
+								product?.images[0],
+								product?.name,
+								product?.shopId
+							);
+						}}
 						className="bg-red-20 px-[1rem] py-[0.1rem] text-white font-[600] text-[1rem]
-               w-[8rem] rounded-lg">
+                  w-[8rem] rounded-lg disabled:bg-gray-400">
 						Add to Cart
 					</button>
 				</div>

@@ -8,7 +8,7 @@ const useRequest = () => {
    const userObj = useRecoilValue<any>(user);
    const tkn = userObj?.token
 
-   const request = Axios.interceptors.request.use((request:any) => {
+   const request:any = Axios.interceptors.request.use((request:any) => {
       request.headers.Authorization = `Bearer ${tkn}`;
       return request;
    })

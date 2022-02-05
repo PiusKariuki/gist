@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
+import { cartOpen } from "shared/store/Cart";
 import useSearch from "../hooks/useSearch";
 import { searchInput } from "../store/Search";
 
@@ -15,10 +16,8 @@ const Topbar = () => {
 	const [searching, setSearching] = useState<boolean>(false);
 	let navigate = useNavigate();
 	const setSearch = useSetRecoilState(searchInput);
-
-	const { handleChange, input,setInput } = useSearch();
-
-	
+	const setCartOpen = useSetRecoilState(cartOpen);
+	const { handleChange, input, setInput } = useSearch();
 
 	return (
 		<div
@@ -35,8 +34,8 @@ const Topbar = () => {
 						navigate("/searching");
 					}}
 					onBlur={() => {
-                  setInput("");
-               }}
+						setInput("");
+					}}
 					onChange={handleChange}
 					className={`${
 						searching
@@ -44,7 +43,7 @@ const Topbar = () => {
 							: " border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[55vw]"
 					}`}
 					placeholder="Search Gist-Shop"
-               value={input}
+					value={input}
 				/>
 				<FontAwesomeIcon
 					icon={faTimes}
@@ -57,7 +56,7 @@ const Topbar = () => {
 						setSearch("");
 						setInput("");
 						setSearching(false);
-                  navigate("/")
+						navigate("/");
 					}}
 				/>
 				<FontAwesomeIcon
@@ -69,9 +68,9 @@ const Topbar = () => {
 							? "absolute right-[5%] top-[30%]"
 							: "hidden md:absolute right-[5%] top-[30%]"
 					}`}
-               onClick={()=>{
-                  navigate("/searching")
-               }}
+					onClick={() => {
+						navigate("/searching");
+					}}
 				/>
 			</div>
 
@@ -79,11 +78,11 @@ const Topbar = () => {
 				className="hidden md:flex w-[8rem] self-center border-2 border-blue-20 text-[1.2rem]
             hover:bg-blue-400 rounded-md text-center hover:text-white justify-around py-[0.3rem] 
             font-[600] ml-auto"
-            onClick={()=>navigate("/login")}
-            >
+				onClick={() => navigate("/login")}>
 				Sign in
 			</button>
 			<FontAwesomeIcon
+				onClick={() => setCartOpen((prev: boolean) => !prev)}
 				icon={faShoppingCart}
 				color="blue"
 				className={`${
