@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import useCart from "../hooks/useCart";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartAtom } from "shared/store/Cart";
+import { cartAtom,cartOpen } from "shared/store/Cart";
 
 const Cart = () => {
 	const { addToCart, removeItem, totalValue } = useCart();
 	const cartValue = useRecoilValue(cartAtom);
+   const setOpenCart = useSetRecoilState(cartOpen);
 	let navigate = useNavigate();
 	return (
 		<div className="w-[90vw] flex flex-col px-[1rem] py-[2rem] gap-y-[2rem]">
@@ -39,7 +40,10 @@ const Cart = () => {
 
 			<button
 				disabled={cartValue.length === 0}
-				onClick={() => navigate(`/orders`)}
+				onClick={() => {
+               setOpenCart((prev: boolean)=> !prev)
+					navigate(`/orders`);
+				}}
 				type="button"
 				className="bg-red-20 w-full py-[0.7rem] px-[1.4rem] rounded-xl hover:bg-red-400 
             md:hover:scale-110 text-white text-[1.3rem] font-[700] disabled:bg-gray-300">
@@ -53,7 +57,7 @@ const Cart = () => {
 							name={item.name}
 							price={item.price}
 							amount={item.quantity}
-                     id={item.id}
+							id={item.id}
 							key={key}
 						/>
 					))
