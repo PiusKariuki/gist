@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { cartOpen } from "shared/store/Cart";
 import { menuOpen } from "shared/store/Menu";
 import useSearch from "../hooks/useSearch";
@@ -18,9 +18,7 @@ const Topbar = () => {
 	let navigate = useNavigate();
 	const setSearch = useSetRecoilState(searchInput);
 	const setCartOpen = useSetRecoilState(cartOpen);
-	const cartState = useRecoilValue(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
-	const menuState = useRecoilValue(menuOpen);
 	const { handleChange, input, setInput } = useSearch();
 
 	return (

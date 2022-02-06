@@ -10,19 +10,17 @@ import { useNavigate } from "react-router-dom";
 const Menu = () => {
 	let navigate = useNavigate();
 	return (
-		<div className="w-[90vw md:w-[40vw] min-h-screen flex flex-col gap-y-[2rem] bg-teal-50">
-			<div className="flex flex-row cursor-pointer">
-				<FontAwesomeIcon icon={faUserCircle} size="1x" color="blue" />
+		<div
+			className="w-[90vw] md:w-[40vw] min-h-screen flex flex-col gap-y-[2rem] bg-teal-50 
+         px-[2rem] py-[3rem] rounded-xl">
+			<div
+				className="flex flex-row cursor-pointer items-center gap-x-[1rem]"
+				onClick={() => navigate(`/myAccount/shop`)}>
+				<FontAwesomeIcon icon={faUserCircle} size="2x" color="#1e90ff" />
 				<p className="text-[1.4rem] font-[700]">My Account</p>
 			</div>
-			<div
-				className="flex flex-row cursor-pointer"
-				onClick={() => navigate(`/myAccount/shop`)}>
-				<FontAwesomeIcon icon={faStore} size="1x" color="blue" />
-				<p className="text-[1.4rem] font-[700]">Manage Shop</p>
-			</div>
-			<div className="flex flex-row cursor-pointer">
-				<FontAwesomeIcon icon={faSignOutAlt} size="1x" color="red" />
+			<div className="flex flex-row cursor-pointer items-center gap-x-[1rem] pl-[0.5rem]">
+				<FontAwesomeIcon icon={faSignOutAlt} size="2x" color="red" />
 				<p className="text-[1.4rem] font-[700] text-red-20">Logout</p>
 			</div>
 		</div>
