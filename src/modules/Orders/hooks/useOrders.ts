@@ -8,17 +8,21 @@ const useOrders = () => {
 	const [shipping, setShipping] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 
-	const [userBillings, setUserBillings] = useState([]);
-	const [userShippings, setUserShippings] = useState([]);
+	const [userBillings, setUserBillings] = useState<any>([]);
+	const [userShippings, setUserShippings] = useState<any>([]);
 
 	const { _id } = useRecoilValue<any>(user);
-	const { request } = useRequest();
+	const { Axios } = useRequest();
+
+   console.log(userBillings);
+   
 
 	const getBillingByUserId = async () => {
 		setLoad(true);
 		try {
-			let billings = await request.get(`/billing/all/${_id}`);
-			setUserBillings(billings);
+         
+			let {data} = await Axios.get(`/billing/all/${_id}`);
+			setUserBillings(data);
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
@@ -27,8 +31,8 @@ const useOrders = () => {
 	const getShippingByUserId = async () => {
 		setLoad(true);
 		try {
-			let shippings = await request.get(`/billing/all/${_id}`);
-			setUserShippings(shippings);
+			let {data }= await Axios.get(`/address/all/${_id}`);
+			setUserShippings(data);
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);

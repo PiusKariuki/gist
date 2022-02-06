@@ -11,7 +11,7 @@ const Cart = () => {
    const setOpenCart = useSetRecoilState(cartOpen);
 	let navigate = useNavigate();
 	return (
-		<div className="w-[90vw] flex flex-col px-[1rem] py-[2rem] gap-y-[2rem]">
+		<div className="w-[90vw] md:w-[45vw] flex flex-col px-[1rem] py-[2rem] gap-y-[2rem]">
 			{/* <div className="flex flex-row justify-between text-[1.2rem]">
 				<p className="font-[300]">Sub total</p>
 				<p className="font-[600]">{cartValue?.subTotal}</p>
@@ -45,8 +45,8 @@ const Cart = () => {
 					navigate(`/orders`);
 				}}
 				type="button"
-				className="bg-red-20 w-full py-[0.7rem] px-[1.4rem] rounded-xl hover:bg-red-400 
-            md:hover:scale-110 text-white text-[1.3rem] font-[700] disabled:bg-gray-300">
+				className="bg-red-20 w-full md:w-[60%] py-[0.7rem] px-[1.4rem] rounded-xl hover:bg-red-400 
+            md:hover:scale-105 text-white text-[1.3rem] font-[700] disabled:bg-gray-300 self-center">
 				Checkout
 			</button>
 			<div className="flex flex-col gap-[1.3rem]">

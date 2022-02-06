@@ -1,20 +1,23 @@
-import React from 'react';
-import { Axios } from './Http';
-import { useRecoilValue } from 'recoil';
-import {user} from "../store/Store"
-
+import axios from "axios";
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { user } from "../store/Store";
+import { baseUrl } from "./Http";
 
 const useRequest = () => {
-   const userObj = useRecoilValue<any>(user);
-   const tkn = userObj?.token
+	const userObj = useRecoilValue<any>(user);
+	const tkn = userObj?.token;
 
-   const request:any = Axios.interceptors.request.use((request:any) => {
-      request.headers.Authorization = `Bearer ${tkn}`;
-      return request;
-   })
+	const Axios = axios.create({
+		baseURL: baseUrl,
+	});
 
+	Axios.interceptors.request.use((request: any) => {
+		request.headers.Authorization = `Bearer ${tkn}`;
+		return request;
+	});
 
-  return {request}
+	return { Axios };
 };
 
 export default useRequest;
