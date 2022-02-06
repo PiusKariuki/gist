@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
+import { cartAtom } from "shared/store/Cart";
 import { user } from "shared/store/Store";
+
 
 const useOrders = () => {
 	const [billing, setBilling] = useState<string>("");
@@ -11,11 +13,10 @@ const useOrders = () => {
 	const [userBillings, setUserBillings] = useState<any>([]);
 	const [userShippings, setUserShippings] = useState<any>([]);
 
+   const cartItems = useRecoilValue<any>(cartAtom);
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 
-   console.log(userBillings);
-   
 
 	const getBillingByUserId = async () => {
 		setLoad(true);
@@ -55,9 +56,15 @@ const useOrders = () => {
 		}
 	};
 
-   const handleSubmit = (e: any) => {
+   const handleSubmit = async (e: any) => {
       e.preventDefault();
-      // request.post()
+      // cartItems.length > 0 && cartItems.map((item: any)=>
+      
+      // try {
+      //    let res = await Axios.post(`/order/${productId}`)
+      // } catch (error) {
+         
+      // }
    }
 
 

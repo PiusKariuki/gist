@@ -83,6 +83,7 @@ const Product: React.FC = (): JSX.Element => {
 								product?.images[0],
 								product?.name,
 								product?.shopId,
+                        product?._id,
                        uuidv4()
 							);
 						}}

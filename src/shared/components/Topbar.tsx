@@ -7,8 +7,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { cartOpen } from "shared/store/Cart";
+import { menuOpen } from "shared/store/Menu";
 import useSearch from "../hooks/useSearch";
 import { searchInput } from "../store/Search";
 
@@ -17,6 +18,9 @@ const Topbar = () => {
 	let navigate = useNavigate();
 	const setSearch = useSetRecoilState(searchInput);
 	const setCartOpen = useSetRecoilState(cartOpen);
+	const cartState = useRecoilValue(cartOpen);
+	const setMenuOpen = useSetRecoilState(menuOpen);
+	const menuState = useRecoilValue(menuOpen);
 	const { handleChange, input, setInput } = useSearch();
 
 	return (
@@ -82,7 +86,10 @@ const Topbar = () => {
 				Sign in
 			</button>
 			<FontAwesomeIcon
-				onClick={() => setCartOpen((prev: boolean) => !prev)}
+				onClick={() => {
+					setCartOpen((prev: boolean) => !prev);
+					setMenuOpen((prev: boolean) => (prev ? !prev : prev));
+				}}
 				icon={faShoppingCart}
 				color="blue"
 				className={`${
@@ -92,6 +99,10 @@ const Topbar = () => {
 				}`}
 			/>
 			<FontAwesomeIcon
+				onClick={() => {
+					setMenuOpen((prev: boolean) => !prev);
+					setCartOpen((prev: boolean) => (prev ? !prev : prev));
+				}}
 				icon={faBars}
 				color="blue"
 				className={`${

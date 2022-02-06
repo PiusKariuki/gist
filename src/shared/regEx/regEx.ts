@@ -3,3 +3,5 @@ export const emailRegex =
     
 export const sixChars = /^[a-zA-Z0-9]{6,}$/;
 export const upperCase = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+export const phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;

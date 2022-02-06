@@ -23,11 +23,11 @@ const Orders = () => {
 	}, []);
 	return (
 		<div className="flex flex-col">
-			<div className="hidden lg:flex lg:min-w-[25%] bg-green-60 lg:min-h-screen" />
+			{/* <div className="hidden lg:flex lg:max-w-[25%] bg-green-60 lg:min-h-screen slef-start" /> */}
 			<form
 				onSubmit={handleSubmit}
 				action=""
-				className="flex flex-col gap-y-[0.1rem] w-full lg:w-[50%] py-[3rem] px-[1rem]">
+				className="flex flex-col gap-y-[0.1rem] w-full lg:w-[50%] py-[3rem] px-[1rem] self-center">
 				{/* billing address */}
 				<label
 					htmlFor="billing"
@@ -69,7 +69,8 @@ const Orders = () => {
 					))}
 				</select>
 				<div className="mt-[1rem]">{renderSpinner(load)}</div>
-				<button type="submit" className="bg-red-20 px-[2rem]">
+				<button type="submit" className="bg-red-20 px-[2rem] py-[1rem] w-[16rem] self-center 
+            mt-[2rem] text-[1.4rem] text-white font-[700] rounded-xl hover:bg-red-600">
 					Submit order
 				</button>
 			</form>
