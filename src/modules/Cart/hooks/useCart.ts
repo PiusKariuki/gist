@@ -15,7 +15,6 @@ interface Cart {
 const useCart = () => {
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const totalValue = useRecoilValue(cartSelector);
-   const setCartState= useSetRecoilState<any>(cartOpen);
    
 
 	const addToCart = (
@@ -23,7 +22,8 @@ const useCart = () => {
 		price: number,
 		image: string,
 		name: string,
-		shopId: string
+		shopId: string,
+      id:string
 	) => {
 		setCartAtom((prev: any) => [
 			{
@@ -32,7 +32,8 @@ const useCart = () => {
 				price: price,
 				image: image,
 				shopId: shopId,
-			},prev,
+            id: id,
+			},...prev,
 		]);
       
 		Swal.fire({
@@ -41,9 +42,8 @@ const useCart = () => {
 			timer: 1000,
 		});
 	};
-   // setCartState(true);
-	const removeItem = (name: string) => {
-		setCartAtom((prev: any) => prev.filter((item: any) => item.name !== name));
+	const removeItem = (id: string) => {
+		setCartAtom((prev: any) => prev.filter((item: any) => item.id !== id));
 	};
 
 	return { addToCart, removeItem, totalValue};

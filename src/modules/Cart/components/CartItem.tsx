@@ -8,9 +8,10 @@ interface Props {
 	name: string;
 	amount: number;
 	price: number;
+   id: string;
 }
 
-const CartItem: React.FC<Props> = ({ image, name, amount, price }) => {
+const CartItem: React.FC<Props> = ({ image, name, amount, price,id }) => {
 	const { removeItem } = useCart();
 	return (
 		<div
@@ -34,7 +35,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price }) => {
 			</div>
 			<div className="flex flex-row justify-end">
 				<FontAwesomeIcon
-					onClick={() => removeItem(name)}
+					onClick={() => removeItem(id)}
 					icon={faTrash}
 					size="1x"
 					color="red"

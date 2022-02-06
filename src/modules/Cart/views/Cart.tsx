@@ -53,6 +53,7 @@ const Cart = () => {
 							name={item.name}
 							price={item.price}
 							amount={item.quantity}
+                     id={item.id}
 							key={key}
 						/>
 					))
