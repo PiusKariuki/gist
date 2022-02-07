@@ -4,6 +4,7 @@ import { user } from "shared/store/Store";
 import { emailRegex, sixChars, phoneRegex } from "shared/regEx/regEx";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
+import { getBase64 } from "shared/toBase64/encode";
 
 const useManage = () => {
 	const { _id } = useRecoilValue<any>(user);
@@ -15,7 +16,15 @@ const useManage = () => {
 	const [phone, setPhone] = useState<string>("");
 	const [mailError, setMailError] = useState<string>("");
 	const [phoneErr, setPhoneErr] = useState<string>("");
+	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
+
+	const handlePhoneChange = (e: string) => {
+		setPhone(e);
+      if(e.length <5)
+         setPhoneErr("please enter a valid phone number");
+         else setPhoneErr("");
+	};
 
 	const handleChange = (e: any) => {
 		switch (e.target.id) {
@@ -29,7 +38,11 @@ const useManage = () => {
 				setDesc(e.target.value);
 				break;
 			case "img":
-				setImg(e.target.files[0]);
+				getBase64(e.target.files[0])
+					.then((res) => {
+						setImg(res);
+					})
+					.catch((err) => console.log(err));
 				break;
 			case "email":
 				setEmail(e.target.value);
@@ -39,23 +52,16 @@ const useManage = () => {
 					setMailError("Invalid email");
 				}
 				break;
-			case "phone":
-				setPhone(e.target.value);
-				let cell = e.target.value.toLowerCase();
-				if (cell.match(phoneRegex)) setPhone("");
-				else {
-					setPhoneErr("Invalid phone number");
-				}
-				break;
 			default:
 				break;
 		}
 	};
 
 	const createShop = async (e: any) => {
-      e.preventDefault();
+		setLoad(true);
+		e.preventDefault();
 		try {
-			Axios.post(`/shop/${_id}`, {
+			await Axios.post(`/shop/${_id}`, {
 				name: shopName,
 				email: email,
 				location: location,
@@ -68,11 +74,18 @@ const useManage = () => {
 				text: "Your shop has been created",
 				timer: 1000,
 			});
-		} catch (error) {
+			setLoad(false);
+		} catch (error: any) {
+			let errmsg = error.response.data.split(":");
+			setLoad(false);
+
 			Swal.fire({
 				icon: "error",
-				text: "An error occurred",
-				timer: 1000,
+				text:
+					error.response.status === 409
+						? "Please choose a different shop name"
+						: errmsg[2],
+				timer: 2000,
 			});
 		}
 	};
@@ -83,11 +96,13 @@ const useManage = () => {
 		location,
 		desc,
 		img,
-      phone,
+		phone,
 		createShop,
 		handleChange,
+		handlePhoneChange,
 		phoneErr,
 		mailError,
+      load
 	};
 };
 

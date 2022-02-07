@@ -77,9 +77,13 @@ const Topbar = () => {
 			</div>
 
 			<button
-				className="hidden md:flex w-[8rem] self-center border-2 border-blue-20 text-[1.2rem]
-            hover:bg-blue-400 rounded-md text-center hover:text-white justify-around py-[0.3rem] 
-            font-[600] ml-auto"
+				className={`${
+					searching
+						? "hidden"
+						: "flex w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
+				}
+             
+             `}
 				onClick={() => navigate("/login")}>
 				Sign in
 			</button>
