@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 const CreateShop: React.FC = (): JSX.Element => {
 
 	return (
-		<div className="flex flex-col ">
+		<div className="flex flex-col overflow-x-clip">
 			<Navbar />
          <Outlet />
 		</div>

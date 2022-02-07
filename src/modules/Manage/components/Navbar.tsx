@@ -21,7 +21,7 @@ const Navbar: React.FC = (): JSX.Element => {
 			</NavLink>
 			{/* Profile */}
 			<NavLink
-				to="/myAccount/profile"
+				to="/myAccount"
 				className="flex flex-row flex-nowrap items-center 
             gap-x-[0.2rem]">
 				<FontAwesomeIcon icon={faUser} size="1x" color="#00FFFF" />
@@ -29,7 +29,7 @@ const Navbar: React.FC = (): JSX.Element => {
 			</NavLink>
 			{/* Shops */}
 			<NavLink
-				to="/myAccount/shop"
+				to="/myAccount/shops"
 				className="flex flex-row flex-nowrap items-center 
             gap-x-[0.2rem]">
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="#00FFFF" />

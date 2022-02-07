@@ -17,7 +17,7 @@ const ViewShop: React.FC<Props> = ({ name, userName, img,id }) => {
 			style={{ backgroundImage: `url(/img/${img})` }}
          onClick={()=> navigate(`/shop/${id}`)}
          >
-			<p className="absolute top-[4%] right-[80%] text-black-20 font-[600] text-[1.2rem]">
+			<p className="absolute top-[4%] left-[10%] text-black-20 font-[600] text-[1.2rem]">
 				<span className="text-black-40">by</span>&nbsp;&nbsp;
 				{userName}
 			</p>

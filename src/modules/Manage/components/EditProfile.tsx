@@ -122,7 +122,7 @@ const EditProfile = () => {
 					Phone Number
 				</label>
 				<PhoneInput
-					country={"us"}
+					country={"ke"}
 					value={phone}
 					onChange={handlePhoneChange}
 					inputProps={{
