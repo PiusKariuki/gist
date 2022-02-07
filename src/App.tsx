@@ -2,6 +2,8 @@ import Login from "modules/Auth/components/Login";
 import Register from "modules/Auth/components/Register";
 import Preview from "modules/Home/components/Preview";
 import Home from "modules/Home/views/Home";
+import CreateShop from "modules/Manage/components/CreateShop";
+import EditProfile from "modules/Manage/components/EditProfile";
 import Manage from "modules/Manage/views/Manage";
 import Orders from "modules/Orders/views/Orders";
 import Product from "modules/Product/views/Product";
@@ -28,10 +30,17 @@ const App: React.FC = (): JSX.Element => {
 					}
 				/>
 			</Route>
-         {/* seller routes */}
-         <Route path="/myAccount/*" element={<Manage />}>
+			{/* seller routes */}
+			<Route
+				path="/myAccount"
+				element={
+					<RequireAuth>
+						<Manage />
+					</RequireAuth>
+				}>
+				<Route path="/myAccount/profile" element={<EditProfile />} />
 
-         </Route>
+			</Route>
 
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<Register />} />

@@ -1,31 +1,35 @@
 import React, { useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { Axios } from "shared/http/Http";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { user } from "../../../shared/store/Store";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
+import Swal from "sweetalert2";
+import useRequest from "shared/http/useRequest";
 
-const useRegister = () => {
+const useEditProfile = () => {
+	const setUser = useSetRecoilState(user);
+	const userObj = useRecoilValue<any>(user);
+   console.log(userObj);
+   
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");
-	const [email, setEmail] = useState("");
+	const [email, setEmail] = useState(userObj?.email);
 	const [password, setPassword] = useState("");
-	const [fname, setFname] = useState("");
-	const [lname, setLname] = useState("");
-	const [bio, setBio] = useState("");
-	const [userName, setUserName] = useState("");
-	const [phone, setPhone] = useState("");
+	const [fname, setFname] = useState(userObj?.firstName);
+	const [lname, setLname] = useState(userObj?.lastName);
+	const [bio, setBio] = useState(userObj?.bio);
+	const [userName, setUserName] = useState(userObj?.userName);
+	const [phone, setPhone] = useState(userObj?.phoneNumber);
 	const [load, setLoad] = useState(false);
-   const [phoneErr,setPhoneErr] = useState("")
+	const [phoneErr, setPhoneErr] = useState("");
+   const {Axios} = useRequest();
 	// api errors
 	const [errors, setErrors] = useState<any>({});
-	const setUser = useSetRecoilState(user);
 
-   	const handlePhoneChange = (e: string) => {
-			setPhone(e);
-			if (e.length < 5) setPhoneErr("please enter a valid phone number");
-			else setPhoneErr("");
-		};
-
+	const handlePhoneChange = (e: string) => {
+		setPhone(e);
+		if (e.length < 5) setPhoneErr("please enter a valid phone number");
+		else setPhoneErr("");
+	};
 
 	const handleChange = (e: any) => {
 		setErrors("");
@@ -63,31 +67,26 @@ const useRegister = () => {
 		}
 	};
 
-	const register = async (e: any) => {
-		e.preventDefault();
+	const handleSubmit = async (e:any) => {
+      e.preventDefault();
 		setLoad(true);
-		setErrors({});
-      let newUser = {
-         email: email,
-         password: password,
-         firstName: fname,
-         lastName: lname,
-         userName: userName,
-         bio: bio,
-         phonenumber: phone
-      }
-
 		try {
-			const { data } = await Axios.post("/register", newUser);
-			setUser(data);
+			let {data} = await Axios.put(`/users/${userObj?._id}`,{
+            firstName: fname,
+            lastName: lname,
+            email,
+            bio,
+            userName
+         });
+         setUser(data);
 			setLoad(false);
-			setErrors("");
-		} catch (e: any) {
-         if(e.response.data?.code===11000){
-            setMailError("This email is already registered")
-         }
-			setErrors(e?.response?.data);
+		} catch (error: any) {
+			let msg = error.response.data.split(":");
 			setLoad(false);
+			Swal.fire({
+				icon: "error",
+				text: msg[2],
+			});
 		}
 	};
 
@@ -101,13 +100,13 @@ const useRegister = () => {
 		bio,
 		userName,
 		handleChange,
-		register,
 		load,
 		errors,
-      phone,
-      phoneErr,
-      handlePhoneChange
+		phone,
+		phoneErr,
+		handlePhoneChange,
+      handleSubmit
 	};
 };
 
-export default useRegister;
+export default useEditProfile;

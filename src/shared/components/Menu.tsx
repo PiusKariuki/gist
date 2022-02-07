@@ -15,7 +15,7 @@ const Menu = () => {
          px-[2rem] py-[3rem] rounded-xl">
 			<div
 				className="flex flex-row cursor-pointer items-center gap-x-[1rem]"
-				onClick={() => navigate(`/myAccount/shop`)}>
+				onClick={() => navigate(`/myAccount`)}>
 				<FontAwesomeIcon icon={faUserCircle} size="2x" color="#1e90ff" />
 				<p className="text-[1.4rem] font-[700]">My Account</p>
 			</div>
