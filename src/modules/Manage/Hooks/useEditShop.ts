@@ -6,7 +6,7 @@ import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 
-const useManage = () => {
+const useEditShop = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
@@ -18,6 +18,21 @@ const useManage = () => {
 	const [phoneErr, setPhoneErr] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
+
+	const getShopById = async (shopId: any) => {
+		try {
+			let {
+				data: { name, email, location, phoneNumber, image, description },
+			} = await Axios.get(`/shop/shop/${shopId}`);
+
+			setShopName(name);
+			setLocation(location);
+			// setImg(image);
+			setDesc(description);
+			setPhone(phoneNumber);
+			setEmail(email);
+		} catch (error) {}
+	};
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
@@ -39,6 +54,8 @@ const useManage = () => {
 			case "img":
 				getBase64(e.target.files[0])
 					.then((res) => {
+						console.log(e.target.files[0]);
+
 						setImg(res);
 					})
 					.catch((err) => console.log(err));
@@ -56,21 +73,24 @@ const useManage = () => {
 		}
 	};
 
-	const createShop = async (e: any) => {
+	const updateShop = async (
+		e: React.FormEvent<HTMLFormElement>,
+		shopId: string
+	) => {
 		setLoad(true);
 		e.preventDefault();
 		try {
-			await Axios.post(`/shop/${_id}`, {
+			await Axios.put(`/shop/shop/${shopId}`, {
 				name: shopName,
-				email: email,
-				location: location,
+				email,
+				location,
 				phoneNumber: phone,
+				// image: img,
 				description: desc,
-				image: img,
 			});
 			Swal.fire({
 				icon: "success",
-				text: "Your shop has been created",
+				text: "Your shop has been updated",
 				timer: 1000,
 			});
 			setLoad(false);
@@ -88,8 +108,6 @@ const useManage = () => {
 			});
 		}
 	};
-
-
 	return {
 		shopName,
 		email,
@@ -97,13 +115,14 @@ const useManage = () => {
 		desc,
 		img,
 		phone,
-		createShop,
 		handleChange,
 		handlePhoneChange,
 		phoneErr,
 		mailError,
 		load,
+		updateShop,
+		getShopById,
 	};
 };
 
-export default useManage;
+export default useEditShop;
