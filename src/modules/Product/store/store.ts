@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
 export const productOpen = atom({
-	key: "cartOpen",
+	key: "productOpen",
 	default: false,
 });

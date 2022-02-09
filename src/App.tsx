@@ -7,12 +7,14 @@ import MyShops from "modules/Manage/components/MyShops";
 import Manage from "modules/Manage/views/Manage";
 import Orders from "modules/Orders/views/Orders";
 import Product from "modules/Product/views/Product";
+import Rooms from "modules/Rooms/views/Rooms";
 import Searching from "modules/Search/views/Searching";
 import MyShop from "modules/shop/Views/MyShop";
 import Shop from "modules/shop/Views/shop";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { RequireAuth } from "shared/RouteProtection/Protector";
+
 
 
 const App: React.FC = (): JSX.Element => {
@@ -23,6 +25,7 @@ const App: React.FC = (): JSX.Element => {
 				<Route path="/searching" element={<Searching />} />
 				<Route path="/product/:productId" element={<Product />} />
 				<Route path="/shop/:shopId" element={<Shop />} />
+				<Route path="/rooms/:roomId" element={<Rooms />} />
 				<Route
 					path="/orders"
 					element={

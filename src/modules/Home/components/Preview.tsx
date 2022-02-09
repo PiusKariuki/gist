@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from './Hero';
 import Products from './Products';
+import Rooms from './Rooms';
 import Shops from './Shops';
 
 const Preview = () => {
@@ -9,6 +10,7 @@ const Preview = () => {
 			<Hero />
 			<Shops />
 			<Products />
+         <Rooms />
 		</>
 	);
 };
