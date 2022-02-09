@@ -125,9 +125,7 @@ const EditProductForm: React.FC<Props> = ({ productId }) => {
 					<button
 						type="button"
 						onClick={() => {
-                     console.log(open);
-                     
-                     setOpen((prev: boolean) => !prev);
+                 setOpen((prev: boolean) => !prev);
                   }}
 						className="p-[1rem] bg-red-20 rounded-md">
 						Close

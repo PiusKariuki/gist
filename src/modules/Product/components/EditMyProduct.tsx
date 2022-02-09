@@ -24,7 +24,6 @@ const EditMyProduct: React.FC<Props> = ({
 	let navigate = useNavigate();
 	const setOpen = useSetRecoilState(productOpen);
 	const open = useRecoilValue(productOpen);
-	// console.log(open);
 
 	return (
 		<div
