@@ -40,6 +40,9 @@ module.exports = {
 				red: {
 					20: "#F74356",
 				},
+				brown: {
+					20: "#F5F5F5",
+				},
 			},
 			backgroundImage: {
 				cow: "url('/img/cow2.png')",

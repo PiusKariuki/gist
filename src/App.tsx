@@ -13,9 +13,7 @@ import MyShop from "modules/shop/Views/MyShop";
 import Shop from "modules/shop/Views/shop";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { RequireAuth } from "shared/RouteProtection/Protector";
-
-
+import { RequireAuth, AuthStatus } from "shared/RouteProtection/Protector";
 
 const App: React.FC = (): JSX.Element => {
 	return (
@@ -45,11 +43,25 @@ const App: React.FC = (): JSX.Element => {
 				}>
 				<Route path="/myAccount" element={<EditProfile />} />
 				<Route path="/myAccount/shops" element={<MyShops />} />
-            <Route path="/myAccount/shops/:shopId" element={<MyShop />} />
+				<Route path="/myAccount/shops/:shopId" element={<MyShop />} />
 			</Route>
 
-			<Route path="/login" element={<Login />} />
-			<Route path="/register" element={<Register />} />
+			<Route
+				path="/login"
+				element={
+					<AuthStatus>
+						<Login />
+					</AuthStatus>
+				}
+			/>
+			<Route
+				path="/register"
+				element={
+					<AuthStatus>
+						<Register />
+					</AuthStatus>
+				}
+			/>
 		</Routes>
 	);
 };

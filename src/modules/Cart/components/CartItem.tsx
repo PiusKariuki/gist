@@ -8,30 +8,30 @@ interface Props {
 	name: string;
 	amount: number;
 	price: number;
-   id: string;
+	id: string;
 }
 
-const CartItem: React.FC<Props> = ({ image, name, amount, price,id }) => {
+const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 	const { removeItem } = useCart();
 	return (
-		<div
-			className="w-full bg-white flex flex-col border-[0.1rem] border-black-40 rounded-md 
-         px-[1rem] py-[0.6rem] gap-y-[1rem]">
-			<div className="flex flex-row flex-nowrap text-[1rem] text-black-40 font-[600] justify-between">
+		<div className="w-full bg-white flex flex-col px-[1rem] py-[0.6rem] gap-y-[1rem]">
+			<div
+				className="flex flex-row flex-nowrap text-[0.9rem] text-black-40 font-[600]
+          justify-between">
 				<div
 					style={{ backgroundImage: `url(/img/${image})` }}
-					className="border-[0.12rem]  border-black-40 h-[4rem] w-[4rem] bg-cover bg-center
-               bg-no-repeat rounded-md"
+					className="h-[3rem] w-[3rem] bg-cover bg-center bg-no-repeat "
 				/>
 				<p className="text-blue-20 text-left w-[6rem]">{name}</p>
+
+				<p className="text-[#00000080]">$ {price * amount}</p>
 			</div>
 			<div
 				className="flex flex-row flex-nowrap justify-between text-[1rem] text-black-40 
-         font-[600]">
+            font-[600]">
 				<p className="">
-					Items: <span className="text-blue-20 text-[1.3rem]">{amount}</span>
+					#<span className="text-blue-20 text-[1.3rem]">{amount}</span>
 				</p>
-				<p className="text-blue-20">$ {price * amount}</p>
 			</div>
 			<div className="flex flex-row justify-end">
 				<FontAwesomeIcon

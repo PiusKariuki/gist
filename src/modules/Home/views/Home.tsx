@@ -19,8 +19,8 @@ const Home = () => {
 			const handleClick = (e: any) => {
 				if (cartState && ref.current && ref.current.contains(e.target))
 					setCartOpen((prev: boolean) => (prev ? !prev : prev));
-            else if(menuState && ref.current && ref.current.contains(e.target))
-               setMenuOpen((prev: boolean) => (prev ? !prev : prev));
+				else if (menuState && ref.current && ref.current.contains(e.target))
+					setMenuOpen((prev: boolean) => (prev ? !prev : prev));
 			};
 			document.addEventListener("mousedown", handleClick);
 
@@ -28,14 +28,20 @@ const Home = () => {
 				// Cleanup the event listener
 				document.removeEventListener("mousedown", handleClick);
 			};
-		}, [cartState,menuState]);
+		}, [cartState, menuState]);
 	};
 
 	clickAwayListener(box);
 
 	return (
-		<div className="flex flex-col flex-nowrap overflow-x-clip">
-			<div>
+		// flex flex-col flex-nowrap overflow-x-clip
+		<div
+			className={`${
+				cartState || menuState
+					? "flex flex-col flex-nowrap overflow-x-clip  max-h-screen"
+					: "flex flex-col flex-nowrap overflow-x-clip"
+			}`}>
+			<div className="sticky top-0 z-50 bg-white">
 				<Topbar />
 			</div>
 
@@ -43,7 +49,7 @@ const Home = () => {
 				<div
 					className={`${
 						cartState
-							? "absolute right-0 top-0 bg-teal-50 border-[0.1rem] border-black-40 min-h-screen rounded-l-xl z-50"
+							? "absolute right-0 top-0 bg-brown-20 min-h-screen z-[44]"
 							: "hidden"
 					}`}>
 					<Cart />
@@ -52,16 +58,15 @@ const Home = () => {
 					onBlur={() => setMenuOpen((prev: boolean) => !prev)}
 					className={`${
 						menuState
-							? "absolute right-0 top-0 bg-teal-50 border-[0.1rem] border-black-40 min-h-screen rounded-l-xl z-50"
+							? "absolute right-0 top-0 bg-brown-20 z-[44]"
 							: "hidden"
 					}`}>
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>
 
-
-            <div ref={box}>
-				<Outlet />
-            </div>
+				<div ref={box}>
+					<Outlet />
+				</div>
 			</div>
 		</div>
 	);
