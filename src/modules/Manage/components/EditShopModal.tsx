@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../Hooks/useEditShop";
+import AddProduct from "./AddProduct";
 
 interface Props {
 	open: boolean;
@@ -26,7 +29,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 		updateShop,
 		getShopById,
 	} = useEditShop();
-
+	const [openProduct, setOpenProduct] = useState(true);
 	const { renderSpinner } = useSpinner();
 
 	useEffect(() => {
@@ -35,17 +38,20 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 	return (
 		<div
 			className={`${
-				open ? "flex flex-col z-50 bg-gray-300 rounded-2xl" : "hidden"
+				open
+					? "flex flex-col z-50 bg-gray-300 rounded-2xl justify-center w-[100vw] min-h-[100%]"
+					: "hidden"
 			}`}>
-			{renderSpinner(load)}
+			<div className="">{renderSpinner(load)}</div>
+
 			<form
 				action=""
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					updateShop(e, shopId);
 					setOpen(false);
 				}}
-				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem] w-[80vw] 
-             items-center md:px-[12rem] md:justify-around lg:px-0">
+				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  items-center 
+            md:px-[12rem] md:justify-around lg:px-0">
 				<div className=" flex flex-col w-full lg:max-w-[20%] ">
 					{/* shop Name */}
 					<label
@@ -113,7 +119,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 						inputProps={{
 							required: true,
 						}}
-						inputStyle={{ width: "12rem" }}
+						inputStyle={{ width: "14rem" }}
 					/>
 					<p className="text-red-20">{phoneErr}</p>
 				</div>
@@ -186,6 +192,14 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 					</div>
 				</div>
 			</form>
+			<button
+				onClick={() => setOpenProduct((prev: boolean) => !prev)}
+				className="bg-blue-20 text-white p-[1rem] w-[10rem] self-center rounded-md
+            my-[4rem]">
+				<FontAwesomeIcon icon={faPlus} size="2x" className="mr-[1rem]" />
+				Add Product
+			</button>
+			<AddProduct openProduct={openProduct} setOpenProduct={setOpenProduct} shopId={shopId}/>
 		</div>
 	);
 };

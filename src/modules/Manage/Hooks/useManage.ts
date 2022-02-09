@@ -56,7 +56,7 @@ const useManage = () => {
 		}
 	};
 
-	const createShop = async (e: any) => {
+	const createShop = async (e: React.FormEvent<HTMLFormElement>) => {
 		setLoad(true);
 		e.preventDefault();
 		try {
@@ -89,6 +89,16 @@ const useManage = () => {
 		}
 	};
 
+	const clearAttributes = () => {
+		setDesc("");
+		setEmail("");
+		setImg("");
+		setLocation("");
+		setMailError("");
+		setPhone("");
+		setPhoneErr("");
+		setShopName("");
+	};
 
 	return {
 		shopName,
@@ -103,6 +113,7 @@ const useManage = () => {
 		phoneErr,
 		mailError,
 		load,
+      clearAttributes
 	};
 };
 

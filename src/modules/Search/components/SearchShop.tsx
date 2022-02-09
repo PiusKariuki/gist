@@ -17,7 +17,7 @@ const SearchShop: React.FC<Props> = ({ name, img,  userName,id }) => {
       >
 			<div
 				style={{ backgroundImage: `url(/img/${img})` }}
-				className="bg-contain bg-center bg-no-repeat w-[80vw] md:w-[40vw] h-[12rem] rounded-2xl"
+				className="bg-contain bg-center bg-no-repeat w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] rounded-2xl"
 			/>
 			<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">
 				{name}

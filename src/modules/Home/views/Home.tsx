@@ -55,7 +55,7 @@ const Home = () => {
 							? "absolute right-0 top-0 bg-teal-50 border-[0.1rem] border-black-40 min-h-screen rounded-l-xl z-50"
 							: "hidden"
 					}`}>
-					<Menu />
+					<Menu setMenuOpen={setMenuOpen} />
 				</div>
 
 

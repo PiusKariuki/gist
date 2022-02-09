@@ -8,7 +8,7 @@ import useRequest from "shared/http/useRequest";
 const useEditProfile = () => {
 	const setUser = useSetRecoilState(user);
 	const userObj = useRecoilValue<any>(user);
-   
+
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");
 	const [email, setEmail] = useState(userObj?.email);
@@ -20,7 +20,7 @@ const useEditProfile = () => {
 	const [phone, setPhone] = useState(userObj?.phoneNumber);
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
-   const {Axios} = useRequest();
+	const { Axios } = useRequest();
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 
@@ -66,18 +66,23 @@ const useEditProfile = () => {
 		}
 	};
 
-	const handleSubmit = async (e:any) => {
-      e.preventDefault();
+	const handleSubmit = async (e: any) => {
+		e.preventDefault();
 		setLoad(true);
 		try {
-			let {data} = await Axios.put(`/users/${userObj?._id}`,{
-            firstName: fname,
-            lastName: lname,
-            email,
-            bio,
-            userName
-         });
-         setUser(data);
+			let { data } = await Axios.put(`/users/${userObj?._id}`, {
+				firstName: fname,
+				lastName: lname,
+				email: email,
+				bio: bio,
+				userName: userName,
+			});
+			Swal.fire({
+				icon: "success",
+				text: "Your profile has been updated",
+				timer: 1500,
+			});
+			setUser(data);
 			setLoad(false);
 		} catch (error: any) {
 			let msg = error.response.data.split(":");
@@ -104,7 +109,7 @@ const useEditProfile = () => {
 		phone,
 		phoneErr,
 		handlePhoneChange,
-      handleSubmit
+		handleSubmit,
 	};
 };
 

@@ -1,37 +1,45 @@
-import React from 'react';
+import React from "react";
 import useManage from "../Hooks/useManage";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";
 
+interface Props {
+	openCreate: boolean;
+	setOpenCreate: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const CreateShop = () => {
-   	const {
-			shopName,
-			email,
-			location,
-			desc,
-			img,
-			phone,
-			createShop,
-			handleChange,
-			handlePhoneChange,
-			phoneErr,
-			mailError,
-			load,
-		} = useManage();
-   const { renderSpinner } = useSpinner();
+const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
+	const {
+		shopName,
+		email,
+		location,
+		desc,
+		img,
+		phone,
+		createShop,
+		handleChange,
+		handlePhoneChange,
+		phoneErr,
+		mailError,
+		load,
+		clearAttributes,
+	} = useManage();
+	const { renderSpinner } = useSpinner();
 
-  return (
-		<div className="flex flex-col">
+	return (
+		<div className={`${openCreate ? "flex flex-col w-[95vw]" : "hidden"}`}>
 			{renderSpinner(load)}
 			<p className="text-[1.6rem] text-black-80 text-center">
 				Create Your Shop
 			</p>
 			<form
 				action=""
-				onSubmit={createShop}
-				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem] w-full 
+				onSubmit={(e) => {
+					createShop(e);
+					clearAttributes();
+				}}
+				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]
              items-center md:px-[12rem] md:justify-around lg:px-0">
 				<div className=" flex flex-col w-full lg:max-w-[20%] ">
 					{/* shop Name */}
@@ -61,6 +69,7 @@ const CreateShop = () => {
 					<input
 						onChange={handleChange}
 						required
+                  value={location}
 						type="text"
 						id="location"
 						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
@@ -99,6 +108,9 @@ const CreateShop = () => {
 						inputProps={{
 							required: true,
 						}}
+						inputStyle={{
+							width: "15rem",
+						}}
 					/>
 					<p className="text-red-20">{phoneErr}</p>
 				</div>
@@ -116,7 +128,6 @@ const CreateShop = () => {
 					</label>
 					<input
 						onChange={handleChange}
-						// value={img}
 						required
 						type="file"
 						id="img"
@@ -148,17 +159,30 @@ const CreateShop = () => {
                   focus:ring-2 focus:ring-blue-500 "
 					/>
 					{/* button */}
-					<button
-						disabled={
-							mailError.length > 0 ||
-							load ||
-							phoneErr.length > 0 ||
-							phone.length < 3
-						}
-						className="bg-red-20 px-[2rem] py-[1rem] w-[12rem] rounded-lg
-                  self-center text-white text-[1.4rem] font-[700] mt-[4rem] disabled:bg-gray-400">
-						Submit
-					</button>
+					<div className="flex flex-row justify-between">
+						<button
+							type="submit"
+							disabled={
+								mailError.length > 0 ||
+								load ||
+								phoneErr.length > 0 ||
+								phone.length < 3
+							}
+							className="bg-blue-20  p-[0.5rem] md:w-[12rem] rounded-lg
+                     self-center text-white text-[1.4rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+							Submit
+						</button>
+						<button
+							onClick={() => {
+								setOpenCreate(false);
+								clearAttributes();
+							}}
+							type="button"
+							className="bg-red-20  p-[0.5rem] md:w-[12rem] rounded-lg
+                     self-center text-white text-[1.4rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+							Close
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>

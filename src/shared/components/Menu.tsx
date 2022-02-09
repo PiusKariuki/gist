@@ -7,7 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Menu = () => {
+interface Props {
+	setMenuOpen: any;
+}
+
+const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 	let navigate = useNavigate();
 	return (
 		<div
@@ -15,7 +19,10 @@ const Menu = () => {
          px-[2rem] py-[3rem] rounded-xl">
 			<div
 				className="flex flex-row cursor-pointer items-center gap-x-[1rem]"
-				onClick={() => navigate(`/myAccount`)}>
+				onClick={() => {
+					navigate(`/myAccount`);
+               setMenuOpen(false);
+				}}>
 				<FontAwesomeIcon icon={faUserCircle} size="2x" color="#1e90ff" />
 				<p className="text-[1.4rem] font-[700]">My Account</p>
 			</div>

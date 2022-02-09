@@ -20,6 +20,7 @@ const useEditShop = () => {
 	const { Axios } = useRequest();
 
 	const getShopById = async (shopId: any) => {
+		setLoad(true);
 		try {
 			let {
 				data: { name, email, location, phoneNumber, image, description },
@@ -31,7 +32,15 @@ const useEditShop = () => {
 			setDesc(description);
 			setPhone(phoneNumber);
 			setEmail(email);
-		} catch (error) {}
+			setLoad(false);
+		} catch (error) {
+			setLoad(false);
+			// Swal.fire({
+			// 	icon: "error",
+			// 	text: "Something went wrong",
+			// 	timer: 1000,
+			// });
+		}
 	};
 
 	const handlePhoneChange = (e: string) => {
@@ -54,8 +63,6 @@ const useEditShop = () => {
 			case "img":
 				getBase64(e.target.files[0])
 					.then((res) => {
-						console.log(e.target.files[0]);
-
 						setImg(res);
 					})
 					.catch((err) => console.log(err));
