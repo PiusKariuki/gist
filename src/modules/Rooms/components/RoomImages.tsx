@@ -1,11 +1,22 @@
-import React from 'react'
+import React from "react";
 
-const RoomImages = () => {
-  return (
-    <div className="flex">
-
-    </div>
-  )
+interface Props {
+	imgs: Array<string>;
 }
 
-export default RoomImages
+const RoomImages: React.FC<Props> = ({ imgs }) => {
+	return (
+		<div className="flex flex-row flex-wrap justify-around items-center gap-[2rem] min-h-[30vh]">
+			{imgs?.map((img: any, key: number) => (
+				<div
+					key={key}
+					className="flex bg-center bg-cover bg-no-repeat w-[12rem] h-[12rem] rounded-lg
+               shadow-lg border-[0.2rem] border-black-40"
+					style={{ backgroundImage: `url(/img/${img})` }}
+				/>
+			))}
+		</div>
+	);
+};
+
+export default RoomImages;

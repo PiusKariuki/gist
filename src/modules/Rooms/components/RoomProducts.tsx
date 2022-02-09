@@ -9,7 +9,7 @@ interface Props {
 
 const RoomProducts: React.FC<Props> = ({ name, price, quantity, image }) => {
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col min-h-[30vh]">
 			<p className="text-black-40 text-[1.4rem] underline">{name}</p>
 			<div className="flex flex-row justify-around items-center">
 				<p className="text-red-20 text-[1.4rem]">$ {price}</p>
