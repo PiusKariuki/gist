@@ -15,10 +15,12 @@
     "image-to-base64": "^2.2.0",
     "intl-tel-input": "^17.0.15",
     "react": "^17.0.2",
+    "react-data-table-component": "^7.4.7",
     "react-dom": "^17.0.2",
     "react-phone-input-2": "^2.15.0",
     "react-router-dom": "^6.2.1",
     "recoil": "^0.5.2",
+    "styled-components": "^5.3.3",
     "sweetalert2": "^11.3.10",
     "uuid": "^8.3.2",
     "vite-tsconfig-paths": "^3.3.17"
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
+    "@types/styled-components": "^5.1.22",
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-react": "^1.0.7",
     "autoprefixer": "^10.4.0",

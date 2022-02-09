@@ -1,11 +1,11 @@
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SearchShop from "modules/Search/components/SearchShop";
 import React, { useEffect, useState } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useShop from "../Hooks/useShop";
 import CreateShop from "./CreateShop";
 import EditShopModal from "./EditShopModal";
+import ViewMyShops from "../../shop/components/ViewMyShops";
 
 const MyShops = () => {
 	const { myShops, load, getShopsByUserId } = useShop();
@@ -38,7 +38,14 @@ const MyShops = () => {
             : "hidden"}`}>
 				{myShops.map((shop: any, key: number) => (
 					<div className="relative" key={key}>
-						<SearchShop
+						{/* <SearchShop
+							key={key}
+							img={shop.image}
+							name={shop.name}
+							userName={shop.userId.userName}
+							id={shop._id}
+						/> */}
+						<ViewMyShops
 							key={key}
 							img={shop.image}
 							name={shop.name}

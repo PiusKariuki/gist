@@ -8,10 +8,12 @@ import Manage from "modules/Manage/views/Manage";
 import Orders from "modules/Orders/views/Orders";
 import Product from "modules/Product/views/Product";
 import Searching from "modules/Search/views/Searching";
+import MyShop from "modules/shop/Views/MyShop";
 import Shop from "modules/shop/Views/shop";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { RequireAuth } from "shared/RouteProtection/Protector";
+
 
 const App: React.FC = (): JSX.Element => {
 	return (
@@ -40,6 +42,7 @@ const App: React.FC = (): JSX.Element => {
 				}>
 				<Route path="/myAccount" element={<EditProfile />} />
 				<Route path="/myAccount/shops" element={<MyShops />} />
+            <Route path="/myAccount/shops/:shopId" element={<MyShop />} />
 			</Route>
 
 			<Route path="/login" element={<Login />} />
