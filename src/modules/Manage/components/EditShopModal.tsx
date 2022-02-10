@@ -1,6 +1,6 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";
@@ -28,9 +28,27 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 		load,
 		updateShop,
 		getShopById,
+		handleImgChange,
 	} = useEditShop();
 	const [openProduct, setOpenProduct] = useState(true);
+	const [image, setImage] = useState({ preview: "", raw: "" });
 	const { renderSpinner } = useSpinner();
+   const hiddenInput = useRef<any>(null);
+   const handleUpload = () =>{
+      hiddenInput.current.click();
+   }
+
+
+
+
+	// const handlePreview = (e: any) => {
+	// 	if (e.target.files.length) {
+	// 		setImage({
+	// 			preview: URL.createObjectURL(e.target.files[0]),
+	// 			raw: e.target.files[0],
+	// 		});
+	// 	}
+	// };
 
 	useEffect(() => {
 		getShopById(shopId);
@@ -38,21 +56,17 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 	return (
 		<div
 			className={`${
-				open
-					? "flex flex-col z-50 bg-gray-300 rounded-2xl justify-center w-[100vw] min-h-[100%]"
-					: "hidden"
+				open ? "flex flex-col rounded-2xl py-[3rem] w-[100vw]" : "hidden"
 			}`}>
 			<div className="">{renderSpinner(load)}</div>
-
 			<form
-				action=""
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					updateShop(e, shopId);
 					setOpen(false);
 				}}
-				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  items-center 
-            md:px-[12rem] md:justify-around lg:px-0">
-				<div className=" flex flex-col w-full lg:max-w-[20%] ">
+				className="flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  items-center
+            md:px-[12rem] md:justify-between lg:px-[4rem] ">
+				<div className=" flex flex-col w-full lg:max-w-[20%]">
 					{/* shop Name */}
 					<label
 						htmlFor="shopName"
@@ -123,28 +137,33 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 					/>
 					<p className="text-red-20">{phoneErr}</p>
 				</div>
-				{/* 
-				second col
-				<div className="flex flex-col w-full lg:max-w-[20%]">
-					display div
-					<img src={img} alt="" className="hidden md:flex w-[16rem]" />
-					img
+
+				{/* second col */}
+				<div className="flex flex-col">
+					<img
+						src={img}
+						alt=""
+						className="hidden md:flex w-[16rem] h-[16rem]"
+					/>
+					{/* img */}
+
+					<input
+						onChange={(e) => {
+                     console.log(e);
+							handleChange(e);       
+						}}
+						type="file"
+						id="img"
+						accept="image/png"
+						className="hidden"
+					/>
 					<label
 						htmlFor="img"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
                       pt-[2rem]">
-						Profile Photo
+				
 					</label>
-					<input
-						onChange={handleChange}
-						type="file"
-						id="img"
-						accept="image/png"
-						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     focus:ring-2 focus:ring-blue-500"
-					/>
-				</div> */}
+				</div>
 
 				{/* third col */}
 				<div className="flex flex-col w-full lg:max-w-[40%]">
@@ -192,14 +211,18 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 					</div>
 				</div>
 			</form>
-			<button
+			{/* <button
 				onClick={() => setOpenProduct((prev: boolean) => !prev)}
 				className="bg-blue-20 text-white p-[1rem] w-[10rem] self-center rounded-md
             my-[4rem]">
 				<FontAwesomeIcon icon={faPlus} size="2x" className="mr-[1rem]" />
 				Add Product
 			</button>
-			<AddProduct openProduct={openProduct} setOpenProduct={setOpenProduct} shopId={shopId}/>
+			<AddProduct
+				openProduct={openProduct}
+				setOpenProduct={setOpenProduct}
+				shopId={shopId}
+			/> */}
 		</div>
 	);
 };

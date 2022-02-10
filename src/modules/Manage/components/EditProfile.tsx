@@ -128,6 +128,7 @@ const EditProfile = () => {
 					inputProps={{
 						required: true,
 					}}
+               inputStyle={{width: "16rem"}}
 				/>
 				{/* password */}
 				<label

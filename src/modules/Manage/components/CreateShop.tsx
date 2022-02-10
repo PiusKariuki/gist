@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import useManage from "../Hooks/useManage";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -26,6 +26,11 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 		clearAttributes,
 	} = useManage();
 	const { renderSpinner } = useSpinner();
+	const hiddenInput = useRef<any>(null);
+
+	const handleClick = () => {
+		hiddenInput.current.click();
+	};
 
 	return (
 		<div className={`${openCreate ? "flex flex-col w-[95vw]" : "hidden"}`}>
@@ -39,14 +44,14 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					createShop(e);
 					clearAttributes();
 				}}
-				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]
+				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[2rem]
              items-center md:px-[12rem] md:justify-around lg:px-0">
-				<div className=" flex flex-col w-full lg:max-w-[20%] ">
+				<div className=" flex flex-col w-full lg:max-w-[30%] ">
 					{/* shop Name */}
 					<label
 						htmlFor="shopName"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                mt-[2rem] ">
+                  mt-[2rem] ">
 						Shop Name
 					</label>
 					<input
@@ -69,7 +74,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					<input
 						onChange={handleChange}
 						required
-                  value={location}
+						value={location}
 						type="text"
 						id="location"
 						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
@@ -113,33 +118,6 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						}}
 					/>
 					<p className="text-red-20">{phoneErr}</p>
-				</div>
-
-				{/* second col */}
-				<div className="flex flex-col w-full lg:max-w-[20%]">
-					{/* display div */}
-					<img src={img} alt="" className="hidden md:flex w-[16rem]" />
-					{/* img */}
-					<label
-						htmlFor="img"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                      pt-[2rem]">
-						Profile Photo
-					</label>
-					<input
-						onChange={handleChange}
-						required
-						type="file"
-						id="img"
-						accept="image/png"
-						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     focus:ring-2 focus:ring-blue-500"
-					/>
-				</div>
-
-				{/* third col */}
-				<div className="flex flex-col w-full lg:max-w-[40%]">
 					{/* text area */}
 					<label
 						htmlFor="desc"
@@ -151,15 +129,36 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						onChange={handleChange}
 						value={desc}
 						required
-						rows={5}
+						rows={3}
 						cols={50}
 						id="desc"
 						className="border-[0.0625rem] border-black-70 outline-none text-blue-20
                   rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
                   focus:ring-2 focus:ring-blue-500 "
 					/>
+				</div>
+
+				{/* second col */}
+				<div className="flex flex-col">
+					{/* display div */}
+					<img src={img} alt="" className="hidden md:flex w-[16rem]" />
+					{/* img */}
+					<button type="button" className="blue-btn px-[1rem] py-[0.3rem]" 
+               onClick={handleClick}>
+						Upload Image
+					</button>
+					<input
+						onChange={handleChange}
+						required
+						ref={hiddenInput}
+						type="file"
+						id="img"
+						accept="image/png"
+						className="hidden"
+					/>
+
 					{/* button */}
-					<div className="flex flex-row justify-between">
+					<div className="flex flex-row justify-between gap-x-[3rem]">
 						<button
 							type="submit"
 							disabled={
@@ -168,8 +167,8 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 								phoneErr.length > 0 ||
 								phone.length < 3
 							}
-							className="bg-blue-20  p-[0.5rem] md:w-[12rem] rounded-lg
-                     self-center text-white text-[1.4rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
+                     text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">
 							Submit
 						</button>
 						<button
@@ -178,8 +177,8 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 								clearAttributes();
 							}}
 							type="button"
-							className="bg-red-20  p-[0.5rem] md:w-[12rem] rounded-lg
-                     self-center text-white text-[1.4rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg
+                     self-center text-white text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">
 							Close
 						</button>
 					</div>

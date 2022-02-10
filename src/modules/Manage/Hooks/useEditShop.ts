@@ -28,7 +28,7 @@ const useEditShop = () => {
 
 			setShopName(name);
 			setLocation(location);
-			// setImg(image);
+			setImg(image);
 			setDesc(description);
 			setPhone(phoneNumber);
 			setEmail(email);
@@ -49,6 +49,14 @@ const useEditShop = () => {
 		else setPhoneErr("");
 	};
 
+	const handleImgChange = (e: any) => {
+		getBase64(e.target.files[0])
+			.then((res) => {
+				setImg(res);
+			})
+			.catch((err) => console.log(err));
+	};
+
 	const handleChange = (e: any) => {
 		switch (e.target.id) {
 			case "shopName":
@@ -61,6 +69,8 @@ const useEditShop = () => {
 				setDesc(e.target.value);
 				break;
 			case "img":
+				console.log("hey");
+
 				getBase64(e.target.files[0])
 					.then((res) => {
 						setImg(res);
@@ -129,6 +139,7 @@ const useEditShop = () => {
 		load,
 		updateShop,
 		getShopById,
+      handleImgChange
 	};
 };
 

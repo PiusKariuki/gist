@@ -20,7 +20,7 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 			<div
 				className="flex flex-row cursor-pointer items-center gap-x-[1rem]"
 				onClick={() => {
-					navigate(`/myAccount`);
+					navigate(`/myAccount/profile`);
 					setMenuOpen(false);
 				}}>
 				<FontAwesomeIcon icon={faUser} size="2x" color="#6F00FF" />

@@ -41,7 +41,7 @@ const App: React.FC = (): JSX.Element => {
 						<Manage />
 					</RequireAuth>
 				}>
-				<Route path="/myAccount" element={<EditProfile />} />
+				<Route path="/myAccount/profile" element={<EditProfile />} />
 				<Route path="/myAccount/shops" element={<MyShops />} />
 				<Route path="/myAccount/shops/:shopId" element={<MyShop />} />
 			</Route>
