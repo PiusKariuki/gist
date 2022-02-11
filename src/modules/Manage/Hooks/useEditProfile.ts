@@ -13,6 +13,7 @@ const useEditProfile = () => {
 	const [passError, setPassError] = useState("");
 	const [email, setEmail] = useState(userObj?.email);
 	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
 	const [fname, setFname] = useState(userObj?.firstName);
 	const [lname, setLname] = useState(userObj?.lastName);
 	const [bio, setBio] = useState(userObj?.bio);
@@ -48,6 +49,9 @@ const useEditProfile = () => {
 				} else {
 					setPassError("");
 				}
+				break;
+			case "confirm":
+				setConfirmPassword(e.target.value);
 				break;
 			case "fname":
 				setFname(e.target.value);
@@ -110,6 +114,7 @@ const useEditProfile = () => {
 		phoneErr,
 		handlePhoneChange,
 		handleSubmit,
+      confirmPassword
 	};
 };
 
