@@ -12,7 +12,7 @@ const ViewShop: React.FC<Props> = ({ name, userName, img,id }) => {
    let navigate = useNavigate();
 	return (
 		<div
-			className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-cover flex-shrink-0
+			className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-contain flex-shrink-0
          border-2 rounded-2xl hover:shadow-2xl"
 			style={{ backgroundImage: `url(/img/${img})` }}
          onClick={()=> navigate(`/shop/${id}`)}

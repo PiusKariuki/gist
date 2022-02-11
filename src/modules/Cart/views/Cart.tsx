@@ -28,7 +28,7 @@ const Cart = () => {
 
 			<div className="flex flex-row justify-between text-[1.2rem] tracking-wider">
 				<p className="font-[300]">Estimated total</p>
-				<p className="font-[600] text-blue-20">${totalValue}</p>
+				<p className="font-[600] text-blue-20">${isNaN(totalValue)? 0: totalValue }</p>
 			</div>
 
 			<div

@@ -24,7 +24,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 				/>
 				<p className="text-blue-20 text-left w-[6rem]">{name}</p>
 
-				<p className="text-[#00000080]">$ {price * amount}</p>
+				<p className="text-[#00000080]">$ {isNaN(price*amount)? 0: price*amount}</p>
 			</div>
 			<div
 				className="flex flex-row flex-nowrap justify-between text-[1rem] text-black-40 

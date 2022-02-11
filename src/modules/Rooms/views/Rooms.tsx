@@ -12,14 +12,13 @@ interface Props {
 	shopName: string;
 	shopImg: string;
 	shopDescription: string;
-	// products: any;
 }
 
 const Rooms = () => {
 	const { room, load, getRoomById } = useRoom();
 	const { renderSpinner } = useSpinner();
 	let { roomId } = useParams();
-	const [details, setDetails] = useState(false);
+	const [details, setDetails] = useState(true);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
@@ -30,7 +29,10 @@ const Rooms = () => {
 	return (
 		<>
 			<div className="flex flex-col md:flex-row gap-y-[2rem] md:min-h-screen relative">
-				{renderSpinner(load)}
+				<div className="fixed inset-y-80 inset-x-80 z-50">
+					{renderSpinner(load)}
+				</div>
+
 				<video
 					controls
 					src="/img/room.mp4"
@@ -43,7 +45,7 @@ const Rooms = () => {
 						onClick={() => setOpen((prev: boolean) => !prev)}>
 						from $ {price}
 					</button>
-					<div className="inline-flex self-center">
+					<div className="inline-flex  absolute top-20">
 						<button
 							onClick={() => setDetails((prev: boolean) => !prev)}
 							className={`${details ? "bg-blue-20 text-white" : "bg-white"}
@@ -66,13 +68,6 @@ const Rooms = () => {
 					{details ? (
 						<>
 							<div className="flex flex-row gap-x-[1rem]">
-								<div
-									style={{
-										backgroundImage: `url(/img/${room?.shopId?.image})`,
-									}}
-									className="flex w-[5rem] h-[5rem] rounded-full  self-center bg-center 
-                     bg-no-repeat bg-cover"
-								/>
 								<div className="flex flex-col w-[16rem]">
 									<p className="text-black-40 font-[900] text-[1.4rem] mb-[1rem]">
 										{room?.title}
@@ -82,6 +77,13 @@ const Rooms = () => {
 										</span>
 									</p>
 								</div>
+								<div
+									style={{
+										backgroundImage: `url(/img/${room?.shopId?.image})`,
+									}}
+									className="flex w-[5rem] h-[5rem] rounded-full  self-center bg-center 
+                           bg-no-repeat bg-cover"
+								/>
 							</div>
 
 							{/* shop description */}
@@ -92,7 +94,7 @@ const Rooms = () => {
 					) : null}
 
 					{/* products */}
-					<div className="flex self-center">
+					<div className="flex">
 						{details
 							? room?.productIds?.map((product: any, key: number) => (
 									<RoomProducts
@@ -109,7 +111,7 @@ const Rooms = () => {
 					</div>
 					{/* room images */}
 
-					<div className="absolute top-0  z-50">
+					<div className="fixed top-16 backdrop-blur-lg  z-50">
 						{open
 							? room?.productIds?.map((product: any, key: number) => (
 									<BuyModal

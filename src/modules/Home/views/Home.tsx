@@ -41,7 +41,7 @@ const Home = () => {
 					? "flex flex-col flex-nowrap overflow-x-clip  max-h-screen"
 					: "flex flex-col flex-nowrap overflow-x-clip"
 			}`}>
-			<div className="sticky top-0 z-50 bg-white">
+			<div className="fixed top-0 inset-x-1 z-50 bg-white">
 				<Topbar />
 			</div>
 
@@ -49,7 +49,7 @@ const Home = () => {
 				<div
 					className={`${
 						cartState
-							? "absolute right-0 top-0 bg-brown-20 min-h-screen z-[44]"
+							? "fixed right-0  bg-brown-20 min-h-screen z-[44]"
 							: "hidden"
 					}`}>
 					<Cart />
@@ -57,9 +57,7 @@ const Home = () => {
 				<div
 					onBlur={() => setMenuOpen((prev: boolean) => !prev)}
 					className={`${
-						menuState
-							? "absolute right-0 top-0 bg-brown-20 z-[44]"
-							: "hidden"
+						menuState ? "fixed right-0 top-16 bg-brown-20 z-[44]" : "hidden"
 					}`}>
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>

@@ -29,7 +29,7 @@ const CreateShop: React.FC = (): JSX.Element => {
 		<div className="flex flex-col overflow-x-clip relative">
 			<>
 				{open ? (
-					<div className="absolute right-0 bg-brown-20 min-h-screen z-50">
+					<div className="fixed right-0 bg-brown-20 min-h-screen z-50">
 						<Navbar open={open} setOpen={setOpen} />
 					</div>
 				) : (

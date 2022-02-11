@@ -7,9 +7,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartOpen } from "shared/store/Cart";
 import { menuOpen } from "shared/store/Menu";
+import { user } from "shared/store/Store";
 import useSearch from "../hooks/useSearch";
 import { searchInput } from "../store/Search";
 
@@ -19,6 +20,7 @@ const Topbar = () => {
 	const setSearch = useSetRecoilState(searchInput);
 	const setCartOpen = useSetRecoilState(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
+	let { token } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
 
 	return (
@@ -29,7 +31,7 @@ const Topbar = () => {
 			<p className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold">
 				Gist-Shop
 			</p>
-			<div className="relative">
+			<div className="relative mr-auto">
 				<input
 					onFocus={() => {
 						setSearching(true);
@@ -75,18 +77,19 @@ const Topbar = () => {
 					}}
 				/>
 			</div>
-
-			<button
-				className={`${
-					searching
-						? "hidden md:flex  w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
-						: "flex w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
-				}
+			{token?.length <1 ? (
+				<button
+					className={`${
+						searching
+							? "hidden md:flex  w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
+							: "flex w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
+					}
              
              `}
-				onClick={() => navigate("/login")}>
-				Sign in
-			</button>
+					onClick={() => navigate("/login")}>
+					Sign in
+				</button>
+			) : null}
 			<FontAwesomeIcon
 				onClick={() => {
 					setCartOpen((prev: boolean) => !prev);
@@ -97,7 +100,7 @@ const Topbar = () => {
 				className={`${
 					searching
 						? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
-						: "self-center md:ml-[2rem]  fa-lg md:fa-3x"
+						: "self-center md:ml-[2rem]  fa-lg md:fa-3x "
 				}`}
 			/>
 			<FontAwesomeIcon

@@ -30,7 +30,9 @@ const EditProfile = () => {
 			className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]
           justify-around"
 			onSubmit={handleSubmit}>
-            <p className="text-black-40 text-[1.4rem] md:text-[2rem] font-[700]">Edit your profile</p>
+			<p className="text-black-40 text-[1.4rem] md:text-[2rem] font-[700]">
+				Edit your profile
+			</p>
 			<div className="flex flex-col w-screen ">
 				{/*......................................
                *

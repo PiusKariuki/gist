@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+	let navigate = useNavigate();
 	return (
 		<div className="flex flex-col md:flex-row py-[2.5rem] px-[2rem] md:gap-x-[2rem]">
 			<div className="flex flex-col order-2 md:order-1 self-center">
@@ -14,6 +16,7 @@ const Hero = () => {
 					shops.
 				</p>
 				<button
+					onClick={() => navigate(`/login`)}
 					className="bg-red-20 w-[9rem] rounded-md py-[1rem] px-[1rem] text-white
              font-[900] self-center mt-[1.4rem] hover:bg-red-600 hover:scale-110 trasition ease-in-out
              duration-300">
