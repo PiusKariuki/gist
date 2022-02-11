@@ -22,9 +22,11 @@ const Login: React.FC = (): JSX.Element => {
 				GIST SHOP
 			</p>
 			<form
+				autoComplete="off"
 				className="flex flex-col gap-y-[0.5rem] pt-[3rem] w-[75vw] md:w-[50vw] lg:w-[30vw]"
 				onSubmit={login}>
 				<input
+               required
 					onChange={handleChange}
 					type="text"
 					id="email"
@@ -39,6 +41,7 @@ const Login: React.FC = (): JSX.Element => {
 					{mailErrors || errors?.emailErr}
 				</p>
 				<input
+               required
 					onChange={handleChange}
 					type="password"
 					id="pass"

@@ -6,6 +6,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { user } from "shared/store/Store";
 
 interface Props {
 	setMenuOpen: any;
@@ -13,6 +15,7 @@ interface Props {
 
 const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 	let navigate = useNavigate();
+	const setUser = useSetRecoilState(user);
 	return (
 		<div
 			className="w-[90vw] md:w-[40vw] min-h-screen flex flex-col gap-y-[2rem] 
@@ -26,7 +29,12 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 				<FontAwesomeIcon icon={faUser} size="2x" color="#6F00FF" />
 				<p className="text-[1.4rem] font-[700]">My Account</p>
 			</div>
-			<div className="flex flex-row cursor-pointer items-center gap-x-[1rem] pl-[0.5rem]">
+			<div
+				onClick={() => {
+					setUser({});
+					navigate("/");
+				}}
+				className="flex flex-row cursor-pointer items-center gap-x-[1rem] pl-[0.5rem]">
 				<FontAwesomeIcon
 					icon={faArrowRightFromBracket}
 					size="2x"

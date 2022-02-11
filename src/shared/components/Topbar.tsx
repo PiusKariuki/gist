@@ -22,6 +22,7 @@ const Topbar = () => {
 	const setMenuOpen = useSetRecoilState(menuOpen);
 	let { token } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
+   
 
 	return (
 		<div
@@ -77,7 +78,7 @@ const Topbar = () => {
 					}}
 				/>
 			</div>
-			{token?.length <1 ? (
+			{token === undefined ? (
 				<button
 					className={`${
 						searching

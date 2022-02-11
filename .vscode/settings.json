@@ -1,5 +1,5 @@
 {
 	"editor.tabSize": 3,
-	"files.autoSave": "afterDelay",
-	"docBlocker.Author": "Pius Kariuki"
+	"docBlocker.Author": "Pius Kariuki",
+	"files.autoSave": "afterDelay"
 }

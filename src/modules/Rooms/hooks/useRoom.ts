@@ -16,11 +16,11 @@ const useRoom = () => {
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
-			Swal.fire({
-				icon: "error",
-				text: "something went wrong",
-				timer: 1500,
-			});
+			// Swal.fire({
+			// 	icon: "error",
+			// 	text: "something went wrong",
+			// 	timer: 1500,
+			// });
 		}
 	};
 
@@ -32,11 +32,11 @@ const useRoom = () => {
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
-			Swal.fire({
-				icon: "error",
-				text: "something went wrong",
-				timer: 1500,
-			});
+			// Swal.fire({
+			// 	icon: "error",
+			// 	text: "something went wrong",
+			// 	timer: 1500,
+			// });
 		}
 	};
 	return { room, load, getRoomById,rooms,getAllRooms };

@@ -8,6 +8,7 @@ export const RequireAuth: React.FC<{ children: JSX.Element }> = ({
 	children,
 }) => {
 	const { token } = useRecoilValue<any>(user);
+   
 	let location = useLocation();
 	if (token?.length < 1 || token === undefined) {
 		return <Navigate to="/login" state={{ from: location }} replace />;
@@ -21,10 +22,10 @@ export const AuthStatus: React.FC<{ children: JSX.Element }> = ({
 }) => {
 	const userObj = useRecoilValue<any>(user);
 	let location = useLocation();
-	if (userObj.token.length > 1) {
+	if (userObj?.token?.length > 1) {
 		Swal.fire({
 			icon: "info",
-			title: "you are already logged in😁",
+			title: "you are logged in😁",
 			timer: 1500,
 		});
 		return <Navigate to="/" state={{ from: location }} replace />;
