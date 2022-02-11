@@ -33,4 +33,21 @@ body::-webkit-scrollbar {
 		@apply bg-blue-20 rounded-md  hover:rounded-xl hover:bg-blue-500 disabled:bg-gray-400
      disabled:hover:rounded-md px-[1rem] py-[1.4rem] text-white font-[700] text-[1.4rem];
 	}
+    /* ..................................datatable rows................................... */
+  .fQfBPh {
+    @apply text-gray-900 dark:text-gray-200  font-bold  text-lg text-opacity-100;
+  }
+
+  /* ...............................datatable header............................................... */
+  .guIQRM {
+    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+  }
+  /* ............................datatable footer......................................... */
+  .gyWNLn {
+    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+  }
+  /* .................................datatable title....................................... */
+  .hmmucc {
+    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+  }
 }

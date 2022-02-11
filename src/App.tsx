@@ -5,6 +5,7 @@ import Home from "modules/Home/views/Home";
 import EditProfile from "modules/Manage/components/EditProfile";
 import MyShops from "modules/Manage/components/MyShops";
 import Manage from "modules/Manage/views/Manage";
+import MyOrders from "modules/Orders/views/MyOrders";
 import Orders from "modules/Orders/views/Orders";
 import Product from "modules/Product/views/Product";
 import Rooms from "modules/Rooms/views/Rooms";
@@ -44,6 +45,7 @@ const App: React.FC = (): JSX.Element => {
 				<Route path="/myAccount/profile" element={<EditProfile />} />
 				<Route path="/myAccount/shops" element={<MyShops />} />
 				<Route path="/myAccount/shops/:shopId" element={<MyShop />} />
+				<Route path="/myAccount/orders" element={<MyOrders />} />
 			</Route>
 
 			<Route

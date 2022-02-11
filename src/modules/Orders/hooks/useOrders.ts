@@ -18,7 +18,22 @@ const useOrders = () => {
 	const subTotal = useRecoilValue<any>(cartSelector);
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
-	console.log(cartItems);
+
+const handleChange = (e: any) => {
+	let id = e.target.id;
+	switch (id) {
+		case "billing":
+			setBilling(e.target.value);
+			break;
+
+		case "shipping":
+			setShipping(e.target.value);
+			break;
+
+		default:
+			break;
+	}
+};
 
 	const getBillingByUserId = async () => {
 		setLoad(true);
@@ -38,22 +53,6 @@ const useOrders = () => {
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
-		}
-	};
-
-	const handleChange = (e: any) => {
-		let id = e.target.id;
-		switch (id) {
-			case "billing":
-				setBilling(e.target.value);
-				break;
-
-			case "shipping":
-				setShipping(e.target.value);
-				break;
-
-			default:
-				break;
 		}
 	};
 
@@ -86,16 +85,17 @@ const useOrders = () => {
 		}
 	};
 
+
 	return {
 		billing,
 		shipping,
-		handleChange,
 		getBillingByUserId,
 		getShippingByUserId,
 		userShippings,
 		userBillings,
 		load,
 		handleSubmit,
+      handleChange
 	};
 };
 
