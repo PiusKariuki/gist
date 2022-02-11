@@ -29,6 +29,7 @@ const Register: React.FC = (): JSX.Element => {
 		<div className="flex flex-col md:flex-row gap-x-[2.5rem]">
 			<div className="hidden lg:flex lg:min-w-[25%] bg-green-60 lg:min-h-screen" />
 			<form
+            autoComplete="off"
 				className="flex flex-col gap-y-[0.1rem] w-full lg:w-[50%] py-[3rem] px-[1rem]"
 				onSubmit={register}>
 				<p className="text-[2.2rem] text-blue-20 font-semibold mb-[1.5rem] justify-center">
