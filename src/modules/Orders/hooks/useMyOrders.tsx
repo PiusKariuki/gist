@@ -93,7 +93,6 @@ const useMyOrders = () => {
 	// .............................edit order part
 	const editOrder = async (e: any, orderId: string) => {
 		e.preventDefault();
-
 		setLoad(true);
 		try {
 			await Axios.put(`/orders/orders/${orderId}`, {
@@ -105,7 +104,6 @@ const useMyOrders = () => {
 				title: "Your order has been updated",
 				timer: 1500,
 			}).then(()=>setOpen(false));
-         
 		} catch (error) {
 			Swal.fire({
 				icon: "error",

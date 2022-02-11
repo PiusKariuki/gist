@@ -25,7 +25,7 @@ const EditOrder: React.FC<Props> = ({ setOpen, orderId }) => {
 				className="flex flex-col justify-around gap-y-[4rem]"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					editOrder(e, orderId);
-					// setOpen(false);
+					setOpen(false);
 				}}>
 				{/* billing address */}
 				<label

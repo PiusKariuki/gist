@@ -31,9 +31,10 @@ const DeleteShop: React.FC<{
 			</p>
 			<form
 				className="flex flex-col justify-around gap-y-[4rem]"
-				onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-					deleteShop(e, shopId)
-				}>
+				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+					deleteShop(e, shopId);
+					setOpenDelete(false);
+				}}>
 				<input
 					type="text"
 					required

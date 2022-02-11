@@ -14,6 +14,7 @@ const useAddShop = () => {
 	const [images, setImages] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
+   const [openProduct,setOpenProduct] = useState<boolean>(false);
 
    
 	const clearAttributes = () => {
@@ -101,6 +102,8 @@ const useAddShop = () => {
 		images,
 		setImages,
 		removeImg,
+		openProduct,
+		setOpenProduct,
 	};
 };
 

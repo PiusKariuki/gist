@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
@@ -47,16 +47,20 @@ const MyOrders = () => {
 	} = useMyOrders();
 
 	const { renderSpinner } = useSpinner();
+   const formRef = useRef<any>();
 	useEffect(() => {
 		getMyShops();
 	}, []);
+	useEffect(() => {
+		if (shops.length > 0) setShopId(shops[0]?._id);
+	}, [shops]);
 
 	return (
 		<div className="flex flex-col md:flex-row px-[2rem] py-[3rem] items-center gap-[2rem]">
 			<form
+            ref={formRef}
 				autoComplete="off"
 				onSubmit={getMyOrders}
-				action=""
 				className="flex flex-col gap-y-[0.1rem] py-[3rem] px-[1rem] self-center">
 				{/* billing address */}
 				<label
@@ -68,16 +72,16 @@ const MyOrders = () => {
 				<select
 					onChange={(e) => {
 						setShopId(e.target.value);
+					   // formRef.current.submit();
 					}}
-					// value={shop.name}
 					required
 					id="billing"
 					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
                rounded-[0.25rem]  font-bold px-[1rem] focus:ring-2 focus:ring-blue-500">
-					<option disabled selected value="">
+					{/* <option disabled selected value="">
 						{" "}
 						-- select an option --{" "}
-					</option>
+					</option> */}
 					{shops?.map((shop: any, key: number) => (
 						<option value={shop?._id} key={key}>
 							{shop?.name}
@@ -95,12 +99,11 @@ const MyOrders = () => {
 					View Orders
 				</button>
 			</form>
-			<div className="flex flex-col w-full border-2 relative">
-				{open ? (
-					<div className="fixed  z-50 center ">
-						<EditOrder setOpen={setOpen} orderId={orderId} />
-					</div>
-				) : null}
+			<div className="flex flex-col w-full border-2 relative mt-[4rem]">
+				<div className={`${open ? "fixed  z-50 center" : "hidden"}`}>
+					<EditOrder setOpen={setOpen} orderId={orderId} />
+				</div>
+
 				<DataTable
 					columns={columns}
 					data={populate}

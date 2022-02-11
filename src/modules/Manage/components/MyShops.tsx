@@ -7,6 +7,7 @@ import CreateShop from "./CreateShop";
 import EditShopModal from "./EditShopModal";
 import ViewMyShops from "../../shop/components/ViewMyShops";
 import DeleteShop from "./DeleteShop";
+import useDeleteShop from "../Hooks/useDeleteShop";
 
 const MyShops = () => {
 	const { myShops, load, getShopsByUserId } = useShop();
@@ -15,11 +16,11 @@ const MyShops = () => {
 	const [shopId, setShopId] = useState<string>("");
 	const [shopName, setShopName] = useState<string>("");
 	const [openCreate, setOpenCreate] = useState<boolean>(false);
-	const [openDelete, setOpenDelete] = useState(false);
+	const { openDelete, setOpenDelete } = useDeleteShop();
 
 	useEffect(() => {
 		getShopsByUserId();
-	}, [openCreate]);
+	}, [openCreate, openDelete]);
 	return (
 		<div
 			className="overflow-y-clip  flex flex-col  flex-nowrap items-center gap-[2rem] 
@@ -41,7 +42,7 @@ const MyShops = () => {
 			{/* modals */}
 			<CreateShop openCreate={openCreate} setOpenCreate={setOpenCreate} />
 			{openDelete ? (
-				<div className="fixed top-[20%] cente z-50  bg-opacity-50 bg-gray-600 inset-0">
+				<div className="fixed top-[20%] center z-50  inset-y-0">
 					<DeleteShop
 						shopId={shopId}
 						setOpenDelete={setOpenDelete}

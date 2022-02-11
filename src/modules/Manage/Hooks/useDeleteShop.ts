@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 const useDeleteShop = () => {
 	const { Axios } = useRequest();
 	const [load, setLoad] = useState(false);
+   const [openDelete,setOpenDelete] = useState(false);
 
 	const deleteShop = async (
 		e: React.FormEvent<HTMLFormElement>,
@@ -12,6 +13,7 @@ const useDeleteShop = () => {
 	) => {
 		e.preventDefault();
 		setLoad(true);
+      setOpenDelete(false);
 		try {
 			Axios.delete(`/shop/shop/${shopId}`);
 			setLoad(false);
@@ -19,7 +21,8 @@ const useDeleteShop = () => {
             icon: "success",
             title: "Shop deleted successfully",
             timer: 1500
-         })
+         });
+         
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -30,7 +33,7 @@ const useDeleteShop = () => {
 		}
 	};
 
-	return { load, deleteShop };
+	return { load, deleteShop,openDelete,setOpenDelete };
 };
 
 export default useDeleteShop;
