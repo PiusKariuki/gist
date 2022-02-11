@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { user } from "shared/store/Store";
+import { user } from "shared/store/store";
 import { useRecoilValue } from "recoil";
 import Swal from "sweetalert2";
 

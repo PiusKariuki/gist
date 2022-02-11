@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { user } from "../store/Store";
+import { user } from "../store/store";
 import { baseUrl } from "./Http";
 
 const useRequest = () => {

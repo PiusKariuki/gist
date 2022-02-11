@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import useManage from "../Hooks/useManage";
+import useManage from "../../Hooks/useManage";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";

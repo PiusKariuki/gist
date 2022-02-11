@@ -62,7 +62,7 @@ const Home = () => {
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>
 
-				<div ref={box}>
+				<div ref={box} className="mt-[4rem]">
 					<Outlet />
 				</div>
 			</div>

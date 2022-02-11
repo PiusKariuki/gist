@@ -1,7 +1,7 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
-import useAddShop from "../Hooks/useAddProduct";
+import useAddShop from "../../Hooks/product/useAddProduct";
 
 interface Props {
 	openProduct: boolean;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { user } from "shared/store/Store";
+import { user } from "shared/store/store";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";

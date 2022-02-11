@@ -37,7 +37,7 @@ const CreateShop: React.FC = (): JSX.Element => {
 						icon={faBars}
 						size="2x"
 						color="blue"
-						className="absolute right-8 top-6 z-50"
+						className="fixed right-8 top-6 z-50"
 						onClick={() => setOpen(true)}
 					/>
 				)}

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartOpen } from "shared/store/Cart";
 import { menuOpen } from "shared/store/Menu";
-import { user } from "shared/store/Store";
+import { user } from "shared/store/store";
 import useSearch from "../hooks/useSearch";
 import { searchInput } from "../store/Search";
 

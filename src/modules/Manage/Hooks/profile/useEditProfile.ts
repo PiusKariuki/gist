@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
-import { user } from "../../../shared/store/Store";
+import { user } from "../../../../shared/store/store";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
 import Swal from "sweetalert2";
 import useRequest from "shared/http/useRequest";

@@ -1,6 +1,6 @@
 import React from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
-import useEditProfile from "../Hooks/useEditProfile";
+import useEditProfile from "../../Hooks/profile/useEditProfile";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 

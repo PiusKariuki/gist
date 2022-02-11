@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
-import { user } from "shared/store/Store";
+import { user } from "shared/store/store";
 import Swal from "sweetalert2";
 
 const useMyOrders = () => {
@@ -15,6 +15,7 @@ const useMyOrders = () => {
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
+	// const [currentShop, setCurrentShop] = useState("");
 
 	const columns = [
 		{
@@ -41,6 +42,7 @@ const useMyOrders = () => {
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
+							// setCurrentShop(e.currentTarget.value);
 							setOrderId(e.currentTarget.value);
 							setOpen(true);
 						}}>
@@ -74,11 +76,10 @@ const useMyOrders = () => {
 		}
 	};
 
-	const getMyOrders = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const getMyOrders = async (id: string) => {
 		setLoad(true);
 		try {
-			let { data } = await Axios.get(`/orders/all/shop/${shopId}`);
+			let { data } = await Axios.get(`/orders/all/shop/${id}`);
 			setOrders(data);
 			setLoad(false);
 		} catch (error) {
@@ -103,7 +104,7 @@ const useMyOrders = () => {
 				icon: "success",
 				title: "Your order has been updated",
 				timer: 1500,
-			}).then(()=>setOpen(false));
+			}).then(() => setOpen(false));
 		} catch (error) {
 			Swal.fire({
 				icon: "error",

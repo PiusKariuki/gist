@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { user } from "shared/store/Store";
+import { user } from "shared/store/store";
 
 interface Props {
 	setMenuOpen: any;

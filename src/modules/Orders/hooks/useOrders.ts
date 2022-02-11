@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import useRequest from "shared/http/useRequest";
 import { cartAtom, cartSelector } from "shared/store/Cart";
-import { user } from "shared/store/Store";
+import { user } from "shared/store/store";
 import Swal from "sweetalert2";
 
 const useOrders = () => {

@@ -1,6 +1,6 @@
 import useShop from "modules/shop/Hooks/useShop";
 import React, { useEffect } from "react";
-import ViewShop from "../../../shared/components/ViewShop";
+import ViewShop from "../../../../shared/components/ViewShop";
 import "../styles/shop.css";
 
 const Edit = () => {

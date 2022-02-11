@@ -1,7 +1,7 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import useDeleteShop from "../Hooks/useDeleteShop";
+import useDeleteShop from "../../Hooks/shop/useDeleteShop";
 
 const DeleteShop: React.FC<{
 	name: string;

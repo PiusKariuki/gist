@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
@@ -47,60 +47,68 @@ const MyOrders = () => {
 	} = useMyOrders();
 
 	const { renderSpinner } = useSpinner();
-   const formRef = useRef<any>();
+	const formRef = useRef<any>();
+	const [currentShop, setCurrentShop] = useState("");
+
+	{
+		/*......................................
+      *
+      *get orders
+
+      *use load and open in dependency array
+      *set the current shop each time the edit btn is clicked for reference
+      ......................................*/
+	}
+	useEffect(() => {
+		if (currentShop.length > 0) getMyOrders(currentShop);
+	}, [open]);
+
 	useEffect(() => {
 		getMyShops();
 	}, []);
+
 	useEffect(() => {
 		if (shops.length > 0) setShopId(shops[0]?._id);
 	}, [shops]);
 
 	return (
-		<div className="flex flex-col md:flex-row px-[2rem] py-[3rem] items-center gap-[2rem]">
-			<form
-            ref={formRef}
-				autoComplete="off"
-				onSubmit={getMyOrders}
-				className="flex flex-col gap-y-[0.1rem] py-[3rem] px-[1rem] self-center">
+		<div className="flex flex-col px-[2rem] py-[3rem] items-center gap-[2rem]">
+			<div
+				ref={formRef}
+				// autoComplete="off"
+				// onSubmit={getMyOrders}
+				className="flex flex-col gap-y-[0.1rem]  px-[1rem]">
 				{/* billing address */}
-				<label
-					htmlFor="billing"
+				<p
 					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-               mb-[0.5rem]">
+               mb-[0rem]">
 					Select a shop to view its orders
-				</label>
-				<select
-					onChange={(e) => {
-						setShopId(e.target.value);
-					   // formRef.current.submit();
-					}}
-					required
-					id="billing"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
-               rounded-[0.25rem]  font-bold px-[1rem] focus:ring-2 focus:ring-blue-500">
-					{/* <option disabled selected value="">
-						{" "}
-						-- select an option --{" "}
-					</option> */}
+				</p>
+				{/*......................................
+               *
+               *map users' shops and create  btns
+               *
+               ......................................*/}
+				<div className="flex flex-row gap-[0.5rem] mt-[2rem]">
 					{shops?.map((shop: any, key: number) => (
-						<option value={shop?._id} key={key}>
+						<button
+							className="blue-btn px-[0.5rem] py-[0.1rem] text-[1rem]"
+							key={key}
+							value={shop?._Id}
+							onClick={() => {
+								setCurrentShop(shop?._id);
+								getMyOrders(shop?._id);
+							}}>
 							{shop?.name}
-						</option>
+						</button>
 					))}
-				</select>
-				<div className="mt-[1rem]">{renderSpinner(load)}</div>
-				<button
-					// disabled={b?.length < 1}
-					type="submit"
-					className="bg-red-20 px-[1rem] py-[0.4rem] w-[16rem] self-center 
-                mt-[2rem] text-[1.4rem] text-white font-[700] rounded-xl hover:bg-red-600
-                disabled:bg-gray-400
-                ">
-					View Orders
-				</button>
-			</form>
-			<div className="flex flex-col w-full border-2 relative mt-[4rem]">
-				<div className={`${open ? "fixed  z-50 center" : "hidden"}`}>
+				</div>
+
+				<div className=" fixed top-4 mt-[1rem]">{renderSpinner(load)}</div>
+			</div>
+
+			<div className="flex flex-col w-full border-2 mt-[4rem] relative">
+				<div className={`${open ? "fixed  z-50 right-[9%] md:right-[40%]" : "hidden"}`}>
 					<EditOrder setOpen={setOpen} orderId={orderId} />
 				</div>
 

@@ -2,12 +2,12 @@ import { faEdit, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
-import useShop from "../Hooks/useShop";
+import useShop from "../../Hooks/shop/useShop";
 import CreateShop from "./CreateShop";
 import EditShopModal from "./EditShopModal";
-import ViewMyShops from "../../shop/components/ViewMyShops";
+import ViewMyShops from "../../../shop/components/ViewMyShops";
 import DeleteShop from "./DeleteShop";
-import useDeleteShop from "../Hooks/useDeleteShop";
+import useDeleteShop from "../../Hooks/shop/useDeleteShop";
 
 const MyShops = () => {
 	const { myShops, load, getShopsByUserId } = useShop();

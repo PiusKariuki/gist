@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";
-import useEditShop from "../Hooks/useEditShop";
-import useAddProduct from "../Hooks/useAddProduct";
-import AddProduct from "./AddProduct";
+import useEditShop from "../../Hooks/shop/useEditShop";
+import useAddProduct from "../../Hooks/product/useAddProduct";
+import AddProduct from "../product/AddProduct";
 
 interface Props {
 	open: boolean;
