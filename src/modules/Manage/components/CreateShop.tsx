@@ -39,7 +39,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 				Create Your Shop
 			</p>
 			<form
-				action=""
+				autoComplete="off"
 				onSubmit={(e) => {
 					createShop(e);
 					clearAttributes();
@@ -113,9 +113,10 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						inputProps={{
 							required: true,
 						}}
-						inputStyle={{
-							width: "15rem",
-						}}
+						// inputStyle={{
+						// 	width: "18rem",
+						// }}
+                  inputClass="w-24 border-2"
 					/>
 					<p className="text-red-20">{phoneErr}</p>
 					{/* text area */}
@@ -143,8 +144,10 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					{/* display div */}
 					<img src={img} alt="" className="hidden md:flex w-[16rem]" />
 					{/* img */}
-					<button type="button" className="blue-btn px-[1rem] py-[0.3rem]" 
-               onClick={handleClick}>
+					<button
+						type="button"
+						className="blue-btn px-[1rem] py-[0.3rem]"
+						onClick={handleClick}>
 						Upload Image
 					</button>
 					<input
@@ -165,7 +168,8 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 								mailError.length > 0 ||
 								load ||
 								phoneErr.length > 0 ||
-								phone.length < 3
+								phone.length < 3 ||
+								img.length < 1
 							}
 							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
                      text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">

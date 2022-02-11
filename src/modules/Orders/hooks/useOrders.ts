@@ -1,28 +1,29 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import useRequest from "shared/http/useRequest";
-import { cartAtom } from "shared/store/Cart";
+import { cartAtom, cartSelector } from "shared/store/Cart";
 import { user } from "shared/store/Store";
-
+import Swal from "sweetalert2";
 
 const useOrders = () => {
-	const [billing, setBilling] = useState<string>("");
-	const [shipping, setShipping] = useState<string>("");
-	const [load, setLoad] = useState<boolean>(false);
-
 	const [userBillings, setUserBillings] = useState<any>([]);
 	const [userShippings, setUserShippings] = useState<any>([]);
 
-   const cartItems = useRecoilValue<any>(cartAtom);
+	const [billing, setBilling] = useState<string>(userBillings[0]);
+	const [shipping, setShipping] = useState<string>(userShippings[0]);
+	const [load, setLoad] = useState<boolean>(false);
+
+	const setCartAtom = useSetRecoilState<any>(cartAtom);
+	const cartItems = useRecoilValue<any>(cartAtom);
+	const subTotal = useRecoilValue<any>(cartSelector);
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
-
+	console.log(cartItems);
 
 	const getBillingByUserId = async () => {
 		setLoad(true);
 		try {
-         
-			let {data} = await Axios.get(`/billing/all/${_id}`);
+			let { data } = await Axios.get(`/billing/all/${_id}`);
 			setUserBillings(data);
 			setLoad(false);
 		} catch (error) {
@@ -32,7 +33,7 @@ const useOrders = () => {
 	const getShippingByUserId = async () => {
 		setLoad(true);
 		try {
-			let {data }= await Axios.get(`/address/all/${_id}`);
+			let { data } = await Axios.get(`/address/all/${_id}`);
 			setUserShippings(data);
 			setLoad(false);
 		} catch (error) {
@@ -56,18 +57,34 @@ const useOrders = () => {
 		}
 	};
 
-   const handleSubmit = async (e: any) => {
-      e.preventDefault();
-      // cartItems.length > 0 && cartItems.map((item: any)=>
-      
-      // try {
-      //    let res = await Axios.post(`/order/${productId}`)
-      // } catch (error) {
-         
-      // }
-   }
-
-
+	const handleSubmit = async (e: any) => {
+		e.preventDefault();
+		setLoad(true);
+		let productIds = cartItems.map((item: any) => item.productId);
+		try {
+			await Axios.post(`/orders/${_id}`, {
+				productIds,
+				billingId: billing,
+				shippingId: shipping,
+				shopId: cartItems[0]?.shopId,
+				subTotal,
+				tax: 0,
+				shippingFee: 0,
+			});
+			setLoad(false);
+			Swal.fire({
+				icon: "success",
+				title: "Your order has been placed",
+			});
+			setCartAtom((prev: any) => [""]);
+		} catch (error) {
+			setLoad(false);
+			Swal.fire({
+				icon: "error",
+				title: "Your order was not placed",
+			});
+		}
+	};
 
 	return {
 		billing,
@@ -78,7 +95,7 @@ const useOrders = () => {
 		userShippings,
 		userBillings,
 		load,
-      handleSubmit
+		handleSubmit,
 	};
 };
 
