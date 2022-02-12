@@ -15,7 +15,10 @@ const useMyOrders = () => {
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
-	// const [currentShop, setCurrentShop] = useState("");
+	const [currentShop, setCurrentShop] = useState("");
+
+
+   
 
 	const columns = [
 		{
@@ -41,8 +44,8 @@ const useMyOrders = () => {
 						key={key}
 						id={obj._id}
 						value={obj._id}
-						onClick={(e) => {
-							// setCurrentShop(e.currentTarget.value);
+						onClick={(e) => {                  
+							setCurrentShop(obj?.shopId);
 							setOrderId(e.currentTarget.value);
 							setOpen(true);
 						}}>
@@ -92,19 +95,27 @@ const useMyOrders = () => {
 	};
 
 	// .............................edit order part
-	const editOrder = async (e: any, orderId: string) => {
+	const editOrder = async (
+		e: React.FormEvent<HTMLFormElement>,
+		orderId: string, 
+      shopId: string
+	) => {
 		e.preventDefault();
 		setLoad(true);
 		try {
 			await Axios.put(`/orders/orders/${orderId}`, {
 				status,
 			});
+			
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been updated",
 				timer: 1500,
-			}).then(() => setOpen(false));
+			}).then(() => { 
+            getMyOrders(shopId);
+				setOpen(false);
+			});
 		} catch (error) {
 			Swal.fire({
 				icon: "error",
@@ -129,6 +140,8 @@ const useMyOrders = () => {
 		orderId,
 		editOrder,
 		setStatus,
+		setCurrentShop,
+      currentShop
 	};
 };
 

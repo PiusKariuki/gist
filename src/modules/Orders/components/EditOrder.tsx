@@ -6,9 +6,10 @@ import useMyOrders from "../hooks/useMyOrders";
 interface Props {
 	orderId: string;
 	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+   shopId: string;
 }
 
-const EditOrder: React.FC<Props> = ({ setOpen, orderId }) => {
+const EditOrder: React.FC<Props> = ({ setOpen, orderId,shopId }) => {
 	const { editOrder, setStatus } = useMyOrders();
 	return (
 		<div
@@ -24,7 +25,7 @@ const EditOrder: React.FC<Props> = ({ setOpen, orderId }) => {
 			<form
 				className="flex flex-col justify-around gap-y-[4rem]"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-					editOrder(e, orderId);
+					editOrder(e, orderId,shopId);
 					setOpen(false);
 				}}>
 				{/* billing address */}

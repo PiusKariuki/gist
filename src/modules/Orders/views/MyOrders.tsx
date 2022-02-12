@@ -38,17 +38,17 @@ const MyOrders = () => {
 		columns,
 		load,
 		getMyShops,
-		setShopId,
 		shops,
 		populate,
 		open,
 		setOpen,
 		orderId,
+		setCurrentShop,
+      currentShop
 	} = useMyOrders();
 
 	const { renderSpinner } = useSpinner();
 	const formRef = useRef<any>();
-	const [currentShop, setCurrentShop] = useState("");
 
 	{
 		/*......................................
@@ -59,17 +59,15 @@ const MyOrders = () => {
       *set the current shop each time the edit btn is clicked for reference
       ......................................*/
 	}
+
 	useEffect(() => {
-		if (currentShop.length > 0) getMyOrders(currentShop);
-	}, [open]);
+      if(shops.length>0)
+		getMyOrders(currentShop)
+	},[open]);
 
 	useEffect(() => {
 		getMyShops();
 	}, []);
-
-	useEffect(() => {
-		if (shops.length > 0) setShopId(shops[0]?._id);
-	}, [shops]);
 
 	return (
 		<div
@@ -99,7 +97,7 @@ const MyOrders = () => {
 							key={key}
 							value={shop?._Id}
 							onClick={() => {
-								setCurrentShop(shop?._id);
+								// setCurrentShop(shop?._id);
 								getMyOrders(shop?._id);
 							}}>
 							{shop?.name}
@@ -115,7 +113,7 @@ const MyOrders = () => {
 					className={`${
 						open ? "fixed  z-50 right-[9%] md:right-[40%]  " : "hidden"
 					}`}>
-					<EditOrder setOpen={setOpen} orderId={orderId} />
+					<EditOrder setOpen={setOpen} orderId={orderId} shopId={currentShop}/>
 				</div>
 
 				<DataTable
