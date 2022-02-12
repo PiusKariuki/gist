@@ -4,6 +4,7 @@ import { user } from "../../../../shared/store/store";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
 import Swal from "sweetalert2";
 import useRequest from "shared/http/useRequest";
+import { getBase64 } from "shared/toBase64/encode";
 
 const useEditProfile = () => {
 	const setUser = useSetRecoilState(user);
@@ -22,6 +23,8 @@ const useEditProfile = () => {
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
+	const [img, setImg] = useState<any>("");
+
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 
@@ -65,6 +68,13 @@ const useEditProfile = () => {
 			case "bio":
 				setBio(e.target.value);
 				break;
+			case "img":
+				getBase64(e.target.files[0])
+					.then((res) => {
+						setImg(res);
+					})
+					.catch((err) => console.log(err));
+				break;
 			default:
 				break;
 		}
@@ -80,6 +90,7 @@ const useEditProfile = () => {
 				email: email,
 				bio: bio,
 				userName: userName,
+            // profilePhoto: img
 			});
 			Swal.fire({
 				icon: "success",
@@ -114,7 +125,8 @@ const useEditProfile = () => {
 		phoneErr,
 		handlePhoneChange,
 		handleSubmit,
-      confirmPassword
+      confirmPassword,
+      img
 	};
 };
 

@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useRef} from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditProfile from "../../Hooks/profile/useEditProfile";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const EditProfile = () => {
 	const {
@@ -22,8 +24,15 @@ const EditProfile = () => {
 		handlePhoneChange,
 		handleSubmit,
 		confirmPassword,
+      img
 	} = useEditProfile();
 	const { renderSpinner } = useSpinner();
+   	const hiddenInput = useRef<any>(null);
+
+		const handleClick = () => {
+			hiddenInput.current.click();
+		};
+
 
 	return (
 		<form
@@ -108,26 +117,66 @@ const EditProfile = () => {
 				</div>
 				{/*......................................
                *
-               *BIO
+               *BIO and profile picture
                *
                ......................................*/}
-				<div className="flex flex-col w-[80vw] md:w-[40%]">
-					<label
-						htmlFor="bio"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-                  mb-[0.5rem]">
-						Bio
-					</label>
-					<textarea
-						onChange={handleChange}
-						value={bio}
-						required
-						id="bio"
-						rows={3}
-						cols={6}
-						className="border-[0.0625rem] border-black-70  outline-none text-blue-20
-                  rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
-					/>
+				<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem] items-start">
+					<div className="flex flex-col w-[80vw] md:w-[40%]">
+						<label
+							htmlFor="bio"
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
+                        mt-[3rem] mb-[0.5rem]">
+							Bio
+						</label>
+						<textarea
+							onChange={handleChange}
+							value={bio}
+							required
+							id="bio"
+							rows={3}
+							cols={6}
+							className="border-[0.0625rem] border-black-70  outline-none text-blue-20
+                        rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+						/>
+					</div>
+
+					<div className="flex row w-[80vw] md:w-[40%] items-start md:mt-auto">
+						{/* img */}
+						<button
+							type="button"
+							className={`${
+								img?.length > 1
+									? "bg-white text-green-40 font-[700]"
+									: "bg-blue-20 text-white"
+							}
+                        px-[6rem] py-[0.4rem] border-[0.2rem] border-black-70 mt-auto rounded-md`}
+							onClick={handleClick}>
+							{img?.length < 1 ? (
+								"Upload Image"
+							) : (
+								<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
+							)}
+						</button>
+
+						<img
+							src={img}
+							className={
+								img.length < 1
+									? "hidden"
+									: "hidden md:flex h-[4rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70"
+							}
+						/>
+
+						<input
+							onChange={handleChange}
+							// required
+							ref={hiddenInput}
+							type="file"
+							id="img"
+							accept="image/png"
+							className="hidden"
+						/>
+					</div>
 				</div>
 
 				{/*......................................
