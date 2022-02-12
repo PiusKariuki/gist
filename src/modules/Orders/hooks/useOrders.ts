@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import useRequest from "shared/http/useRequest";
 import { cartAtom, cartSelector } from "shared/store/Cart";
@@ -18,22 +19,23 @@ const useOrders = () => {
 	const subTotal = useRecoilValue<any>(cartSelector);
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
+	let navigate = useNavigate();
 
-const handleChange = (e: any) => {
-	let id = e.target.id;
-	switch (id) {
-		case "billing":
-			setBilling(e.target.value);
-			break;
+	const handleChange = (e: any) => {
+		let id = e.target.id;
+		switch (id) {
+			case "billing":
+				setBilling(e.target.value);
+				break;
 
-		case "shipping":
-			setShipping(e.target.value);
-			break;
+			case "shipping":
+				setShipping(e.target.value);
+				break;
 
-		default:
-			break;
-	}
-};
+			default:
+				break;
+		}
+	};
 
 	const getBillingByUserId = async () => {
 		setLoad(true);
@@ -55,27 +57,32 @@ const handleChange = (e: any) => {
 			setLoad(false);
 		}
 	};
-
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		setLoad(true);
 		let productIds = cartItems.map((item: any) => item.productId);
+
 		try {
-			await Axios.post(`/orders/${_id}`, {
-				productIds,
-				billingId: billing,
-				shippingId: shipping,
-				shopId: cartItems[0]?.shopId,
-				subTotal,
-				tax: 0,
-				shippingFee: 0,
-			});
+			await Promise.all(
+				cartItems.map(async (item: any): Promise<any> => {
+					await Axios.post(`/orders/${_id}`, {
+						billingId: billing,
+						shippingId: shipping,
+						subTotal,
+						tax: 0,
+						shippingFee: 0,
+						productId: item.productId,
+						shopId: item.shopId,
+						quantity: item.quantity,
+					});
+				})
+			);
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been placed",
-			});
-			setCartAtom((prev: any) => [""]);
+			}).then(() => navigate("/"));
+			setCartAtom([]);
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -84,7 +91,6 @@ const handleChange = (e: any) => {
 			});
 		}
 	};
-
 
 	return {
 		billing,
@@ -95,7 +101,7 @@ const handleChange = (e: any) => {
 		userBillings,
 		load,
 		handleSubmit,
-      handleChange
+		handleChange,
 	};
 };
 

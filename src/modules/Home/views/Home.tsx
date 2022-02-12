@@ -49,7 +49,7 @@ const Home = () => {
 				<div
 					className={`${
 						cartState
-							? "fixed right-0  bg-brown-20 min-h-screen z-[44]"
+							? "fixed right-0 top-16 bg-brown-20 min-h-screen z-[44]"
 							: "hidden"
 					}`}>
 					<Cart />

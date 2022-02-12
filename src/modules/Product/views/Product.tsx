@@ -5,10 +5,9 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
 import { v4 as uuidv4 } from "uuid";
 
-
 const Product: React.FC = (): JSX.Element => {
 	const [index, setIndex] = useState<number>(0);
-	const [orders, setOrders] = useState<number>(0);
+	const [orders, setOrders] = useState<number>(1);
 	const { getProductById, product, errors, load } = useProducts();
 	const { renderSpinner } = useSpinner();
 	const { productId } = useParams();
@@ -77,14 +76,15 @@ const Product: React.FC = (): JSX.Element => {
 					<button
 						disabled={orders === 0}
 						onClick={() => {
+							setOrders(1);
 							addToCart(
 								orders,
 								product?.price,
 								product?.images[0],
 								product?.name,
 								product?.shopId,
-                        product?._id,
-                       uuidv4()
+								product?._id,
+								uuidv4()
 							);
 						}}
 						className="bg-red-20 px-[1rem] py-[0.1rem] text-white font-[600] text-[1rem]

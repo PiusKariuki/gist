@@ -72,7 +72,10 @@ const MyOrders = () => {
 	}, [shops]);
 
 	return (
-		<div className="flex flex-col px-[2rem] py-[3rem] items-center gap-[2rem]">
+		<div
+			className={`${
+				open ? "opacity-0" : "opacity-0"
+			} opacity-100 flex flex-col px-[2rem] py-[3rem] items-center gap-[2rem]`}>
 			<div
 				ref={formRef}
 				// autoComplete="off"
@@ -108,7 +111,10 @@ const MyOrders = () => {
 			</div>
 
 			<div className="flex flex-col w-full border-2 mt-[4rem] relative">
-				<div className={`${open ? "fixed  z-50 right-[9%] md:right-[40%]" : "hidden"}`}>
+				<div
+					className={`${
+						open ? "fixed  z-50 right-[9%] md:right-[40%]  " : "hidden"
+					}`}>
 					<EditOrder setOpen={setOpen} orderId={orderId} />
 				</div>
 
