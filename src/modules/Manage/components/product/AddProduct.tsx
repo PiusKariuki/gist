@@ -1,6 +1,7 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
+import useSpinner from "shared/components/spinner/useSpinner";
 import useAddShop from "../../Hooks/product/useAddProduct";
 
 interface Props {
@@ -26,6 +27,7 @@ const AddProduct: React.FC<Props> = ({
 		removeImg,
 	} = useAddShop();
 	const [displayImgs, setDisplayImags] = useState<any>([]);
+	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
 	return (
 		<div
@@ -36,7 +38,7 @@ const AddProduct: React.FC<Props> = ({
 				className="flex flex-col md:flex-row md:justify-around gap-x-[8rem]"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					addProduct(e, shopId);
-               // setOpenProduct(false);
+					// setOpenProduct(false);
 				}}>
 				<div className="flex flex-col  w-[80vw] md:w-[30vw]">
 					{/* name */}
@@ -137,6 +139,7 @@ const AddProduct: React.FC<Props> = ({
 						))}
 					</div>
 
+               <div className="fixed">{renderSpinner(load)}</div>
 					<div className="flex flex-row justify-around mt-auto text-white">
 						<button
 							disabled={images?.length < 1 || load}

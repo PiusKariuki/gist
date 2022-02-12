@@ -31,6 +31,7 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 			</div>
 			<div
 				onClick={() => {
+					setMenuOpen(false);
 					setUser({});
 					navigate("/");
 				}}

@@ -63,7 +63,7 @@ const MyOrders = () => {
 	useEffect(() => {
       if(shops.length>0)
 		getMyOrders(currentShop)
-	},[open]);
+	},[open,currentShop,orderId]);
 
 	useEffect(() => {
 		getMyShops();
