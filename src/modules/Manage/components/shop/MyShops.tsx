@@ -23,8 +23,12 @@ const MyShops = () => {
 	}, [openCreate, openDelete]);
 	return (
 		<div
-			className="overflow-y-clip  flex flex-col  flex-nowrap items-center gap-[2rem] 
-         px-[2rem] py-[4rem] relative">
+			className="flex flex-col  flex-nowrap items-center gap-[2rem] 
+         px-[2rem] py-[4rem] relative bg-gray-50">
+			<div
+				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
+            bg-gray-50 -z-10 rounded-br-full"
+			/>
 			<button
 				onClick={() => setOpenCreate((prev: boolean) => !prev)}
 				className={`${
@@ -97,10 +101,11 @@ const MyShops = () => {
 						</button>
 					</div>
 				))}
-				<div className="fixed backdrop-blur-md left-0 top-0 bg-gray-300 z-50 h-screen">
+			</div>
+
+         	<div className="absolute flex left-0 top-[0%] bg-gray-50 z-50">
 					<EditShopModal open={open} shopId={shopId} setOpen={setOpen} />
 				</div>
-			</div>
 		</div>
 	);
 };

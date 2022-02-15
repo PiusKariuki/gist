@@ -35,7 +35,11 @@ const Register: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<div className="flex flex-col md:flex-row gap-x-[2.5rem]">
+		<div className="flex flex-col md:flex-row gap-x-[2.5rem] relative">
+			<div
+				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
+            bg-gray-50 -z-10 rounded-br-full"
+			/>
 			<form
 				autoComplete="off"
 				className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]
@@ -141,7 +145,7 @@ const Register: React.FC = (): JSX.Element => {
 							/>
 						</div>
 
-						<div className="flex row w-[80vw] md:w-[40%] items-start md:mt-auto">
+						<div className="flex row w-[80vw] md:w-[40%] items-start md:mt-auto relative">
 							{/* img */}
 							<button
 								type="button"
@@ -166,7 +170,7 @@ const Register: React.FC = (): JSX.Element => {
 								className={
 									img.length < 1
 										? "hidden"
-										: "hidden md:flex h-[4rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70"
+										: "hidden absolute xl:flex max-h-[14rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70 self-start top-[-300%] right-[0%]"
 								}
 							/>
 

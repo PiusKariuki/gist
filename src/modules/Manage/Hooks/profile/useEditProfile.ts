@@ -9,6 +9,7 @@ import { user } from "shared/recoil/user";
 const useEditProfile = () => {
 	const setUser = useSetRecoilState(user);
 	const userObj = useRecoilValue<any>(user);
+	console.log(userObj);
 
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");
@@ -84,13 +85,13 @@ const useEditProfile = () => {
 		e.preventDefault();
 		setLoad(true);
 		try {
-			let { data } = await Axios.put(`/users/${userObj?._id}`, {
+			let { data } = await Axios.put(`/users/${userObj?.user?._id}`, {
 				firstName: fname,
 				lastName: lname,
 				email: email,
 				bio: bio,
 				userName: userName,
-            // profilePhoto: img
+				// profilePhoto: img
 			});
 			Swal.fire({
 				icon: "success",
@@ -125,8 +126,8 @@ const useEditProfile = () => {
 		phoneErr,
 		handlePhoneChange,
 		handleSubmit,
-      confirmPassword,
-      img
+		confirmPassword,
+		img,
 	};
 };
 

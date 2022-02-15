@@ -46,7 +46,7 @@ const Searching = () => {
 			) : null}
 
 			<div
-				className="scroller flex flex-col md:flex-row overflow-x-auto gap-x-[2rem] 
+				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] 
             justify-center gap-y-[2rem] pb-[4rem]">
 				{filteredProducts.length > 0 &&
 					filteredProducts.map((product: any, key: number) => (
@@ -69,7 +69,7 @@ const Searching = () => {
 
 			{/* shops */}
 			<div
-				className="scroller flex flex-col md:flex-row overflow-x-auto gap-x-[2rem] 
+				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] 
             justify-center gap-y-[2rem] pb-[4rem]">
 				{filteredShops.length > 0 &&
 					filteredShops.map((shop: any, key: number) => (

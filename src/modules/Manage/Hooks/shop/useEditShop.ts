@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 
-
 const useEditShop = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const [shopName, setShopName] = useState<string>("");
@@ -70,8 +69,6 @@ const useEditShop = () => {
 				setDesc(e.target.value);
 				break;
 			case "img":
-				console.log("hey");
-
 				getBase64(e.target.files[0])
 					.then((res) => {
 						setImg(res);
@@ -140,7 +137,7 @@ const useEditShop = () => {
 		load,
 		updateShop,
 		getShopById,
-      handleImgChange
+		handleImgChange,
 	};
 };
 

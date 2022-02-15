@@ -17,7 +17,7 @@ const useOrders = () => {
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const cartItems = useRecoilValue<any>(cartAtom);
 	const subTotal = useRecoilValue<any>(cartSelector);
-	const { _id } = useRecoilValue<any>(user);
+	const {_id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
 

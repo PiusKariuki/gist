@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React, { useRef } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditProfile from "../../Hooks/profile/useEditProfile";
 import "react-phone-input-2/lib/style.css";
@@ -24,21 +24,23 @@ const EditProfile = () => {
 		handlePhoneChange,
 		handleSubmit,
 		confirmPassword,
-      img
+		img,
 	} = useEditProfile();
 	const { renderSpinner } = useSpinner();
-   	const hiddenInput = useRef<any>(null);
+	const hiddenInput = useRef<any>(null);
 
-		const handleClick = () => {
-			hiddenInput.current.click();
-		};
-
+	const handleClick = () => {
+		hiddenInput.current.click();
+	};
 
 	return (
 		<form
 			className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]
-          justify-around"
+          justify-around relative"
+          autoComplete="off"
 			onSubmit={handleSubmit}>
+            <div className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
+            bg-gray-50 -z-10 rounded-br-full"/>
 			<p className="text-black-40 text-[1.4rem] md:text-[2rem] font-[700]">
 				Edit your profile
 			</p>
@@ -102,7 +104,7 @@ const EditProfile = () => {
 						htmlFor="userName"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
                   mb-[0.5rem]">
-						userName
+						Username
 					</label>
 					<input
 						onChange={handleChange}
@@ -140,16 +142,17 @@ const EditProfile = () => {
 						/>
 					</div>
 
-					<div className="flex row w-[80vw] md:w-[40%] items-start md:mt-auto">
+					<div className="flex flex-row  md:w-[40%] md:mt-auto items-center relative">
 						{/* img */}
 						<button
 							type="button"
 							className={`${
 								img?.length > 1
-									? "bg-white text-green-40 font-[700]"
-									: "bg-blue-20 text-white"
+									? "bg-white text-green-40 font-[700] "
+									: "bg-blue-20 text-white text-[0.8rem]"
 							}
-                        px-[6rem] py-[0.4rem] border-[0.2rem] border-black-70 mt-auto rounded-md`}
+                        px-[7rem] md:px-[6rem] py-[0.5rem] border-[0.2rem] 
+                         border-black-70 mt-[2rem] md:mt-0 rounded-md`}
 							onClick={handleClick}>
 							{img?.length < 1 ? (
 								"Upload Image"
@@ -163,7 +166,7 @@ const EditProfile = () => {
 							className={
 								img.length < 1
 									? "hidden"
-									: "hidden md:flex h-[4rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70"
+									: "hidden absolute xl:flex max-h-[14rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70 self-start top-[-300%] right-[0%]"
 							}
 						/>
 
@@ -171,6 +174,7 @@ const EditProfile = () => {
 							onChange={handleChange}
 							// required
 							ref={hiddenInput}
+							// value={img}
 							type="file"
 							id="img"
 							accept="image/png"
@@ -296,7 +300,7 @@ const EditProfile = () => {
 				}
 				type="submit"
 				className="bg-red-20 py-[0.5rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
-               font-bold w-[12rem] hover:bg-red-600 self-center disabled:bg-gray-400">
+               font-bold w-[12rem] hover:bg-red-600 self-start disabled:bg-gray-400">
 				Submit
 			</button>
 		</form>

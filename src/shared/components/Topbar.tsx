@@ -22,9 +22,9 @@ const Topbar = () => {
 	const setCartOpen = useSetRecoilState(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
 	const cart = useRecoilValue<any>(cartAtom);
-	let { token } = useRecoilValue<any>(user);
+	let { userName,token } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
-
+   
 	let number = cart.length;
 
 	return (
@@ -51,10 +51,12 @@ const Topbar = () => {
 					onChange={handleChange}
 					className={`${
 						searching
-							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[55vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
-							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[55vw]"
+							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[65vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
+							: token?.length < 1
+							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[65vw]"
+							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[65vw]"
 					}`}
-					placeholder="Search Gist-Shop"
+					placeholder="Type a product or shop name"
 					value={input}
 				/>
 				<FontAwesomeIcon
@@ -97,7 +99,11 @@ const Topbar = () => {
 					onClick={() => navigate("/login")}>
 					Sign in
 				</button>
-			) : null}
+			) : 
+         <p className="text-blue-20 font-600 text-center self-center lg:text-[1.6rem] 
+         ">Hello🖐  {userName}</p>
+         
+         }
 			<div
 				onClick={() => {
 					setCartOpen((prev: boolean) => !prev);

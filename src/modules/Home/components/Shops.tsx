@@ -10,8 +10,6 @@ const Shops = () => {
 		getShops();
 	}, []);
 	const scrollRef = useHorizontalScroll();
-      console.log(shops);
-      
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] bg-teal-50">

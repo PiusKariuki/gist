@@ -1,6 +1,4 @@
-import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";
@@ -47,14 +45,14 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 		<div
 			className={`${
 				open
-					? "flex flex-col rounded-2xl py-[6rem] w-[100vw] relative"
+					? "flex flex-col rounded-2xl py-[3rem] w-[100vw]  relative"
 					: "hidden"
 			}`}>
 			<div className="px-[2rem]">{renderSpinner(load)}</div>
 			<button
 				onClick={() => setOpenProduct((prev: boolean) => !prev)}
 				className="bg-blue-20 text-white px-[1rem] py-[0.5rem] w-[10rem] self-center rounded-md
-            my-[4rem] fixed top-0 right-6">
+            my-[4rem] absolute top-0 right-6 ">
 				{openProduct ? "Edit shop" : "Add Product"}
 			</button>
 			{!openProduct ? (
@@ -64,7 +62,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 						// setOpen(false);
 					}}
 					className="flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  items-center
-            md:px-[12rem] md:justify-around lg:px-[4rem] ">
+               md:px-[12rem] md:justify-around lg:px-[4rem]">
 					<div className=" flex flex-col w-full lg:max-w-[25%]">
 						{/* shop Name */}
 						<label
@@ -132,7 +130,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							inputProps={{
 								required: true,
 							}}
-							inputStyle={{ width: "14rem" }}
+							inputStyle={{ width: "100%", border: "1px solid black"}}
 						/>
 						<p className="text-red-20">{phoneErr}</p>
 						{/* text area */}
@@ -151,7 +149,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							id="desc"
 							className="border-[0.0625rem] border-black-70 outline-none text-blue-20
                   rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500 "
+                  focus:ring-2 focus:ring-blue-500"
 						/>
 
 

@@ -7,7 +7,7 @@ import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 
 const useManage = () => {
-	const { _id } = useRecoilValue<any>(user);
+	const {_id } = useRecoilValue<any>(user);
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
 	const [img, setImg] = useState<any>("");

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faChevronCircleLeft,
 	faChevronCircleRight,
+	faChevronRight,
+	faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { imgUrl } from "shared/http/Http";
 
@@ -39,11 +41,25 @@ const Product: React.FC = (): JSX.Element => {
 							Product Details.
 						</p>
 						{product?.images?.length > 0 ? (
-							<img
-								src="/img/lebron2.png"
-								alt="productImg"
-								className="min-h-96"
-							/>
+							<div className="relative">
+								<img
+									src="/img/lebron2.png"
+									alt="productImg"
+									className="min-h-96"
+								/>
+								<FontAwesomeIcon
+									icon={faChevronLeft}
+									size="4x"
+									color="gray"
+									className="hidden md:flex absolute  left-[-6%] top-[40%]"
+								/>
+								<FontAwesomeIcon
+									icon={faChevronRight}
+									size="4x"
+									color="gray"
+									className="hidden md:flex absolute right-[-6%] top-[40%]"
+								/>
+							</div>
 						) : null}
 					</div>
 
@@ -56,7 +72,7 @@ const Product: React.FC = (): JSX.Element => {
 						</p>
 						<p className="text-left text-blue-20 font-[600] text-[1.4rem]">
 							{product?.quantity === 0
-								? "$"+product.price
+								? "$" + product.price
 								: product.price === undefined
 								? ""
 								: "$" + product?.price}

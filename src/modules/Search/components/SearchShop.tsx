@@ -11,9 +11,9 @@ interface Props {
 const SearchShop: React.FC<Props> = ({ name, img,  userName,id }) => {
    let navigate = useNavigate();
 	return (
-		<div className="flex flex-col rounded-2xl shadow-lg  border-[0.2rem] p-[2rem]
+		<div className="flex flex-col rounded-3xl shadow-lg  border-[0.2rem] p-[2rem]
       flex-shrink-0"
-      onClick={()=> navigate(`/shop/${id}`)}
+      onClick={()=> navigate(`/shop/${id}`,{replace: true})}
       >
 			<div
 				style={{ backgroundImage: `url(/img/${img})` }}
