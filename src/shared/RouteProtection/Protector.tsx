@@ -1,13 +1,13 @@
 import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { user } from "shared/store/store";
 import { useRecoilValue } from "recoil";
+import { User } from "shared/Store/User";
 import Swal from "sweetalert2";
 
 export const RequireAuth: React.FC<{ children: JSX.Element }> = ({
 	children,
 }) => {
-	const { token } = useRecoilValue<any>(user);
+	const { token } = useRecoilValue<any>(User);
    
 	let location = useLocation();
 	if (token?.length < 1 || token === undefined) {
@@ -20,7 +20,7 @@ export const RequireAuth: React.FC<{ children: JSX.Element }> = ({
 export const AuthStatus: React.FC<{ children: JSX.Element }> = ({
 	children,
 }) => {
-	const userObj = useRecoilValue<any>(user);
+	const userObj = useRecoilValue<any>(User);
 	let location = useLocation();
 	if (userObj?.token?.length > 1) {
 		Swal.fire({

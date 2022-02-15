@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartAtom, cartSelector, cartOpen } from "shared/store/Cart";
+import { cartAtom, cartSelector, cartOpen } from "shared/Store/Cart";
 import Swal from "sweetalert2";
 
 interface Cart {

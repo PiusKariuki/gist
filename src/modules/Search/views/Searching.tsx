@@ -2,7 +2,7 @@ import useProducts from "modules/Product/hooks/useProducts";
 import useShop from "modules/shop/Hooks/useShop";
 import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { searchInput } from "../../../shared/store/Search";
+import { searchInput } from "../../../shared/Store/Search";
 import SearchProduct from "../components/SearchProduct";
 import "../styles/shop.css";
 import SearchShop from "../components/SearchShop";
@@ -38,44 +38,47 @@ const Searching = () => {
 
 	return (
 		<div className="flex flex-col px-[2rem] md:px-[3rem]">
-         {renderSpinner(load)}
+			{renderSpinner(load)}
 			{filteredProducts.length > 0 ? (
-				<p className="text-black-40 font-[800] text-[1.6rem] md:text-[2rem] my-[2rem]">
-					Products
+				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem] text-center">
+					Products.
 				</p>
 			) : null}
 
-			<div className="scroller flex flex-row overflow-x-auto gap-x-[2rem]">
+			<div
+				className="scroller flex flex-col md:flex-row overflow-x-auto gap-x-[2rem] 
+            justify-center gap-y-[2rem] pb-[4rem]">
 				{filteredProducts.length > 0 &&
 					filteredProducts.map((product: any, key: number) => (
 						<SearchProduct
 							key={key}
-							price={product.price}
-							img={product.images[0]}
-							userName={product.ownerId.userName}
-							name={product.name}
-                     id={product._id}
+							price={product?.price}
+							img={product?.images[0]}
+							userName={product?.ownerId?.userName}
+							name={product?.name}
+							id={product?._id}
 						/>
 					))}
 			</div>
 
 			{filteredShops.length > 0 ? (
-				<p className="text-black-40 font-[800] text-[1.6rem] md:text-[2rem] my-[2rem]">
-					Shops
+				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem] text-center">
+					Shops.
 				</p>
 			) : null}
 
 			{/* shops */}
-			<div className="flex flex-row flex-wrap items-center gap-[2rem]
-            ">
+			<div
+				className="scroller flex flex-col md:flex-row overflow-x-auto gap-x-[2rem] 
+            justify-center gap-y-[2rem] pb-[4rem]">
 				{filteredShops.length > 0 &&
 					filteredShops.map((shop: any, key: number) => (
 						<SearchShop
 							key={key}
-							img={shop.image}
-							name={shop.name}
-							userName={shop.userId.userName}
-                     id={shop._id}
+							img={shop?.image}
+							name={shop?.name}
+							userName={shop?.userId?.userName}
+							id={shop._id}
 						/>
 					))}
 			</div>

@@ -8,11 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartOpen } from "shared/store/Cart";
-import { menuOpen } from "shared/store/Menu";
-import { user } from "shared/store/store";
+import { cartOpen, cartAtom } from "shared/Store/Cart";
+import { menuOpen } from "shared/Store/Menu";
+import { User } from "shared/Store/User";
 import useSearch from "../hooks/useSearch";
-import { searchInput } from "../store/Search";
+import { searchInput } from "../Store/Search";
 
 const Topbar = () => {
 	const [searching, setSearching] = useState<boolean>(false);
@@ -20,16 +20,22 @@ const Topbar = () => {
 	const setSearch = useSetRecoilState(searchInput);
 	const setCartOpen = useSetRecoilState(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
-	let { token } = useRecoilValue<any>(user);
+	const cart = useRecoilValue<any>(cartAtom);
+	let { token } = useRecoilValue<any>(User);
 	const { handleChange, input, setInput } = useSearch();
-   
+
+	let number = cart.length;
 
 	return (
 		<div
 			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[2rem] 
          gap-x-[1rem]">
 			{/* div wrapper for input and icons */}
-			<p className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold">
+			<p
+				onClick={() => {
+					navigate("/");
+				}}
+				className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold cursor-pointer">
 				Gist-Shop
 			</p>
 			<div className="relative mr-auto">
@@ -39,7 +45,7 @@ const Topbar = () => {
 						navigate("/searching");
 					}}
 					onBlur={() => {
-						setInput("");
+						// setInput("");
 					}}
 					onChange={handleChange}
 					className={`${
@@ -91,19 +97,27 @@ const Topbar = () => {
 					Sign in
 				</button>
 			) : null}
-			<FontAwesomeIcon
+			<div
 				onClick={() => {
 					setCartOpen((prev: boolean) => !prev);
 					setMenuOpen((prev: boolean) => (prev ? !prev : prev));
 				}}
-				icon={faShoppingCart}
-				color="blue"
-				className={`${
-					searching
-						? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
-						: "self-center md:ml-[2rem]  fa-lg md:fa-3x "
-				}`}
-			/>
+				className="relative flex text-center">
+				<FontAwesomeIcon
+					icon={faShoppingCart}
+					color="blue"
+					className={`${
+						searching
+							? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
+							: "self-center md:ml-[2rem]  fa-lg md:fa-3x "
+					}`}
+				/>
+				<div
+					className="absolute bg-blue-20 text-[1rem] font-[900] right-[-58%] top-[-20%] 
+               w-[1.8rem] h-[1.8rem] rounded-full text-white text-center pt-[0.2rem]">
+					{number}
+				</div>
+			</div>
 			<FontAwesomeIcon
 				onClick={() => {
 					setMenuOpen((prev: boolean) => !prev);

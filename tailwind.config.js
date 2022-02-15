@@ -18,6 +18,10 @@ module.exports = {
 				sans: ['"Dosis"', "sans-serif"],
 			},
 			colors: {
+				gray: {
+					10: "#6B7280",
+				},
+
 				green: {
 					10: "#F4FFDC",
 					20: "#E9FF99",
@@ -33,6 +37,7 @@ module.exports = {
 					80: "#001E2B",
 				},
 				black: {
+					// 1: "#000000",
 					40: "#4B5563",
 					70: "#5d6c74",
 					80: "#001E2B",

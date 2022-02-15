@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
-import { user } from "../../../../shared/store/store";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
 import Swal from "sweetalert2";
 import useRequest from "shared/http/useRequest";
 import { getBase64 } from "shared/toBase64/encode";
+import { User } from "shared/Store/User";
 
 const useEditProfile = () => {
-	const setUser = useSetRecoilState(user);
-	const userObj = useRecoilValue<any>(user);
+	const setUser = useSetRecoilState(User);
+	const userObj = useRecoilValue<any>(User);
 
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
-import { user } from "shared/store/store";
+import { User } from "shared/Store/User";
 import Swal from "sweetalert2";
 
 const useMyOrders = () => {
 	const { Axios } = useRequest();
 	const [orders, setOrders] = useState<any>([]);
 	const [load, setLoad] = useState(false);
-	const { _id } = useRecoilValue<any>(user);
+	const { _id } = useRecoilValue<any>(User);
 	const [shops, setMyShops] = useState<any>([]);
 	const [shopId, setShopId] = useState("");
 	let actions = ["edit"];

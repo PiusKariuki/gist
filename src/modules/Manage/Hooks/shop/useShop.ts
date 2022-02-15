@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
-import { user } from "shared/store/store";
+import { User } from "shared/Store/User";
 import Swal from "sweetalert2";
 
 const useShop = () => {
-	const { _id } = useRecoilValue<any>(user);
+	const { _id } = useRecoilValue<any>(User);
 	const { Axios } = useRequest();
 	const [myShops, setMyShops] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);

@@ -1,5 +1,4 @@
 import {
-	faStore,
 	faUser,
 	faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { user } from "shared/store/store";
+import { User } from "shared/Store/User";
 
 interface Props {
 	setMenuOpen: any;
@@ -15,7 +14,7 @@ interface Props {
 
 const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 	let navigate = useNavigate();
-	const setUser = useSetRecoilState(user);
+	const setUser = useSetRecoilState(User);
 	return (
 		<div
 			className="w-[90vw] md:w-[40vw] min-h-screen flex flex-col gap-y-[2rem] 

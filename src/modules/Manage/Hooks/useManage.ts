@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { user } from "shared/store/store";
 import { emailRegex, sixChars, phoneRegex } from "shared/regEx/regEx";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
+import { User } from "shared/Store/User";
 
 const useManage = () => {
-	const { _id } = useRecoilValue<any>(user);
+	const { _id } = useRecoilValue<any>(User);
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
 	const [img, setImg] = useState<any>("");
