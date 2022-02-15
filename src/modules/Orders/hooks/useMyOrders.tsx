@@ -53,13 +53,6 @@ const useMyOrders = () => {
 					</button>
 				)
 			),
-			// status: (
-			// 	<span
-			// 		className="text-center items-center text-white w-[20rem] bg-blue-20 px-[0.3rem]
-			//        py-[0.1rem] rounded-2xl font-[700]">
-			// 		{obj.status}
-			// 	</span>
-			// ),
 			date: new Date(obj.createdAt).toLocaleDateString(),
 		})
 	);

@@ -10,6 +10,8 @@ const Shops = () => {
 		getShops();
 	}, []);
 	const scrollRef = useHorizontalScroll();
+      console.log(shops);
+      
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] bg-teal-50">
@@ -20,12 +22,12 @@ const Shops = () => {
 				ref={scrollRef}
 				className="scroller flex flex-row gap-x-8 overflow-x-auto ">
 				{shops.length > 0 &&
-					shops.map((shop: any, key: number) => (
+					shops?.map((shop: any, key: number) => (
 						<ViewShop
-							name={shop.name}
-							userName={shop.userId.userName}
-							img={shop.image}
-							id={shop._id}
+							name={shop?.name}
+							userName={shop?.userId?.userName}
+							img={shop?.image}
+							id={shop?._id}
 							key={key}
 						/>
 					))}
