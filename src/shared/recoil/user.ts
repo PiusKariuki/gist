@@ -4,7 +4,7 @@ const localStorageEffect =
 	(key: string) =>
 	({ setSelf, onSet }: { setSelf: any; onSet: any }) => {
 		const savedValue: any = localStorage.getItem(key);
-		if (savedValue.length > 0) setSelf(JSON.parse(savedValue));
+		if (savedValue?.length > 0) setSelf(JSON.parse(savedValue));
 		onSet((newValue: any, _: any, isReset: any) => {
 			isReset
 				? localStorage.removeItem(key)
