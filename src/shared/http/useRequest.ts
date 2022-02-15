@@ -1,11 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { User } from "shared/Store/User";
+import { user } from "shared/recoil/user";
 import { baseUrl } from "./Http";
 
 const useRequest = () => {
-	const userObj = useRecoilValue<any>(User);
+	const userObj = useRecoilValue<any>(user);
 	const tkn = userObj?.token;
 
 	const Axios = axios.create({

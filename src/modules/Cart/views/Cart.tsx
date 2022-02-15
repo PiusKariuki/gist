@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import useCart from "../hooks/useCart";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartAtom,cartOpen } from "shared/Store/Cart";
+import { cartAtom, cartOpen } from "shared/recoil/cart";
 
 const Cart = () => {
 	const { addToCart, removeItem, totalValue } = useCart();

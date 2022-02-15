@@ -2,11 +2,11 @@ import useProducts from "modules/Product/hooks/useProducts";
 import useShop from "modules/shop/Hooks/useShop";
 import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { searchInput } from "../../../shared/Store/Search";
 import SearchProduct from "../components/SearchProduct";
 import "../styles/shop.css";
 import SearchShop from "../components/SearchShop";
 import useSpinner from "shared/components/spinner/useSpinner";
+import { searchInput } from "shared/recoil/search";
 
 
 const Searching = () => {

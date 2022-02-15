@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { Axios } from "shared/http/Http";
+import { user } from "shared/recoil/user";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
-import { User } from "shared/Store/User";
 import { getBase64 } from "shared/toBase64/encode";
 
 const useRegister = () => {
@@ -21,7 +21,7 @@ const useRegister = () => {
 	const [img, setImg] = useState<any>("");
 	// api errors
 	const [errors, setErrors] = useState<any>({});
-	const setUser = useSetRecoilState(User);
+	const setUser = useSetRecoilState(user);
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);

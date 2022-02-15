@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { searchInput } from "../Store/Search";
 import { useNavigate } from "react-router-dom";
+import { searchInput } from "shared/recoil/search";
 
 const useSearch = () => {
 	const [input, setInput] = useState<string>("");

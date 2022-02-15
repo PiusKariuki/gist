@@ -3,10 +3,10 @@ import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
-import { User } from "shared/Store/User";
+import { user } from "shared/recoil/user";
 
 const useEdit = () => {
-	const { _id } = useRecoilValue<any>(User);
+	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<number>(0);

@@ -16,11 +16,6 @@ const useRoom = () => {
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
-			// Swal.fire({
-			// 	icon: "error",
-			// 	text: "something went wrong",
-			// 	timer: 1500,
-			// });
 		}
 	};
 

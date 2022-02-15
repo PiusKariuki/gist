@@ -4,10 +4,10 @@ import { emailRegex, sixChars, phoneRegex } from "shared/regEx/regEx";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
-import { User } from "shared/Store/User";
+import { user } from "shared/recoil/user";
 
 const useAddShop = () => {
-	const { _id } = useRecoilValue<any>(User);
+	const { _id } = useRecoilValue<any>(user);
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<number>(0);
 	const [quantity, setQuantity] = useState<any>("");

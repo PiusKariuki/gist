@@ -8,11 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartOpen, cartAtom } from "shared/Store/Cart";
-import { menuOpen } from "shared/Store/Menu";
-import { User } from "shared/Store/User";
+import { cartAtom, cartOpen } from "shared/recoil/cart";
+import { menuOpen } from "shared/recoil/menu";
+import { searchInput } from "shared/recoil/search";
+import { user } from "shared/recoil/user";
 import useSearch from "../hooks/useSearch";
-import { searchInput } from "../Store/Search";
+
 
 const Topbar = () => {
 	const [searching, setSearching] = useState<boolean>(false);
@@ -21,7 +22,7 @@ const Topbar = () => {
 	const setCartOpen = useSetRecoilState(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
 	const cart = useRecoilValue<any>(cartAtom);
-	let { token } = useRecoilValue<any>(User);
+	let { token } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
 
 	let number = cart.length;

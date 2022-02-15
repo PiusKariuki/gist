@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartAtom, cartSelector, cartOpen } from "shared/Store/Cart";
+import { cartAtom, cartOpen, cartSelector } from "shared/recoil/cart";
 import Swal from "sweetalert2";
 
 interface Cart {
@@ -33,7 +33,7 @@ const useCart = () => {
 				price: price,
 				image: image,
 				shopId: shopId,
-            productId: productId,
+				productId: productId,
 				id: id,
 			},
 			...prev,

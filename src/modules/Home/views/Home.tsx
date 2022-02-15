@@ -2,10 +2,10 @@ import Topbar from "../../../shared/components/Topbar";
 import { Outlet } from "react-router-dom";
 import Cart from "modules/Cart/views/Cart";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { cartOpen } from "shared/Store/Cart";
 import { useRef, useEffect } from "react";
-import { menuOpen } from "shared/Store/Menu";
 import Menu from "shared/components/Menu";
+import { cartOpen } from "shared/recoil/cart";
+import { menuOpen } from "shared/recoil/menu";
 
 const Home = () => {
 	const cartState = useRecoilValue(cartOpen);

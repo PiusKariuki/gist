@@ -31,7 +31,8 @@ export const cartSelector = selector({
 	get: ({ get }) => {
 		const arr = get(cartAtom);
 		let total = 0;
-		arr.length>0 && arr.forEach((item: any) => (total += item.price*item.quantity));
+		arr.length > 0 &&
+			arr.forEach((item: any) => (total += item.price * item.quantity));
 		return total;
 	},
 });

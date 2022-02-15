@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import useRequest from "shared/http/useRequest";
-import { cartAtom, cartSelector } from "shared/Store/Cart";
-import { User } from "shared/Store/User";
+import { cartAtom, cartSelector } from "shared/recoil/cart";
+import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
 const useOrders = () => {
@@ -17,7 +17,7 @@ const useOrders = () => {
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const cartItems = useRecoilValue<any>(cartAtom);
 	const subTotal = useRecoilValue<any>(cartSelector);
-	const { _id } = useRecoilValue<any>(User);
+	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
 
