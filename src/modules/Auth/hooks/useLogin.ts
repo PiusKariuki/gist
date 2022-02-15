@@ -3,7 +3,7 @@ import { useSetRecoilState } from "recoil";
 import { Axios } from "shared/http/Http";
 import { emailRegex} from "shared/regEx/regEx";
 import { useNavigate } from "react-router-dom";
-import { User } from "shared/Store/User";
+import { User } from "../../../shared/Store/User";
 
 
 const useLogin = () => {
