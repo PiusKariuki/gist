@@ -14,33 +14,28 @@ interface Props {
 const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 	const { removeItem } = useCart();
 	return (
-		<div className="w-full bg-white flex flex-col px-[1rem] py-[0.6rem] gap-y-[1rem]">
-			<div
-				className="flex flex-row flex-nowrap text-[0.9rem] text-black-40 font-[600]
-          justify-between">
-				<div
-					style={{ backgroundImage: `url(/img/${image})` }}
-					className="h-[3rem] w-[3rem] bg-cover bg-center bg-no-repeat "
-				/>
-				<p className="text-blue-20 text-left w-[6rem]">{name}</p>
-
-				<p className="text-[#00000080]">$ {isNaN(price*amount)? 0: price*amount}</p>
-			</div>
-			<div
-				className="flex flex-row flex-nowrap justify-between text-[1rem] text-black-40 
-            font-[600]">
-				<p className="">
-					#<span className="text-blue-20 text-[1.3rem]">{amount}</span>
+		<div className="flex flex-row flex-nowrap rounded-3xl  justify-around py-[2rem] items-center">
+			<img src="/img/lebron2.png" alt="" className="w-[30%] " />
+			{/*......................................
+            *
+            ......................................*/}
+			<div className="flex flex-col">
+				<p className="text-blue-20 md:text-[1.3rem] font-[800] capitalize">
+					{name}
+				</p>
+				<p className="text-black-80 md:text-[1.4rem] font-[600] tracking-wider">
+					{amount} x $ {price}
 				</p>
 			</div>
-			<div className="flex flex-row justify-end">
-				<FontAwesomeIcon
-					onClick={() => removeItem(id)}
-					icon={faTrash}
-					size="1x"
-					color="red"
-				/>
-			</div>
+			{/*......................................
+               *
+               ......................................*/}
+			<FontAwesomeIcon
+				onClick={() => removeItem(id)}
+				icon={faTrash}
+				color="red"
+				className="md:text-[1.5rem] font-bold"
+			/>
 		</div>
 	);
 };

@@ -5,7 +5,7 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useShop from "../../Hooks/shop/useShop";
 import CreateShop from "./CreateShop";
 import EditShopModal from "./EditShopModal";
-import ViewMyShops from "../../../shop/components/ViewMyShops";
+import ViewMyShops from "./ViewMyShops";
 import DeleteShop from "./DeleteShop";
 import useDeleteShop from "../../Hooks/shop/useDeleteShop";
 
@@ -23,7 +23,7 @@ const MyShops = () => {
 	}, [openCreate, openDelete]);
 	return (
 		<div
-			className="flex flex-col  flex-nowrap items-center gap-[2rem] 
+			className="flex flex-col  flex-nowrap  gap-[2rem] 
          px-[2rem] py-[4rem] relative bg-gray-50">
 			<div
 				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
@@ -58,9 +58,12 @@ const MyShops = () => {
 			<div
 				className={`${
 					!openCreate
-						? "flex flex-col md:flex-row justify-around gap-[2rem] md:gap-[2rem] md:px-[2rem] md:flex-wrap "
+						? "flex flex-col md:flex-row justify-between gap-[2rem] md:gap-[2rem] md:px-[2rem] md:flex-wrap "
 						: "hidden"
 				}`}>
+
+            {myShops?.length>0 }
+
 				{myShops.map((shop: any, key: number) => (
 					<div className="relative" key={key}>
 						<ViewMyShops

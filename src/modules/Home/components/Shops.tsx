@@ -11,6 +11,7 @@ const Shops = () => {
 	}, []);
 	const scrollRef = useHorizontalScroll();
 
+   
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] bg-teal-50">
 			<p className="text-black-40 text-[2.2rem] font-[600] mb-[2rem]">

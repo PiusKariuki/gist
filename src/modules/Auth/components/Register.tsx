@@ -35,32 +35,35 @@ const Register: React.FC = (): JSX.Element => {
 	};
 
 	return (
-		<div className="flex flex-col md:flex-row gap-x-[2.5rem] relative">
+		<div className="flex flex-col lg:flex-row gap-x-[2.5rem] relative">
 			<div
 				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
-            bg-gray-50 -z-10 rounded-br-full"
+            bg-gray-200 -z-10 rounded-br-full"
+			/>
+			<div
+				className="invisible md:visible absolute w-[40rem] h-[60rem] bottom-0 right-0 
+            bg-gray-200 -z-10 rounded-tl-full"
 			/>
 			<form
 				autoComplete="off"
-				className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]
+				className="flex flex-col w-full py-[2rem] px-[2rem] lg:px-[4rem]
             justify-around"
 				onSubmit={register}>
-				<p className="text-[2.2rem] text-blue-20 font-semibold mb-[1.5rem] justify-center">
-					GIST SHOP
+				<p className="text-[2.2rem] text-blue-20 font-[900] mb-[1rem] justify-center">
+					SIGN UP TO GIST SHOP
 				</p>
-				<p className="text-[1rem] font-medium">Create your account</p>
 				<div className="flex flex-col w-screen ">
 					{/*......................................
                *
                *names div
                *
                ......................................*/}
-					<div className="flex flex-col md:flex-row  gap-[0rem] md:gap-[2rem] items-start">
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col lg:flex-row  gap-[0rem] md:gap-[2rem] items-start">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							{/* fname */}
 							<label
 								htmlFor="fname"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mt-[3rem]  mb-[0.5rem]">
 								First Name
 							</label>
@@ -76,11 +79,11 @@ const Register: React.FC = (): JSX.Element => {
 							/>
 						</div>
 
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							{/* lname */}
 							<label
 								htmlFor="lname"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mt-[3rem] mb-[0.5rem]">
 								Last Name
 							</label>
@@ -102,12 +105,12 @@ const Register: React.FC = (): JSX.Element => {
             *USERNAME
             *
              ......................................*/}
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 						<label
 							htmlFor="userName"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-                  mb-[0.5rem]">
-							userName
+							className="font-bold leading-[1.2rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
+                      mb-[0.5rem]">
+							Username
 						</label>
 						<input
 							onChange={handleChange}
@@ -125,11 +128,11 @@ const Register: React.FC = (): JSX.Element => {
                *BIO and profile picture
                *
                ......................................*/}
-					<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem] items-start">
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							<label
 								htmlFor="bio"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                         mt-[3rem] mb-[0.5rem]">
 								Bio
 							</label>
@@ -145,7 +148,7 @@ const Register: React.FC = (): JSX.Element => {
 							/>
 						</div>
 
-						<div className="flex row w-[80vw] md:w-[40%] items-start md:mt-auto relative">
+						<div className="flex row w-[80vw] md:w-[60%] lg:w-[40%] items-start md:mt-auto relative">
 							{/* img */}
 							<button
 								type="button"
@@ -191,12 +194,12 @@ const Register: React.FC = (): JSX.Element => {
             *EMAIL AND PHONE NUMBER
             *
             ......................................*/}
-					<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem] items-start">
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							{/* email */}
 							<label
 								htmlFor="email"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mt-[3rem]   mb-[0.5rem]">
 								Email Address
 							</label>
@@ -217,11 +220,11 @@ const Register: React.FC = (): JSX.Element => {
 							</p>
 						</div>
 
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							{/* Phone */}
 							<label
 								htmlFor="phone"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mt-[3rem]  mb-[0.5rem]">
 								Phone Number
 							</label>
@@ -248,11 +251,11 @@ const Register: React.FC = (): JSX.Element => {
                   *PASSWORD and confirm password
                   *
                   ......................................*/}
-					<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem]">
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem]">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							<label
 								htmlFor="pass"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
                      mb-[0.5rem]">
 								Password
 							</label>
@@ -270,10 +273,10 @@ const Register: React.FC = (): JSX.Element => {
 							</p>
 						</div>
 
-						<div className="flex flex-col w-[80vw] md:w-[40%]">
+						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							<label
 								htmlFor="pass"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
                      mb-[0.5rem]">
 								Confirm Password
 							</label>
@@ -313,7 +316,7 @@ const Register: React.FC = (): JSX.Element => {
                tracking-[0.02rem]">
 					Already have an account?
 					<span className="text-blue-600 px-[1rem]">
-						<Link to="/">Login</Link>
+						<Link to="/login">Login</Link>
 					</span>
 				</p>
 			</form>

@@ -101,7 +101,7 @@ const Login: React.FC = (): JSX.Element => {
 							disabled={passErrors.length > 1 || mailErrors.length > 1}
 							type="submit"
 							className="btn bg-blue-20  hover:bg-blue-500 text-[1.2rem]
-                     text-white ">
+                     text-white py-[0.3rem]">
 							Sign in
 						</button>
 						<p

@@ -14,12 +14,12 @@ const useEdit = () => {
 	const [images, setImages] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 
-	const getProductById = async (productId: number) => {
+	const getProductById = async (productId: string) => {
 		setLoad(true);
 		try {
 			let {
 				data: { images, name, price, quantity },
-			} = await Axios.get(`/products/product/${productId}`);
+			} = await Axios.get(`/products/products/${productId}`);
 			setImages(images);
 			setPrice(price);
 			setName(name);
@@ -79,7 +79,6 @@ const useEdit = () => {
 				text: "Your product has been updated",
 				timer: 1000,
 			});
-			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
 			let errmsg = error.response.data.split(":");

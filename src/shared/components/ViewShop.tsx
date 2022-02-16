@@ -15,8 +15,15 @@ const ViewShop: React.FC<Props> = ({ name, userName, img, id }) => {
 		<div
 			className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-contain flex-shrink-0
          border-2 rounded-2xl hover:shadow-2xl"
-			style={{ backgroundImage: `url(${imgUrl}/${id}.png)` }}
+			style={{
+				backgroundImage: `url(http://52.43.151.113/public/img/6209661b66d82e5452cff1d1.png)`,
+			}}
 			onClick={() => navigate(`/shop/${id}`)}>
+			<img
+				src="http://52.43.151.113/public/img/6209661b66d82e5452cff1d1.png"
+				alt=""
+				className="w-10 h-10"
+			/>
 			<p className="absolute top-[4%] left-[10%] text-black-20 font-[600] text-[1.2rem]">
 				<span className="text-black-40">by</span>&nbsp;&nbsp;
 				{userName}

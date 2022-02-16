@@ -34,13 +34,9 @@ const Home = () => {
 	clickAwayListener(box);
 
 	return (
-		// flex flex-col flex-nowrap overflow-x-clip
+
 		<div
-			className={`${
-				cartState || menuState
-					? "flex flex-col flex-nowrap overflow-x-clip  max-h-screen"
-					: "flex flex-col flex-nowrap overflow-x-clip"
-			}`}>
+			className="flex flex-col flex-nowrap overflow-x-clip ">
 			<div className="fixed top-0 inset-x-1 z-50 bg-white">
 				<Topbar />
 			</div>
@@ -49,7 +45,7 @@ const Home = () => {
 				<div
 					className={`${
 						cartState
-							? "fixed right-0 top-16 bg-brown-20 min-h-screen z-[44]"
+							? "fixed right-0 top-16 bg-white min-h-max  z-[44] shadow-2xl rounded-xl"
 							: "hidden"
 					}`}>
 					<Cart />
@@ -57,7 +53,7 @@ const Home = () => {
 				<div
 					onBlur={() => setMenuOpen((prev: boolean) => !prev)}
 					className={`${
-						menuState ? "fixed right-0 top-16 bg-brown-20 z-[44]" : "hidden"
+						menuState ? "fixed right-0 top-16 bg-white z-[44] shadow-2xl" : "hidden"
 					}`}>
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>

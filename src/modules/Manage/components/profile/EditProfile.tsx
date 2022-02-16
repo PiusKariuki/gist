@@ -40,7 +40,7 @@ const EditProfile = () => {
           autoComplete="off"
 			onSubmit={handleSubmit}>
             <div className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
-            bg-gray-50 -z-10 rounded-br-full"/>
+            bg-gray-100 -z-10 rounded-br-full"/>
 			<p className="text-black-40 text-[1.4rem] md:text-[2rem] font-[700]">
 				Edit your profile
 			</p>
@@ -50,8 +50,8 @@ const EditProfile = () => {
                *names div
                *
                ......................................*/}
-				<div className="flex flex-col md:flex-row  gap-[0rem] md:gap-[2rem] items-start">
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+				<div className="flex flex-col lg:flex-row  gap-[0rem] md:gap-[2rem] items-start">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* fname */}
 						<label
 							htmlFor="fname"
@@ -72,7 +72,7 @@ const EditProfile = () => {
 						/>
 					</div>
 
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* lname */}
 						<label
 							htmlFor="lname"
@@ -99,7 +99,7 @@ const EditProfile = () => {
             *USERNAME
             *
              ......................................*/}
-				<div className="flex flex-col w-[80vw] md:w-[40%]">
+				<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 					<label
 						htmlFor="userName"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
@@ -122,8 +122,8 @@ const EditProfile = () => {
                *BIO and profile picture
                *
                ......................................*/}
-				<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem] items-start">
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="bio"
 							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
@@ -142,7 +142,7 @@ const EditProfile = () => {
 						/>
 					</div>
 
-					<div className="flex flex-row  md:w-[40%] md:mt-auto items-center relative">
+					<div className="flex flex-row  md:w-[80%] lg:w-[40%] md:mt-auto items-center relative">
 						{/* img */}
 						<button
 							type="button"
@@ -188,8 +188,8 @@ const EditProfile = () => {
             *EMAIL AND PHONE NUMBER
             *
             ......................................*/}
-				<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem] items-start">
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* email */}
 						<label
 							htmlFor="email"
@@ -210,7 +210,7 @@ const EditProfile = () => {
 						/>
 					</div>
 
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* Phone */}
 						<label
 							htmlFor="phone"
@@ -241,8 +241,8 @@ const EditProfile = () => {
                   *PASSWORD and confirm password
                   *
                   ......................................*/}
-				<div className="flex flex-col md:flex-row gap-[0rem] md:gap-[2rem]">
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem]">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="pass"
 							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
@@ -264,7 +264,7 @@ const EditProfile = () => {
 						</p>
 					</div>
 
-					<div className="flex flex-col w-[80vw] md:w-[40%]">
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="pass"
 							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
@@ -299,8 +299,8 @@ const EditProfile = () => {
 					confirmPassword !== password
 				}
 				type="submit"
-				className="bg-red-20 py-[0.5rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
-               font-bold w-[12rem] hover:bg-red-600 self-start disabled:bg-gray-400">
+				className="bg-blue-20 py-[0.5rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
+               font-bold w-[12rem] hover:bg-blue-600 self-start disabled:bg-gray-400">
 				Submit
 			</button>
 		</form>

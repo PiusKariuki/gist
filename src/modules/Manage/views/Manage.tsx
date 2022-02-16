@@ -29,7 +29,7 @@ const CreateShop: React.FC = (): JSX.Element => {
 		<div className="flex flex-col overflow-x-clip relative">
 			<>
 				{open ? (
-					<div className="fixed right-0 bg-brown-20 min-h-screen z-50">
+					<div className="fixed right-0  min-h-screen z-50 bg-white">
 						<Navbar open={open} setOpen={setOpen} />
 					</div>
 				) : (
@@ -37,7 +37,7 @@ const CreateShop: React.FC = (): JSX.Element => {
 						icon={faBars}
 						size="2x"
 						color="blue"
-						className="fixed right-8 top-6 z-50"
+						className="fixed right-8 top-6 z-50 bg-white"
 						onClick={() => setOpen(true)}
 					/>
 				)}

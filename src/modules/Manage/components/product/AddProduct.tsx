@@ -102,6 +102,7 @@ const AddProduct: React.FC<Props> = ({
 						onChange={handleChange}
 						// required
 						type="file"
+                  accept="image/png"
 						id="images"
 						className="hidden"
 						ref={hiddenInput}

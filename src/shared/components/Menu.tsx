@@ -1,4 +1,5 @@
 import {
+   faRightFromBracket,
 	faUser,
 	faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +21,7 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 			className="w-[90vw] md:w-[40vw] min-h-screen flex flex-col gap-y-[2rem] 
          px-[2rem] py-[3rem]">
 			<div
-				className="flex flex-row cursor-pointer items-center gap-x-[1rem]"
+				className="flex flex-row cursor-pointer items-start gap-x-[1rem]"
 				onClick={() => {
 					navigate(`/myAccount/profile`);
 					setMenuOpen(false);
@@ -34,7 +35,7 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 					setUser({});
 					navigate("/");
 				}}
-				className="flex flex-row cursor-pointer items-center gap-x-[1rem] pl-[0.5rem]">
+				className="flex flex-row cursor-pointer items-start gap-x-[1rem] pl-[0.5rem]">
 				<FontAwesomeIcon
 					icon={faArrowRightFromBracket}
 					size="2x"

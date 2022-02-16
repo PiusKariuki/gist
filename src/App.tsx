@@ -10,7 +10,7 @@ import Orders from "modules/Orders/views/Orders";
 import Product from "modules/Product/views/Product";
 import Rooms from "modules/Rooms/views/Rooms";
 import Searching from "modules/Search/views/Searching";
-import MyShop from "modules/shop/Views/MyShop";
+import MyShop from "modules/Manage/components/product/MyProducts";
 import Shop from "modules/shop/Views/shop";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
