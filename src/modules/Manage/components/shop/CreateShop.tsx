@@ -33,7 +33,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 	};
 
 	return (
-		<div className={`${openCreate ? "flex flex-col w-[95vw]" : "hidden"}`}>
+		<div className={`${openCreate ? "flex flex-col bg-white" : "hidden"}`}>
 			{renderSpinner(load)}
 			<p className="text-[1.6rem] text-black-80 text-center">
 				Create Your Shop
@@ -44,9 +44,9 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					createShop(e);
 					clearAttributes();
 				}}
-				className="py-[2rem] flex flex-col lg:flex-row px-[2rem] gap-y-[2rem]
-             items-center md:px-[12rem] md:justify-around lg:px-0">
-				<div className=" flex flex-col w-full lg:max-w-[30%] ">
+				className="py-[2rem] flex flex-col lg:flex-row  gap-y-[2rem] 
+              md:px-[12rem] md:justify-around lg:px-0 lg:space-x-20">
+				<div className=" flex flex-col w-full">
 					{/* shop Name */}
 					<label
 						htmlFor="shopName"
@@ -60,9 +60,9 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						required
 						type="text"
 						id="shopName"
-						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
+						className="h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+                  ring-2 ring-blue-500"
 					/>
 					{/* location */}
 					<label
@@ -77,9 +77,9 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						value={location}
 						type="text"
 						id="location"
-						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
+						className="h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+                  ring-2 ring-blue-500"
 					/>
 					{/* shop email */}
 					<label
@@ -94,9 +94,9 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						required
 						type="text"
 						id="email"
-						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
+						className="h-[2.25rem] outline-none
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+                  ring-2 ring-blue-500"
 					/>
 					<p className="text-red-20">{mailError}</p>
 					{/* Phone Number */}
@@ -113,10 +113,11 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						inputProps={{
 							required: true,
 						}}
-						// inputStyle={{
-						// 	width: "18rem",
-						// }}
-                  inputClass="w-24 border-2"
+						inputStyle={{
+							width: "100%",
+							border: "2px solid rgb(59 130 246)",
+						}}
+						inputClass="w-24 border-2"
 					/>
 					<p className="text-red-20">{phoneErr}</p>
 					{/* text area */}
@@ -133,20 +134,20 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						rows={3}
 						cols={50}
 						id="desc"
-						className="border-[0.0625rem] border-black-70 outline-none text-blue-20
+						className="outline-none text-blue-20
                   rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500 "
+                  ring-2 ring-blue-500 "
 					/>
 				</div>
 
 				{/* second col */}
-				<div className="flex flex-col">
+				<div className="flex flex-col lg:w-full lg:py-[3rem] lg:space-y-[2rem]">
 					{/* display div */}
-					<img src={img} alt="" className="hidden md:flex w-[16rem]" />
+					<img src={img} alt="" className="hidden lg:flex w-full max-h-[40vh] object-contain" />
 					{/* img */}
 					<button
 						type="button"
-						className="blue-btn px-[1rem] py-[0.3rem]"
+						className="blue-btn px-[1rem] py-[0.3rem] lg:w-[40%] lg:self-center"
 						onClick={handleClick}>
 						Upload Image
 					</button>
@@ -172,7 +173,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 								img.length < 1
 							}
 							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
-                     text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+                     text-[1rem] font-[700] disabled:bg-gray-400">
 							Submit
 						</button>
 						<button
@@ -182,7 +183,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 							}}
 							type="button"
 							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg
-                     self-center text-white text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+                     self-center text-white text-[1rem] font-[700]  disabled:bg-gray-400">
 							Close
 						</button>
 					</div>

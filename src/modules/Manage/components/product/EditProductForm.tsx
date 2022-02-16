@@ -2,7 +2,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef } from "react";
 import useEdit from "../../Hooks/product/useEdit";
-import { productOpen } from "../../../Product/store/store";
+import { productOpen } from "../../store/store";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import useSpinner from "shared/components/spinner/useSpinner";
 
@@ -108,6 +108,28 @@ const EditProductForm: React.FC<Props> = ({ productId }) => {
 					/>
 				</div>
 				{/*......................................
+               *PRODUCT DESCRIPTION
+            ......................................*/}
+
+				<div className="flex flex-col w-full md:w-1/2 md:pr-[1.5rem]">
+					<label
+						htmlFor="desc"
+						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
+                  pt-[2rem] ">
+						Description
+					</label>
+					<textarea
+						onChange={handleChange}
+						// required
+						// value={quantity}
+						id="quantity"
+                  rows={3}
+						className=" outline-none 
+                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                  ring-2 ring-blue-500"
+					/>
+				</div>
+				{/*......................................
                *PRODUCT IMAGES AND  INPUT BTN
             ......................................*/}
 				<div
@@ -134,23 +156,12 @@ const EditProductForm: React.FC<Props> = ({ productId }) => {
 
 					<div className="flex flex-row flex-nowrap w-full">
 						{images?.map((img: any, key: number) => (
-							<div className="relative" key={key}>
 								<img
 									src={img}
 									alt=""
 									key={key}
 									className="w-[5rem] rounded-md"
 								/>
-								<FontAwesomeIcon
-									icon={faTrash}
-									size="2x"
-									color="black"
-									onClick={() => {
-										removeImg(key);
-									}}
-									className="absolute bottom-0 right-0"
-								/>
-							</div>
 						))}
 					</div>
 				</div>

@@ -5,7 +5,8 @@ import useShopDetails from "../../../shop/Hooks/useShopDetails";
 import EditMyProduct from "modules/Manage/components/product/EditMyProduct";
 import EditProductForm from "./EditProductForm";
 import { useRecoilValue } from "recoil";
-import { productOpen } from "../../../Product/store/store";
+import { productOpen, deleteOpen } from "../../store/store";
+import DeleteProduct from "./DeleteProduct";
 
 const MyShop: React.FC = (): JSX.Element => {
 	const { shopDetails, getShopDetails, load, errors } = useShopDetails();
@@ -13,15 +14,17 @@ const MyShop: React.FC = (): JSX.Element => {
 	const { renderSpinner } = useSpinner();
 
 	const open = useRecoilValue(productOpen);
+	const openDelete = useRecoilValue(deleteOpen);
 	const [productId, setProductId] = useState("");
+	const [productName, setProductName] = useState("");
 	useEffect(() => {
 		getShopDetails(shopId);
-	}, [open]);
-
+	}, [open, openDelete]);
 
 	return (
 		<>
-			<div className="w-full py-[1rem] bg-white sticky top-0 z-20 border-b-4">
+			<div
+				className="w-full py-[1rem] bg-white sticky top-0 z-20 border-b-4">
 				<p
 					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                         text-center ">
@@ -31,7 +34,7 @@ const MyShop: React.FC = (): JSX.Element => {
 			{load || shopDetails.length > 0 ? (
 				<div
 					className={`${
-						open
+						open || openDelete
 							? "flex flex-col px-[2rem] pb-[2rem] md:px-[3rem] lg:px-[4.5rem] opacity-50"
 							: " flex flex-col px-[2rem] pb-[2rem] md:px-[3rem] lg:px-[4.5rem]"
 					}`}>
@@ -44,7 +47,11 @@ const MyShop: React.FC = (): JSX.Element => {
 						</p>
 						<div className="flex flex-row flex-wrap gap-[2rem] justify-start">
 							{shopDetails?.map((product: any, key: number) => (
-								<div onClick={() => setProductId(product?._id)}>
+								<div
+									onClick={() => {
+										setProductId(product?._id);
+										setProductName(product?.name);
+									}}>
 									<EditMyProduct
 										name={product?.name}
 										price={product?.price}
@@ -71,8 +78,14 @@ const MyShop: React.FC = (): JSX.Element => {
 			)}
 			{/*edit modal */}
 			{open ? (
-				<div className="fixed top-[0%] md:top-[30%] md:right-[10%] z-50 bg-gray-200">
+				<div className="fixed top-[0%] md:top-[10%] md:right-[10%] z-50 bg-white shadow-xl">
 					<EditProductForm productId={productId} />
+				</div>
+			) : null}
+			{/*delete modal */}
+			{openDelete ? (
+				<div className="fixed top-[0%] md:top-[20%] md:right-[33%] z-50 bg-white shadow-xl">
+					<DeleteProduct name={productName} productId={productId} />
 				</div>
 			) : null}
 		</>

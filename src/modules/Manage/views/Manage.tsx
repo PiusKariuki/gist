@@ -42,7 +42,7 @@ const CreateShop: React.FC = (): JSX.Element => {
 					/>
 				)}
 			</>
-			<div className="" ref={box}>
+			<div className="bg-white" ref={box}>
 				<Outlet />
 			</div>
 		</div>

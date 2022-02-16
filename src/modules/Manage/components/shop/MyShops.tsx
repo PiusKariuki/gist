@@ -24,7 +24,7 @@ const MyShops = () => {
 	return (
 		<div
 			className="flex flex-col  flex-nowrap  gap-[2rem] 
-         px-[2rem] py-[4rem] relative bg-gray-50">
+         px-[2rem] py-[4rem] relative bg-white">
 			<div
 				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
             bg-gray-50 -z-10 rounded-br-full"
