@@ -40,14 +40,14 @@ const Searching = () => {
 		<div className="flex flex-col px-[2rem] md:px-[3rem]">
 			{renderSpinner(load)}
 			{filteredProducts.length > 0 ? (
-				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem] text-center">
+				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem]">
 					Products.
 				</p>
 			) : null}
 
 			<div
 				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] 
-            justify-center gap-y-[2rem] pb-[4rem]">
+            justify-start gap-y-[2rem] pb-[4rem]">
 				{filteredProducts.length > 0 &&
 					filteredProducts.map((product: any, key: number) => (
 						<SearchProduct
@@ -62,7 +62,7 @@ const Searching = () => {
 			</div>
 
 			{filteredShops.length > 0 ? (
-				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem] text-center">
+				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem]">
 					Shops.
 				</p>
 			) : null}
@@ -70,7 +70,7 @@ const Searching = () => {
 			{/* shops */}
 			<div
 				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] 
-            justify-center gap-y-[2rem] pb-[4rem]">
+            justify-start gap-y-[2rem] pb-[4rem]">
 				{filteredShops.length > 0 &&
 					filteredShops.map((shop: any, key: number) => (
 						<SearchShop
