@@ -28,7 +28,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 		updateShop,
 		getShopById,
 	} = useEditShop();
-
+   
 	const { openProduct, setOpenProduct } = useAddProduct();
 
 	const { renderSpinner } = useSpinner();
@@ -52,7 +52,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 			<button
 				onClick={() => setOpenProduct((prev: boolean) => !prev)}
 				className="bg-blue-20 text-white px-[1rem] py-[0.5rem] w-[10rem] self-center rounded-md
-            my-[4rem] absolute top-0 right-6 ">
+            absolute top-10 right-6 ">
 				{openProduct ? "Edit shop" : "Add Product"}
 			</button>
 			{!openProduct ? (
@@ -61,14 +61,14 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 						updateShop(e, shopId);
 						// setOpen(false);
 					}}
-					className="flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  items-center
-               md:px-[12rem] md:justify-around lg:px-[4rem]">
-					<div className=" flex flex-col w-full lg:max-w-[25%]">
+					className="flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  
+               md:px-[12rem] lg:px-[4rem] lg:gap-x-[4rem] lg:mt-[6rem]">
+					<div className=" flex flex-col w-full ">
 						{/* shop Name */}
 						<label
 							htmlFor="shopName"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                mt-[2rem] ">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem]
+                     mb-[0.5rem] mt-[2rem] lg:mt-0 ">
 							Shop Name
 						</label>
 						<input
@@ -77,9 +77,9 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							required
 							type="text"
 							id="shopName"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+							className=" h-[2.25rem] outline-none 
+                     text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                     ring-2 ring-blue-500"
 						/>
 						{/* location */}
 						<label
@@ -94,9 +94,9 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							value={location}
 							type="text"
 							id="location"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
+							className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+                 ring-2 ring-blue-500"
 						/>
 						{/* shop email */}
 						<label
@@ -111,16 +111,16 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							required
 							type="text"
 							id="email"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+							className=" h-[2.25rem] outline-none
+                     text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                     ring-2 ring-blue-500"
 						/>
 						<p className="text-red-20">{mailError}</p>
 						{/* Phone Number */}
 						<label
 							htmlFor="phone"
 							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                  pt-[2rem] ">
+                     pt-[2rem] ">
 							Shop Telephone
 						</label>
 						<PhoneInput
@@ -130,7 +130,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							inputProps={{
 								required: true,
 							}}
-							inputStyle={{ width: "100%", border: "1px solid black"}}
+							inputStyle={{ width: "100%", border: "3px solid rgb(59 130 246)" }}
 						/>
 						<p className="text-red-20">{phoneErr}</p>
 						{/* text area */}
@@ -147,18 +147,15 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							rows={5}
 							cols={50}
 							id="desc"
-							className="border-[0.0625rem] border-black-70 outline-none text-blue-20
-                  rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+							className=" outline-none text-blue-20
+                     rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                     ring-2 ring-blue-500"
 						/>
-
-
-                  
 					</div>
 
 					{/* second col */}
-					<div className="flex flex-col">
-						<img src={img} alt="" className="hidden md:flex w-[16rem]" />
+					<div className="flex flex-col w-full max-h-screen">
+						<img src={img} alt="" className="hidden md:flex w-full h-[40vh] object-contain" />
 						{/* img */}
 
 						<input
@@ -173,7 +170,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 						/>
 						<button
 							type="button"
-							className="blue-btn px-[1rem] py-[0.4rem] my-[3rem]"
+							className="blue-btn px-[1rem] py-[0.4rem] my-[3rem] lg:w-[40%]"
 							onClick={handleClick}>
 							Upload Image
 						</button>

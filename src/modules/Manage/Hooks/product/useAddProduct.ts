@@ -15,13 +15,13 @@ const useAddShop = () => {
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
    const [openProduct,setOpenProduct] = useState<boolean>(false);
-
+   
    
 	const clearAttributes = () => {
 		setName("");
 		setPrice(0);
 		setQuantity("");
-		setImages([""]);
+		setImages([]);
 	};
 
 
