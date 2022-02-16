@@ -11,19 +11,19 @@ const useAddShop = () => {
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<number>(0);
 	const [quantity, setQuantity] = useState<any>("");
+	const [desc, setDesc] = useState<any>("");
 	const [images, setImages] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
-   const [openProduct,setOpenProduct] = useState<boolean>(false);
-   
-   
+	const [openProduct, setOpenProduct] = useState<boolean>(false);
+
 	const clearAttributes = () => {
 		setName("");
 		setPrice(0);
 		setQuantity("");
 		setImages([]);
+		setDesc("");
 	};
-
 
 	const handleChange = (e: any) => {
 		switch (e.target.id) {
@@ -35,6 +35,9 @@ const useAddShop = () => {
 				break;
 			case "quantity":
 				setQuantity(e.target.value);
+				break;
+			case "desc":
+				setDesc(e.target.value);
 				break;
 			case "images":
 				getBase64(e.target.files[0])
@@ -61,13 +64,14 @@ const useAddShop = () => {
 				quantity,
 				images,
 				ownerId: _id,
+				description: desc,
 			});
 			Swal.fire({
 				icon: "success",
 				text: "A product has been added to your shop",
 				timer: 1000,
 			});
-         clearAttributes();
+			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
 			let errmsg = error.response.data.split(":");
@@ -104,6 +108,7 @@ const useAddShop = () => {
 		removeImg,
 		openProduct,
 		setOpenProduct,
+      desc
 	};
 };
 

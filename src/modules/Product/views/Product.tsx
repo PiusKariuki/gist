@@ -27,8 +27,8 @@ const Product: React.FC = (): JSX.Element => {
 
 	return (
 		<div
-			className="flex flex-col items-start px-[1rem] md:px-[5rem] lg:px-[10rem] py-[4rem]  gap-[5rem] 
-         bg-gray-100 min-h-screen">
+			className="flex flex-col items-start px-[1rem] md:px-[5rem] lg:px-[10rem] py-[4rem] 
+          gap-[5rem]  bg-gray-100 min-h-screen">
 			<div
 				className="flex flex-col  flex-wrap items-start
              md:justify-center  md:gap-[2rem]">
@@ -63,7 +63,7 @@ const Product: React.FC = (): JSX.Element => {
 						) : null}
 					</div>
 
-					<div className="flex flex-col lg:pt-[15rem] lg:ml-[8rem] lg:gap-y-[0.5rem]">
+					<div className="flex flex-col  lg:ml-[8rem] lg:gap-y-[0.5rem]">
 						<p className="text-left text-gray-10 font-[600] text-[1.25rem] lg:text-[1.6rem]">
 							{product?.name}
 						</p>
@@ -80,10 +80,17 @@ const Product: React.FC = (): JSX.Element => {
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}
 						</p>
+						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
+							{product?.description}
+						</p>
 
 						{/* btns */}
-						<div className="flex flex-col gap-x-[1rem] my-[2rem] gap-[1.5rem] items-center self-start">
-							<div className="inline-flex rounded-md shadow-sm border-[0.2rem] border-blue-20">
+						<div
+							className="flex flex-col gap-x-[1rem] my-[2rem] gap-[1.5rem] mt-auto
+                      items-center self-start">
+							<div
+								className="inline-flex rounded-md shadow-sm border-[0.2rem]
+                      border-blue-20">
 								<button
 									onClick={() =>
 										setOrders((prev) => (prev === 0 ? 0 : prev - 1))

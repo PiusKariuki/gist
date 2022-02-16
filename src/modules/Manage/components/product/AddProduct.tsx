@@ -25,6 +25,7 @@ const AddProduct: React.FC<Props> = ({
 		images,
 		setImages,
 		removeImg,
+      desc
 	} = useAddShop();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -35,11 +36,11 @@ const AddProduct: React.FC<Props> = ({
 			}`}>
 			<form
 				name="addProduct"
-				className="flex flex-col lg:flex-row  gap-x-[8rem] lg:px-[3rem]"
+				className="flex flex-col lg:flex-row  gap-x-[8rem] lg:px-[3rem] lg:w-full"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					addProduct(e, shopId);
 				}}>
-				<div className="flex flex-col  w-[80vw] lg:w-full">
+				<div className="flex flex-col w-[80vw] lg:w-full">
 					{/* name */}
 					<label
 						htmlFor="name"
@@ -53,7 +54,7 @@ const AddProduct: React.FC<Props> = ({
 						value={name}
 						type="text"
 						id="name"
-						className=" h-[2.25rem] outline-none 
+						className=" h-[2.25rem] outline-none w-full
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
                   ring-2 ring-blue-500"
 					/>
@@ -90,6 +91,23 @@ const AddProduct: React.FC<Props> = ({
 						type="number"
 						id="quantity"
 						className=" h-[2.25rem] outline-none 
+                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                  ring-2 ring-blue-500"
+					/>
+					{/* description */}
+					<label
+						htmlFor="quantity"
+						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
+                pt-[2rem] ">
+						Description
+					</label>
+					<textarea
+						onChange={handleChange}
+						required
+                  rows={3}
+						value={desc}
+						id="desc"
+						className="  outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
                   ring-2 ring-blue-500"
 					/>
@@ -149,7 +167,7 @@ const AddProduct: React.FC<Props> = ({
 						))}
 					</div>
 
-					<div className="fixed">{renderSpinner(load)}</div>
+					{renderSpinner(load)}
 				</div>
 			</form>
 		</div>
