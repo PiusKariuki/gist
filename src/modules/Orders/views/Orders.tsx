@@ -3,7 +3,6 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import AddBilllling from "../components/AddBilllling";
 import AddShipping from "../components/AddShipping";
 import useOrders from "../hooks/useOrders";
-import "flowbite";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong, faRightLong } from "@fortawesome/free-solid-svg-icons";
 

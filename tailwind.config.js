@@ -3,7 +3,6 @@ module.exports = {
 		"./index.html",
 		"./src/**/*.tsx",
 		"./src/**/*.ts",
-		"./node_modules/flowbite/**/*.js",
 	],
 	theme: {
 		screens: {
@@ -63,5 +62,5 @@ module.exports = {
 		},
 	},
 	variants: {},
-	plugins: [require("flowbite/plugin")],
+	plugins: [],
 };
