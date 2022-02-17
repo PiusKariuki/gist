@@ -17,7 +17,7 @@ const useOrders = () => {
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const cartItems = useRecoilValue<any>(cartAtom);
 	const subTotal = useRecoilValue<any>(cartSelector);
-	const {_id } = useRecoilValue<any>(user);
+	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
 
@@ -41,6 +41,12 @@ const useOrders = () => {
 		setLoad(true);
 		try {
 			let { data } = await Axios.get(`/billing/all/${_id}`);
+			if (data.lenght < 1)
+				Swal.fire({
+					icon: "info",
+					title: "Looks like you dont have any shipping or order information.",
+					text: "Don't worry you can add new information in the button above",
+				});
 			setUserBillings(data);
 			setLoad(false);
 		} catch (error) {

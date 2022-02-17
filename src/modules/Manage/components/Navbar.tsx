@@ -3,77 +3,80 @@ import {
 	faUser,
 	faShoppingBasket,
 	faGift,
-	faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-interface Props {
-	open: boolean;
-	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const Navbar: React.FC<Props> = ({ open, setOpen }): JSX.Element => {
+const Navbar: React.FC = (): JSX.Element => {
 	return (
 		<div
-			className="flex flex-col w-[80vw] md:w-[25vw] py-[3rem] px-[3rem] gap-y-[2rem] 
-         relative">
-			<FontAwesomeIcon
-				onClick={() => setOpen(false)}
-				icon={faXmark}
-				size="3x"
-				color="red"
-				className="absolute right-10 top-8"
-			/>
-
-			{/* home */}
+			className="flex flex-row bg-white px-[0.5rem] py-[2rem] lg:py-[1rem] lg:px-[4rem]
+          items-start space-x-2  lg:space-x-5 w-screen shadow-xl">
+			{/*......................................
+            *HOME
+         ......................................*/}
 			<NavLink
-				onClick={() => setOpen(false)}
 				to="/"
 				className={({ isActive }) =>
 					isActive
-						? "text-blue-20 flex flex-row flex-nowrap items-center  gap-x-[0.2rem] mt-[4rem]"
-						: "text-black-40 flex flex-row flex-nowrap items-center  gap-x-[0.2rem] mt-[4rem]"
+						? "text-blue-20 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
+						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faHome} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.4rem] font-[700]">Home</p>
+				<p className="hidden md:flex text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+					Home
+				</p>
+				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
 			</NavLink>
-			{/* Profile */}
+			{/*......................................
+               *PROFILE
+            ......................................*/}
 			<NavLink
-				onClick={() => setOpen(false)}
 				to="/myAccount/profile"
 				className={({ isActive }) =>
 					isActive
-						? "text-blue-20 flex flex-row flex-nowrap items-center  gap-x-[0.2rem]"
-						: "text-black-40 flex flex-row flex-nowrap items-center  gap-x-[0.2rem]"
+						? "text-blue-20 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
+						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
-				<FontAwesomeIcon icon={faUser} size="1x" color="#00FFFF" />
-				<p className="text-[0.9rem] md:text-[1.4rem] font-[700]">User</p>
+				<FontAwesomeIcon icon={faUser} size="1x" color="" />
+				<p className="hidden md:flex text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+					Profile
+				</p>
+				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
 			</NavLink>
-			{/* Shops */}
+			{/*......................................
+            *SHOP
+         ......................................*/}
 			<NavLink
-				onClick={() => setOpen(false)}
 				to="/myAccount/shops"
 				className={({ isActive }) =>
 					isActive
-						? "text-blue-20 flex flex-row flex-nowrap items-center  gap-x-[0.2rem]"
-						: "text-black-40 flex flex-row flex-nowrap items-center  gap-x-[0.2rem]"
+						? "text-blue-20 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
+						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.4rem] font-[700]">Shop</p>
+				<p className="text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+					My Shops
+				</p>
+				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
 			</NavLink>
-			{/* orders */}
+			{/*......................................
+            *ORDERS
+         ......................................*/}
 			<NavLink
-				onClick={() => setOpen(false)}
 				to="/myAccount/orders"
 				className={({ isActive }) =>
 					isActive
-						? "text-blue-20 flex flex-row flex-nowrap items-center  gap-x-[0.2rem]"
-						: "text-black-40 flex flex-row flex-nowrap items-center  gap-x-[0.2rem]"
+						? "text-blue-20 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
+						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
-				<FontAwesomeIcon icon={faGift} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.4rem] font-[700] ">Orders</p>
+				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
+				<p className="text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+					My Orders
+				</p>
+				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
 			</NavLink>
 		</div>
 	);

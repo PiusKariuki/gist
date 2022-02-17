@@ -37,11 +37,13 @@ const EditProfile = () => {
 		<form
 			className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]
           justify-around relative"
-          autoComplete="off"
+			autoComplete="off"
 			onSubmit={handleSubmit}>
-            <div className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
-            bg-gray-100 -z-10 rounded-br-full"/>
-			<p className="text-black-40 text-[1.4rem] md:text-[2rem] font-[700]">
+			<div
+				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
+            bg-gray-100 -z-10 rounded-br-full"
+			/>
+			<p className="text-black-80 text-[1.4rem] md:text-[2rem] font-[700]">
 				Edit your profile
 			</p>
 			<div className="flex flex-col w-screen ">
@@ -55,8 +57,8 @@ const EditProfile = () => {
 						{/* fname */}
 						<label
 							htmlFor="fname"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
-                     mt-[3rem]  mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                     mt-[3rem]  mb-[0.5rem] text-black-80">
 							First Name
 						</label>
 						<input
@@ -66,9 +68,9 @@ const EditProfile = () => {
 							type="text"
 							id="fname"
 							name="fname"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 
-                     focus:ring-blue-500"
+							className="h-[2.25rem] outline-none 
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                     ring-blue-500"
 						/>
 					</div>
 
@@ -76,8 +78,8 @@ const EditProfile = () => {
 						{/* lname */}
 						<label
 							htmlFor="lname"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
-                     mt-[3rem] mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                     mt-[3rem] mb-[0.5rem] text-black-80">
 							Last Name
 						</label>
 						<input
@@ -87,9 +89,9 @@ const EditProfile = () => {
 							type="text"
 							id="lname"
 							name="lname"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                  text-blue-20 rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 
-                  focus:ring-blue-500"
+							className="h-[2.25rem] outline-none 
+                  text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                  ring-blue-500"
 						/>
 					</div>
 				</div>
@@ -102,8 +104,8 @@ const EditProfile = () => {
 				<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 					<label
 						htmlFor="userName"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-                  mb-[0.5rem]">
+						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
+                  mb-[0.5rem] text-black-80">
 						Username
 					</label>
 					<input
@@ -112,9 +114,9 @@ const EditProfile = () => {
 						required
 						type="text"
 						id="userName"
-						className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 
-                   focus:ring-blue-500"
+						className="h-[2.25rem] outline-none
+                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                   ring-blue-500"
 					/>
 				</div>
 				{/*......................................
@@ -126,8 +128,8 @@ const EditProfile = () => {
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="bio"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
-                        mt-[3rem] mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                        mt-[3rem] mb-[0.5rem] text-black-80">
 							Bio
 						</label>
 						<textarea
@@ -137,21 +139,21 @@ const EditProfile = () => {
 							id="bio"
 							rows={3}
 							cols={6}
-							className="border-[0.0625rem] border-black-70  outline-none text-blue-20
-                        rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+							className=" outline-none text-blue-20
+                        rounded-[0.25rem] font-bold px-[1rem] ring-2 ring-blue-500"
 						/>
 					</div>
 
-					<div className="flex flex-row  md:w-[80%] lg:w-[40%] md:mt-auto items-center relative">
+					<div className="flex flex-row w-full  md:w-[80%] lg:w-[40%] md:mt-auto items-center relative">
 						{/* img */}
 						<button
 							type="button"
 							className={`${
 								img?.length > 1
 									? "bg-white text-green-40 font-[700] "
-									: "bg-blue-20 text-white text-[0.8rem]"
+									: "bg-blue-20 text-white text-[1.1rem] font-bold"
 							}
-                        px-[7rem] md:px-[6rem] py-[0.5rem] border-[0.2rem] 
+                       w-[80%] md:w-[30%] px-[4rem] md:px-[2rem] py-[0.6rem] border-[0.2rem] 
                          border-black-70 mt-[2rem] md:mt-0 rounded-md`}
 							onClick={handleClick}>
 							{img?.length < 1 ? (
@@ -166,7 +168,7 @@ const EditProfile = () => {
 							className={
 								img.length < 1
 									? "hidden"
-									: "hidden absolute xl:flex max-h-[14rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70 self-start top-[-300%] right-[0%]"
+									: "hidden absolute xl:flex max-h-[14rem] ml-[2rem] self-start top-[-300%] right-[0%]"
 							}
 						/>
 
@@ -193,8 +195,8 @@ const EditProfile = () => {
 						{/* email */}
 						<label
 							htmlFor="email"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
-                     mt-[3rem]   mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                     mt-[3rem]   mb-[0.5rem] text-black-80">
 							Email Address
 						</label>
 						<input
@@ -204,9 +206,9 @@ const EditProfile = () => {
 							type="text"
 							id="email"
 							name="email"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
+							className="h-[2.25rem] outline-none 
                      text-blue-20
-                     rounded-[0.25rem]  font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+                     rounded-[0.25rem]  font-bold px-[1rem] ring-2 ring-blue-500"
 						/>
 					</div>
 
@@ -214,8 +216,8 @@ const EditProfile = () => {
 						{/* Phone */}
 						<label
 							htmlFor="phone"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] 
-                     mt-[3rem]  mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                     mt-[3rem]  mb-[0.5rem] text-black-80">
 							Phone Number
 						</label>
 						<PhoneInput
@@ -227,7 +229,7 @@ const EditProfile = () => {
 							}}
 							inputStyle={{
 								width: "100%",
-								border: "1px solid black",
+								border: "2.5px solid rgb(59 130 246)",
 								color: "#8B5CF6",
 								fontWeight: "bold",
 								fontSize: "1.2rem",
@@ -245,8 +247,8 @@ const EditProfile = () => {
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="pass"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-                     mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
+                     mb-[0.5rem] text-black-80">
 							Password
 						</label>
 						<input
@@ -255,9 +257,9 @@ const EditProfile = () => {
 							type="password"
 							id="pass"
 							name="pass"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] focus:ring-2
-                       focus:ring-blue-500"
+							className="h-[2.25rem] outline-none
+                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] ring-2
+                       ring-blue-500"
 						/>
 						<p className="text-red-600 font-bold text-[1rem] text-center">
 							{passError || errors?.password?.message}
@@ -267,8 +269,8 @@ const EditProfile = () => {
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="pass"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-                     mb-[0.5rem]">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
+                     mb-[0.5rem] text-black-80">
 							Confirm Password
 						</label>
 						<input
@@ -276,9 +278,9 @@ const EditProfile = () => {
 							value={confirmPassword}
 							type="password"
 							id="confirm"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] focus:ring-2
-                       focus:ring-blue-500"
+							className="h-[2.25rem] outline-none
+                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] ring-2
+                       ring-blue-500"
 						/>
 						<p className="text-red-600 font-bold text-[1rem] text-center">
 							{passError || errors?.password?.message}

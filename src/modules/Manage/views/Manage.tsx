@@ -27,22 +27,10 @@ const CreateShop: React.FC = (): JSX.Element => {
 
 	return (
 		<div className="flex flex-col overflow-x-clip relative">
-			<>
-				{open ? (
-					<div className="fixed right-0  min-h-screen z-50 bg-white">
-						<Navbar open={open} setOpen={setOpen} />
-					</div>
-				) : (
-					<FontAwesomeIcon
-						icon={faBars}
-						size="2x"
-						color="blue"
-						className="fixed right-8 top-6 z-50 bg-white"
-						onClick={() => setOpen(true)}
-					/>
-				)}
-			</>
-			<div className="bg-white" ref={box}>
+			<div className="flex sticky w-full left-0 top-0 z-50">
+			<Navbar />
+			</div>
+			<div className="" ref={box}>
 				<Outlet />
 			</div>
 		</div>

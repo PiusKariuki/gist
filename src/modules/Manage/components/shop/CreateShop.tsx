@@ -115,7 +115,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						}}
 						inputStyle={{
 							width: "100%",
-							border: "2px solid rgb(59 130 246)",
+							border: "2.5px solid rgb(59 130 246)",
 						}}
 						inputClass="w-24 border-2"
 					/>
@@ -141,13 +141,14 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 				</div>
 
 				{/* second col */}
-				<div className="flex flex-col lg:w-full lg:py-[3rem] lg:space-y-[2rem]">
+				<div className="flex flex-col-reverse lg:w-full lg:py-[rem] lg:space-y-[2rem] ">
 					{/* display div */}
-					<img src={img} alt="" className="hidden lg:flex w-full max-h-[40vh] object-contain" />
+					<img src={img} alt="" className="hidden lg:flex w-full max-h-[40vh] object-contain 
+               order-3" />
 					{/* img */}
 					<button
 						type="button"
-						className="blue-btn px-[1rem] py-[0.3rem] lg:w-[40%] lg:self-center"
+						className="blue-btn px-[1rem] py-[0.3rem] lg:w-[40%] lg:self-center order-2"
 						onClick={handleClick}>
 						Upload Image
 					</button>
@@ -162,7 +163,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					/>
 
 					{/* button */}
-					<div className="flex flex-row justify-between gap-x-[3rem]">
+					<div className="flex flex-row justify-between gap-x-[3rem] order-1">
 						<button
 							type="submit"
 							disabled={

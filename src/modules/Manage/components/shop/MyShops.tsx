@@ -58,7 +58,7 @@ const MyShops = () => {
 			<div
 				className={`${
 					!openCreate
-						? "flex flex-col md:flex-row justify-between gap-[2rem] md:gap-[2rem] md:px-[2rem] md:flex-wrap "
+						? "flex flex-col md:flex-row justify-start gap-[2rem] md:gap-[2rem] md:px-[2rem] md:flex-wrap "
 						: "hidden"
 				}`}>
 
