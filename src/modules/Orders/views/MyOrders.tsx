@@ -44,7 +44,7 @@ const MyOrders = () => {
 		setOpen,
 		orderId,
 		setCurrentShop,
-      currentShop
+		currentShop,
 	} = useMyOrders();
 
 	const { renderSpinner } = useSpinner();
@@ -61,28 +61,19 @@ const MyOrders = () => {
 	}
 
 	useEffect(() => {
-      if(shops.length>0)
-		getMyOrders(currentShop)
-	},[open,currentShop,orderId]);
+		if (shops.length > 0) getMyOrders(currentShop);
+	}, [open, currentShop, orderId]);
 
 	useEffect(() => {
 		getMyShops();
 	}, []);
 
 	return (
-		<div
-			className={`${
-				open ? "opacity-0" : "opacity-0"
-			} opacity-100 flex flex-col px-[2rem] py-[3rem] items-center gap-[2rem]`}>
-			<div
-				ref={formRef}
-				// autoComplete="off"
-				// onSubmit={getMyOrders}
-				className="flex flex-col gap-y-[0.1rem]  px-[1rem]">
-				{/* billing address */}
+		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">
+			<div ref={formRef} className="flex flex-col gap-y-[0.1rem]  px-[1rem]">
 				<p
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
-               mb-[0rem]">
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.3rem] mt-[3rem] 
+               mb-[0rem] text-black-80">
 					Select a shop to view its orders
 				</p>
 				{/*......................................
@@ -93,7 +84,8 @@ const MyOrders = () => {
 				<div className="flex flex-row gap-[0.5rem] mt-[2rem]">
 					{shops?.map((shop: any, key: number) => (
 						<button
-							className="blue-btn px-[0.5rem] py-[0.1rem] text-[1rem]"
+							className="outline outline-blue-20 rounded-md text-blue-20 font-[800] 
+                     px-[0.5rem] py-[0.1rem] text-[1rem]"
 							key={key}
 							value={shop?._Id}
 							onClick={() => {
@@ -105,15 +97,19 @@ const MyOrders = () => {
 					))}
 				</div>
 
-				<div className=" fixed top-4 mt-[1rem]">{renderSpinner(load)}</div>
+				<div className="absolute top-48 left-[48%] mt-[1rem]">
+					{renderSpinner(load)}
+				</div>
 			</div>
 
 			<div className="flex flex-col w-full border-2 mt-[4rem] relative">
 				<div
 					className={`${
-						open ? "fixed  z-50 right-[9%] md:right-[40%]  " : "hidden"
+						open
+							? "fixed opacity-100 z-50 right-[20%] top-[15%] md:top-48  md:right-[20%] lg:right-[40%]"
+							: "hidden"
 					}`}>
-					<EditOrder setOpen={setOpen} orderId={orderId} shopId={currentShop}/>
+					<EditOrder setOpen={setOpen} orderId={orderId} shopId={currentShop} />
 				</div>
 
 				<DataTable

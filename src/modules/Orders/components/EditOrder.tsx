@@ -13,8 +13,8 @@ const EditOrder: React.FC<Props> = ({ setOpen, orderId,shopId }) => {
 	const { editOrder, setStatus } = useMyOrders();
 	return (
 		<div
-			className="flex flex-col py-[3rem] px-[2rem] relative bg-white justify-around items-start 
-         rounded-md gap-y-[3rem] shadow-lg">
+			className="flex flex-col py-[3rem] px-[2rem] relative bg-white justify-around items-center
+         rounded-md gap-y-[3rem] shadow-lg md:w-[30rem] z-50 opacity-100">
 			<FontAwesomeIcon
 				icon={faXmark}
 				size="2x"
@@ -31,7 +31,7 @@ const EditOrder: React.FC<Props> = ({ setOpen, orderId,shopId }) => {
 				{/* billing address */}
 				<label
 					htmlFor="billing"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[0.9rem] mt-[3rem] 
+					className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.3rem] mt-[3rem] 
                mb-[0.5rem]">
 					Change order status
 				</label>
@@ -39,16 +39,16 @@ const EditOrder: React.FC<Props> = ({ setOpen, orderId,shopId }) => {
 					onChange={(e) => setStatus(e.target.value)}
 					required
 					id="billing"
-					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none text-blue-20
-               rounded-[0.25rem]  font-bold px-[1rem] focus:ring-2 focus:ring-blue-500">
+					className="h-[3.25rem] outline-none text-blue-20
+               rounded-[0.25rem]  font-bold px-[1rem] ring-2 ring-blue-500">
 					<option disabled defaultValue="true" value="">
 						{" "}
 						-- select an option --{" "}
 					</option>
-					<option value="pending">Pending</option>
-					<option value="cancelled">Cancelled</option>
-					<option value="shipped">Shipped</option>
-					<option value="delivered">Delivered</option>
+					<option value="pending" className="text-[1.2rem] font-[700]">Pending</option>
+					<option value="cancelled" className="text-[1.2rem] font-[700]">Cancelled</option>
+					<option value="shipped" className="text-[1.2rem] font-[700]">Shipped</option>
+					<option value="delivered" className="text-[1.2rem] font-[700]">Delivered</option>
 				</select>
 				<button
 					type="submit"

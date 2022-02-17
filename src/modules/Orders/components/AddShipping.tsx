@@ -18,7 +18,7 @@ const AddShipping = () => {
    const {renderSpinner} = useSpinner();
 	return (
 		<div className="flex flex-col  space-y-8">
-			<form onSubmit={addShipping} className="space-y-8">
+			<form autoComplete="off" onSubmit={addShipping} className="space-y-8">
 				{/*......................................
                *name
             ......................................*/}
@@ -67,7 +67,7 @@ const AddShipping = () => {
 						className="blue-btn px-[1rem] py-[0.3rem] w-[40%]">
 						Submit
 					</button>
-               {renderSpinner(load)}
+					{renderSpinner(load)}
 				</div>
 			</form>
 		</div>

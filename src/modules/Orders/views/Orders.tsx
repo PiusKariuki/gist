@@ -125,7 +125,7 @@ const Orders = () => {
 			) : (
 				<div
 					className="flex flex-col md:flex-row w-full py-[6rem] px-[3rem]
-               space-y-10 lg:gap-x-20 lg:py-[6rem] lg:space-y-0">
+               space-y-10 md:gap-x-20 lg:py-[6rem] md:space-y-0 ">
 					<div className="flex flex-col w-full">
 						<p className="text-black-80 text-[1.2rem] font-[700]">
 							New shipping Information
