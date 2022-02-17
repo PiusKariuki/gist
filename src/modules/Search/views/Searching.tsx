@@ -37,7 +37,7 @@ const Searching = () => {
 	}, [search]);
 
 	return (
-		<div className="flex flex-col px-[2rem] md:px-[3rem]">
+		<div className="flex flex-col px-[2rem] md:px-[3rem] py-[3rem]">
 			{renderSpinner(load)}
 			{filteredProducts.length > 0 ? (
 				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem]">

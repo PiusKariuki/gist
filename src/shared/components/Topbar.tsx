@@ -64,8 +64,9 @@ const Topbar = () => {
 					size="1x"
 					color="red"
 					className={`${
-						searching ? "absolute right-[17%] top-[15%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
-                   : "hidden"
+						searching
+							? "absolute right-[17%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
+							: "hidden"
 					}`}
 					onClick={() => {
 						setSearch("");
@@ -74,19 +75,19 @@ const Topbar = () => {
 						navigate("/");
 					}}
 				/>
-				<FontAwesomeIcon
+				{/* <FontAwesomeIcon
 					icon={faArrowRight}
 					size="1x"
 					color="blue"
 					className={`${
 						searching
-							? "absolute right-[5%] top-[15%] lg:text-[1.5rem]"
+							? "absolute right-[5%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem]"
 							: "hidden md:absolute right-[5%] top-[30%]"
 					}`}
 					onClick={() => {
 						navigate("/searching");
 					}}
-				/>
+				/> */}
 			</div>
 			{token === undefined ? (
 				<button
@@ -100,11 +101,13 @@ const Topbar = () => {
 					onClick={() => navigate("/login")}>
 					Sign in
 				</button>
-			) : 
-         <p className="invisible 425:visible text-blue-20 font-600 text-center self-center lg:text-[1.6rem] 
-         ">Hello🖐  {userName}</p>
-         
-         }
+			) : (
+				<p
+					className="invisible 425:visible text-blue-20 font-600 text-center self-center lg:text-[1.6rem] 
+         ">
+					Hello🖐 {userName}
+				</p>
+			)}
 			<div
 				onClick={() => {
 					setCartOpen((prev: boolean) => !prev);

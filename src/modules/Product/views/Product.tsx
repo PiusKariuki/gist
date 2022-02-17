@@ -28,7 +28,7 @@ const Product: React.FC = (): JSX.Element => {
 	return (
 		<div
 			className="flex flex-col items-start px-[1rem] md:px-[5rem] lg:px-[10rem] py-[4rem] 
-          gap-[5rem]  bg-gray-100 min-h-screen">
+          gap-[5rem] min-h-screen">
 			<div
 				className="flex flex-col  flex-wrap items-start
              md:justify-center  md:gap-[2rem]">
