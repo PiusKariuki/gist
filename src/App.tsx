@@ -26,7 +26,7 @@ const App: React.FC = (): JSX.Element => {
 				<Route path="/shop/:shopId" element={<Shop />} />
 				<Route path="/rooms/:roomId" element={<Rooms />} />
 				<Route
-					path="/orders"
+					path="/orders/*"
 					element={
 						<RequireAuth>
 							<Orders />

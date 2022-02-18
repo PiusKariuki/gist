@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
      disabled:hover:rounded-md px-[1rem] py-[1.4rem] text-white font-[700] text-[1.4rem];
 	}
 	.blue-btn {
-		@apply bg-blue-20 rounded-md  hover:rounded-xl hover:bg-blue-500 disabled:bg-gray-400
+		@apply bg-blue-20 rounded-md  hover:rounded-xl hover:bg-[#0f4d92] disabled:bg-gray-400
      disabled:hover:rounded-md px-[1rem] py-[0.4rem] text-white font-[700] text-[1.4rem]
      transition-all ease-in-out
      ;

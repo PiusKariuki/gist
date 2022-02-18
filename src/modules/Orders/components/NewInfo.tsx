@@ -37,7 +37,7 @@ const NewInfo = () => {
 					addBilling(e);
 				}}
 				className="flex flex-col md:flex-row w-full py-[6rem] px-[3rem]
-               space-y-10 md:gap-x-20 lg:py-[6rem] md:space-y-0">
+               space-y-10 md:gap-x-20 lg:py-[6rem]">
 				{/*......................................
                *billing info
             ......................................*/}

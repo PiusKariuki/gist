@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import Existing from "../components/ExistingModal";
-import NewInfo from "../components/NewInfo";
+import NewBilling from "../components/NewBilling";
+import NewShipping from "../components/NewShipping";
 import useOrders from "../hooks/useOrders";
 
 const Orders = () => {
@@ -19,35 +21,19 @@ const Orders = () => {
 		load,
 		handleSubmit,
 	} = useOrders();
-
+	let navigate = useNavigate();
 	useEffect(() => {
 		getBillingByUserId();
 		getShippingByUserId();
 	}, [open]);
 	return (
-		<div className="flex flex-col w-full relative py-[2rem] lg:py-[1rem]">
-			<button
-				onClick={() => setOpen((prev: boolean) => !prev)}
-				className="absolute top-6 left-10 md:left-12 px-[1rem] py-[0.3rem]
-            bg-white outline rounded-md outline-blue-20 mt-[2rem]">
-				<>
-					<p className="text-blue-20 font-[400] text-[1.1rem]">
-						Proceed with existing information
-					</p>
-				</>
-			</button>
+		<div className="flex flex-col w-full relative px-[3rem] py-[2rem] lg:py-[1rem]">
 
-         {open? 
-         <div className="flex flex-col  absolute w-full bg-white z-20">
-            <Existing setOpen={setOpen}/>
-         </div>
-         :null}
-
-			<div className="flex flex-col">
-				<div className="flex flex-col w-full">
-					<NewInfo />
-				</div>
-			</div>
+			<Routes>
+				<Route path="/" element={<NewShipping />} />
+				<Route path="/newBilling" element={<NewBilling />} />
+				<Route path="/existing" element={<Existing />} />
+			</Routes>
 		</div>
 	);
 };

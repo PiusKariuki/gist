@@ -1,9 +1,5 @@
 module.exports = {
-	content: [
-		"./index.html",
-		"./src/**/*.tsx",
-		"./src/**/*.ts",
-	],
+	content: ["./index.html", "./src/**/*.tsx", "./src/**/*.ts"],
 	theme: {
 		screens: {
 			little: "200px",
@@ -24,6 +20,8 @@ module.exports = {
 			colors: {
 				gray: {
 					10: "#6B7280",
+					20: "#33546D",
+					30: "#7393B3",
 				},
 
 				green: {
@@ -37,12 +35,11 @@ module.exports = {
 					80: "#023430",
 				},
 				blue: {
-					// 20: "#8B5CF6",
 					20: "#33546D",
+					30: "#4d4dff",
 					80: "#001E2B",
 				},
 				black: {
-					// 1: "#000000",
 					40: "#4B5563",
 					70: "#5d6c74",
 					80: "#001E2B",
