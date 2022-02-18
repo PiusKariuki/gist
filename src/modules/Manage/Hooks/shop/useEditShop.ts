@@ -5,6 +5,7 @@ import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
+import { imgUrl } from "shared/http/Http";
 
 const useEditShop = () => {
 	const { _id } = useRecoilValue<any>(user);
@@ -33,6 +34,7 @@ const useEditShop = () => {
 			setPhone(phoneNumber);
 			setEmail(email);
 			setLoad(false);
+         setImg(imgUrl+"/"+image)
 		} catch (error) {
 			setLoad(false);
 			// Swal.fire({
@@ -100,7 +102,7 @@ const useEditShop = () => {
 				email,
 				location,
 				phoneNumber: phone,
-				// image: img,
+				image: img,
 				description: desc,
 			});
 			Swal.fire({

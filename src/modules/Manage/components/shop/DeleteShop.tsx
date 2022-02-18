@@ -15,7 +15,7 @@ const DeleteShop: React.FC<{
 	};
 	return (
 		<div
-			className="flex flex-col py-[3rem] px-[6rem] relative bg-white justify-around 
+			className="flex flex-col py-[3rem] px-[1rem] relative bg-white justify-around 
          rounded-md gap-y-[3rem] shadow-lg">
 			<FontAwesomeIcon
 				icon={faXmark}

@@ -3,6 +3,7 @@ import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
 import ViewOrder from "../components/ViewOrder";
+import useGetOrder from "../hooks/useGetOrder";
 import useMyOrders from "../hooks/useMyOrders";
 import "../styles/orders.css";
 
@@ -44,10 +45,11 @@ const MyOrders = () => {
 		open,
 		setOpen,
 		orderId,
-		setCurrentShop,
 		currentShop,
 		openView,
 		setOpenView,
+		getOrderById,
+      order
 	} = useMyOrders();
 
    
@@ -71,6 +73,10 @@ const MyOrders = () => {
 	useEffect(() => {
 		getMyShops();
 	}, []);
+
+   // useEffect(() => {
+	// 	getOrderById(orderId);
+   // }, [openView])
 
 	return (
 		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">
@@ -125,9 +131,7 @@ const MyOrders = () => {
 					<ViewOrder
 						setOpenView={setOpenView}
 						orderId={orderId}
-						shopId={currentShop}
-						price={450}
-						amount={450}
+                  order={order}
 					/>
 				</div>
 

@@ -17,6 +17,7 @@ const useMyOrders = () => {
 	const [openView, setOpenView] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
 	const [currentShop, setCurrentShop] = useState("");
+	const [order, setOrder] = useState<any>({});
 
 	const columns = [
 		{
@@ -45,7 +46,7 @@ const useMyOrders = () => {
 							setCurrentShop(obj?.shopId);
 							setOrderId(e.currentTarget.value);
 							setOpen(true);
-                     setOpenView(false)
+							setOpenView(false);
 						}}>
 						Edit
 					</button>
@@ -54,9 +55,9 @@ const useMyOrders = () => {
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
-							setCurrentShop(obj?.shopId);
-							setOrderId(e.currentTarget.value);
-							setOpenView(true);
+							// setCurrentShop(obj?.shopId);
+							// setOrderId(e.currentTarget.value);
+							getOrderById(e.currentTarget.value);
 							setOpen(false);
 						}}>
 						View
@@ -130,6 +131,18 @@ const useMyOrders = () => {
 		}
 	};
 
+	const getOrderById = async (id: string) => {
+		setLoad(true);
+		try {
+			let { data } = await Axios.get(`/orders/orders/${id}`);
+			setOpenView(true);
+			setOrder(data);
+			setLoad(false);
+		} catch (error) {
+			setLoad(false);
+		}
+	};
+
 	return {
 		getMyOrders,
 		columns,
@@ -148,6 +161,8 @@ const useMyOrders = () => {
 		setStatus,
 		setCurrentShop,
 		currentShop,
+		getOrderById,
+		order,
 	};
 };
 

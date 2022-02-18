@@ -21,6 +21,9 @@ const MyShops = () => {
 	useEffect(() => {
 		getShopsByUserId();
 	}, [openCreate, openDelete]);
+
+
+
 	return (
 		<div
 			className="flex flex-col  flex-nowrap  gap-[2rem] 
@@ -46,7 +49,7 @@ const MyShops = () => {
 			{/* modals */}
 			<CreateShop openCreate={openCreate} setOpenCreate={setOpenCreate} />
 			{openDelete ? (
-				<div className="fixed top-[20%] center z-50  inset-y-0">
+				<div className="fixed top-[20%] md:left-[30%] center z-50  inset-y-0 w-[80vw] md:w-[40vw]">
 					<DeleteShop
 						shopId={shopId}
 						setOpenDelete={setOpenDelete}
@@ -61,8 +64,7 @@ const MyShops = () => {
 						? "flex flex-col md:flex-row justify-start gap-[2rem] md:gap-[2rem] md:px-[2rem] md:flex-wrap "
 						: "hidden"
 				}`}>
-
-            {myShops?.length>0 }
+				{myShops?.length > 0}
 
 				{myShops.map((shop: any, key: number) => (
 					<div className="relative" key={key}>
@@ -79,8 +81,8 @@ const MyShops = () => {
 								setShopName(shop.name);
 								setOpenDelete(true);
 							}}
-							className=" px-[1rem] py-[0.4rem] rounded-lg absolute top-[5%] border-[0.18rem]
-                     left-[5%] text-[1rem] border-red-400">
+							className=" px-[1rem] py-[0.4rem] rounded-lg absolute top-[5%]
+                     left-[5%] text-[1rem] bg-white">
 							<FontAwesomeIcon
 								icon={faTrash}
 								size="1x"
@@ -93,9 +95,13 @@ const MyShops = () => {
 								setShopId(shop._id);
 								setOpen(true);
 							}}
-							className=" px-[1rem] py-[0.4rem] rounded-lg absolute top-[5%] border-[0.18rem]
-                     right-[5%] text-[1rem] border-blue-20">
+							className=" px-[1rem] py-[0.4rem] rounded-lg absolute top-[5%] 
+                     right-[5%] text-[1rem]  bg-white">
 							<FontAwesomeIcon
+								onClick={() => {
+									setShopId(shop._id);
+									setOpen(true);
+								}}
 								icon={faPen}
 								size="1x"
 								className="self-center"
@@ -106,9 +112,9 @@ const MyShops = () => {
 				))}
 			</div>
 
-         	<div className="absolute flex left-0 top-[0%] bg-gray-50 z-50">
-					<EditShopModal open={open} shopId={shopId} setOpen={setOpen} />
-				</div>
+			<div className="absolute flex left-0 top-[0%] bg-gray-50 z-50">
+				<EditShopModal open={open} shopId={shopId} setOpen={setOpen} />
+			</div>
 		</div>
 	);
 };

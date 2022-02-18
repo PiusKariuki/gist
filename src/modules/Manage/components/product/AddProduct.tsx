@@ -25,7 +25,7 @@ const AddProduct: React.FC<Props> = ({
 		images,
 		setImages,
 		removeImg,
-      desc
+		desc,
 	} = useAddShop();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -35,6 +35,7 @@ const AddProduct: React.FC<Props> = ({
 				openProduct ? "flex flex-col items-center mb-[4rem]" : "hidden"
 			}`}>
 			<form
+         autoComplete="off"
 				name="addProduct"
 				className="flex flex-col lg:flex-row  gap-x-[8rem] lg:px-[3rem] lg:w-full"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -104,7 +105,7 @@ const AddProduct: React.FC<Props> = ({
 					<textarea
 						onChange={handleChange}
 						required
-                  rows={3}
+						rows={3}
 						value={desc}
 						id="desc"
 						className="  outline-none 
@@ -155,15 +156,27 @@ const AddProduct: React.FC<Props> = ({
 				{/* 2nd col */}
 				<div className="hidden lg:flex flex-col w-[80vw] lg:w-full md:py-[4rem] ">
 					{/* images */}
-					<div className="hidden lg:flex lg:flex-row flex-wrap gap-[2rem] lg:max-h-[59vh]
+					<div
+						className="hidden lg:flex lg:flex-row flex-wrap gap-[2rem] lg:max-h-[59vh]
                 overflow-y-scroll">
 						{images?.map((img: any, key: number) => (
-							<img
-								src={img}
-								alt=""
-								key={key}
-								className="h-[6rem] mx-[1.4rem]"
-							/>
+							<div className="relative flex flex-col" key={key}>
+								<img
+									src={img}
+									alt=""
+									key={key}
+									className="h-[6rem] w-[8rem] mx-[1.4rem] object-contain"
+								/>
+								<FontAwesomeIcon
+									icon={faTrash}
+									size="1x"
+									color="#F74356"
+									onClick={() => {
+										removeImg(key);
+									}}
+									className="absolute top-[10%] right-[40%]"
+								/>
+							</div>
 						))}
 					</div>
 

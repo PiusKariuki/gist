@@ -95,33 +95,9 @@ const EditProfile = () => {
 						/>
 					</div>
 				</div>
-
-				{/*......................................
-            *
-            *USERNAME
-            *
-             ......................................*/}
-				<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
-					<label
-						htmlFor="userName"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-                  mb-[0.5rem] text-black-80">
-						Username
-					</label>
-					<input
-						onChange={handleChange}
-						value={userName}
-						required
-						type="text"
-						id="userName"
-						className="h-[2.25rem] outline-none
-                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                   ring-blue-500"
-					/>
-				</div>
 				{/*......................................
                *
-               *BIO and profile picture
+               *BIO and USERNAME
                *
                ......................................*/}
 				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
@@ -143,48 +119,25 @@ const EditProfile = () => {
                         rounded-[0.25rem] font-bold px-[1rem] ring-2 ring-blue-500"
 						/>
 					</div>
-
-					<div className="flex flex-row w-full  md:w-[80%] lg:w-[40%] md:mt-auto items-center relative">
-						{/* img */}
-						<button
-							type="button"
-							className={`${
-								img?.length > 1
-									? "bg-white text-green-40 font-[700] "
-									: "bg-blue-20 text-white text-[1.1rem] font-bold"
-							}
-                       w-[80%] md:w-[30%] px-[4rem] md:px-[2rem] py-[0.6rem] border-[0.2rem] 
-                         border-black-70 mt-[2rem] md:mt-0 rounded-md`}
-							onClick={handleClick}>
-							{img?.length < 1 ? (
-								"Upload Image"
-							) : (
-								<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
-							)}
-						</button>
-
-						<img
-							src={img}
-							className={
-								img.length < 1
-									? "hidden"
-									: "hidden absolute xl:flex max-h-[14rem] ml-[2rem] self-start top-[-300%] right-[0%]"
-							}
-						/>
-
+					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
+						<label
+							htmlFor="userName"
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
+                  mb-[0.5rem] text-black-80">
+							Username
+						</label>
 						<input
 							onChange={handleChange}
-							// required
-							ref={hiddenInput}
-							// value={img}
-							type="file"
-							id="img"
-							accept="image/png"
-							className="hidden"
+							value={userName}
+							required
+							type="text"
+							id="userName"
+							className="h-[2.25rem] outline-none
+                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                   ring-blue-500"
 						/>
 					</div>
 				</div>
-
 				{/*......................................
             *
             *EMAIL AND PHONE NUMBER
@@ -239,11 +192,61 @@ const EditProfile = () => {
 				</div>
 
 				{/*......................................
+               *BTN AND IMAGE
+            ......................................*/}
+				<div className="flex flex-col lg:flex-row my-[2rem] md:gap-[2rem]">
+					<div
+						className="flex flex-row w-full  md:w-[80%] lg:w-[40%] md:mt-auto 
+                  items-center relative">
+						<img
+							src={img}
+							className={
+								img.length < 1
+									? "hidden"
+									: " flex max-h-[14rem]  self-start top-[-300%] right-[0%]"
+							}
+						/>
+					</div>
+
+					<div
+						className="flex flex-row w-[80vw]  md:w-[80%] lg:w-[40%] md:mt-auto 
+                  items-center relative">
+						{/* img */}
+						<button
+							type="button"
+							className={`${
+								img?.length > 1
+									? "bg-white text-green-40 font-[700] "
+									: "bg-blue-20 text-white text-[1.1rem] font-bold"
+							}
+                        w-full px-[4rem] md:px-[2rem] py-[0.4rem]
+                         border-[0.2rem]  border-black-70 mt-[2rem] md:mt-0 rounded-md`}
+							onClick={handleClick}>
+							{img?.length < 1 ? (
+								"Upload Image"
+							) : (
+								<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
+							)}
+						</button>
+
+						<input
+							onChange={handleChange}
+							// required
+							ref={hiddenInput}
+							// value={img}
+							type="file"
+							id="img"
+							accept="image/png"
+							className="hidden"
+						/>
+					</div>
+				</div>
+				{/*......................................
                   *
                   *PASSWORD and confirm password
                   *
                   ......................................*/}
-				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem]">
+				{/* <div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem]">
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="pass"
@@ -286,8 +289,7 @@ const EditProfile = () => {
 							{passError || errors?.password?.message}
 						</p>
 					</div>
-					{/* password */}
-				</div>
+				</div> */}
 			</div>
 
 			<div className="mt-[1rem]">{renderSpinner(load)}</div>

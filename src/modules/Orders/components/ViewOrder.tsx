@@ -1,22 +1,24 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { imgUrl } from "shared/http/Http";
+import useGetOrder from "../hooks/useGetOrder";
+import useMyOrders from "../hooks/useMyOrders";
 interface Props {
-	price: number;
-	amount: number;
-	shopId: string;
+	order: any;
 	orderId: string;
 	setOpenView: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ViewOrder:React.FC<Props> = ({price, amount, shopId,orderId,setOpenView}) => {
+const ViewOrder: React.FC<Props> = ({ order, setOpenView }) => {
 	let navigate = useNavigate();
+	console.log(order);
+
 	return (
 		<div
 			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
-         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative ">
+         border-[0.2rem] rounded-2xl  hover:shadow-2xl relative ">
 			<FontAwesomeIcon
 				icon={faXmark}
 				size="2x"
@@ -29,7 +31,7 @@ const ViewOrder:React.FC<Props> = ({price, amount, shopId,orderId,setOpenView}) 
 				<img src="" alt="" />
 				<div className="flex flex-col w-[16rem]">
 					<p className="text-black-40 font-[900] text-[1.4rem] mb-[1rem]">
-						{name}
+						{order?.itemId?.productId?.name}
 						<br />
 						{/* <span className="font-[300]">{userName}</span> */}
 					</p>
@@ -40,11 +42,13 @@ const ViewOrder:React.FC<Props> = ({price, amount, shopId,orderId,setOpenView}) 
 				className="flex relative w-[70vw] h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
             bg-cover rounded-xl
             border-[0.1rem]"
-				style={{ backgroundImage: `url(/img/lebron.png)` }}>
+				style={{
+					backgroundImage: `url(${imgUrl}/${order?.itemId?.productId}.png)`,
+				}}>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
             bg-black-80 px-[1rem]">
-					$ {price}
+					$ {order?.totalCost}
 				</p>
 			</div>
 		</div>

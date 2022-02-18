@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useRequest from "shared/http/useRequest";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
+import { imgUrl } from "shared/http/Http";
 
 const useEditProfile = () => {
 	const setUser = useSetRecoilState(user);
@@ -23,8 +24,7 @@ const useEditProfile = () => {
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
-	const [img, setImg] = useState<any>("");
-
+	const [img, setImg] = useState<any>(imgUrl+"/"+userObj?._id+".png");
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 
@@ -84,19 +84,23 @@ const useEditProfile = () => {
 		e.preventDefault();
 		setLoad(true);
 		try {
-			let { data } = await Axios.put(`/users/${userObj?.user?._id}`, {
+			let { data } = await Axios.put(`/users/${userObj?._id}`, {
 				firstName: fname,
 				lastName: lname,
 				email: email,
 				bio: bio,
 				userName: userName,
-				// profilePhoto: img
+				profilePhoto: img,
+            phonenumber: phone,
+            // password
 			});
 			Swal.fire({
 				icon: "success",
 				text: "Your profile has been updated",
 				timer: 1500,
 			});
+         console.log(data);
+         
 			setUser(data);
 			setLoad(false);
 		} catch (error: any) {

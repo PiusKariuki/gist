@@ -18,7 +18,8 @@ const Hero = () => {
 				<button
 					onClick={() => navigate(`/login`)}
 					className="bg-red-20 w-[9rem] rounded-md py-[1rem] px-[1rem] text-white
-             font-[900] self-center mt-[1.4rem] hover:bg-red-600 hover:scale-110 trasition ease-in-out
+             font-[900]  mt-[1.4rem] hover:bg-red-600 hover:scale-110 trasition
+              ease-in-out
              duration-300">
 					Join For Free
 				</button>

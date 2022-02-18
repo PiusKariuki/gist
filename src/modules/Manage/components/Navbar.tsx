@@ -25,10 +25,10 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faHome} size="1x" color="" />
-				<p className="hidden md:flex text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+				<p className="hidden md:flex text-[0.9rem] md:text-[1.2rem] font-[400]">
 					Home
 				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
+				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			</NavLink>
 			{/*......................................
                *PROFILE
@@ -41,10 +41,10 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faUser} size="1x" color="" />
-				<p className="hidden md:flex text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+				<p className="hidden md:flex text-[0.9rem] md:text-[1.2rem] font-[400]">
 					Profile
 				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
+				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			</NavLink>
 			{/*......................................
             *SHOP
@@ -57,10 +57,10 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">
 					My Shops
 				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
+				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			</NavLink>
 			{/*......................................
             *ORDERS
@@ -73,10 +73,10 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.4rem] font-[700] underline">
+				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">
 					My Orders
 				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[900] self-start">/</p>
+				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			</NavLink>
 		</div>
 	);

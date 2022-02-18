@@ -103,7 +103,7 @@ const Topbar = () => {
 				</button>
 			) : (
 				<p
-					className="invisible 425:visible text-blue-20 font-600 text-center self-center lg:text-[1.6rem] 
+					className="invisible 425:visible text-blue-20 text-center self-center lg:text-[1rem] 
          ">
 					Hello🖐 {userName}
 				</p>

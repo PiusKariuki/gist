@@ -11,6 +11,7 @@ const useEdit = () => {
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<number>(0);
 	const [quantity, setQuantity] = useState<any>("");
+	const [description, setDescription] = useState<string>("");
 	const [images, setImages] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 
@@ -41,6 +42,9 @@ const useEdit = () => {
 			case "quantity":
 				setQuantity(e.target.value);
 				break;
+			case "desc":
+				setDescription(e.target.value);
+				break;
 			case "images":
 				getBase64(e.target.files[0])
 					.then((res: any) => {
@@ -58,6 +62,7 @@ const useEdit = () => {
 		setPrice(0);
 		setQuantity("");
 		setImages([""]);
+		setDescription("");
 	};
 
 	const editProductById = async (
@@ -66,13 +71,15 @@ const useEdit = () => {
 	) => {
 		setLoad(true);
 		e.preventDefault();
+      
 		try {
 			Axios.put(`/products/products/${productId}`, {
 				name,
 				price,
 				quantity,
-				images,
+				// images,
 				ownerId: _id,
+				description,
 			});
 			Swal.fire({
 				icon: "success",
@@ -113,6 +120,7 @@ const useEdit = () => {
 		images,
 		load,
 		handleChange,
+      description
 	};
 };
 
