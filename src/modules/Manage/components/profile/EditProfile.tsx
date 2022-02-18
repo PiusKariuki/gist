@@ -194,52 +194,40 @@ const EditProfile = () => {
 				{/*......................................
                *BTN AND IMAGE
             ......................................*/}
-				<div className="flex flex-col lg:flex-row my-[2rem] md:gap-[2rem]">
-					<div
-						className="flex flex-row w-full  md:w-[80%] lg:w-[40%] md:mt-auto 
-                  items-center relative">
-						<img
-							src={img}
-							className={
-								img.length < 1
-									? "hidden"
-									: " flex max-h-[14rem]  self-start top-[-300%] right-[0%]"
-							}
-						/>
-					</div>
+				<div className="flex flex-col  w-[80vw] md:w-[80%] lg:w-[40%] my-[2rem] space-y-10">
+					<img
+						src={img}
+						className={img.length < 1 ? "hidden" :
+                   " flex max-h-[14rem] w-full object-contain"}
+					/>
 
-					<div
-						className="flex flex-row w-[80vw]  md:w-[80%] lg:w-[40%] md:mt-auto 
-                  items-center relative">
-						{/* img */}
-						<button
-							type="button"
-							className={`${
-								img?.length > 1
-									? "bg-white text-green-40 font-[700] "
-									: "bg-blue-20 text-white text-[1.1rem] font-bold"
-							}
-                        w-full px-[4rem] md:px-[2rem] py-[0.4rem]
+					<input
+						onChange={handleChange}
+						// required
+						ref={hiddenInput}
+						// value={img}
+						type="file"
+						id="img"
+						accept="image/png"
+						className="hidden"
+					/>
+					{/* img */}
+					<button
+						type="button"
+						className={`${
+							img?.length > 1
+								? "bg-white text-green-40 font-[700] "
+								: "bg-blue-20 text-white text-[1.1rem] font-bold"
+						}
+                        w-full px-[4rem] md:px-[2rem] py-[0.4rem] self-end
                          border-[0.2rem]  border-black-70 mt-[2rem] md:mt-0 rounded-md`}
-							onClick={handleClick}>
-							{img?.length < 1 ? (
-								"Upload Image"
-							) : (
-								<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
-							)}
-						</button>
-
-						<input
-							onChange={handleChange}
-							// required
-							ref={hiddenInput}
-							// value={img}
-							type="file"
-							id="img"
-							accept="image/png"
-							className="hidden"
-						/>
-					</div>
+						onClick={handleClick}>
+						{img?.length < 1 ? (
+							"Upload Image"
+						) : (
+							<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
+						)}
+					</button>
 				</div>
 				{/*......................................
                   *
