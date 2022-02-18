@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ViewProduct from "shared/components/ViewProduct";
+import { imgUrl } from "shared/http/Http";
 
 const Shop: React.FC = (): JSX.Element => {
 	const { shopDetails, getShopDetails, load, errors } = useShopDetails();
@@ -18,15 +19,16 @@ const Shop: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getShopDetails(shopId);
 	}, []);
+	console.log(shopDetails);
 
 	return (
 		<>
 			{load || shopDetails.length > 0 ? (
-				<div className="flex flex-col px-[2rem] py-[2rem] lg:py-[4rem] ">
+				<div className="flex flex-col px-[2rem] py-[2rem] lg:py-[4rem] lg:px-[4rem]">
 					{/*......................................
                   *NAME
                ......................................*/}
-					<div className="w-full py-[1rem] bg-white sticky top-[4rem] z-50 border-b-4">
+					<div className="w-full py-[1rem] bg-white sticky top-[4rem] z-20 border-b-4">
 						<p
 							className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                         text-center ">
@@ -38,8 +40,9 @@ const Shop: React.FC = (): JSX.Element => {
 						{/*......................................
                      *AVATAR and # OF PRODUCTS
                   ......................................*/}
-						<div className="lg:flex lg:flex-row lg:space-y-[2rem] lg:w-full lg:justify-around
-                  lg:items-center">
+						<div
+							className="lg:flex lg:flex-row lg:space-y-[2rem] lg:w-full lg:justify-between
+                  lg:items-center ">
 							<div className="flex flex-row space-x-10 lg:self-center">
 								<div className="flex flex-col ">
 									<p className="text-[1.4rem] text-black-80 font-[600]">
@@ -47,7 +50,7 @@ const Shop: React.FC = (): JSX.Element => {
 									</p>
 									{shopDetails.length > 0 ? (
 										<img
-											src="/img/lebron2.png"
+											src={`${imgUrl}/${shopDetails[0]?.shopId?.image}`}
 											alt=""
 											className="w-[8rem] md:w-[14rem] object-contain"
 										/>
@@ -109,7 +112,7 @@ const Shop: React.FC = (): JSX.Element => {
 						{/*......................................
                      *DESCRIPTION
                   ......................................*/}
-						<div className="flex flex-row ">
+						<div className="flex flex-row">
 							<div className="flex flex-col space-y-auto ">
 								<p className="text-blue-20 text-[0.9rem] md:text-[1rem] font-[600]">
 									{shopDetails[0]?.shopId?.description}
