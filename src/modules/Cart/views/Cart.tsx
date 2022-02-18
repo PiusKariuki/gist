@@ -10,6 +10,7 @@ const Cart = () => {
 	const cartValue = useRecoilValue(cartAtom);
 	const setOpenCart = useSetRecoilState(cartOpen);
 	let navigate = useNavigate();
+   
 	return (
 		<div
 			className="w-[90vw] md:w-[45vw] flex flex-col px-[1rem] py-[2rem] gap-y-[0.5rem]

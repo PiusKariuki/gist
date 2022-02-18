@@ -11,11 +11,10 @@ interface Props {
 
 const ViewShop: React.FC<Props> = ({ name, userName, img, id }) => {
 	let navigate = useNavigate();
-   console.log(id);
    
 	return (
 		<div
-			className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-cover flex-shrink-0
+			className="flex relative w-[18rem] h-[40vh] bg-no-repeat bg-center bg-cover flex-shrink-0
          border-2 rounded-lg hover:shadow-2xl bg-white px-[3rem]"
 			style={{
 				backgroundImage: `url(${imgUrl}/${id}.png)`,

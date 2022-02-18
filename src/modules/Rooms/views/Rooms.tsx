@@ -28,7 +28,9 @@ const Rooms = () => {
 	let price = 16.5;
 	return (
 		<>
-			<div className="flex flex-col md:flex-row gap-y-[2rem] md:min-h-screen relative">
+			<div
+				className="flex flex-col md:flex-row gap-y-[2rem] md:max-h-screen relative
+            overflow-y-clip ]">
 				<div className="fixed inset-y-80 inset-x-80 z-50">
 					{renderSpinner(load)}
 				</div>
@@ -36,29 +38,32 @@ const Rooms = () => {
 				<video
 					controls
 					src="/img/room.mp4"
-					className="h-[30vh] md:min-h-screen md:w-[50vw]
+					className="h-[30vh] md:h-screen md:w-[50vw] lg:px-[0.3rem]
                bg-black-70"
 				/>
-				<div className="flex flex-col px-[1rem] md:px-[2rem] gap-y-[2rem] md:self-center w-full">
+
+				<div
+					className="flex flex-col px-[1rem] md:px-[2rem] md:mt-[8rem] gap-y-[2rem]
+               md:self-center w-full  md:h-[80vh]">
 					<button
-						className="red-btn md:absolute left-0 top-[60%] mb-[4rem]"
+						className="red-btn md:absolute left-2 top-[60%] mb-[4rem]"
 						onClick={() => setOpen((prev: boolean) => !prev)}>
 						from $ {price}
 					</button>
-					<div className="inline-flex  absolute top-20">
+					<div className="inline-flex sticky top-4 left-6">
 						<button
 							onClick={() => setDetails((prev: boolean) => !prev)}
-							className={`${details ? "bg-blue-20 text-white" : "bg-white"}
-                        rounded-none hover:rounded-none py-[0.4rem] px-[0.8rem] text-black-40
-                         border-y-[0.2rem] border-x-[0.2rem] border-black-40
+							className={`${details ? "bg-black-80 text-white" : "bg-white"}
+                     px-[3rem] py-[0.5rem] outline outline-black-80 text-[1.3rem] font-[700]
+                     rounded-l-md
                      `}>
 							Details
 						</button>
 						<button
 							onClick={() => setDetails((prev: boolean) => !prev)}
-							className={`${!details ? "bg-blue-20 text-white" : "bg-white"}
-                        rounded-none hover:rounded-none py-[0.4rem] px-[0.8rem] text-black-40
-                         border-y-[0.2rem] border-x-[0.2rem] border-black-40
+							className={`${!details ? "bg-black-80 text-white" : "bg-white"}
+                        px-[3rem] py-[0.5rem] outline outline-black-80 text-[1.3rem] font-[700]
+                        rounded-r-md
                      `}>
 							Images
 						</button>
@@ -69,7 +74,7 @@ const Rooms = () => {
 						<>
 							<div className="flex flex-row gap-x-[1rem]">
 								<div className="flex flex-col w-[16rem]">
-									<p className="text-black-40 font-[900] text-[1.4rem] mb-[1rem]">
+									<p className="text-black-80 font-[900] text-[1.4rem] mb-[1rem]">
 										{room?.title}
 										<br />
 										<span className="font-[300]">
@@ -88,13 +93,16 @@ const Rooms = () => {
 
 							{/* shop description */}
 							<div className="flex">
-								<p className="text-[1.2rem]">{room?.shopId?.description}</p>
+								<p className="text-[1.2rem] text-black-80">
+									{room?.shopId?.description}
+								</p>
 							</div>
 						</>
 					) : null}
 
 					{/* products */}
-					<div className="flex">
+               
+					<div className="flex flex-col md:max-h-screen overflow-y-scroll py-10">
 						{details
 							? room?.productIds?.map((product: any, key: number) => (
 									<RoomProducts

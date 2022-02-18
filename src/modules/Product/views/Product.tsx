@@ -1,5 +1,5 @@
 import useCart from "modules/Cart/hooks/useCart";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
@@ -20,21 +20,29 @@ const Product: React.FC = (): JSX.Element => {
 	const { renderSpinner } = useSpinner();
 	const { productId } = useParams();
 	const { addToCart } = useCart();
+   const imgRef = useRef<any>(null);
 
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
 
+   const handleScroll = () => {
+      // if(imgRef.current.) {}
+   }
+
 	return (
 		<div
-			className="flex flex-col items-start px-[1rem] md:px-[5rem] lg:px-[10rem] py-[4rem] 
+			className="flex flex-col items-start px-[1rem] md:px-[5rem] xl:px-[10rem] py-[4rem] 
           gap-[5rem] min-h-screen">
 			<div
 				className="flex flex-col  flex-wrap items-start
              md:justify-center  md:gap-[2rem]">
 				{renderSpinner(load)}
 				<div className="flex flex-col lg:flex-row gap-y-[2rem] lg:gap-0  max-w-5xl">
-					<div className="gap-[2rem] flex flex-col">
+					<div
+                  onScroll={handleScroll}
+                  ref={imgRef}
+                  className="gap-[2rem] flex flex-col">
 						<p
 							className="text-black text-[2.25rem] font-[800] text-left
                   w-[8rem] md:w-[16rem]">
@@ -43,27 +51,35 @@ const Product: React.FC = (): JSX.Element => {
 						{product?.images?.length > 0 ? (
 							<div className="relative">
 								<img
-									src="/img/lebron2.png"
+									src={`${imgUrl}/${product?.images[index]}`}
 									alt="productImg"
-									className="min-h-96"
+									className="h-[60vh] w-[90vw] object-cover"
 								/>
 								<FontAwesomeIcon
+									onClick={() =>
+										setIndex((prev: number) =>
+											prev === 0 ? product?.images?.length - 1 : prev - 1
+										)
+									}
 									icon={faChevronLeft}
 									size="4x"
-									color="gray"
-									className="hidden md:flex absolute  left-[-6%] top-[40%]"
+									className="hiddn md:flex absolute  left-[-8%] top-[40%] text-gray-300"
 								/>
 								<FontAwesomeIcon
+									onClick={() =>
+										setIndex((prev: number) =>
+											prev === product?.images?.length - 1 ? 0 : prev + 1
+										)
+									}
 									icon={faChevronRight}
 									size="4x"
-									color="gray"
-									className="hidden md:flex absolute right-[-6%] top-[40%]"
+									className="hiddn md:flex absolute right-[-8%] top-[40%] text-gray-300"
 								/>
 							</div>
 						) : null}
 					</div>
 
-					<div className="flex flex-col  lg:ml-[8rem] lg:gap-y-[0.5rem]">
+					<div className="flex flex-col  lg:ml-[7rem] lg:gap-y-[0.5rem]">
 						<p className="text-left text-gray-10 font-[600] text-[1.25rem] lg:text-[1.6rem]">
 							{product?.name}
 						</p>
@@ -90,7 +106,7 @@ const Product: React.FC = (): JSX.Element => {
                       items-center self-start">
 							<div
 								className="inline-flex rounded-md shadow-sm border-[0.2rem]
-                      border-blue-20">
+                        border-blue-20">
 								<button
 									onClick={() =>
 										setOrders((prev) => (prev === 0 ? 0 : prev - 1))
@@ -149,19 +165,19 @@ const Product: React.FC = (): JSX.Element => {
 				</div>
 			</div>
 
-			{/* <div className="hidden md:flex flex-row gap-[2rem]">
+			<div className="hidden md:flex flex-row gap-[2rem]">
 				{product?.images?.map((img: string, key: number) => {
 					return (
 						<div
 							key={key}
-							style={{ backgroundImage: `url(/img/${img})` }}
+							style={{ backgroundImage: `url(${imgUrl}/${img})` }}
 							className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center bg-no-repeat
                      border-[0.12rem] border-black-40"
 							onClick={() => setIndex(key)}
 						/>
 					);
 				})}
-			</div> */}
+			</div>
 		</div>
 	);
 };

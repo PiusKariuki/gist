@@ -19,7 +19,6 @@ const Shop: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getShopDetails(shopId);
 	}, []);
-	console.log(shopDetails);
 
 	return (
 		<>

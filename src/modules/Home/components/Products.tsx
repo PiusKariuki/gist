@@ -15,12 +15,12 @@ const Products = () => {
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full w-screen relative">
-			<p className="text-black-40 text-[2.2rem] font-[600] mb-[2rem]">
+			<p className="text-black-40 text-[1.4rem] md:text-[2.2rem] font-[600] mb-[2rem]">
 				Recommended products
 			</p>
 			<div
 				ref={scrollRef}
-				className="scroller flex flex-row  overflow-x-auto md:gap-x-8 md:flex-row ">
+				className="scroller flex flex-row  overflow-x-auto gap-x-8 md:flex-row ">
 				{products.map((product: any, key: number) => (
 					<ViewProduct
 						name={product?.name}

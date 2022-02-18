@@ -15,13 +15,11 @@ const Rooms = () => {
 
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 
-	console.log(rooms);
-
 	const scrollRef = useRef<any>(null);
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full w-screen relative">
-			<p className="text-black-40 text-[2.2rem] font-[600] mb-[2rem]">
+			<p className="text-black-40 text-[1.4rem] md:text-[2.2rem] font-[600] mb-[2rem]">
 				Recent rooms
 			</p>
 			{renderSpinner(load)}

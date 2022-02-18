@@ -1,6 +1,7 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { imgUrl } from "shared/http/Http";
 import useCart from "../hooks/useCart";
 
 interface Props {
@@ -15,7 +16,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 	const { removeItem } = useCart();
 	return (
 		<div className="flex flex-row flex-nowrap rounded-3xl  justify-around py-[2rem] items-center">
-			<img src="/img/lebron2.png" alt="" className="w-[30%] " />
+			<img src={`${imgUrl}/${image}`} alt="" className="w-[30%] " />
 			{/*......................................
             *
             ......................................*/}
