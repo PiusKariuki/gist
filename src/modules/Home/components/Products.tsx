@@ -5,15 +5,13 @@ import ViewProduct from "../../../shared/components/ViewProduct";
 import { faAnglesLeft, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 const Products = () => {
 	const { getProducts, products, errors, load } = useProducts();
 	useEffect(() => {
 		getProducts();
 	}, []);
-   	const { scrollRight, scrollLeft } = useHorizontalScroll();
+	const { scrollRight, scrollLeft } = useHorizontalScroll();
 	const scrollRef = useRef<any>(null);
-
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full w-screen relative">
@@ -22,7 +20,7 @@ const Products = () => {
 			</p>
 			<div
 				ref={scrollRef}
-				className="scroller flex flex-col  overflow-x-auto gap-x-8 md:flex-row">
+				className="scroller flex flex-row  overflow-x-auto md:gap-x-8 md:flex-row ">
 				{products.map((product: any, key: number) => (
 					<ViewProduct
 						name={product?.name}
@@ -31,6 +29,7 @@ const Products = () => {
 						price={product?.price}
 						key={key}
 						id={product?._id}
+						shopId={product?.shopId?._id}
 					/>
 				))}
 			</div>
@@ -40,14 +39,12 @@ const Products = () => {
 			<FontAwesomeIcon
 				onClick={() => scrollLeft(scrollRef)}
 				icon={faAnglesLeft}
-				color="#89CFF0"
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] left-10 top-[50%] "
+				className="z-10 hidden lg:flex lg:absolute text-[4rem] left-10 top-[50%] text-gray-300"
 			/>
 			<FontAwesomeIcon
 				onClick={() => scrollRight(scrollRef)}
 				icon={faAnglesRight}
-				color="#89CFF0"
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] right-10 top-[50%] "
+				className="z-10 hidden lg:flex lg:absolute text-[4rem] right-10 top-[50%] text-gray-300"
 			/>
 		</div>
 	);

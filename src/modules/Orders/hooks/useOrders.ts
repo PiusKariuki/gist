@@ -21,6 +21,23 @@ const useOrders = () => {
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
 
+
+   const handleAutofill = (e:any)=>{
+      	let id = e.target.id;
+				switch (id) {
+					case "bill":
+						setBilling(e.target.value);
+						break;
+
+					case "ship":
+						setShipping(e.target.value);
+						break;
+
+					default:
+						break;
+				}
+   }
+
 	const handleChange = (e: any) => {
 		let id = e.target.id;
 		switch (id) {
@@ -108,6 +125,7 @@ const useOrders = () => {
 		load,
 		handleSubmit,
 		handleChange,
+      handleAutofill
 	};
 };
 

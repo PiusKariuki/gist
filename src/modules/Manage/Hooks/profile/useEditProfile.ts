@@ -9,7 +9,6 @@ import { user } from "shared/recoil/user";
 const useEditProfile = () => {
 	const setUser = useSetRecoilState(user);
 	const userObj = useRecoilValue<any>(user);
-	console.log(userObj);
 
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");

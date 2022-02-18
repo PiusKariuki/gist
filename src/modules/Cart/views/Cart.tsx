@@ -14,38 +14,9 @@ const Cart = () => {
 		<div
 			className="w-[90vw] md:w-[45vw] flex flex-col px-[1rem] py-[2rem] gap-y-[0.5rem]
           min-h-screen">
-			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between">
-				<p className="font-[500]">Estimated shipping</p>
-				<p className="font-[600] text-blue-20">$0.00</p>
-			</div>
-
-			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between">
-				<p className="font-[500]">Estimated tax</p>
-				<p className="font-[600] text-blue-20">$0.00</p>
-			</div>
-
-			<div className="flex flex-row md:text-[1.2rem] tracking-wider md:w-[40%] justify-between">
-				<p className="font-[500]">Estimated total</p>
-				<p className="font-[600] text-blue-20 text-left">
-					${isNaN(totalValue) ? 0 : totalValue}
-				</p>
-			</div>
-
-			<button
-				disabled={cartValue.length === 0}
-				onClick={() => {
-					setOpenCart((prev: boolean) => !prev);
-					navigate(`/orders`);
-				}}
-				type="button"
-				className="bg-blue-20 md:w-[40%] py-[0.4rem] px-[1.4rem] rounded-md
-            hover:bg-blue-400 text-white text-[1.3rem] font-[500] 
-            disabled:bg-gray-300  my-[1.5rem]">
-				Checkout
-			</button>
 			<div
-				className="flex flex-col gap-[2rem] bg-white max-h-[50vh] overflow-y-scroll
-         px-[0.4rem] md:px-[1rem] py-[3rem] border-t-2">
+				className="flex flex-col gap-[2rem] bg-white max-h-[60vh] lg:max-h-[60vh] overflow-y-scroll
+            px-[0.4rem] md:px-[1rem] py-[3rem] border-t-2">
 				{cartValue.length > 0 ? (
 					cartValue?.map((item: any, key: number) => (
 						<CartItem
@@ -71,6 +42,38 @@ const Cart = () => {
 					</div>
 				)}
 			</div>
+
+			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
+				<p className="font-[500]">Estimated shipping</p>
+				<p className="font-[600] text-blue-20">$0.00</p>
+			</div>
+
+			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
+				<p className="font-[500]">Estimated tax</p>
+				<p className="font-[600] text-blue-20">$0.00</p>
+			</div>
+
+			<div
+				className="flex flex-row md:text-[1.2rem] tracking-wider md:w-[40%] justify-between
+            self-end">
+				<p className="font-[500]">Estimated total</p>
+				<p className="font-[600] text-blue-20 text-left">
+					${isNaN(totalValue) ? 0 : totalValue}
+				</p>
+			</div>
+
+			<button
+				disabled={cartValue.length === 0}
+				onClick={() => {
+					setOpenCart((prev: boolean) => !prev);
+					navigate(`/orders`);
+				}}
+				type="button"
+				className="bg-blue-20 md:w-[40%] py-[0.4rem] px-[1.4rem] rounded-md self-end
+            hover:bg-blue-400 text-white text-[1.3rem] font-[500] 
+            disabled:bg-gray-300  my-[1.5rem]">
+				Checkout
+			</button>
 		</div>
 	);
 };

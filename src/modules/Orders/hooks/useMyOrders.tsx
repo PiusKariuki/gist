@@ -11,14 +11,12 @@ const useMyOrders = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const [shops, setMyShops] = useState<any>([]);
 	const [shopId, setShopId] = useState("");
-	let actions = ["edit"];
+	let actions = ["edit", "view"];
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
+	const [openView, setOpenView] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
 	const [currentShop, setCurrentShop] = useState("");
-
-
-   
 
 	const columns = [
 		{
@@ -37,22 +35,35 @@ const useMyOrders = () => {
 
 	let populate = orders.map((obj: any) =>
 		Object.assign(obj, {
-			actions: actions.map(
-				(action: string, key: number): JSX.Element => (
+			actions: (
+				<div className="flex w-full gap-x-[2rem]">
 					<button
 						className="red-btn px-[1rem] py-[0.4rem]"
-						key={key}
 						id={obj._id}
 						value={obj._id}
-						onClick={(e) => {                  
+						onClick={(e) => {
 							setCurrentShop(obj?.shopId);
 							setOrderId(e.currentTarget.value);
 							setOpen(true);
+                     setOpenView(false)
 						}}>
-						{action}
+						Edit
 					</button>
-				)
+					<button
+						className="red-btn px-[1rem] py-[0.4rem]"
+						id={obj._id}
+						value={obj._id}
+						onClick={(e) => {
+							setCurrentShop(obj?.shopId);
+							setOrderId(e.currentTarget.value);
+							setOpenView(true);
+							setOpen(false);
+						}}>
+						View
+					</button>
+				</div>
 			),
+
 			date: new Date(obj.createdAt).toLocaleDateString(),
 		})
 	);
@@ -90,8 +101,8 @@ const useMyOrders = () => {
 	// .............................edit order part
 	const editOrder = async (
 		e: React.FormEvent<HTMLFormElement>,
-		orderId: string, 
-      shopId: string
+		orderId: string,
+		shopId: string
 	) => {
 		e.preventDefault();
 		setLoad(true);
@@ -99,14 +110,14 @@ const useMyOrders = () => {
 			await Axios.put(`/orders/orders/${orderId}`, {
 				status,
 			});
-			
+
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been updated",
 				timer: 1500,
-			}).then(() => { 
-            getMyOrders(shopId);
+			}).then(() => {
+				getMyOrders(shopId);
 				setOpen(false);
 			});
 		} catch (error) {
@@ -130,11 +141,13 @@ const useMyOrders = () => {
 		populate,
 		open,
 		setOpen,
+		openView,
+		setOpenView,
 		orderId,
 		editOrder,
 		setStatus,
 		setCurrentShop,
-      currentShop
+		currentShop,
 	};
 };
 

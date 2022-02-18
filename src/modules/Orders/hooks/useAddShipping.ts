@@ -7,20 +7,20 @@ import { shippingOpen } from "../store/store";
 
 const useAddShipping = () => {
 	const [shippingName, setShippingName] = useState("");
-	const [street, setStreet] = useState("");
-	const [zip, setZip] = useState("");
-	const [load, setLoad] = useState(false);
+	const [shippingStreet, setStreet] = useState("");
+	const [shippingZip, setZip] = useState("");
+	const [shipLoad, setLoad] = useState(false);
 	const { Axios } = useRequest();
 	const setOpen = useSetRecoilState(shippingOpen);
 	let { _id } = useRecoilValue<any>(user);
 
-	const clearAttributes = () => {
+	const clearShippingAttributes = () => {
 		setShippingName("");
 		setStreet("");
 		setZip("");
 	};
 
-	const handleChange = (e: any) => {
+	const handleShippingChange = (e: any) => {
 		let id = e.target.id;
 		switch (id) {
 			case "name":
@@ -45,13 +45,13 @@ const useAddShipping = () => {
 		try {
 			await Axios.post(`/address`, {
 				name: shippingName,
-				street,
-				zipCode: zip,
+				street: shippingStreet,
+				zipCode: shippingZip,
 				userId: _id,
 			});
 			setLoad(false);
 			setOpen((prev: boolean) => !prev);
-			clearAttributes();
+			clearShippingAttributes();
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -63,12 +63,12 @@ const useAddShipping = () => {
 
 	return {
 		shippingName,
-		street,
-		zip,
+		shippingStreet,
+		shippingZip,
 		addShipping,
-		handleChange,
-		clearAttributes,
-      load
+		handleShippingChange,
+		clearShippingAttributes,
+		shipLoad,
 	};
 };
 

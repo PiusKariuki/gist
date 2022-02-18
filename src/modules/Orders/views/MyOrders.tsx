@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
+import ViewOrder from "../components/ViewOrder";
 import useMyOrders from "../hooks/useMyOrders";
 import "../styles/orders.css";
 
@@ -45,8 +46,11 @@ const MyOrders = () => {
 		orderId,
 		setCurrentShop,
 		currentShop,
+		openView,
+		setOpenView,
 	} = useMyOrders();
 
+   
 	const { renderSpinner } = useSpinner();
 	const formRef = useRef<any>();
 
@@ -110,6 +114,21 @@ const MyOrders = () => {
 							: "hidden"
 					}`}>
 					<EditOrder setOpen={setOpen} orderId={orderId} shopId={currentShop} />
+				</div>
+
+				<div
+					className={`${
+						openView
+							? "absolute opacity-100 z-50 right-[20%] top-[15%] md:top-[0%]  md:right-[20%] lg:right-[40%]"
+							: "hidden"
+					}`}>
+					<ViewOrder
+						setOpenView={setOpenView}
+						orderId={orderId}
+						shopId={currentShop}
+						price={450}
+						amount={450}
+					/>
 				</div>
 
 				<DataTable

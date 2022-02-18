@@ -11,24 +11,18 @@ interface Props {
 
 const ViewShop: React.FC<Props> = ({ name, userName, img, id }) => {
 	let navigate = useNavigate();
+   console.log(id);
+   
 	return (
 		<div
-			className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-contain flex-shrink-0
-         border-2 rounded-2xl hover:shadow-2xl"
+			className="flex relative w-[25rem] h-[40vh] bg-no-repeat bg-center bg-cover flex-shrink-0
+         border-2 rounded-lg hover:shadow-2xl bg-white px-[3rem]"
 			style={{
-				backgroundImage: `url(http://52.43.151.113/public/img/6209661b66d82e5452cff1d1.png)`,
+				backgroundImage: `url(${imgUrl}/${id}.png)`,
 			}}
 			onClick={() => navigate(`/shop/${id}`)}>
-			<img
-				src="http://52.43.151.113/public/img/6209661b66d82e5452cff1d1.png"
-				alt=""
-				className="w-10 h-10"
-			/>
-			<p className="absolute top-[4%] left-[10%] text-black-20 font-[600] text-[1.2rem]">
-				<span className="text-black-40">by</span>&nbsp;&nbsp;
-				{userName}
-			</p>
-			<p className="absolute bottom-[4%] right-[40%] text-blue-20 font-[900] text-[1.4rem]">
+			<p className="absolute bottom-[4%] right-[40%] text-white font-[900] text-[1.2rem]
+           px-2 bg-black-80">
 				{name}
 			</p>
 		</div>

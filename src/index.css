@@ -35,6 +35,13 @@ body::-webkit-scrollbar {
      transition-all ease-in-out
      ;
 	}
+   .outline-btn{
+      @apply px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-blue-20 text-blue-20
+   }
+
+
+
+
     /* ..................................datatable rows................................... */
   .fQfBPh {
     @apply text-gray-900 dark:text-gray-200  font-bold  text-lg text-opacity-100;

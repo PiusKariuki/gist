@@ -1,5 +1,5 @@
 import useRoom from "modules/Rooms/hooks/useRoom";
-import React, { useEffect,useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import RecentRooms from "shared/components/RecentRooms";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
@@ -13,11 +13,11 @@ const Rooms = () => {
 		getAllRooms();
 	}, []);
 
-   	const { scrollRight, scrollLeft } = useHorizontalScroll();
+	const { scrollRight, scrollLeft } = useHorizontalScroll();
 
-		const scrollRef = useRef<any>(null);
+	console.log(rooms);
 
-	
+	const scrollRef = useRef<any>(null);
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full w-screen relative">
@@ -39,7 +39,15 @@ const Rooms = () => {
 					/>
 				))} */}
 				{rooms.map((room: any, key: number) => (
-					<RecentRooms roomId={room?._id} key={key} />
+					<RecentRooms
+						title={room?.title}
+						userName={room?.ownerId?.userName}
+						price={room?.productPrice}
+						shopImage={room?.shopId?.image}
+						userImage={room?.ownerId?._id + ".png"}
+						roomId={room?._id}
+						key={key}
+					/>
 				))}
 			</div>
 			{/*......................................
@@ -48,14 +56,12 @@ const Rooms = () => {
 			<FontAwesomeIcon
 				onClick={() => scrollLeft(scrollRef)}
 				icon={faAnglesLeft}
-				color="#89CFF0"
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] left-10 top-[50%] "
+				className="z-10 hidden lg:flex lg:absolute text-[4rem] left-10 top-[50%] text-gray-300"
 			/>
 			<FontAwesomeIcon
 				onClick={() => scrollRight(scrollRef)}
 				icon={faAnglesRight}
-				color="#89CFF0"
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] right-10 top-[50%] "
+				className="z-10 hidden lg:flex lg:absolute text-[4rem] right-10 top-[50%] text-gray-300"
 			/>
 		</div>
 	);
