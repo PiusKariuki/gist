@@ -13,7 +13,7 @@ const RoomImages: React.FC<Props> = ({ imgs }) => {
 			{imgs?.map((img: any, key: number) => (
 				<div
 					key={key}
-					className="flex bg-center bg-cover bg-no-repeat w-[90vw] md:w-[16rem] h-[12rem] rounded-lg
+					className="flex bg-center bg-contain bg-no-repeat w-[90vw] md:w-[16rem] h-[12rem] rounded-lg
                shadow-lg border-[0.2rem] border-black-40"
 					style={{ backgroundImage: `url(${imgUrl}/${img})` }}
 				/>

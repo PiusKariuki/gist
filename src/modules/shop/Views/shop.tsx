@@ -129,10 +129,10 @@ const Shop: React.FC = (): JSX.Element => {
 							<ViewProduct
 								name={product?.name}
 								price={product?.price}
-								img={product?.images[0]}
 								id={product?._id}
 								userName={product?.ownerId?.userName}
 								key={key}
+                        shopId={shopDetails[0]?.shopId?._id}
 							/>
 						))}
 					</div>

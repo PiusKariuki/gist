@@ -25,7 +25,6 @@ const Products = () => {
 					<ViewProduct
 						name={product?.name}
 						userName={product?.ownerId?.userName}
-						img={product?.images[0]}
 						price={product?.price}
 						key={key}
 						id={product?._id}

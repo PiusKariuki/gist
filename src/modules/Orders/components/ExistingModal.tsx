@@ -2,7 +2,7 @@ import React from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useOrders from "../hooks/useOrders";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faHeartbeat } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const Existing: React.FC<{}> = () => {
@@ -18,7 +18,7 @@ const Existing: React.FC<{}> = () => {
 		load,
 		handleSubmit,
 	} = useOrders();
-   let navigate = useNavigate();
+	let navigate = useNavigate();
 
 	React.useEffect(() => {
 		getBillingByUserId();
@@ -31,7 +31,7 @@ const Existing: React.FC<{}> = () => {
 				className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
             shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
             items-center cursor-pointer my-[3rem]">
-				<FontAwesomeIcon icon={faCircleInfo} size="2x" />
+				<FontAwesomeIcon icon={faCircleInfo} size="2x"  />
 				<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
 					Go back and input new info.
 				</p>

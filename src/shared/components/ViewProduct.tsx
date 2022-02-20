@@ -5,7 +5,6 @@ import { imgUrl } from "shared/http/Http";
 interface Props {
 	name: string;
 	price: string;
-	img: string;
 	userName: string;
 	id: string;
 	shopId: string;
@@ -14,7 +13,6 @@ interface Props {
 const ViewProduct: React.FC<Props> = ({
 	name,
 	price,
-	img,
 	userName,
 	id,
 	shopId,
