@@ -20,23 +20,24 @@ const useOrders = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
+	const [shippingFee, setShippingFee] = useState(0);
+	const [tax, setTax] = useState(0);
 
+	const handleAutofill = (e: any) => {
+		let id = e.target.id;
+		switch (id) {
+			case "bill":
+				setBilling(e.target.value);
+				break;
 
-   const handleAutofill = (e:any)=>{
-      	let id = e.target.id;
-				switch (id) {
-					case "bill":
-						setBilling(e.target.value);
-						break;
+			case "ship":
+				setShipping(e.target.value);
+				break;
 
-					case "ship":
-						setShipping(e.target.value);
-						break;
-
-					default:
-						break;
-				}
-   }
+			default:
+				break;
+		}
+	};
 
 	const handleChange = (e: any) => {
 		let id = e.target.id;
@@ -80,26 +81,37 @@ const useOrders = () => {
 			setLoad(false);
 		}
 	};
+
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		setLoad(true);
-		let productIds = cartItems.map((item: any) => item.productId);
+		let sentObj = cartItems.map((item: any) =>
+			Object.assign(
+				{},
+				{},
+				{
+					subTotal: item.price,
+					shippingFee,
+					tax,
+					productId: item.productId,
+					shopId: item.shopId,
+					quantity: item.quantity,
+					sellerId: item.sellerId._id,
+				}
+			)
+		);
+
+		{
+			/*......................................
+         *configuring the request object
+      ......................................*/
+		}
 
 		try {
-			await Promise.all(
-				cartItems.map(async (item: any): Promise<any> => {
-					await Axios.post(`/orders/${_id}`, {
-						billingId: billing,
-						shippingId: shipping,
-						subTotal,
-						tax: 0,
-						shippingFee: 0,
-						productId: item.productId,
-						shopId: item.shopId,
-						quantity: item.quantity,
-					});
-				})
-			);
+			await Axios.post(`/orders/${_id}/${billing}/${shipping}`, {
+				order: sentObj,
+			});
+
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
@@ -125,7 +137,7 @@ const useOrders = () => {
 		load,
 		handleSubmit,
 		handleChange,
-      handleAutofill
+		handleAutofill,
 	};
 };
 

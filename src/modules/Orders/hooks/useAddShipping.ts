@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import useRequest from "shared/http/useRequest";
 import { user } from "shared/recoil/user";
@@ -13,6 +14,7 @@ const useAddShipping = () => {
 	const { Axios } = useRequest();
 	const setOpen = useSetRecoilState(shippingOpen);
 	let { _id } = useRecoilValue<any>(user);
+	let navigate = useNavigate();
 
 	const clearShippingAttributes = () => {
 		setShippingName("");
@@ -52,6 +54,11 @@ const useAddShipping = () => {
 			setLoad(false);
 			setOpen((prev: boolean) => !prev);
 			clearShippingAttributes();
+			Swal.fire({
+				icon: "success",
+				title: "Shipping address has been added successfully",
+				text: "Click Ok below to proceed to add billing address",
+			}).then(() => navigate(`/orders/newBilling`));
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({

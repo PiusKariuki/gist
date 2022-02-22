@@ -1,5 +1,5 @@
 import useCart from "modules/Cart/hooks/useCart";
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
@@ -20,15 +20,11 @@ const Product: React.FC = (): JSX.Element => {
 	const { renderSpinner } = useSpinner();
 	const { productId } = useParams();
 	const { addToCart } = useCart();
-   const imgRef = useRef<any>(null);
 
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
 
-   const handleScroll = () => {
-      // if(imgRef.current.) {}
-   }
 
 	return (
 		<div
@@ -39,10 +35,7 @@ const Product: React.FC = (): JSX.Element => {
              md:justify-center  md:gap-[2rem]">
 				{renderSpinner(load)}
 				<div className="flex flex-col lg:flex-row gap-y-[2rem] lg:gap-0  max-w-5xl">
-					<div
-                  onScroll={handleScroll}
-                  ref={imgRef}
-                  className="gap-[2rem] flex flex-col">
+					<div className="gap-[2rem] flex flex-col">
 						<p
 							className="text-black text-[2.25rem] font-[800] text-left
                   w-[8rem] md:w-[16rem]">
@@ -154,6 +147,7 @@ const Product: React.FC = (): JSX.Element => {
 										product?.name,
 										product?.shopId,
 										product?._id,
+										product?.ownerId,
 										uuidv4()
 									);
 								}}

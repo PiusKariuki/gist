@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import useRequest from "shared/http/useRequest";
 import { user } from "shared/recoil/user";
@@ -13,6 +14,7 @@ const useAddBilling = () => {
 	const { Axios } = useRequest();
 	const setOpen = useSetRecoilState(billingOpen);
 	let { _id } = useRecoilValue<any>(user);
+	let navigate = useNavigate();
 
 	const clearAttributes = () => {
 		setBillingName("");
@@ -52,6 +54,10 @@ const useAddBilling = () => {
 			setLoad(false);
 			setOpen((prev: boolean) => !prev);
 			clearAttributes();
+			Swal.fire({
+				icon: "success",
+				titleText: "Success. Click ok below to proceed to place your order",
+			}).then(() => navigate(`/orders/existing`));
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -68,7 +74,7 @@ const useAddBilling = () => {
 		addBilling,
 		handleChange,
 		clearAttributes,
-      load
+		load,
 	};
 };
 
