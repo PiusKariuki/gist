@@ -5,7 +5,7 @@ import {
 	faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartAtom, cartOpen } from "shared/recoil/cart";
@@ -65,7 +65,7 @@ const Topbar = () => {
 					color="red"
 					className={`${
 						searching
-							? "absolute right-[17%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
+							? "absolute  md:hidden right-[17%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
 							: "hidden"
 					}`}
 					onClick={() => {

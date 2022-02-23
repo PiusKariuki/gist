@@ -45,7 +45,7 @@ const RecentRooms: React.FC<Props> = ({
 
 			<div
 				className="flex relative h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
-            bg-cover rounded-xl
+            bg-contain rounded-xl
             border-[0.1rem]"
 				style={{ backgroundImage: `url(${imgUrl}/${shopImage})` }}>
 				<p

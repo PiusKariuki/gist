@@ -26,14 +26,14 @@ const ViewProduct: React.FC<Props> = ({
 			<div className="flex flex-row gap-x-[1rem]">
 				<div
 					style={{ backgroundImage: `url(${imgUrl}/${shopId}.png)` }}
-					className="flex w-[3rem] h-[3rem] rounded-full bg-black-70 self-center bg-center 
-               bg-no-repeat bg-contain"
+					className="flex w-[3rem] h-[3rem] rounded-full self-center bg-center 
+               bg-no-repeat bg-cover"
 				/>
 				<div className="flex flex-col w-[16rem]">
-					<p className="text-black-40 font-[900] text-[1.4rem] mb-[1rem]">
+					<p className="text-black-40 font-[700] text-[1rem] mb-[1rem]">
 						{name}
 						<br />
-						<span className="font-[300]">
+						<span className="font-[400]">
 							{userName?.length > 0 ? userName : "unknown"}
 						</span>
 					</p>

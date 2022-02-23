@@ -7,15 +7,18 @@ import "../styles/shop.css";
 import SearchShop from "../components/SearchShop";
 import useSpinner from "shared/components/spinner/useSpinner";
 import { searchInput } from "shared/recoil/search";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Searching = () => {
 	const [filteredProducts, setFilteredProducts] = useState<any>([]);
 	const [filteredShops, setFilteredShops] = useState<any>([]);
 	const search = useRecoilValue(searchInput);
-	const { getProducts, products,load } = useProducts();
-   const {renderSpinner} = useSpinner();
+	const { getProducts, products, load } = useProducts();
+	const { renderSpinner } = useSpinner();
 	const { shops, getShops } = useShop();
+	let navigate = useNavigate();
 	useEffect(() => {
 		getProducts();
 		getShops();
@@ -34,7 +37,11 @@ const Searching = () => {
 					return shop.name.toLowerCase().includes(search.toLowerCase());
 				})
 			);
-	}, [search]);
+	}, [search, load]);
+
+	useEffect(() => {
+		if (search.length < 1) navigate("/");
+	},[]);
 
 	return (
 		<div className="flex flex-col px-[2rem] md:px-[3rem] py-[3rem]">
@@ -43,7 +50,17 @@ const Searching = () => {
 				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem]">
 					Products.
 				</p>
-			) : null}
+			) : load ? null : (
+				<div
+					className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
+            shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
+            items-center cursor-pointer">
+					<FontAwesomeIcon icon={faCircleExclamation} size="2x" />
+					<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
+						Sorry no products match this criteria
+					</p>
+				</div>
+			)}
 
 			<div
 				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] 
