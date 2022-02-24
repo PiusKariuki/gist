@@ -224,7 +224,7 @@ const Register = (): JSX.Element => {
 
 						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							{/* Phone */}
-							{/* <label
+							<label
 								htmlFor="phone"
 								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mt-[3rem]  mb-[0.5rem]">
@@ -234,17 +234,17 @@ const Register = (): JSX.Element => {
 								country={"ke"}
 								value={phone}
 								onChange={handlePhoneChange}
-								inputProps={{
-									required: true,
-								}}
-								inputStyle={{
-									width: "100%",
-									border: "1px solid black",
-									color: "#8B5CF6",
-									fontWeight: "bold",
-									fontSize: "1.2rem",
-								}}
-							/> */}
+								// inputProps={{
+								// 	required: true,
+								// }}
+								// inputStyle={{
+								// 	width: "100%",
+								// 	border: "1px solid black",
+								// 	color: "#8B5CF6",
+								// 	fontWeight: "bold",
+								// 	fontSize: "1.2rem",
+								// }}
+							/>
 						</div>
 					</div>
 
