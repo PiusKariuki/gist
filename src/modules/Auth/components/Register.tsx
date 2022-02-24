@@ -231,9 +231,9 @@ const Register = (): JSX.Element => {
 								Phone Number
 							</label>
 							<PhoneInput
-								country={"ke"}
-								value={phone}
-								onChange={handlePhoneChange}
+								// country={"ke"}
+								// value={phone}
+								// onChange={handlePhoneChange}
 								// inputProps={{
 								// 	required: true,
 								// }}
