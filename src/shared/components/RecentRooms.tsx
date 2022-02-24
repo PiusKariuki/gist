@@ -35,7 +35,7 @@ const RecentRooms: React.FC<Props> = ({
                bg-no-repeat bg-contain"
 				/>
 				<div className="flex flex-col w-[16rem]">
-					<p className="text-black-40 font-[900] text-[1.4rem] mb-[1rem]">
+					<p className="text-black-40 font-[900] text-[1rem] mb-[1rem]">
 						{title}
 						<br />
 						<span className="font-[300]">{userName}</span>
@@ -45,7 +45,7 @@ const RecentRooms: React.FC<Props> = ({
 
 			<div
 				className="flex relative h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
-            bg-contain rounded-xl
+            bg-contain rounded-xl py-[1rem]
             border-[0.1rem]"
 				style={{ backgroundImage: `url(${imgUrl}/${shopImage})` }}>
 				<p

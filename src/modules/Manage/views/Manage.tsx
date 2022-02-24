@@ -25,7 +25,7 @@ const CreateShop: React.FC = (): JSX.Element => {
 
 	return (
 		<div className="flex flex-col overflow-x-clip relative">
-			<div className="flex sticky w-full left-0 top-0 z-50">
+			<div className="flex sticky w-full left-0 top-0 z-50 shadow-2xl">
 			<Navbar />
 			</div>
 			<div className="" ref={box}>

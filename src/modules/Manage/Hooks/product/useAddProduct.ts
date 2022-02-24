@@ -53,7 +53,7 @@ const useAddShop = () => {
 
 	const addProduct = async (
 		e: React.FormEvent<HTMLFormElement>,
-		shopId: string
+		shopId: any
 	) => {
 		setLoad(true);
 		e.preventDefault();

@@ -3,13 +3,10 @@ import useManage from "../../Hooks/useManage";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import useSpinner from "shared/components/spinner/useSpinner";
+import { useNavigate } from "react-router-dom";
 
-interface Props {
-	openCreate: boolean;
-	setOpenCreate: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
+const CreateShop: React.FC= () => {
 	const {
 		shopName,
 		email,
@@ -27,13 +24,14 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 	} = useManage();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
+   let navigate = useNavigate();
 
 	const handleClick = () => {
 		hiddenInput.current.click();
 	};
 
 	return (
-		<div className={`${openCreate ? "flex flex-col bg-white" : "hidden"}`}>
+		<div className="flex flex-col bg-white w-full">
 			{renderSpinner(load)}
 			<p className="text-[1.6rem] text-black-80 text-center">
 				Create Your Shop
@@ -44,9 +42,9 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					createShop(e);
 					clearAttributes();
 				}}
-				className="py-[2rem] flex flex-col lg:flex-row  gap-y-[2rem] 
-              md:px-[12rem] md:justify-around lg:px-0 lg:space-x-20">
-				<div className=" flex flex-col w-full">
+				className="py-[2rem] flex flex-col md:flex-row  gap-y-[2rem] md:px-[2rem]  md:space-x-10
+            lg:space-x-44 w-full flex-nowrap">
+				<div className=" flex flex-col w-full md:w-[43%]">
 					{/* shop Name */}
 					<label
 						htmlFor="shopName"
@@ -141,9 +139,9 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 				</div>
 
 				{/* second col */}
-				<div className="flex flex-col-reverse lg:w-full lg:py-[rem] lg:space-y-[2rem] ">
+				<div className="flex flex-col-reverse w-full lg:py-[rem] space-y-[2rem] ">
 					{/* display div */}
-					<img src={img} alt="" className="hidden lg:flex w-full max-h-[40vh] object-contain 
+					<img src={img} alt="" className="lg:flex w-full  max-h-[40vh] 2xl:max-h-[30vh] object-contain 
                order-3" />
 					{/* img */}
 					<button
@@ -163,7 +161,7 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 					/>
 
 					{/* button */}
-					<div className="flex flex-row justify-between gap-x-[3rem] order-1">
+					<div className="flex flex-row gap-x-[3rem] lg:gap-x-60 order-1 lg:self-center">
 						<button
 							type="submit"
 							disabled={
@@ -179,13 +177,13 @@ const CreateShop: React.FC<Props> = ({ openCreate, setOpenCreate }) => {
 						</button>
 						<button
 							onClick={() => {
-								setOpenCreate(false);
+								navigate(`/myAccount/shops/`);
 								clearAttributes();
 							}}
 							type="button"
 							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg
-                     self-center text-white text-[1rem] font-[700]  disabled:bg-gray-400">
-							Close
+                      text-white text-[1rem] font-[700]  disabled:bg-gray-400">
+							Back
 						</button>
 					</div>
 				</div>

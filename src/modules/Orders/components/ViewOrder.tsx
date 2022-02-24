@@ -13,7 +13,6 @@ interface Props {
 
 const ViewOrder: React.FC<Props> = ({ order, setOpenView }) => {
 	let navigate = useNavigate();
-	console.log(order);
 
 	return (
 		<div

@@ -92,7 +92,7 @@ const useEditShop = () => {
 
 	const updateShop = async (
 		e: React.FormEvent<HTMLFormElement>,
-		shopId: string
+		shopId: any
 	) => {
 		setLoad(true);
 		e.preventDefault();

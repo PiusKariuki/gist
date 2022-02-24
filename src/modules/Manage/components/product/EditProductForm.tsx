@@ -35,7 +35,6 @@ const EditProductForm: React.FC<Props> = ({ productId }) => {
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
-	console.log(images);
 
 	const setOpen = useSetRecoilState(productOpen);
 	const open = useRecoilValue(productOpen);

@@ -5,14 +5,9 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../../Hooks/shop/useEditShop";
 import useAddProduct from "../../Hooks/product/useAddProduct";
 import AddProduct from "../product/AddProduct";
+import { useNavigate, useParams } from "react-router-dom";
 
-interface Props {
-	open: boolean;
-	shopId: string;
-	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
+const EditShopModal: React.FC = () => {
 	const {
 		shopName,
 		email,
@@ -28,42 +23,37 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 		updateShop,
 		getShopById,
 	} = useEditShop();
-   
-	const { openProduct, setOpenProduct } = useAddProduct();
 
+	const { openProduct, setOpenProduct } = useAddProduct();
+   let navigate = useNavigate();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
 
 	const handleClick = () => {
 		hiddenInput.current.click();
 	};
+	let { shopId } = useParams<string>();
 
 	useEffect(() => {
 		getShopById(shopId);
 	}, [open]);
+
 	return (
-		<div
-			className={`${
-				open
-					? "flex flex-col rounded-2xl py-[3rem] w-[100vw]  relative"
-					: "hidden"
-			}`}>
+		<div className="flex flex-col rounded-2xl py-[5rem] w-[100vw]  relative">
 			<div className="px-[2rem]">{renderSpinner(load)}</div>
 			<button
 				onClick={() => setOpenProduct((prev: boolean) => !prev)}
-				className="bg-blue-20 text-white px-[1rem] py-[0.5rem] w-[10rem] self-center rounded-md
-            absolute top-10 right-6 ">
+				className="bg-blue-20 text-white px-[1rem] py-[0.3rem] w-[9rem] self-center rounded-md
+            absolute top-2 right-6 ">
 				{openProduct ? "Edit shop" : "Add Product"}
 			</button>
-			{!openProduct ? (
 				<form
 					onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 						updateShop(e, shopId);
-						// setOpen(false);
 					}}
-					className="flex flex-col lg:flex-row px-[2rem] gap-y-[0.5rem]  
-               md:px-[12rem] lg:px-[4rem] lg:gap-x-[4rem] lg:mt-[6rem]">
-					<div className=" flex flex-col w-full ">
+					className="flex flex-col md:flex-row px-[2rem] gap-y-[0.5rem]  
+               md:px-[2rem] lg:px-[4rem] md:gap-x-[4rem] lg:mt-[6rem]">
+					<div className=" flex flex-col w-full md:w-[40%] ">
 						{/* shop Name */}
 						<label
 							htmlFor="shopName"
@@ -130,7 +120,10 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 							inputProps={{
 								required: true,
 							}}
-							inputStyle={{ width: "100%", border: "3px solid rgb(59 130 246)" }}
+							inputStyle={{
+								width: "100%",
+								border: "3px solid rgb(59 130 246)",
+							}}
 						/>
 						<p className="text-red-20">{phoneErr}</p>
 						{/* text area */}
@@ -154,8 +147,15 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 					</div>
 
 					{/* second col */}
-					<div className="flex flex-col w-full max-h-screen">
-						<img src={img} alt="" className="hidden md:flex w-full h-[40vh] object-contain" />
+					<div className="flex flex-col w-full h-full max-h-screen md:pt-[4rem]">
+						<img
+							src={img}
+							alt=""
+							className="hidden md:flex w-full max-h-[40vh] md:max-h-[29vh] lg:max-h-[30vh]
+                     2xl:max-h-[15vh]
+                     object-contain
+                     "
+						/>
 						{/* img */}
 
 						<input
@@ -170,7 +170,7 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 						/>
 						<button
 							type="button"
-							className="blue-btn px-[1rem] py-[0.4rem] my-[3rem] lg:w-[40%]"
+							className="blue-btn px-[1rem] py-[0.4rem] my-[3rem] lg:w-[40%] self-center"
 							onClick={handleClick}>
 							Upload Image
 						</button>
@@ -184,27 +184,20 @@ const EditShopModal: React.FC<Props> = ({ open, shopId, setOpen }) => {
 									phone.length < 3
 								}
 								className="bg-blue-20 px-[1rem] py-[0.5rem] w-[6rem] rounded-lg
-                     self-center text-white text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">
+                     self-center text-white text-[1rem] font-[700] disabled:bg-gray-400">
 								Submit
 							</button>
 
 							<button
 								type="button"
-								onClick={() => setOpen(false)}
+								onClick={() => navigate(`/myAccount/shops/`)}
 								className="bg-red-20 px-[1rem] py-[0.5rem] w-[6rem] rounded-lg
-                     self-center text-white text-[1rem] font-[700] mt-[4rem] disabled:bg-gray-400">
-								Close
+                     self-center text-white text-[1rem] font-[700]  disabled:bg-gray-400">
+								Back
 							</button>
 						</div>
 					</div>
 				</form>
-			) : (
-				<AddProduct
-					openProduct={openProduct}
-					setOpenProduct={setOpenProduct}
-					shopId={shopId}
-				/>
-			)}
 		</div>
 	);
 };

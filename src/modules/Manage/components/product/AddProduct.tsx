@@ -1,19 +1,11 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useAddShop from "../../Hooks/product/useAddProduct";
 
-interface Props {
-	openProduct: boolean;
-	setOpenProduct: React.Dispatch<React.SetStateAction<boolean>>;
-	shopId: string;
-}
-const AddProduct: React.FC<Props> = ({
-	openProduct,
-	setOpenProduct,
-	shopId,
-}) => {
+const AddProduct: React.FC = () => {
 	const {
 		name,
 		price,
@@ -27,15 +19,14 @@ const AddProduct: React.FC<Props> = ({
 		removeImg,
 		desc,
 	} = useAddShop();
+	let { shopId } = useParams<string>();
+   let navigate = useNavigate();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
 	return (
-		<div
-			className={`${
-				openProduct ? "flex flex-col items-center mb-[4rem]" : "hidden"
-			}`}>
+		<div className="flex flex-col items-center mb-[4rem]">
 			<form
-         autoComplete="off"
+				autoComplete="off"
 				name="addProduct"
 				className="flex flex-col lg:flex-row  gap-x-[8rem] lg:px-[3rem] lg:w-full"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -145,7 +136,7 @@ const AddProduct: React.FC<Props> = ({
 						</button>
 						<button
 							type="button"
-							onClick={() => setOpenProduct(false)}
+							onClick={() => navigate(`/myAccount/shops/`)}
 							className=" blue-btn bg-red-20 px-[1.7rem] py-[0.4rem] hover:bg-red-500
                       rounded-md ">
 							Close
