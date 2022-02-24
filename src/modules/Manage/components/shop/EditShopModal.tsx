@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../../Hooks/shop/useEditShop";
 import useAddProduct from "../../Hooks/product/useAddProduct";

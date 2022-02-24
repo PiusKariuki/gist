@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import useManage from "../../Hooks/useManage";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import useSpinner from "shared/components/spinner/useSpinner";
 import { useNavigate } from "react-router-dom";
 

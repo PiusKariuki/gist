@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditProfile from "../../Hooks/profile/useEditProfile";
-import "react-phone-input-2/lib/style.css";
-import PhoneInput from "react-phone-input-2";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 

@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import useRegister from "../hooks/useRegister";
 import useSpinner from "shared/components/spinner/useSpinner";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -73,9 +73,9 @@ const Register = (): JSX.Element => {
 								required
 								type="text"
 								id="fname"
-								className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 
-                     focus:ring-blue-500"
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 						</div>
 
@@ -93,9 +93,9 @@ const Register = (): JSX.Element => {
 								required
 								type="text"
 								id="lname"
-								className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 
-                        focus:ring-blue-500"
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 						</div>
 					</div>
@@ -118,9 +118,9 @@ const Register = (): JSX.Element => {
 							required
 							type="text"
 							id="userName"
-							className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 
-                   focus:ring-blue-500"
+							className="h-[2.25rem] outline-none 
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                     ring-blue-500"
 						/>
 					</div>
 					{/*......................................
@@ -143,8 +143,9 @@ const Register = (): JSX.Element => {
 								id="bio"
 								rows={3}
 								cols={6}
-								className="border-[0.0625rem] border-black-70  outline-none text-blue-20
-                        rounded-[0.25rem] font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 						</div>
 
@@ -211,9 +212,9 @@ const Register = (): JSX.Element => {
 								required
 								type="text"
 								id="email"
-								className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none 
-                     text-blue-20
-                     rounded-[0.25rem]  font-bold px-[1rem] focus:ring-2 focus:ring-blue-500"
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{mailError ||
@@ -231,19 +232,23 @@ const Register = (): JSX.Element => {
 								Phone Number
 							</label>
 							<PhoneInput
-								// country={"ke"}
-								// value={phone}
-								// onChange={handlePhoneChange}
-								// inputProps={{
-								// 	required: true,
-								// }}
-								// inputStyle={{
-								// 	width: "100%",
-								// 	border: "1px solid black",
-								// 	color: "#8B5CF6",
-								// 	fontWeight: "bold",
-								// 	fontSize: "1.2rem",
-								// }}
+								required="true"
+								country={"ke"}
+								value={phone}
+								onChange={handlePhoneChange}
+								inputProps={{
+									required: true,
+								}}
+								inputStyle={{
+									width: "100%",
+									border: "1px solid black",
+									color: "#8B5CF6",
+									fontWeight: "bold",
+									fontSize: "1.2rem",
+								}}
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 						</div>
 					</div>
@@ -266,9 +271,9 @@ const Register = (): JSX.Element => {
 								value={password}
 								type="password"
 								id="pass"
-								className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] focus:ring-2
-                       focus:ring-blue-500"
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{passError || errors?.password?.message}
@@ -287,9 +292,9 @@ const Register = (): JSX.Element => {
 								value={confirmPassword}
 								type="password"
 								id="confirm"
-								className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] focus:ring-2
-                       focus:ring-blue-500"
+								className="h-[2.25rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{passError || errors?.password?.message}
@@ -304,8 +309,8 @@ const Register = (): JSX.Element => {
 						passError.length > 1 ||
 						mailError.length > 1 ||
 						load ||
-						phoneErr.length > 0 ||
-						phone.length < 4 ||
+						// phoneErr.length > 0 ||
+						// phone.length < 4 ||
 						confirmPassword !== password
 					}
 					type="submit"

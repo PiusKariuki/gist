@@ -15,7 +15,7 @@ const useRegister = () => {
 	const [lname, setLname] = useState("");
 	const [bio, setBio] = useState("");
 	const [userName, setUserName] = useState("");
-	const [phone, setPhone] = useState("");
+	const [phone, setPhone] = useState<any>();
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const [img, setImg] = useState<any>("");
@@ -24,9 +24,11 @@ const useRegister = () => {
 	const setUser = useSetRecoilState(user);
 
 	const handlePhoneChange = (e: string) => {
+      console.log(e);
+      
 		setPhone(e);
-		if (e.length < 5) setPhoneErr("please enter a valid phone number");
-		else setPhoneErr("");
+		// if (e?.length < 5) setPhoneErr("please enter a valid phone number");
+		// else setPhoneErr("");
 	};
 
 	const handleChange = (e: any) => {
