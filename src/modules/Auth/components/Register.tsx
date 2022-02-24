@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import useRegister from "../hooks/useRegister";
 import useSpinner from "shared/components/spinner/useSpinner";
 import PhoneInput from "react-phone-input-2";
-// import "react-phone-input-2/lib/style.css";
+import "react-phone-input-2/lib/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const Register: React.FC = (): JSX.Element => {
+const Register = (): JSX.Element => {
 	const {
 		mailError,
 		passError,
@@ -151,16 +151,16 @@ const Register: React.FC = (): JSX.Element => {
 						<div
 							className="flex flex-col md:flex-row w-[80vw] md:w-[60%] lg:w-[40%]
                      items-start md:mt-auto relative space-x-10 space-y-10">
-							<img
+							{/* <img
 								src={img}
 								className="xl:flex h-[10rem]  rounded-2xl object-contain
                           self-center top-[-300%] right-[0%]
                          w-[80vw] md:w-[60%] lg:w-[40%]
                          "
-							/>
+							/> */}
 
 							{/* img */}
-							<button
+							{/* <button
 								type="button"
 								className={`${
 									img?.length > 1
@@ -175,10 +175,10 @@ const Register: React.FC = (): JSX.Element => {
 								) : (
 									<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
 								)}
-							</button>
-							<p className="text-red-600 font-bold text-[1rem] text-center ml-[2rem]">
+							</button> */}
+							{/* <p className="text-red-600 font-bold text-[1rem] text-center ml-[2rem]">
 								{img?.length < 1 ? "Please Upload a profile Image" : null}
-							</p>
+							</p> */}
 
 							<input
 								onChange={handleChange}
