@@ -46,7 +46,7 @@ const Rooms = () => {
 					className="flex flex-col px-[1rem] md:px-[2rem] md:mt-[8rem] gap-y-[2rem]
                md:self-center w-full  md:h-[80vh]">
 					<button
-						className="red-btn md:absolute left-2 top-[60%] mb-[4rem]"
+						className="red-btn py-[0.5rem] md:absolute left-2 top-[60%] lg:top-[80%] mb-[4rem]"
 						onClick={() => setOpen((prev: boolean) => !prev)}>
 						from $ {price}
 					</button>
