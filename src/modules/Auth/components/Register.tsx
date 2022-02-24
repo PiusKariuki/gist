@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useRegister from "../hooks/useRegister";
 import useSpinner from "shared/components/spinner/useSpinner";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+// import "react-phone-input-2/lib/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -128,7 +128,7 @@ const Register: React.FC = (): JSX.Element => {
                *BIO and profile picture
                *
                ......................................*/}
-					<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
+					<div className="flex flex-col lg:flex-row gap-[2rem] md:gap-[2rem] items-start">
 						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
 							<label
 								htmlFor="bio"
@@ -148,7 +148,17 @@ const Register: React.FC = (): JSX.Element => {
 							/>
 						</div>
 
-						<div className="flex row w-[80vw] md:w-[60%] lg:w-[40%] items-start md:mt-auto relative">
+						<div
+							className="flex flex-col md:flex-row w-[80vw] md:w-[60%] lg:w-[40%]
+                     items-start md:mt-auto relative space-x-10 space-y-10">
+							<img
+								src={img}
+								className="xl:flex h-[10rem]  rounded-2xl object-contain
+                          self-center top-[-300%] right-[0%]
+                         w-[80vw] md:w-[60%] lg:w-[40%]
+                         "
+							/>
+
 							{/* img */}
 							<button
 								type="button"
@@ -157,7 +167,8 @@ const Register: React.FC = (): JSX.Element => {
 										? "bg-white text-green-40 font-[700]"
 										: "bg-blue-20 text-white"
 								}
-                        px-[6rem] py-[0.4rem] border-[0.2rem] border-black-70 mt-auto rounded-md`}
+                        self-center px-[6rem] py-[0.4rem] border-[0.2rem] border-black-70 mt-auto
+                         rounded-md`}
 								onClick={handleClick}>
 								{img?.length < 1 ? (
 									"Upload Image"
@@ -168,18 +179,9 @@ const Register: React.FC = (): JSX.Element => {
 							<p className="text-red-600 font-bold text-[1rem] text-center ml-[2rem]">
 								{img?.length < 1 ? "Please Upload a profile Image" : null}
 							</p>
-							<img
-								src={img}
-								className={
-									img.length < 1
-										? "hidden"
-										: "hidden absolute xl:flex max-h-[14rem] ml-[2rem] rounded-2xl border-[0.2rem] border-black-70 self-start top-[-300%] right-[0%]"
-								}
-							/>
 
 							<input
 								onChange={handleChange}
-								// required
 								ref={hiddenInput}
 								type="file"
 								id="img"

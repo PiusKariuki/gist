@@ -5,7 +5,7 @@ import {
 	faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartAtom, cartOpen } from "shared/recoil/cart";
@@ -14,7 +14,6 @@ import { searchInput } from "shared/recoil/search";
 import { user } from "shared/recoil/user";
 import useSearch from "../hooks/useSearch";
 
-
 const Topbar = () => {
 	const [searching, setSearching] = useState<boolean>(false);
 	let navigate = useNavigate();
@@ -22,9 +21,9 @@ const Topbar = () => {
 	const setCartOpen = useSetRecoilState(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
 	const cart = useRecoilValue<any>(cartAtom);
-	let { userName,token } = useRecoilValue<any>(user);
+	let { userName, token } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
-   
+
 	let number = cart.length;
 
 	return (
@@ -75,19 +74,6 @@ const Topbar = () => {
 						navigate("/");
 					}}
 				/>
-				{/* <FontAwesomeIcon
-					icon={faArrowRight}
-					size="1x"
-					color="blue"
-					className={`${
-						searching
-							? "absolute right-[5%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem]"
-							: "hidden md:absolute right-[5%] top-[30%]"
-					}`}
-					onClick={() => {
-						navigate("/searching");
-					}}
-				/> */}
 			</div>
 			{token === undefined ? (
 				<button
@@ -129,19 +115,21 @@ const Topbar = () => {
 					{number}
 				</div>
 			</div>
-			<FontAwesomeIcon
-				onClick={() => {
-					setMenuOpen((prev: boolean) => !prev);
-					setCartOpen((prev: boolean) => (prev ? !prev : prev));
-				}}
-				icon={faBars}
-				color="blue"
-				className={`${
-					searching
-						? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
-						: "self-center md:ml-[2rem] fa-lg md:fa-3x"
-				}`}
-			/>
+			{token?.length > 0 ? (
+				<FontAwesomeIcon
+					onClick={() => {
+						setMenuOpen((prev: boolean) => !prev);
+						setCartOpen((prev: boolean) => (prev ? !prev : prev));
+					}}
+					icon={faBars}
+					color="blue"
+					className={`${
+						searching
+							? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
+							: "self-center md:ml-[2rem] fa-lg md:fa-3x"
+					}`}
+				/>
+			) : null}
 		</div>
 	);
 };
