@@ -4,6 +4,7 @@ import { Axios } from "shared/http/Http";
 import { user } from "shared/recoil/user";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
 import { getBase64 } from "shared/toBase64/encode";
+import Swal from "sweetalert2";
 
 const useRegister = () => {
 	const [mailError, setMailError] = useState("");
@@ -24,8 +25,8 @@ const useRegister = () => {
 	const setUser = useSetRecoilState(user);
 
 	const handlePhoneChange = (e: string) => {
-      console.log(e);
-      
+		console.log(e);
+
 		setPhone(e);
 		// if (e?.length < 5) setPhoneErr("please enter a valid phone number");
 		// else setPhoneErr("");
@@ -73,14 +74,14 @@ const useRegister = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch((err) => console.log(err));
+					.catch((err) =>err);
 				break;
 			default:
 				break;
 		}
 	};
 
-	const register = async (e: any) => {  
+	const register = async (e: any) => {
 		e.preventDefault();
 		setLoad(true);
 		setErrors({});
@@ -101,9 +102,13 @@ const useRegister = () => {
 			setLoad(false);
 			setErrors("");
 		} catch (e: any) {
-			if (e.response.data?.code === 11000) {
-				setMailError("This email is already registered");
-			}
+			console.log(e.response.data.message);
+         
+			Swal.fire({
+				icon: "error",
+				title: e.response.data.message,
+			});
+
 			setErrors(e?.response?.data);
 			setLoad(false);
 		}
@@ -126,7 +131,8 @@ const useRegister = () => {
 		phoneErr,
 		handlePhoneChange,
 		confirmPassword,
-      img
+		img,
+		setImg,
 	};
 };
 

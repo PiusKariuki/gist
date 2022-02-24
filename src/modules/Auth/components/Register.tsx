@@ -5,7 +5,7 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Register = (): JSX.Element => {
 	const {
@@ -26,6 +26,7 @@ const Register = (): JSX.Element => {
 		handlePhoneChange,
 		confirmPassword,
 		img,
+		setImg,
 	} = useRegister();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -35,7 +36,9 @@ const Register = (): JSX.Element => {
 	};
 
 	return (
-		<div className="flex flex-col lg:flex-row gap-x-[2.5rem] relative">
+		<div
+			className="flex flex-col md:flex-row gap-x-[2.5rem] relative w-screen overflow-x-clip
+         px-[2rem] py-[4rem]">
 			<div
 				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
             bg-gray-200 -z-10 rounded-br-full"
@@ -46,20 +49,21 @@ const Register = (): JSX.Element => {
 			/>
 			<form
 				autoComplete="off"
-				className="flex flex-col w-full py-[2rem] px-[2rem] lg:px-[4rem]
-            justify-around"
+				className="flex flex-col w-full py-[2rem] "
 				onSubmit={register}>
-				<p className="text-[2.2rem] text-blue-20 font-[900] mb-[1rem] justify-center">
-					SIGN UP TO GIST SHOP
+				<p
+					className="text-[1.2rem] lg:text-[2.2rem] text-blue-20 font-[900] mb-[1rem] 
+               justify-center">
+					Sign up to GIST-SHOP
 				</p>
-				<div className="flex flex-col w-screen ">
+				<div className="flex flex-col">
 					{/*......................................
                *
                *names div
                *
                ......................................*/}
-					<div className="flex flex-col lg:flex-row  gap-[0rem] md:gap-[2rem] items-start">
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
+					<div className="flex flex-col md:flex-row md:space-x-10">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
 							{/* fname */}
 							<label
 								htmlFor="fname"
@@ -73,18 +77,18 @@ const Register = (): JSX.Element => {
 								required
 								type="text"
 								id="fname"
-								className="h-[2.25rem] outline-none 
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
                         text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
                         ring-blue-500"
 							/>
 						</div>
 
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
 							{/* lname */}
 							<label
 								htmlFor="lname"
 								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                     mt-[3rem] mb-[0.5rem]">
+                        mt-[3rem] mb-[0.5rem]">
 								Last Name
 							</label>
 							<input
@@ -93,112 +97,20 @@ const Register = (): JSX.Element => {
 								required
 								type="text"
 								id="lname"
-								className="h-[2.25rem] outline-none 
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
                         text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        ring-blue-500 "
 							/>
 						</div>
 					</div>
 
 					{/*......................................
-            *
-            *USERNAME
-            *
-             ......................................*/}
-					<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
-						<label
-							htmlFor="userName"
-							className="font-bold leading-[1.2rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-                      mb-[0.5rem]">
-							Username
-						</label>
-						<input
-							onChange={handleChange}
-							value={userName}
-							required
-							type="text"
-							id="userName"
-							className="h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                     ring-blue-500"
-						/>
-					</div>
-					{/*......................................
-               *
-               *BIO and profile picture
-               *
-               ......................................*/}
-					<div className="flex flex-col lg:flex-row gap-[2rem] md:gap-[2rem] items-start">
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
-							<label
-								htmlFor="bio"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                        mt-[3rem] mb-[0.5rem]">
-								Bio
-							</label>
-							<textarea
-								onChange={handleChange}
-								value={bio}
-								required
-								id="bio"
-								rows={3}
-								cols={6}
-								className="h-[2.25rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
-							/>
-						</div>
-
-						<div
-							className="flex flex-col md:flex-row w-[80vw] md:w-[60%] lg:w-[40%]
-                     items-start md:mt-auto relative space-x-10 space-y-10">
-							<img
-								src={img}
-								className="xl:flex h-[10rem]  rounded-2xl object-contain
-                          self-center top-[-300%] right-[0%]
-                         w-[80vw] md:w-[60%] lg:w-[40%]
-                         "
-							/>
-
-							{/* img */}
-							<button
-								type="button"
-								className={`${
-									img?.length > 1
-										? "bg-white text-green-40 font-[700]"
-										: "bg-blue-20 text-white"
-								}
-                        self-center px-[6rem] py-[0.4rem] border-[0.2rem] border-black-70 mt-auto
-                         rounded-md`}
-								onClick={handleClick}>
-								{img?.length < 1 ? (
-									"Upload Image"
-								) : (
-									<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
-								)}
-							</button>
-							<p className="text-red-600 font-bold text-[1rem] text-center ml-[2rem]">
-								{img?.length < 1 ? "Please Upload a profile Image" : null}
-							</p>
-
-							<input
-								onChange={handleChange}
-								ref={hiddenInput}
-								type="file"
-								id="img"
-								accept="image/png"
-								className="hidden"
-							/>
-						</div>
-					</div>
-
-					{/*......................................
-            *
-            *EMAIL AND PHONE NUMBER
-            *
-            ......................................*/}
-					<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
+                  *
+                  *EMAIL AND PHONE NUMBER
+                  *
+                  ......................................*/}
+					<div className="flex flex-col md:flex-row  md:space-x-10 ">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
 							{/* email */}
 							<label
 								htmlFor="email"
@@ -212,7 +124,7 @@ const Register = (): JSX.Element => {
 								required
 								type="text"
 								id="email"
-								className="h-[2.25rem] outline-none 
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
                         text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
                         ring-blue-500"
 							/>
@@ -223,7 +135,7 @@ const Register = (): JSX.Element => {
 							</p>
 						</div>
 
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
 							{/* Phone */}
 							<label
 								htmlFor="phone"
@@ -232,21 +144,11 @@ const Register = (): JSX.Element => {
 								Phone Number
 							</label>
 							<PhoneInput
-								required="true"
+								required={true}
 								country={"ke"}
 								value={phone}
 								onChange={handlePhoneChange}
-								inputProps={{
-									required: true,
-								}}
-								inputStyle={{
-									width: "100%",
-									border: "1px solid black",
-									color: "#8B5CF6",
-									fontWeight: "bold",
-									fontSize: "1.2rem",
-								}}
-								className="h-[2.25rem] outline-none 
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
                         text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
                         ring-blue-500"
 							/>
@@ -254,16 +156,110 @@ const Register = (): JSX.Element => {
 					</div>
 
 					{/*......................................
+               *
+               *BIO and profile picture
+               *
+               ......................................*/}
+					<div className="flex flex-col md:flex-row space-y-10 md:space-x-10 ">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
+							<label
+								htmlFor="bio"
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                        mt-[3rem] mb-[0.5rem]">
+								Bio
+							</label>
+							<textarea
+								onChange={handleChange}
+								value={bio}
+								required
+								id="bio"
+								rows={3}
+								cols={6}
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                        ring-blue-500"
+							/>
+						</div>
+
+						<div
+							className="flex flex-col md:flex-row w-[90%] md:w-[40%] space-x-10
+                     space-y-10">
+							{img.length > 1 ? (
+								<div className="flex relative h-[10rem]">
+									<img
+										src={img}
+										className="flex h-[10rem]  rounded-2xl object-contain self-center 
+                              top-[-300%] right-[0%] w-[80vw] md:w-[60%] lg:w-[40%]"
+									/>
+									<FontAwesomeIcon
+										onClick={() => setImg("")}
+										icon={faTrash}
+										size="3x"
+										className="absolute top-[50%] left-[50%] opacity-90 text-red-500
+                              bg-gray-50 trans"
+									/>
+								</div>
+							) : (
+								<>
+									<button
+										type="button"
+										className="bg-blue-500 self-center w-full px-[1rem] py-[0.4rem]
+                             mt-auto rounded-md font-[600] text-white"
+										onClick={handleClick}>
+										Upload Profile Photo
+									</button>
+									<p className="text-red-600 font-bold text-[1rem] text-center">
+										Please upload a photo
+									</p>
+								</>
+							)}
+
+							<input
+								onChange={handleChange}
+								ref={hiddenInput}
+								type="file"
+								id="img"
+								accept="image/png"
+								className="hidden"
+							/>
+						</div>
+					</div>
+
+					{/*......................................
+                  *
+                  *USERNAME
+                  *
+               ......................................*/}
+					<div className="flex flex-col w-[90%] md:w-[40%]">
+						<label
+							htmlFor="userName"
+							className="font-bold leading-[1.2rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
+                      mb-[0.5rem]">
+							Username
+						</label>
+						<input
+							onChange={handleChange}
+							value={userName}
+							required
+							type="text"
+							id="userName"
+							className="py-[0.1rem] md:py-[0.3rem] outline-none 
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
+                     ring-blue-500"
+						/>
+					</div>
+
+					{/*......................................
                   *
                   *PASSWORD and confirm password
                   *
                   ......................................*/}
-					<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem]">
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
+					<div className="flex flex-col md:flex-row  md:space-x-10">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
 							<label
 								htmlFor="pass"
-								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-                     mb-[0.5rem]">
+								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
+                        mt-[3rem] mb-[0.5rem]">
 								Password
 							</label>
 							<input
@@ -271,7 +267,7 @@ const Register = (): JSX.Element => {
 								value={password}
 								type="password"
 								id="pass"
-								className="h-[2.25rem] outline-none 
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
                         text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
                         ring-blue-500"
 							/>
@@ -280,7 +276,7 @@ const Register = (): JSX.Element => {
 							</p>
 						</div>
 
-						<div className="flex flex-col w-[80vw] md:w-[60%] lg:w-[40%]">
+						<div className="flex flex-col w-[90%] md:w-[40%]">
 							<label
 								htmlFor="pass"
 								className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
@@ -292,7 +288,7 @@ const Register = (): JSX.Element => {
 								value={confirmPassword}
 								type="password"
 								id="confirm"
-								className="h-[2.25rem] outline-none 
+								className="py-[0.1rem] md:py-[0.3rem] outline-none 
                         text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
                         ring-blue-500"
 							/>
@@ -309,8 +305,7 @@ const Register = (): JSX.Element => {
 						passError.length > 1 ||
 						mailError.length > 1 ||
 						load ||
-						// phoneErr.length > 0 ||
-						// phone.length < 4 ||
+						phone?.length < 4 ||
 						confirmPassword !== password
 					}
 					type="submit"
