@@ -15,14 +15,11 @@ const useManage = () => {
 	const [email, setEmail] = useState<string>("");
 	const [phone, setPhone] = useState<string>("");
 	const [mailError, setMailError] = useState<string>("");
-	const [phoneErr, setPhoneErr] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
-		if (e.length < 5) setPhoneErr("please enter a valid phone number");
-		else setPhoneErr("");
 	};
 
 	const handleChange = (e: any) => {
@@ -96,7 +93,6 @@ const useManage = () => {
 		setLocation("");
 		setMailError("");
 		setPhone("");
-		setPhoneErr("");
 		setShopName("");
 	};
 
@@ -110,10 +106,10 @@ const useManage = () => {
 		createShop,
 		handleChange,
 		handlePhoneChange,
-		phoneErr,
 		mailError,
 		load,
-      clearAttributes
+      clearAttributes,
+      setImg
 	};
 };
 

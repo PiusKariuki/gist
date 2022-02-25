@@ -4,9 +4,10 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import useSpinner from "shared/components/spinner/useSpinner";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-
-const CreateShop: React.FC= () => {
+const CreateShop: React.FC = () => {
 	const {
 		shopName,
 		email,
@@ -17,14 +18,14 @@ const CreateShop: React.FC= () => {
 		createShop,
 		handleChange,
 		handlePhoneChange,
-		phoneErr,
 		mailError,
 		load,
 		clearAttributes,
+		setImg,
 	} = useManage();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
-   let navigate = useNavigate();
+	let navigate = useNavigate();
 
 	const handleClick = () => {
 		hiddenInput.current.click();
@@ -105,19 +106,14 @@ const CreateShop: React.FC= () => {
 						Shop Telephone
 					</label>
 					<PhoneInput
+						required={true}
 						country={"us"}
 						value={phone}
 						onChange={handlePhoneChange}
-						inputProps={{
-							required: true,
-						}}
-						inputStyle={{
-							width: "100%",
-							border: "2.5px solid rgb(59 130 246)",
-						}}
-						inputClass="w-24 border-2"
+						className="h-[2.25rem] outline-none 
+                  text-blue-20 border-0 text-[1.3rem] tracking-wider
+                  rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
 					/>
-					<p className="text-red-20">{phoneErr}</p>
 					{/* text area */}
 					<label
 						htmlFor="desc"
@@ -139,38 +135,13 @@ const CreateShop: React.FC= () => {
 				</div>
 
 				{/* second col */}
-				<div className="flex flex-col-reverse w-full lg:py-[rem] space-y-[2rem] ">
-					{/* display div */}
-					<img src={img} alt="" className="lg:flex w-full  max-h-[40vh] 2xl:max-h-[30vh] object-contain 
-               order-3" />
-					{/* img */}
-					<button
-						type="button"
-						className="blue-btn px-[1rem] py-[0.3rem] lg:w-[40%] lg:self-center order-2"
-						onClick={handleClick}>
-						Upload Image
-					</button>
-					<input
-						onChange={handleChange}
-						required
-						ref={hiddenInput}
-						type="file"
-						id="img"
-						accept="image/png"
-						className="hidden"
-					/>
-
+				<div className="flex flex-col-reverse w-full lg:py-[rem] gap-y-[2rem] ">
 					{/* button */}
-					<div className="flex flex-row gap-x-[3rem] lg:gap-x-60 order-1 lg:self-center">
+					<div className="flex w-full flex-row gap-x-[3rem] lg:gap-x-60 order-1 
+                  md:justify-between">
 						<button
 							type="submit"
-							disabled={
-								mailError.length > 0 ||
-								load ||
-								phoneErr.length > 0 ||
-								phone.length < 3 ||
-								img.length < 1
-							}
+							disabled={mailError.length > 0 || load || img.length < 1}
 							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
                      text-[1rem] font-[700] disabled:bg-gray-400">
 							Submit
@@ -186,6 +157,41 @@ const CreateShop: React.FC= () => {
 							Back
 						</button>
 					</div>
+
+					{img.length > 0 ? (
+						<div className="flex relative  order-3">
+							<img
+								src={img}
+								className=" flex  max-h-[14rem] md:max-h-[25rem] lg:max-h-[25rem] w-full 
+                        object-contain 
+                        order-3"
+							/>
+							<FontAwesomeIcon
+								onClick={() => setImg("")}
+								icon={faTrash}
+								size="3x"
+								className="absolute top-[50%] left-[50%] opacity-90 text-red-500
+                        bg-gray-50 trans"
+							/>
+						</div>
+					) : (
+						<button
+							type="button"
+							className="bg-blue-500 self-center w-full px-[1rem] py-[0.4rem]
+                     mt-auto rounded-md font-[600] text-white order-3"
+							onClick={handleClick}>
+							Upload profile photo
+						</button>
+					)}
+					<input
+						onChange={handleChange}
+						required
+						ref={hiddenInput}
+						type="file"
+						id="img"
+						accept="image/png"
+						className="hidden"
+					/>
 				</div>
 			</form>
 		</div>
