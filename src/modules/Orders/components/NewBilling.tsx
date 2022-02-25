@@ -24,6 +24,7 @@ const NewBilling = () => {
 			<div className="absolute top-[10%] left-[35%] z-10">
 				{renderSpinner(load)}
 			</div>
+         
 			<div
 				onClick={() => navigate(`/orders/existing`)}
 				className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 

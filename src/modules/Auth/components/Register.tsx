@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useRegister from "../hooks/useRegister";
 import useSpinner from "shared/components/spinner/useSpinner";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faHouseUser, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Register = (): JSX.Element => {
 	const {
@@ -30,7 +30,7 @@ const Register = (): JSX.Element => {
 	} = useRegister();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
-
+	let navigate = useNavigate();
 	const handleClick = () => {
 		hiddenInput.current.click();
 	};
@@ -38,7 +38,22 @@ const Register = (): JSX.Element => {
 	return (
 		<div
 			className="flex flex-col md:flex-row gap-x-[2.5rem] relative w-screen overflow-x-clip
-         px-[2rem] py-[4rem]">
+         px-[2rem] py-[4rem] lg:px-[5rem]">
+			{/*......................................
+               *HOME
+            ......................................*/}
+			<div
+				onClick={() => navigate(`/`)}
+				className=" absolute -top-10 right-0 bg-white
+            flex  flex-row w-[8rem] md:w-[15rem] px-[1.2rem] md:px-[2rem] 
+            py-[0.5rem] 
+            shadow-2xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
+            items-center cursor-pointer">
+				<FontAwesomeIcon icon={faHouseUser} size="2x" />
+				<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
+					Home.
+				</p>
+			</div>
 			<div
 				className="invisible md:visible absolute w-[40rem] h-[40rem] top-0 left-0 
             bg-gray-200 -z-10 rounded-br-full"
@@ -51,12 +66,12 @@ const Register = (): JSX.Element => {
 				autoComplete="off"
 				className="flex flex-col w-full py-[2rem] "
 				onSubmit={register}>
-				<p
-					className="text-[1.2rem] lg:text-[2.2rem] text-blue-20 font-[900] mb-[1rem] 
-               justify-center">
-					Sign up to GIST-SHOP
-				</p>
 				<div className="flex flex-col">
+					<p
+						className="text-[1.2rem] lg:text-[2.2rem] text-blue-20 font-[900] mb-[1rem] 
+               justify-center">
+						Sign up to GIST-SHOP
+					</p>
 					{/*......................................
                *
                *names div

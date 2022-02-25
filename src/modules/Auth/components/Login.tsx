@@ -1,8 +1,8 @@
 
-import { faKey, faUserLock } from "@fortawesome/free-solid-svg-icons";
+import { faHouseUser, faKey, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useLogin from "../hooks/useLogin";
 
@@ -18,11 +18,28 @@ const Login: React.FC = (): JSX.Element => {
 		passErrors,
 	} = useLogin();
 	const { renderSpinner } = useSpinner();
+   let navigate = useNavigate();
 
 	return (
 		<div
 			className="flex flex-col bg-transparent md:bg-expectrum bg-center bg-cover
          py-[6rem] md:py-[3rem] px-[1rem] min-h-screen">
+			{/*......................................
+               *HOME
+            ......................................*/}
+			<div
+				onClick={() => navigate(`/`)}
+				className=" absolute -top-10 right-0 bg-white
+            flex  flex-row w-[8rem] md:w-[15rem] px-[1.2rem] md:px-[2rem] 
+            py-[0.5rem] 
+            shadow-2xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
+            items-center cursor-pointer">
+				<FontAwesomeIcon icon={faHouseUser} size="2x" />
+				<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
+					Home.
+				</p>
+			</div>
+
 			{/*......................................
             *
             *PADLOCK DIV
@@ -53,9 +70,12 @@ const Login: React.FC = (): JSX.Element => {
 					autoComplete="off"
 					className="flex flex-col items-center space-y-[1.5rem] md:self-end md:bg-gray-100
                 w-full md:py-[4rem] md:rounded-r-3xl">
-                   <p className="text-[1.2rem] font-[900]"> Login to your GIST-SHOP account</p>
+					<p className="text-[1.2rem] font-[900]">
+						{" "}
+						Login to your GIST-SHOP account
+					</p>
 
-                   <hr />
+					<hr />
 					{/*......................................
                      *
                      ......................................*/}
