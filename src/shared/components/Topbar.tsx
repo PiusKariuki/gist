@@ -21,7 +21,7 @@ const Topbar = () => {
 	const setCartOpen = useSetRecoilState(cartOpen);
 	const setMenuOpen = useSetRecoilState(menuOpen);
 	const cart = useRecoilValue<any>(cartAtom);
-	let { userName, token } = useRecoilValue<any>(user);
+	let { userName, token, wallet } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
 
 	let number = cart.length;
@@ -44,16 +44,13 @@ const Topbar = () => {
 						setSearching(true);
 						navigate("/searching");
 					}}
-					onBlur={() => {
-						// setInput("");
-					}}
 					onChange={handleChange}
 					className={`${
 						searching
-							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[65vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
+							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
 							: token?.length < 1
-							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[65vw]"
-							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[65vw]"
+							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 					}`}
 					placeholder="Type a product or shop name"
 					value={input}
@@ -91,7 +88,7 @@ const Topbar = () => {
 				<p
 					className="invisible 425:visible text-blue-20 text-center self-center lg:text-[1rem] 
          ">
-					Hello🖐 {userName}
+					Hello🖐 {userName}, GC {wallet}
 				</p>
 			)}
 			<div

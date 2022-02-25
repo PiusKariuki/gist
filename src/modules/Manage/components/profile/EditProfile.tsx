@@ -4,7 +4,7 @@ import useEditProfile from "../../Hooks/profile/useEditProfile";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const EditProfile = () => {
 	const {
@@ -25,6 +25,7 @@ const EditProfile = () => {
 		handleSubmit,
 		confirmPassword,
 		img,
+      setImg
 	} = useEditProfile();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -176,17 +177,11 @@ const EditProfile = () => {
 						<PhoneInput
 							country={"ke"}
 							value={phone}
+							required={true}
 							onChange={handlePhoneChange}
-							inputProps={{
-								required: true,
-							}}
-							inputStyle={{
-								width: "100%",
-								border: "2.5px solid rgb(59 130 246)",
-								color: "#8B5CF6",
-								fontWeight: "bold",
-								fontSize: "1.2rem",
-							}}
+							className="h-[2.25rem] outline-none 
+                     text-blue-20 border-0 text-[1.3rem] tracking-wider
+                     rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
 						/>
 					</div>
 				</div>
@@ -195,11 +190,29 @@ const EditProfile = () => {
                *BTN AND IMAGE
             ......................................*/}
 				<div className="flex flex-col  w-[80vw] md:w-[80%] lg:w-[40%] my-[2rem] space-y-10">
-					<img
-						src={img}
-						className={img.length < 1 ? "hidden" :
-                   " flex max-h-[14rem] w-full object-contain"}
-					/>
+					{img.length > 0 ? (
+						<div className="flex relative h-40">
+							<img
+								src={img}
+								className=" flex max-h-[14rem] w-full object-contain"
+							/>
+							<FontAwesomeIcon
+								onClick={() => setImg("")}
+								icon={faTrash}
+								size="3x"
+								className="absolute top-[50%] left-[50%] opacity-90 text-red-500
+                              bg-gray-50 trans"
+							/>
+						</div>
+					) : (
+						<button
+							type="button"
+							className="bg-blue-500 self-center w-full px-[1rem] py-[0.4rem]
+                     mt-auto rounded-md font-[600] text-white"
+							onClick={handleClick}>
+							Upload profile photo
+						</button>
+					)}
 
 					<input
 						onChange={handleChange}
@@ -212,22 +225,6 @@ const EditProfile = () => {
 						className="hidden"
 					/>
 					{/* img */}
-					<button
-						type="button"
-						className={`${
-							img?.length > 1
-								? "bg-white text-green-40 font-[700] "
-								: "bg-blue-20 text-white text-[1.1rem] font-bold"
-						}
-                        w-full px-[4rem] md:px-[2rem] py-[0.4rem] self-end
-                         border-[0.2rem]  border-black-70 mt-[2rem] md:mt-0 rounded-md`}
-						onClick={handleClick}>
-						{img?.length < 1 ? (
-							"Upload Image"
-						) : (
-							<FontAwesomeIcon icon={faCheck} size="2x" color="green" />
-						)}
-					</button>
 				</div>
 				{/*......................................
                   *
@@ -291,8 +288,8 @@ const EditProfile = () => {
 					confirmPassword !== password
 				}
 				type="submit"
-				className="bg-blue-20 py-[0.5rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
-               font-bold w-[12rem] hover:bg-blue-600 self-start disabled:bg-gray-400">
+				className="bg-blue-20 py-[0.2rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
+               font-bold w-full md:w-[40%] lg:w-[40%] hover:bg-blue-600 self-start disabled:bg-gray-400">
 				Submit
 			</button>
 		</form>

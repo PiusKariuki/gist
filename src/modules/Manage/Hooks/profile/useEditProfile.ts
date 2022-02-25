@@ -30,8 +30,6 @@ const useEditProfile = () => {
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
-		if (e.length < 5) setPhoneErr("please enter a valid phone number");
-		else setPhoneErr("");
 	};
 
 	const handleChange = (e: any) => {
@@ -131,6 +129,7 @@ const useEditProfile = () => {
 		handleSubmit,
 		confirmPassword,
 		img,
+      setImg
 	};
 };
 
