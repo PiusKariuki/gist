@@ -48,11 +48,6 @@ const RecentRooms: React.FC<Props> = ({
             bg-contain rounded-xl py-[1rem]
             border-[0.1rem]"
 				style={{ backgroundImage: `url(${imgUrl}/${shopImage})` }}>
-				<p
-					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
-            bg-black-80 px-[1rem]">
-					from $ {price}
-				</p>
 			</div>
 		</div>
 	);

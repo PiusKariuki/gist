@@ -8,12 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-
 const Navbar: React.FC = (): JSX.Element => {
 	return (
 		<div
 			className="flex flex-row bg-white px-[0.5rem] py-[2rem] lg:py-[1rem] lg:px-[4rem]
-          items-start space-x-2  lg:space-x-5 w-screen shadow-xl">
+           space-x-2  lg:space-x-5 w-screen shadow-xl">
 			{/*......................................
             *HOME
          ......................................*/}
@@ -28,8 +27,8 @@ const Navbar: React.FC = (): JSX.Element => {
 				<p className="hidden md:flex text-[0.9rem] md:text-[1.2rem] font-[400]">
 					Home
 				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			</NavLink>
+			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			{/*......................................
                *PROFILE
             ......................................*/}
@@ -44,8 +43,8 @@ const Navbar: React.FC = (): JSX.Element => {
 				<p className="hidden md:flex text-[0.9rem] md:text-[1.2rem] font-[400]">
 					Profile
 				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			</NavLink>
+			<p className="lg:text-[2rem] text-black-80 font-[500] self-center">/</p>
 			{/*......................................
             *SHOP
          ......................................*/}
@@ -57,11 +56,9 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">
-					My Shops
-				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
+				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">My Shops</p>
 			</NavLink>
+			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			{/*......................................
             *ORDERS
          ......................................*/}
@@ -73,11 +70,9 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">
-					My Orders
-				</p>
-				<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
+				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">My Orders</p>
 			</NavLink>
+			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 		</div>
 	);
 };

@@ -27,8 +27,8 @@ const Wallet = () => {
 				</p>
 			<div className="flex flex-col md:flex-row gap-y-4 gap-x-10 items-center">
 				{transactions?.map((trans: any, key: number) => (
-					<div key={key} className="flex flex-col shadow-lg px-[2rem] py-[1rem] h-[6rem] 
-               space-y-6 rounded-xl">
+					<div key={key} className="flex flex-col shadow-lg px-[2rem] py-[1rem] h-[8rem] 
+               md:h-[10rem] justify-center space-y-6 rounded-xl">
 						<p className="text-[1rem] md:text-[1.1rem]">
 							{new Date(trans.createdAt).toLocaleString()}
 						</p>

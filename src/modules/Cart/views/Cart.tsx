@@ -46,12 +46,12 @@ const Cart = () => {
 
 			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
 				<p className="font-[500]">Estimated shipping</p>
-				<p className="font-[600] text-blue-20">$0.00</p>
+				<p className="font-[600] text-blue-20">GC0.00</p>
 			</div>
 
 			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
 				<p className="font-[500]">Estimated tax</p>
-				<p className="font-[600] text-blue-20">$0.00</p>
+				<p className="font-[600] text-blue-20">GC0.00</p>
 			</div>
 
 			<div
@@ -59,7 +59,7 @@ const Cart = () => {
             self-end">
 				<p className="font-[500]">Estimated total</p>
 				<p className="font-[600] text-blue-20 text-left">
-					${isNaN(totalValue) ? 0 : totalValue}
+					GC{isNaN(totalValue) ? 0 : totalValue}
 				</p>
 			</div>
 

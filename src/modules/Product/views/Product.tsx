@@ -100,7 +100,7 @@ const Product: React.FC = (): JSX.Element => {
 								? "$" + product.price
 								: product.price === undefined
 								? ""
-								: "$" + product?.price}
+								: "GC" + product?.price}
 						</p>
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}
@@ -175,7 +175,7 @@ const Product: React.FC = (): JSX.Element => {
 				</div>
 			</div>
 
-			<div className="hidden md:flex flex-row gap-[2rem]">
+			<div className="hidden md:flex flex-row gap-[2rem] overflow-x-scroll max-w-[80vw]">
 				{product?.images?.map((img: string, key: number) => {
 					return (
 						<div
