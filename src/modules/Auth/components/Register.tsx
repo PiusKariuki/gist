@@ -146,7 +146,7 @@ const Register = (): JSX.Element => {
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{mailError ||
 									errors?.email?.message ||
-									(errors.length > 1 && errors)}
+									(errors?.length > 1 && errors)}
 							</p>
 						</div>
 
@@ -199,7 +199,7 @@ const Register = (): JSX.Element => {
 						<div
 							className="flex flex-col md:flex-row w-[90%] md:w-[40%] space-x-10
                      space-y-10">
-							{img.length > 1 ? (
+							{img?.length > 1 ? (
 								<div className="flex relative h-[10rem]">
 									<img
 										src={img}
@@ -317,11 +317,12 @@ const Register = (): JSX.Element => {
 				<div className="mt-[1rem]">{renderSpinner(load)}</div>
 				<button
 					disabled={
-						passError.length > 1 ||
-						mailError.length > 1 ||
+						passError?.length > 1 ||
+						mailError?.length > 1 ||
 						load ||
 						phone?.length < 4 ||
-						confirmPassword !== password
+						confirmPassword !== password ||
+						img?.length < 1
 					}
 					type="submit"
 					className="btn py-[0.5rem] mt-[3rem] md:max-w-[7rem] text-white text-[1.2rem]

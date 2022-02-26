@@ -118,7 +118,7 @@ const Login: React.FC = (): JSX.Element => {
 					{renderSpinner(load)}
 					<div className="flex flex-col w-[80vw] md:w-[20vw] space-y-4">
 						<button
-							disabled={passErrors.length > 1 || mailErrors.length > 1}
+							disabled={passErrors?.length > 1 || mailErrors?.length > 1}
 							type="submit"
 							className="btn bg-blue-20  hover:bg-blue-500 text-[1.2rem]
                      text-white py-[0.3rem]">
