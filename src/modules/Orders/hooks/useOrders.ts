@@ -22,36 +22,38 @@ const useOrders = () => {
 	let navigate = useNavigate();
 	const [shippingFee, setShippingFee] = useState(0);
 	const [tax, setTax] = useState(0);
+	const [shippingName, setShippingName] = useState<any>("");
+	const [openPreview, setOpenPreview] = useState(false);
 
-	const handleAutofill = (e: any) => {
-		let id = e.target.id;
-		switch (id) {
-			case "bill":
-				setBilling(e.target.value);
-				break;
-
-			case "ship":
-				setShipping(e.target.value);
-				break;
-
-			default:
-				break;
+	const getShippingById = async () => {
+		setLoad(true);
+		setLoad(false);
+		try {
+			let { data } = await Axios.get(`/address/${shipping}`);
+			setShippingName(data.name);
+		} catch (error) {
+			setLoad(false);
+			Swal.fire({
+				icon: "error",
+				text: "This shipping address is not available",
+			});
 		}
 	};
 
-	const handleChange = (e: any) => {
-		let id = e.target.id;
-		switch (id) {
-			case "billing":
-				setBilling(e.target.value);
-				break;
-
-			case "shipping":
-				setShipping(e.target.value);
-				break;
-
-			default:
-				break;
+	const handleChange = async (e: any) => {
+		setLoad(true);
+		setShipping(e.target.value);
+		try {
+			let { data } = await Axios.get(`/address/${e.target.value}`);
+			setShippingName(data.name);
+			setLoad(false);
+			setOpenPreview(true);
+		} catch (error) {
+			setLoad(false);
+			Swal.fire({
+				icon: "error",
+				text: "This shipping address is not available",
+			});
 		}
 	};
 
@@ -82,8 +84,7 @@ const useOrders = () => {
 		}
 	};
 
-	const handleSubmit = async (e: any) => {
-		e.preventDefault();
+	const handleSubmit = async () => {
 		setLoad(true);
 		let sentObj = cartItems.map((item: any) =>
 			Object.assign(
@@ -118,6 +119,7 @@ const useOrders = () => {
 				title: "Your order has been placed",
 			}).then(() => navigate("/"));
 			setCartAtom([]);
+         setOpenPreview(false);
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -137,7 +139,10 @@ const useOrders = () => {
 		load,
 		handleSubmit,
 		handleChange,
-		handleAutofill,
+		shippingName,
+		getShippingById,
+		openPreview,
+		setOpenPreview,
 	};
 };
 

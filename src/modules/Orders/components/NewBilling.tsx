@@ -88,7 +88,7 @@ const NewBilling = () => {
 					disabled={load}
 					type="submit"
 					className="blue-btn px-[1rem] py-[0.3rem] w-[40%] md:w-[20%] lg:w-[10%] ">
-					Submit
+					Continue
 				</button>
 			</form>
 		</div>

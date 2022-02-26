@@ -15,9 +15,14 @@ interface Props {
 const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 	const { removeItem } = useCart();
 	return (
-		<div className="flex flex-row flex-nowrap rounded-3xl py-[2rem] items-center
+		<div
+			className="flex flex-row flex-nowrap rounded-3xl py-[2rem] items-center
       space-x-[1rem] lg:space-x-[3rem] w-full">
-			<img src={`${imgUrl}/${image}`} alt="" className="flex w-[4rem] lg:w-[8rem]" />
+			<img
+				src={`${imgUrl}/${image}`}
+				alt=""
+				className="flex w-[4rem] lg:w-[8rem] max-h-[5rem]"
+			/>
 			{/*.....................................rem.
             *
             ......................................*/}

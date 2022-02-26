@@ -13,7 +13,6 @@ const NewShipping = () => {
 		shippingZip,
 		addShipping,
 		handleShippingChange,
-		clearShippingAttributes,
 		shipLoad,
 	} = useAddShipping();
 	const { renderSpinner } = useSpinner();
@@ -26,7 +25,7 @@ const NewShipping = () => {
 			</div>
 
 			<div
-				onClick={() => navigate(`/orders/newBilling`)}
+				onClick={() => navigate(`/orders/existing`)}
 				className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
             shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
             items-center cursor-pointer">
@@ -87,7 +86,7 @@ const NewShipping = () => {
 					disabled={shipLoad}
 					type="submit"
 					className="blue-btn px-[1rem] py-[0.3rem] w-[40%] md:w-[20%] lg:w-[10%] ">
-					Submit
+					Continue
 				</button>
 			</form>
 		</div>

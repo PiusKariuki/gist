@@ -16,7 +16,6 @@ const useEditShop = () => {
 	const [email, setEmail] = useState<string>("");
 	const [phone, setPhone] = useState<string>("");
 	const [mailError, setMailError] = useState<string>("");
-	const [phoneErr, setPhoneErr] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 
@@ -47,8 +46,6 @@ const useEditShop = () => {
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
-		if (e.length < 5) setPhoneErr("please enter a valid phone number");
-		else setPhoneErr("");
 	};
 
 	const handleImgChange = (e: any) => {
@@ -134,12 +131,12 @@ const useEditShop = () => {
 		phone,
 		handleChange,
 		handlePhoneChange,
-		phoneErr,
 		mailError,
 		load,
 		updateShop,
 		getShopById,
 		handleImgChange,
+      setImg
 	};
 };
 

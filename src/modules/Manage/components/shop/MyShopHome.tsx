@@ -5,6 +5,7 @@ import ViewMyShops from "./ViewMyShops";
 import useShop from "../../Hooks/shop/useShop";
 import useDeleteShop from "modules/Manage/Hooks/shop/useDeleteShop";
 import { useNavigate } from "react-router-dom";
+import useSpinner from "shared/components/spinner/useSpinner";
 
 const MyShopHome = () => {
 	const [openCreate, setOpenCreate] = useState<boolean>(false);
@@ -13,7 +14,7 @@ const MyShopHome = () => {
 	const [shopName, setShopName] = useState<string>("");
 	const { openDelete, setOpenDelete } = useDeleteShop();
 	let navigate = useNavigate();
-
+	const { renderSpinner } = useSpinner();
 	useEffect(() => {
 		getShopsByUserId();
 	}, [openCreate, openDelete]);
@@ -31,7 +32,7 @@ const MyShopHome = () => {
 				/>
 				Create Shop
 			</button>
-
+			{renderSpinner(load)}
 			<div
 				className="flex flex-col md:flex-row justify-start gap-[2rem] md:gap-[2rem] md:px-[2rem]
              md:flex-wrap">

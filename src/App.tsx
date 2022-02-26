@@ -10,7 +10,6 @@ import Orders from "modules/Orders/views/Orders";
 import Product from "modules/Product/views/Product";
 import Rooms from "modules/Rooms/views/Rooms";
 import Searching from "modules/Search/views/Searching";
-import MyProducts from "modules/Manage/components/product/MyProducts";
 import Shop from "modules/shop/Views/shop";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
@@ -44,10 +43,6 @@ const App: React.FC = (): JSX.Element => {
 				}>
 				<Route path="/myAccount/profile" element={<EditProfile />} />
 				<Route path="/myAccount/shops/*" element={<MyShops />} />
-				<Route
-					path="/myAccount/shops/:shopId/products/*"
-					element={<MyProducts />}
-				/>
 				<Route path="/myAccount/orders" element={<MyOrders />} />
 			</Route>
 

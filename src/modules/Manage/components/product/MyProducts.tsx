@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useShopDetails from "../../../shop/Hooks/useShopDetails";
-import EditMyProduct from "modules/Manage/components/product/EditMyProduct";
+import ViewMyProduct from "modules/Manage/components/product/ViewMyProduct";
 import EditProductForm from "./EditProductForm";
 import { useRecoilValue } from "recoil";
 import { productOpen, deleteOpen } from "../../store/store";
@@ -27,7 +27,7 @@ const MyShop: React.FC = (): JSX.Element => {
 				className="w-full py-[1rem] bg-white sticky top-0 z-20 border-b-4">
 				<p
 					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
-                        text-center ">
+               text-center ">
 					{shopDetails[0]?.shopId?.name}
 				</p>
 			</div>
@@ -52,7 +52,7 @@ const MyShop: React.FC = (): JSX.Element => {
 										setProductId(product?._id);
 										setProductName(product?.name);
 									}}>
-									<EditMyProduct
+									<ViewMyProduct
 										name={product?.name}
 										price={product?.price}
 										images={product?.images}

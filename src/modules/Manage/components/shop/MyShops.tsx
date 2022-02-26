@@ -1,29 +1,18 @@
-import { faEdit, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import useSpinner from "shared/components/spinner/useSpinner";
+import React, { useEffect } from "react";
 import useShop from "../../Hooks/shop/useShop";
 import CreateShop from "./CreateShop";
-import EditShopModal from "./EditShopModal";
-import ViewMyShops from "./ViewMyShops";
-import DeleteShop from "./DeleteShop";
-import useDeleteShop from "../../Hooks/shop/useDeleteShop";
+import EditShopModal from "./EditShop";
 import { Route, Routes } from "react-router-dom";
 import MyShopHome from "./MyShopHome";
 import AddProduct from "../product/AddProduct";
+import MyProducts from "../product/MyProducts";
 
 const MyShops = () => {
-	const { myShops, load, getShopsByUserId } = useShop();
-	const { renderSpinner } = useSpinner();
-	const [open, setOpen] = useState<boolean>(false);
-	const [shopId, setShopId] = useState<string>("");
-	const [shopName, setShopName] = useState<string>("");
-	const [openCreate, setOpenCreate] = useState<boolean>(false);
-	const { openDelete, setOpenDelete } = useDeleteShop();
+	const { getShopsByUserId } = useShop();
 
 	useEffect(() => {
 		getShopsByUserId();
-	}, [openCreate, openDelete]);
+	}, []);
 
 	return (
 		<div
@@ -32,8 +21,9 @@ const MyShops = () => {
 			<Routes>
 				<Route path="/" element={<MyShopHome />} />
 				<Route path="/create" element={<CreateShop />} />
-            <Route path="/edit/:shopId" element={<EditShopModal />} />
-            <Route path="/add/:shopId" element={<AddProduct />} />
+				<Route path="/edit/:shopId" element={<EditShopModal />} />
+				<Route path="/add/:shopId" element={<AddProduct />} />
+				<Route path="/products/:shopId" element={<MyProducts />} />
 			</Routes>
 		</div>
 	);

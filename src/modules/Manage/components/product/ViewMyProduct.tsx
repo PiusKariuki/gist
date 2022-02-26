@@ -16,7 +16,7 @@ interface Props {
 	id: string;
 }
 
-const EditMyProduct: React.FC<Props> = ({
+const ViewMyProduct: React.FC<Props> = ({
 	name,
 	price,
 	images,
@@ -59,4 +59,4 @@ const EditMyProduct: React.FC<Props> = ({
 	);
 };
 
-export default EditMyProduct;
+export default ViewMyProduct;

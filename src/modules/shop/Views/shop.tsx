@@ -44,9 +44,6 @@ const Shop: React.FC = (): JSX.Element => {
                   lg:items-center ">
 							<div className="flex flex-row space-x-10 lg:self-center">
 								<div className="flex flex-col ">
-									<p className="text-[1.4rem] text-black-80 font-[600]">
-										Avatar
-									</p>
 									{shopDetails.length > 0 ? (
 										<img
 											src={`${imgUrl}/${shopDetails[0]?.shopId?.image}`}

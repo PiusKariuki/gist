@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useOrders from "../hooks/useOrders";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo, faHeartbeat } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import OrderPreview from "./OrderPreview";
 
-const Existing: React.FC<{}> = () => {
+const ExistingOrder: React.FC<{}> = () => {
 	const { renderSpinner } = useSpinner();
 	const {
 		billing,
@@ -17,21 +18,36 @@ const Existing: React.FC<{}> = () => {
 		userBillings,
 		load,
 		handleSubmit,
+		shippingName,
+		openPreview,
+		setOpenPreview,
 	} = useOrders();
 	let navigate = useNavigate();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		getBillingByUserId();
 		getShippingByUserId();
 	}, [open]);
+
+	useEffect(() => {
+		if (shippingName?.length > 0 && !load) {
+			setOpenPreview(true);
+		}
+	}, []);
+
 	return (
 		<div className="flex w-full flex-col relative">
+			{openPreview ? (
+				<div className="flex fixed top-[0%] left-[0%]">
+					<OrderPreview address={shippingName} setOpen={setOpenPreview} />
+				</div>
+			) : null}
 			<div
 				onClick={() => navigate(`/orders`)}
 				className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
             shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
             items-center cursor-pointer my-[3rem]">
-				<FontAwesomeIcon icon={faCircleInfo} size="2x"  />
+				<FontAwesomeIcon icon={faCircleInfo} size="2x" />
 				<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
 					Go back and input new info.
 				</p>
@@ -39,42 +55,8 @@ const Existing: React.FC<{}> = () => {
 			<p className="text-blue-30 font-[600]  text-[1.6rem] mb-[2rem]">
 				Final Step. Place your order
 			</p>
-			<form
-				autoComplete="off"
-				onSubmit={handleSubmit}
-				action=""
+			<div
 				className="flex flex-col gap-y-[0.1rem] w-full md:w-[40%]  ">
-				{/* billing address */}
-				<label
-					htmlFor="billing"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-               mb-[0.5rem] text-gray-20 ">
-					Billing Address
-				</label>
-				<select
-					onChange={handleChange}
-					value={billing}
-					required
-					id="billing"
-					className=" h-[2.25rem] outline-none text-blue-30 w-full
-                  rounded-[0.25rem]  font-bold px-[1rem] ring-2 ring-gray-20">
-					<option
-						disabled
-						selected
-						value=""
-						className="text-[1rem] text-blue-30">
-						{" "}
-						-- select an option --{" "}
-					</option>
-					{userBillings?.map((bill: any, key: number) => (
-						<option
-							value={bill?._id}
-							key={key}
-							className="text-[1.2rem] text-blue-30 font-bold">
-							{bill?.name}
-						</option>
-					))}
-				</select>
 				{/* shipping address */}
 				<label
 					htmlFor="shipping"
@@ -99,7 +81,8 @@ const Existing: React.FC<{}> = () => {
 					</option>
 					{userShippings?.map((ship: any, key: number) => (
 						<option
-							value={ship?._id}
+							id={ship.name}
+							value={ship._id}
 							key={key}
 							className="text-[1.2rem] text-blue-30 font-bold">
 							{ship?.name}
@@ -108,19 +91,10 @@ const Existing: React.FC<{}> = () => {
 				</select>
 				<div className="mt-[1rem]">{renderSpinner(load)}</div>
 				<div className="flex w-full justify-between">
-					<button
-						disabled={billing?.length < 1 || shipping?.length < 1}
-						type="submit"
-						className="bg-blue-20 px-[2rem] py-[0.5rem] w-full md:w-[30%]
-                mt-[2rem] text-[1.2rem] text-white font-[700] rounded-xl hover:bg-blue-600
-                disabled:bg-gray-400
-                ">
-						Submit order
-					</button>
 				</div>
-			</form>
+			</div>
 		</div>
 	);
 };
 
-export default Existing;
+export default ExistingOrder;

@@ -28,7 +28,7 @@ const AddProduct: React.FC = () => {
 			<form
 				autoComplete="off"
 				name="addProduct"
-				className="flex flex-col lg:flex-row  gap-x-[8rem] lg:px-[3rem] lg:w-full"
+				className="flex flex-col md:flex-row  gap-x-[8rem] lg:px-[3rem] lg:w-full"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					addProduct(e, shopId);
 				}}>

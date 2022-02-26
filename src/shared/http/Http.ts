@@ -9,17 +9,3 @@ export const Axios = axios
 	.create({
 		baseURL: baseUrl,
 	})
-	// .request({url: ""})
-	// .catch(function (error) {
-	// 	if (!error.response) {
-	// 		Swal.fire({
-	// 			icon: "error",
-	// 			title: "Network Error",
-	// 		});
-	// 	} else {
-	// 		// http status code
-	// 		const code = error.response.status;
-	// 		// response data
-	// 		const response = error.response.data;
-	// 	}
-	// });
