@@ -11,6 +11,7 @@ import Product from "modules/Product/views/Product";
 import Rooms from "modules/Rooms/views/Rooms";
 import Searching from "modules/Search/views/Searching";
 import Shop from "modules/shop/Views/shop";
+import Wallet from "modules/Wallet/views/Wallet";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { RequireAuth, AuthStatus } from "shared/RouteProtection/Protector";
@@ -21,6 +22,7 @@ const App: React.FC = (): JSX.Element => {
 			<Route path="/" element={<Home />}>
 				<Route path="/" element={<Preview />} />
 				<Route path="/searching" element={<Searching />} />
+				<Route path="/wallet" element={<Wallet />} />
 				<Route path="/product/:productId" element={<Product />} />
 				<Route path="/shop/:shopId" element={<Shop />} />
 				<Route path="/rooms/:roomId" element={<Rooms />} />

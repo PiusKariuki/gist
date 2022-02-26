@@ -1,7 +1,8 @@
 import {
-   faRightFromBracket,
+	faRightFromBracket,
 	faUser,
 	faArrowRightFromBracket,
+	faWallet,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -27,7 +28,17 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 					setMenuOpen(false);
 				}}>
 				<FontAwesomeIcon icon={faUser} size="2x" color="#6F00FF" />
-				<p className="text-[1.4rem] font-[700]">My Account</p>
+				<p className="text-[1.4rem] font-[700] text-gray-20">My Account</p>
+			</div>
+
+			<div
+				onClick={() => {
+					setMenuOpen(false);
+					navigate("/wallet");
+				}}
+				className="flex flex-row cursor-pointer items-start gap-x-[1rem]">
+				<FontAwesomeIcon icon={faWallet} size="2x" color="#6F00FF" />
+				<p className="text-[1.4rem] font-[700] text-gray-20">Wallet</p>
 			</div>
 			<div
 				onClick={() => {
