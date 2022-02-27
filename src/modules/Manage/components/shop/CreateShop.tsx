@@ -33,16 +33,12 @@ const CreateShop: React.FC = () => {
 
 	return (
 		<div className="flex flex-col bg-white w-full">
-			{renderSpinner(load)}
 			<p className="text-[1.6rem] text-black-80 text-center">
 				Create Your Shop
 			</p>
 			<form
 				autoComplete="off"
-				onSubmit={(e) => {
-					createShop(e);
-					clearAttributes();
-				}}
+				onSubmit={createShop}
 				className="py-[2rem] flex flex-col md:flex-row  gap-y-[2rem] md:px-[2rem]  md:space-x-10
             lg:space-x-44 w-full flex-nowrap">
 				<div className=" flex flex-col w-full md:w-[43%]">
@@ -135,25 +131,31 @@ const CreateShop: React.FC = () => {
 				</div>
 
 				{/* second col */}
-				<div className="flex flex-col-reverse w-full lg:py-[rem] gap-y-[2rem] ">
+				<div className="flex flex-col-reverse w-full md:gap-y-[2rem] ">
 					{/* button */}
-					<div className="flex w-full flex-row gap-x-[3rem] lg:gap-x-60 order-1 
-                  md:justify-between">
+					<div
+						className="flex w-full flex-row  lg:gap-x-60 order-1 mt-10 
+                  justify-between">
 						<button
 							type="submit"
 							disabled={mailError.length > 0 || load || img.length < 1}
-							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
-                     text-[1rem] font-[700] disabled:bg-gray-400">
+							className="bg-blue-20  px-[1rem] py-[0.5rem]  rounded-lg  h-10
+                     self-center text-white text-[1rem] font-[700] disabled:bg-gray-400 w-24">
 							Submit
 						</button>
+						{/*......................................
+                     *SPINNER
+                  ......................................*/}
+						{renderSpinner(load)}
+
 						<button
 							onClick={() => {
 								navigate(`/myAccount/shops/`);
 								clearAttributes();
 							}}
 							type="button"
-							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg
-                      text-white text-[1rem] font-[700]  disabled:bg-gray-400">
+							className="bg-red-20 px-[1rem] py-[0.5rem] rounded-lg h-10
+                     self-center text-white text-[1rem] font-[700]  disabled:bg-gray-400 w-24">
 							Back
 						</button>
 					</div>
@@ -189,7 +191,7 @@ const CreateShop: React.FC = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/png"
+						accept="image/*"
 						className="hidden"
 					/>
 				</div>

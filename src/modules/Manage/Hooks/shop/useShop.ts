@@ -19,7 +19,7 @@ const useShop = () => {
 		} catch (error) {
 			Swal.fire({
 				icon: "error",
-				text: "error",
+				text: "Network error",
 			});
 			setLoad(false);
 		}

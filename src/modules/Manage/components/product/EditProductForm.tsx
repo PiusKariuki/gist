@@ -146,7 +146,7 @@ const EditProductForm: React.FC<Props> = ({ productId }) => {
 								type="file"
 								id="images"
 								className="hidden"
-								accept="image/png"
+								accept="image/*"
 							/>
 							{/* <button
 								type="button"

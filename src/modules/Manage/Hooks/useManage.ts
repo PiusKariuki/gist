@@ -71,6 +71,7 @@ const useManage = () => {
 				timer: 1000,
 			});
 			setLoad(false);
+         clearAttributes();
 		} catch (error: any) {
 			let errmsg = error.response.data.split(":");
 			setLoad(false);

@@ -1,23 +1,18 @@
-import { faEdit, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import ViewMyShops from "./ViewMyShops";
 import useShop from "../../Hooks/shop/useShop";
-import useDeleteShop from "modules/Manage/Hooks/shop/useDeleteShop";
 import { useNavigate } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 
 const MyShopHome = () => {
-	const [openCreate, setOpenCreate] = useState<boolean>(false);
 	const { myShops, load, getShopsByUserId } = useShop();
-	const [shopId, setShopId] = useState<string>("");
-	const [shopName, setShopName] = useState<string>("");
-	const { openDelete, setOpenDelete } = useDeleteShop();
 	let navigate = useNavigate();
 	const { renderSpinner } = useSpinner();
 	useEffect(() => {
 		getShopsByUserId();
-	}, [openCreate, openDelete]);
+	}, []);
 
 	return (
 		<>
@@ -34,8 +29,8 @@ const MyShopHome = () => {
 			</button>
 			{renderSpinner(load)}
 			<div
-				className="flex flex-col md:flex-row justify-start gap-[2rem] md:gap-[2rem] md:px-[2rem]
-             md:flex-wrap">
+				className="flex flex-col md:flex-row justify-start gap-[2rem] md:gap-[2rem] 
+             flex-wrap">
 				{myShops?.length > 0}
 
 				{myShops.map((shop: any, key: number) => (

@@ -50,7 +50,7 @@ const EditShop: React.FC = () => {
 	}, [updateShop]);
 
 	return (
-		<div className="flex flex-col rounded-2xl px-[2rem] py-[3rem] w-[100vw]  relative">
+		<div className="flex flex-col rounded-2xl px-[1rem] py-[3rem]  relative">
 			<div className="px-[2rem]">{renderSpinner(load)}</div>
 			<form
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -201,7 +201,7 @@ const EditShop: React.FC = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/png"
+						accept="image/*"
 						className="hidden"
 					/>
 				</div>

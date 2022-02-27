@@ -234,7 +234,7 @@ const Register = (): JSX.Element => {
 								ref={hiddenInput}
 								type="file"
 								id="img"
-								accept="image/png"
+								accept="image/*"
 								className="hidden"
 							/>
 						</div>
