@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import MyShopHome from "./MyShopHome";
 import AddProduct from "../product/AddProduct";
 import MyProducts from "../product/MyProducts";
+import AddProductImages from "../product/AddProductImages";
 
 const MyShops = () => {
 	const { getShopsByUserId } = useShop();
@@ -23,6 +24,10 @@ const MyShops = () => {
 				<Route path="/create" element={<CreateShop />} />
 				<Route path="/edit/:shopId" element={<EditShopModal />} />
 				<Route path="/add/:shopId" element={<AddProduct />} />
+				<Route
+					path="/add/:shopId/images/:productId"
+					element={<AddProductImages />}
+				/>
 				<Route path="/products/:shopId" element={<MyProducts />} />
 			</Routes>
 		</div>

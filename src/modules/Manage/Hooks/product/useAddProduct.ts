@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { emailRegex, sixChars, phoneRegex } from "shared/regEx/regEx";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
+import { useNavigate } from "react-router-dom";
 
 const useAddShop = () => {
 	const { _id } = useRecoilValue<any>(user);
@@ -16,6 +16,7 @@ const useAddShop = () => {
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 	const [openProduct, setOpenProduct] = useState<boolean>(false);
+	let navigate = useNavigate();
 
 	const clearAttributes = () => {
 		setName("");
@@ -44,7 +45,7 @@ const useAddShop = () => {
 					.then((res: any) => {
 						setImages((prev: any) => [...prev, res]);
 					})
-					.catch((err) => console.log(err));
+					.catch();
 				break;
 			default:
 				break;
@@ -58,19 +59,14 @@ const useAddShop = () => {
 		setLoad(true);
 		e.preventDefault();
 		try {
-			await Axios.post(`/products/${shopId}`, {
+			let { data } = await Axios.post(`/products/${shopId}`, {
 				name,
 				price,
 				quantity,
-				images,
 				ownerId: _id,
 				description: desc,
 			});
-			Swal.fire({
-				icon: "success",
-				text: "A product has been added to your shop",
-				timer: 1000,
-			});
+			navigate(`/myAccount/shops/add/${shopId}/images/${data._id}`);
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
@@ -84,6 +80,30 @@ const useAddShop = () => {
 						? "Please choose a different shop name"
 						: errmsg[2],
 				timer: 2000,
+			});
+		}
+	};
+
+	const addProductImages = async (productID: any) => {
+		setLoad(true);
+		try {
+			await Axios.put(`/products/images/${productID}`, {
+				images: images,
+			});
+			Swal.fire({
+				icon: "success",
+				text: "A product has been added to your shop",
+				timer: 1000,
+			});
+			navigate(`/myAccount/shops/`);
+			clearAttributes();
+			setLoad(false);
+		} catch (error: any) {
+			let errmsg = error.response.data.split(":");
+			setLoad(false);
+			Swal.fire({
+				icon: "error",
+				text: "Failed to add images to  your shop"
 			});
 		}
 	};
@@ -108,7 +128,8 @@ const useAddShop = () => {
 		removeImg,
 		openProduct,
 		setOpenProduct,
-      desc
+		desc,
+		addProductImages,
 	};
 };
 

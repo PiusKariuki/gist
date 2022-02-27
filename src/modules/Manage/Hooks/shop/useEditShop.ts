@@ -53,7 +53,7 @@ const useEditShop = () => {
 			.then((res) => {
 				setImg(res);
 			})
-			.catch((err) => console.log(err));
+			.catch();
 	};
 
 	const handleChange = (e: any) => {
@@ -72,7 +72,7 @@ const useEditShop = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch((err) => console.log(err));
+					.catch();
 				break;
 			case "email":
 				setEmail(e.target.value);

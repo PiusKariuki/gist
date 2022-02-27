@@ -17,7 +17,6 @@ export const cartAtom = atom({
 	default: [],
 	effects_UNSTABLE: [
 		localStorageEffect("gist-cart"),
-		// ({ onSet }) => onSet((newItem) => console.log("cart", newItem)),
 	],
 });
 

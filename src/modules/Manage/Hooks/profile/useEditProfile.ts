@@ -71,7 +71,7 @@ const useEditProfile = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch((err) => console.log(err));
+					.catch();
 				break;
 			default:
 				break;
@@ -90,14 +90,12 @@ const useEditProfile = () => {
 				userName: userName,
 				profilePhoto: img,
             phonenumber: phone,
-            // password
 			});
 			Swal.fire({
 				icon: "success",
 				text: "Your profile has been updated",
 				timer: 1500,
 			});
-         console.log(data);
          
 			setUser(data);
 			setLoad(false);

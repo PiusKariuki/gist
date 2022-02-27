@@ -38,7 +38,7 @@ const useManage = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch((err) => console.log(err));
+					.catch();
 				break;
 			case "email":
 				setEmail(e.target.value);

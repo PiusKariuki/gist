@@ -25,11 +25,7 @@ const useRegister = () => {
 	const setUser = useSetRecoilState(user);
 
 	const handlePhoneChange = (e: string) => {
-		console.log(e);
-
 		setPhone(e);
-		// if (e?.length < 5) setPhoneErr("please enter a valid phone number");
-		// else setPhoneErr("");
 	};
 
 	const handleChange = (e: any) => {
@@ -101,9 +97,7 @@ const useRegister = () => {
 			setUser(data);
 			setLoad(false);
 			setErrors("");
-		} catch (e: any) {
-			console.log(e.response.data.message);
-         
+		} catch (e: any) { 
 			Swal.fire({
 				icon: "error",
 				title: e.response.data.message,

@@ -25,7 +25,7 @@ const ViewMyProduct: React.FC<Props> = ({
 }): JSX.Element => {
 	const setOpen = useSetRecoilState(productOpen);
 	const setOpenDelete = useSetRecoilState(deleteOpen);
-   
+
 	return (
 		<div
 			className="flex flex-col px-[1rem] py-[3rem] bg-white hover:border-[0.2rem] 
@@ -49,7 +49,7 @@ const ViewMyProduct: React.FC<Props> = ({
 				<FontAwesomeIcon icon={faUserCircle} size="1x" color="blue" />
 				&nbsp;&nbsp;&nbsp;<span className="">{userName}</span>
 			</p>
-			<img src={`${imgUrl}/${images[0]}`} alt="" className="w-[24rem]" />
+			<img src={`${imgUrl}/${images[0]}`} alt="" className="w-[16rem] md:w-[18rem]" />
 			<p
 				className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
             bg-black-80 px-[1rem]">

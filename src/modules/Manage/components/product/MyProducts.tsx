@@ -35,8 +35,8 @@ const MyShop: React.FC = (): JSX.Element => {
 				<div
 					className={`${
 						open || openDelete
-							? "flex flex-col px-[2rem] pb-[2rem] md:px-[3rem] lg:px-[4.5rem] opacity-50"
-							: " flex flex-col px-[2rem] pb-[2rem] md:px-[3rem] lg:px-[4.5rem]"
+							? "flex flex-col pb-[2rem] md:px-[2rem] lg:px-[4.5rem] opacity-50"
+							: " flex flex-col  pb-[2rem] md:px-[2rem] lg:px-[4.5rem]"
 					}`}>
 					{/* shop details */}
 					{renderSpinner(load)}
@@ -45,9 +45,10 @@ const MyShop: React.FC = (): JSX.Element => {
 						<p className="text-black-40 text-[1.6rem] md:text-[2.5rem] font-[700] py-[2rem]">
 							Products
 						</p>
-						<div className="flex flex-row flex-wrap gap-[2rem] justify-start">
+						<div className="flex flex-row flex-wrap  justify-start">
 							{shopDetails?.map((product: any, key: number) => (
 								<div
+                           key={key}
 									onClick={() => {
 										setProductId(product?._id);
 										setProductName(product?.name);

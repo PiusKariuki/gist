@@ -50,7 +50,7 @@ const useEdit = () => {
 					.then((res: any) => {
 						setImages((prev: any) => [...prev, res]);
 					})
-					.catch((err) => console.log(err));
+					.catch();
 				break;
 			default:
 				break;
