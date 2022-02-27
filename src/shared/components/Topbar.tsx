@@ -57,11 +57,11 @@ const Topbar = () => {
 				/>
 				<FontAwesomeIcon
 					icon={faTimes}
-					size="1x"
+					// size="1x"
 					color="red"
 					className={`${
 						searching
-							? "absolute  md:hidden right-[17%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
+							? "absolute text-[1.1rem] md:hidden right-[17%] top-[30%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
 							: "hidden"
 					}`}
 					onClick={() => {

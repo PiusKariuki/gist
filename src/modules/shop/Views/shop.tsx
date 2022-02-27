@@ -10,6 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ViewProduct from "shared/components/ViewProduct";
 import { imgUrl } from "shared/http/Http";
+import ShopProducts from "../components/ShopProducts";
 
 const Shop: React.FC = (): JSX.Element => {
 	const { shopDetails, getShopDetails, load, errors } = useShopDetails();
@@ -40,15 +41,15 @@ const Shop: React.FC = (): JSX.Element => {
                      *AVATAR and # OF PRODUCTS
                   ......................................*/}
 						<div
-							className="lg:flex lg:flex-row lg:space-y-[2rem] lg:w-full lg:justify-between
-                  lg:items-center ">
-							<div className="flex flex-row space-x-10 lg:self-center">
+							className="lg:flex lg:flex-row space-y-8 lg:space-y-[2rem] lg:w-full 
+                     lg:justify-between lg:items-center ">
+							<div className="flex flex-row space-x-10 lg:self-center py-[2rem]">
 								<div className="flex flex-col ">
 									{shopDetails.length > 0 ? (
 										<img
 											src={`${imgUrl}/${shopDetails[0]?.shopId?.image}`}
 											alt=""
-											className="w-[8rem] md:w-[14rem] object-contain"
+											className="h-[6rem] w-[8rem] md:w-[14rem] object-contain"
 										/>
 									) : null}
 								</div>
@@ -57,16 +58,16 @@ const Shop: React.FC = (): JSX.Element => {
 									<p className="text-black-80 text-[1.4rem] md:text-[1.4rem] font-[600]">
 										Products
 									</p>
-									<p className="text-blue-20 text-[4rem] md:text-[2rem] font-[600]">
+									<p className="text-blue-20 text-[2rem] md:text-[2rem] font-[600]">
 										{shopDetails.length}
 									</p>
 								</div>
 							</div>
 							{/*......................................
-                     *PHONE AND EMAIL
+                     *EMAIL AND LOCATION
                   ......................................*/}
-							<div className="flex flex-row space-x-10 ">
-								<div className="flex flex-col space-y-auto">
+							<div className="flex flex-row space-x-10">
+								<div className="flex flex-col space-y-2">
 									<FontAwesomeIcon
 										icon={faEnvelope}
 										size="2x"
@@ -76,7 +77,7 @@ const Shop: React.FC = (): JSX.Element => {
 										{shopDetails[0]?.shopId?.email}
 									</p>
 								</div>
-								<div className="flex flex-col space-y-auto">
+								<div className="flex flex-col space-y-2">
 									<FontAwesomeIcon
 										icon={faLocationDot}
 										size="2x"
@@ -92,7 +93,7 @@ const Shop: React.FC = (): JSX.Element => {
                   ......................................*/}
 
 							<div className="flex flex-row ">
-								<div className="flex flex-col space-y-auto ">
+								<div className="flex flex-col space-y-2 ">
 									<FontAwesomeIcon
 										icon={faPhone}
 										size="2x"
@@ -121,9 +122,9 @@ const Shop: React.FC = (): JSX.Element => {
 					<p className="text-black-40 text-[1.6rem] md:text-[2.5rem] font-[700] py-[2rem]">
 						Products
 					</p>
-					<div className="flex flex-row flex-wrap gap-[2rem] ">
+					<div className="flex flex-col md:flex-row flex-wrap gap-[2rem] ">
 						{shopDetails?.map((product: any, key: number) => (
-							<ViewProduct
+							<ShopProducts
 								name={product?.name}
 								price={product?.price}
 								id={product?._id}

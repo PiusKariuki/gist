@@ -35,7 +35,7 @@ const Product: React.FC = (): JSX.Element => {
 				{renderSpinner(load)}
 				<div
 					className="flex flex-col lg:flex-row gap-y-[2rem] lg:gap-x-[10rem] lg:gap-0
-             max-w-5xl">
+               max-w-5xl">
 					<div className="gap-[2rem] flex flex-col w-full">
 						<p
 							className="text-black text-[1.2rem] md:text-[2.25rem] font-[800] text-left
@@ -57,7 +57,7 @@ const Product: React.FC = (): JSX.Element => {
 									}
 									icon={faChevronLeft}
 									size="4x"
-									className="hiddn md:flex absolute  left-[-8%] top-[40%] md:left-[-18%]
+									className="hidden md:flex absolute  left-[-8%] top-[40%] md:left-[-18%]
                            text-gray-300"
 								/>
 								<FontAwesomeIcon
@@ -68,7 +68,7 @@ const Product: React.FC = (): JSX.Element => {
 									}
 									icon={faChevronRight}
 									size="4x"
-									className="hiddn md:flex absolute right-[-8%] top-[40%] md:right-[-18%]
+									className="hidden md:flex absolute right-[-8%] top-[40%] md:right-[-18%]
                            text-gray-300"
 								/>
 							</div>
@@ -86,6 +86,22 @@ const Product: React.FC = (): JSX.Element => {
 								/>
 							</div>
 						)}
+
+						<div
+							className="flex flex-row gap-[2rem] overflow-x-scroll max-w-[80vw]
+                     md:max-w-[40vw]">
+							{product?.images?.map((img: string, key: number) => {
+								return (
+									<div
+										key={key}
+										style={{ backgroundImage: `url(${imgUrl}/${img})` }}
+										className="w-[12rem] h-[6rem] rounded-2xl bg-contain bg-center 
+                              bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer"
+										onClick={() => setIndex(key)}
+									/>
+								);
+							})}
+						</div>
 					</div>
 
 					<div className="flex flex-col lg:gap-y-[0.5rem] w-full">
@@ -173,20 +189,6 @@ const Product: React.FC = (): JSX.Element => {
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div className="hidden md:flex flex-row gap-[2rem] overflow-x-scroll max-w-[80vw]">
-				{product?.images?.map((img: string, key: number) => {
-					return (
-						<div
-							key={key}
-							style={{ backgroundImage: `url(${imgUrl}/${img})` }}
-							className="w-[12rem] h-[6rem] rounded-2xl bg-contain bg-center bg-no-repeat
-                     border-[0.12rem] border-black-40 cursor-pointer"
-							onClick={() => setIndex(key)}
-						/>
-					);
-				})}
 			</div>
 		</div>
 	);
