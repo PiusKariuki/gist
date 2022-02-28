@@ -69,6 +69,10 @@ const useAddShop = () => {
 			navigate(`/myAccount/shops/add/${shopId}/images/${data._id}`);
 			clearAttributes();
 			setLoad(false);
+			Swal.fire({
+				icon: "success",
+				text: "proceed to add photos to your product",
+			});
 		} catch (error: any) {
 			let errmsg = error.response.data.split(":");
 			setLoad(false);
@@ -103,7 +107,7 @@ const useAddShop = () => {
 			setLoad(false);
 			Swal.fire({
 				icon: "error",
-				text: "Failed to add images to  your shop"
+				text: "Failed to add images to  your shop",
 			});
 		}
 	};

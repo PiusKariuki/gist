@@ -15,11 +15,11 @@ const MyShopHome = () => {
 	}, []);
 
 	return (
-		<>
+		<div className="flex flex-col md:px-[1.5rem] py-[3rem] w-full md:w-screen space-y-10">
 			<button
 				onClick={() => navigate(`/myAccount/shops/create`)}
-				className="flex px-[1rem] py-[0.5rem] bg-blue-20
-          rounded-md text-white text-center text-[1.4rem] m-[2rem] self-start">
+				className="flex px-[1rem] py-[0.5rem] bg-blue-20 rounded-md text-white text-center
+            text-[1.4rem] self-start">
 				<FontAwesomeIcon
 					icon={faEdit}
 					size="1x"
@@ -29,8 +29,7 @@ const MyShopHome = () => {
 			</button>
 			{renderSpinner(load)}
 			<div
-				className="flex flex-col md:flex-row justify-start gap-[2rem] md:gap-[2rem] 
-             flex-wrap">
+				className="flex flex-col md:flex-row md:justify-self-center gap-8 flex-wrap">
 				{myShops?.length > 0}
 
 				{myShops.map((shop: any, key: number) => (
@@ -45,7 +44,7 @@ const MyShopHome = () => {
 					</div>
 				))}
 			</div>
-		</>
+		</div>
 	);
 };
 

@@ -63,6 +63,7 @@ const AddProductImages = () => {
 					</div>
 				))}
 			</div>
+         <p className="text-[1.4rem] text-gray-20">Add product Images</p>
 		</div>
 	);
 };

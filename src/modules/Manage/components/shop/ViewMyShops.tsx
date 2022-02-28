@@ -25,8 +25,8 @@ const ViewMyShops: React.FC<Props> = ({ name, userName, img, id }) => {
 			<img
 				src={imgUrl + "/" + img}
 				alt=""
-				className="w-[18rem] h-[35vh] md:h-[25vh] lg:h-[30vh] lg:w-[24rem] 3xl:w-[45rem]
-             object-contain  rounded-md"
+				className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
+            lg:w-[23rem] 2xl:w-[23rem] 3xl:w-[45rem] object-contain  rounded-md"
 			/>
 			<p className="text-blue-20 font-[900] text-[1.4rem] mb-[1rem]">{name}</p>
 			<button

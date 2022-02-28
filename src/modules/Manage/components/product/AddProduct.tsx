@@ -1,7 +1,7 @@
 import React from "react";
 import {  useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
-import useAddShop from "../../Hooks/product/useAddProduct";
+import useAddProduct from "../../Hooks/product/useAddProduct";
 
 const AddProduct: React.FC = () => {
 	const {
@@ -12,7 +12,7 @@ const AddProduct: React.FC = () => {
 		addProduct,
 		load,
 		desc,
-	} = useAddShop();
+	} = useAddProduct();
 	let { shopId } = useParams<string>();
 	const { renderSpinner } = useSpinner();
 	return (
@@ -23,7 +23,9 @@ const AddProduct: React.FC = () => {
 			onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 				addProduct(e, shopId);
 			}}>
-            <p className="text-[1.4rem] md:text-[1.8rem] text-gray-20 font-[700]">New Product</p>
+			<p className="text-[1.4rem] md:text-[1.8rem] text-gray-20 font-[700]">
+				New Product
+			</p>
 			{/*......................................
                *NAME AND PRICE
             ......................................*/}
@@ -116,7 +118,7 @@ const AddProduct: React.FC = () => {
 			{/*......................................
                   *ACTION BTNS
                ......................................*/}
-			<div className="flex flex-row justify-between mt-[2rem] text-white text-[1.2rem]">
+			<div className="flex flex-row space-x-6  mt-[2rem] text-white text-[1.2rem]">
 				<button
 					disabled={load}
 					type="submit"
