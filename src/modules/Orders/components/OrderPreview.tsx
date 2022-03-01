@@ -28,8 +28,7 @@ const OrderPreview: React.FC<{
 					{cartItems.map((item: any, key: number) => (
 						<p
 							key={key}
-							className="text-blue-30 px-[0.2rem] shadow-2xl font-[700] rounded-xl border-2
-                  border-blue-30">
+							className="text-blue-30 px-[0.2rem] shadow-2xl font-[700] rounded-xl">
 							{item.name}
 						</p>
 					))}

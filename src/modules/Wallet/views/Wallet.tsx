@@ -19,15 +19,19 @@ const Wallet = () => {
 				<p className="text-[1.2rem] md:text-[1.4rem] font-[500]">
 					Wallet balance
 				</p>
-				<p className="text-[1rem] md:text-[1.2rem] font-[700]">GC {wallet}</p>
+				<p className="text-[1rem] md:text-[1.2rem] font-[700]">
+					GC {wallet || 0}
+				</p>
 			</div>
 			{renderSpinner(load)}
-         <p className="text-red-20 text-[1.1rem] md:text-[1.3rem] ml-8 font-[700]">
-					Your transactions
-				</p>
+			<p className="text-red-20 text-[1.1rem] md:text-[1.3rem] ml-8 font-[700]">
+				Your transactions
+			</p>
 			<div className="flex flex-col md:flex-row gap-y-4 gap-x-10 items-center">
 				{transactions?.map((trans: any, key: number) => (
-					<div key={key} className="flex flex-col shadow-lg px-[2rem] py-[1rem] h-[8rem] 
+					<div
+						key={key}
+						className="flex flex-col shadow-lg px-[2rem] py-[1rem] h-[8rem] 
                md:h-[10rem] justify-center space-y-6 rounded-xl">
 						<p className="text-[1rem] md:text-[1.1rem]">
 							{new Date(trans.createdAt).toLocaleString()}

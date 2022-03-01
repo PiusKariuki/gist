@@ -96,7 +96,7 @@ const Product: React.FC = (): JSX.Element => {
 										key={key}
 										style={{ backgroundImage: `url(${imgUrl}/${img})` }}
 										className="w-[12rem] h-[6rem] rounded-2xl bg-contain bg-center 
-                              bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer"
+                              bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer flex-shrink-0"
 										onClick={() => setIndex(key)}
 									/>
 								);
@@ -116,7 +116,7 @@ const Product: React.FC = (): JSX.Element => {
 								? "$" + product.price
 								: product.price === undefined
 								? ""
-								: "GC" + product?.price}
+								: "GC " + product?.price}
 						</p>
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}

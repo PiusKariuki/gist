@@ -10,7 +10,7 @@ const Cart = () => {
 	const cartValue = useRecoilValue(cartAtom);
 	const setOpenCart = useSetRecoilState(cartOpen);
 	let navigate = useNavigate();
-   
+
 	return (
 		<div
 			className="w-[90vw] md:w-[45vw] flex flex-col px-[1rem] py-[2rem] gap-y-[0.5rem]
@@ -44,37 +44,41 @@ const Cart = () => {
 				)}
 			</div>
 
-			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
-				<p className="font-[500]">Estimated shipping</p>
-				<p className="font-[600] text-blue-20">GC0.00</p>
-			</div>
+			{cartValue.length > 0 ? (
+				<>
+					<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
+						<p className="font-[500]">Estimated shipping</p>
+						<p className="font-[600] text-blue-20">GC0.00</p>
+					</div>
 
-			<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
-				<p className="font-[500]">Estimated tax</p>
-				<p className="font-[600] text-blue-20">GC0.00</p>
-			</div>
+					<div className="flex flex-row md:text-[1.2rem] md:w-[40%] justify-between self-end">
+						<p className="font-[500]">Estimated tax</p>
+						<p className="font-[600] text-blue-20">GC0.00</p>
+					</div>
 
-			<div
-				className="flex flex-row md:text-[1.2rem] tracking-wider md:w-[40%] justify-between
-            self-end">
-				<p className="font-[500]">Estimated total</p>
-				<p className="font-[600] text-blue-20 text-left">
-					GC{isNaN(totalValue) ? 0 : totalValue}
-				</p>
-			</div>
+					<div
+						className="flex flex-row md:text-[1.2rem] tracking-wider md:w-[40%] justify-between
+                  self-end">
+						<p className="font-[500]">Estimated total</p>
+						<p className="font-[600] text-blue-20 text-left">
+							GC{isNaN(totalValue) ? 0 : totalValue}
+						</p>
+					</div>
 
-			<button
-				disabled={cartValue.length === 0}
-				onClick={() => {
-					setOpenCart((prev: boolean) => !prev);
-					navigate(`/orders`);
-				}}
-				type="button"
-				className="bg-blue-20 md:w-[40%] py-[0.4rem] px-[1.4rem] rounded-md self-end
+					<button
+						disabled={cartValue.length === 0}
+						onClick={() => {
+							setOpenCart((prev: boolean) => !prev);
+							navigate(`/orders`);
+						}}
+						type="button"
+						className="bg-blue-20 md:w-[40%] py-[0.4rem] px-[1.4rem] rounded-md self-end
             hover:bg-blue-400 text-white text-[1.3rem] font-[500] 
             disabled:bg-gray-300  my-[1.5rem]">
-				Checkout
-			</button>
+						Checkout
+					</button>
+				</>
+			) : null}
 		</div>
 	);
 };
