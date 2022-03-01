@@ -45,13 +45,12 @@ const EditShop: React.FC = () => {
       *fetch shops after updates
    ......................................*/
 	}
-	useEffect(() => {
-		getShopsByUserId();
-	}, [updateShop]);
+	// useEffect(() => {
+	// 	getShopsByUserId();
+	// }, [updateShop]);
 
 	return (
 		<div className="flex flex-col rounded-2xl px-[1rem] py-[3rem]  relative">
-			<div className="px-[2rem]">{renderSpinner(load)}</div>
 			<form
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					updateShop(e, shopId);
@@ -150,22 +149,24 @@ const EditShop: React.FC = () => {
 				<div className="flex flex-col-reverse w-full md:w-[45%] gap-y-[2rem] ">
 					{/* button */}
 					<div
-						className="flex w-full flex-row gap-x-[3rem] lg:gap-x-60 order-1 
-                  md:justify-between">
+						className="flex w-full flex-row gap-x-[1rem] lg:gap-x-40 order-1 
+               ">
 						<button
 							type="submit"
-							disabled={mailError.length > 0 || load || img.length < 1}
+							disabled={load}
 							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
                      text-[1rem] font-[700] disabled:bg-gray-400">
 							Submit
 						</button>
+						{renderSpinner(load)}
+
 						<button
 							onClick={() => {
 								navigate(`/myAccount/shops/`);
 								getShopsByUserId();
 							}}
 							type="button"
-							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg
+							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg self-center
                       text-white text-[1rem] font-[700]  disabled:bg-gray-400">
 							Back
 						</button>

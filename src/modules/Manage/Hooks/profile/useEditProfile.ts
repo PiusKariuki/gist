@@ -24,7 +24,7 @@ const useEditProfile = () => {
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
-	const [img, setImg] = useState<any>(imgUrl+"/"+userObj?._id+".png");
+	const [img, setImg] = useState<any>(imgUrl+"/"+userObj?.profilePhoto);
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 

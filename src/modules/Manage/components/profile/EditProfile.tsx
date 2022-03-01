@@ -177,7 +177,6 @@ const EditProfile = () => {
 						<PhoneInput
 							country={"ke"}
 							value={phone}
-							required={true}
 							onChange={handlePhoneChange}
 							className="h-[2.25rem] outline-none 
                      text-blue-20 border-0 text-[1.3rem] tracking-wider
@@ -216,9 +215,7 @@ const EditProfile = () => {
 
 					<input
 						onChange={handleChange}
-						// required
 						ref={hiddenInput}
-						// value={img}
 						type="file"
 						id="img"
 						accept="image/*"

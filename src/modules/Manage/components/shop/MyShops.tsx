@@ -7,6 +7,7 @@ import MyShopHome from "./MyShopHome";
 import AddProduct from "../product/AddProduct";
 import MyProducts from "../product/MyProducts";
 import AddProductImages from "../product/AddProductImages";
+import EditProduct from "../product/EditProduct";
 
 const MyShops = () => {
 	const { getShopsByUserId } = useShop();
@@ -29,6 +30,7 @@ const MyShops = () => {
 					element={<AddProductImages />}
 				/>
 				<Route path="/products/:shopId" element={<MyProducts />} />
+				<Route path="/products/edit/:productId" element={<EditProduct />} />     
 			</Routes>
 		</div>
 	);

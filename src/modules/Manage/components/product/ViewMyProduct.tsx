@@ -1,13 +1,15 @@
 import React from "react";
 import {
-	faUserCircle,
 	faPenToSquare,
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { deleteOpen, productOpen } from "../../store/store";
 import { imgUrl } from "shared/http/Http";
+import { useNavigate } from "react-router-dom";
+
+
 interface Props {
 	name: string;
 	price: string;
@@ -25,6 +27,7 @@ const ViewMyProduct: React.FC<Props> = ({
 }): JSX.Element => {
 	const setOpen = useSetRecoilState(productOpen);
 	const setOpenDelete = useSetRecoilState(deleteOpen);
+   let navigate = useNavigate();
 
 	return (
 		<div
@@ -33,8 +36,8 @@ const ViewMyProduct: React.FC<Props> = ({
 			<FontAwesomeIcon
 				icon={faPenToSquare}
 				color="blue"
-				className=" ml-auto mt-[2rem] absolute right-5 -top-5 font-[300] text-[1.6rem]"
-				onClick={() => setOpen(true)}
+				className=" absolute right-5 top-3 font-[300] text-[1.6rem]"
+				onClick={() => navigate(`/myAccount/shops/products/edit/${id}`)}
 			/>
 			<FontAwesomeIcon
 				icon={faTrash}
@@ -44,12 +47,15 @@ const ViewMyProduct: React.FC<Props> = ({
 			/>
 
 			<p className="text-blue-20 font-[500] text-[1.4rem] my-[1rem]">
-				{name}
-				<br />
-				<FontAwesomeIcon icon={faUserCircle} size="1x" color="blue" />
-				&nbsp;&nbsp;&nbsp;<span className="">{userName}</span>
+				{name}	
 			</p>
-			<img src={`${imgUrl}/${images[0]}`} alt="" className="w-[16rem] md:w-[18rem]" />
+			<img
+				src={`${imgUrl}/${images[0]}`}
+				alt=""
+				className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
+            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-contain  rounded-md"
+			/>
+         
 			<p
 				className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
             bg-black-80 px-[1rem]">

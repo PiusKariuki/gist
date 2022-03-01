@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useShopDetails from "../../../shop/Hooks/useShopDetails";
 import ViewMyProduct from "modules/Manage/components/product/ViewMyProduct";
-import EditProductForm from "./EditProductForm";
+import EditProductForm from "./EditProduct";
 import { useRecoilValue } from "recoil";
 import { productOpen, deleteOpen } from "../../store/store";
 import DeleteProduct from "./DeleteProduct";
@@ -22,9 +22,8 @@ const MyShop: React.FC = (): JSX.Element => {
 	}, [open, openDelete]);
 
 	return (
-		<>
-			<div
-				className="w-full py-[1rem] bg-white sticky top-0 z-20 border-b-4">
+		<div className="flex flex-col w-full md:w-screen">
+			<div className="w-full py-[1rem] bg-white sticky top-0 z-20 border-b-4">
 				<p
 					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                text-center ">
@@ -45,10 +44,10 @@ const MyShop: React.FC = (): JSX.Element => {
 						<p className="text-black-40 text-[1.6rem] md:text-[2.5rem] font-[700] py-[2rem]">
 							Products
 						</p>
-						<div className="flex flex-row flex-wrap  justify-start">
+						<div className="flex flex-col md:flex-row md:justify-self-center gap-8 flex-wrap">
 							{shopDetails?.map((product: any, key: number) => (
 								<div
-                           key={key}
+									key={key}
 									onClick={() => {
 										setProductId(product?._id);
 										setProductName(product?.name);
@@ -89,7 +88,7 @@ const MyShop: React.FC = (): JSX.Element => {
 					<DeleteProduct name={productName} productId={productId} />
 				</div>
 			) : null}
-		</>
+		</div>
 	);
 };
 
