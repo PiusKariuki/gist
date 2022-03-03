@@ -33,7 +33,6 @@ const EditProfile = () => {
 	const handleClick = () => {
 		hiddenInput.current.click();
 	};
-   
 
 	return (
 		<form
@@ -46,7 +45,7 @@ const EditProfile = () => {
             bg-gray-100 -z-10 rounded-br-full"
 			/>
 			<p className="text-black-80 text-[1.4rem] md:text-[2rem] font-[700]">
-				Edit your profile
+				Edit profile
 			</p>
 			<div className="flex flex-col w-screen ">
 				{/*......................................
@@ -189,25 +188,26 @@ const EditProfile = () => {
 				{/*......................................
                *BTN AND IMAGE
             ......................................*/}
-				<div className="flex flex-col  w-[80vw] md:w-[80%] lg:w-[40%] my-[2rem] space-y-10">
+				<div className="flex flex-col my-[2rem] space-y-10">
 					{img.length > 0 ? (
-						<div className="flex relative h-40">
+						<div className="flex relative">
 							<img
 								src={img}
-								className=" flex max-h-[14rem] w-full object-contain"
+								className=" flex  w-[14rem] h-[14rem] md:w-[14rem] md:h-[14rem]
+                        rounded-full object-contain border-2"
 							/>
 							<FontAwesomeIcon
 								onClick={() => setImg("")}
 								icon={faTrash}
-								size="3x"
-								className="absolute top-[50%] left-[50%] opacity-90 text-red-500
-                              bg-gray-50 trans"
+								size="1x"
+								className="absolute top-[50%] left-[30%] md:left-[10%] opacity-90 text-red-500
+                        translate-x-[-50%] translate-y-[-50%] transform-gpu z-20"
 							/>
 						</div>
 					) : (
 						<button
 							type="button"
-							className="bg-blue-500 self-center w-full px-[1rem] py-[0.4rem]
+							className="bg-blue-500 w-[14rem] px-[1rem] py-[0.4rem]
                      mt-auto rounded-md font-[600] text-white"
 							onClick={handleClick}>
 							Upload profile photo
@@ -283,12 +283,13 @@ const EditProfile = () => {
 					load ||
 					phoneErr.length > 0 ||
 					phone?.length < 4 ||
-					confirmPassword !== password
+					confirmPassword !== password ||
+					img.length < 1
 				}
 				type="submit"
 				className="bg-blue-20 py-[0.2rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
-               font-bold w-full md:w-[40%] lg:w-[40%] hover:bg-blue-600 self-start disabled:bg-gray-400">
-				Submit
+            font-bold w-full md:w-[40%] lg:w-[40%] hover:bg-blue-600 self-start disabled:bg-gray-400">
+				Update
 			</button>
 		</form>
 	);
