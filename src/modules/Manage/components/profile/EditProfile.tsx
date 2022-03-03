@@ -4,7 +4,7 @@ import useEditProfile from "../../Hooks/profile/useEditProfile";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const EditProfile = () => {
 	const {
@@ -25,7 +25,7 @@ const EditProfile = () => {
 		handleSubmit,
 		confirmPassword,
 		img,
-      setImg
+		setImg,
 	} = useEditProfile();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -33,6 +33,7 @@ const EditProfile = () => {
 	const handleClick = () => {
 		hiddenInput.current.click();
 	};
+   
 
 	return (
 		<form

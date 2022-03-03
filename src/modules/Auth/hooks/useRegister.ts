@@ -50,6 +50,7 @@ const useRegister = () => {
 			case "confirm":
 				if (e.target.value !== password)
 					setPassError("Password and Confirm passwords don't match");
+				else setPassError("");
 
 				setConfirmPassword(e.target.value);
 				break;
@@ -70,7 +71,7 @@ const useRegister = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch((err) =>err);
+					.catch((err) => err);
 				break;
 			default:
 				break;
@@ -94,10 +95,23 @@ const useRegister = () => {
 
 		try {
 			const { data } = await Axios.post("/register", newUser);
-			setUser(data);
+
+			let newObj = {
+				token: data.token,
+				_id: data.user._id,
+				userName: data.user.userName,
+				profilePhoto: data.user.profilePhoto,
+				phonenumber: data.user.phonenumber,
+				email: data.user.email,
+				firstName: data.user.firstName,
+				lastName: data.user.lastName,
+				bio: data.user.bio,
+			   wallet: data.user.wallet
+			};
+			setUser(newObj);
 			setLoad(false);
 			setErrors("");
-		} catch (e: any) { 
+		} catch (e: any) {
 			Swal.fire({
 				icon: "error",
 				title: e.response.data.message,

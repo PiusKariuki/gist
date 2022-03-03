@@ -20,7 +20,7 @@ const useEditProfile = () => {
 	const [lname, setLname] = useState(userObj?.lastName);
 	const [bio, setBio] = useState(userObj?.bio);
 	const [userName, setUserName] = useState(userObj?.userName);
-	const [phone, setPhone] = useState(userObj?.phoneNumber);
+	const [phone, setPhone] = useState(userObj?.phonenumber);
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
@@ -31,6 +31,7 @@ const useEditProfile = () => {
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
 	};
+   
 
 	const handleChange = (e: any) => {
 		setErrors("");
@@ -95,8 +96,7 @@ const useEditProfile = () => {
 				icon: "success",
 				text: "Your profile has been updated",
 				timer: 1500,
-			});
-         
+			});      
 			setUser(data);
 			setLoad(false);
 		} catch (error: any) {

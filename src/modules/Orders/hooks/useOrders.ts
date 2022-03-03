@@ -109,7 +109,7 @@ const useOrders = () => {
 		}
 
 		try {
-			await Axios.post(`/orders/${_id}/${billing}/${shipping}`, {
+			await Axios.post(`/orders/${_id}/${shipping}`, {
 				order: sentObj,
 			});
 
