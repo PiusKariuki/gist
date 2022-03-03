@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditProfile from "../../Hooks/profile/useEditProfile";
-import "react-phone-number-input/style.css";
+import "shared/styles/phoneInput.css";
 import PhoneInput from "react-phone-number-input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -63,6 +63,7 @@ const EditProfile = () => {
 							First Name
 						</label>
 						<input
+							autoComplete="off"
 							onChange={handleChange}
 							value={fname}
 							required
@@ -84,6 +85,7 @@ const EditProfile = () => {
 							Last Name
 						</label>
 						<input
+							autoComplete="off"
 							onChange={handleChange}
 							value={lname}
 							required
@@ -110,6 +112,7 @@ const EditProfile = () => {
 							Bio
 						</label>
 						<textarea
+							autoComplete="off"
 							onChange={handleChange}
 							value={bio}
 							required
@@ -128,6 +131,7 @@ const EditProfile = () => {
 							Username
 						</label>
 						<input
+							autoComplete="off"
 							onChange={handleChange}
 							value={userName}
 							required
@@ -154,6 +158,7 @@ const EditProfile = () => {
 							Email Address
 						</label>
 						<input
+							autoComplete="off"
 							onChange={handleChange}
 							value={email}
 							required
@@ -175,6 +180,7 @@ const EditProfile = () => {
 							Phone Number
 						</label>
 						<PhoneInput
+							autoComplete="off"
 							country={"ke"}
 							value={phone}
 							onChange={handlePhoneChange}

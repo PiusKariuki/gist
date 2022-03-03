@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useRegister from "../hooks/useRegister";
 import useSpinner from "shared/components/spinner/useSpinner";
 import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import "shared/styles/phoneInput.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseUser, faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -159,6 +159,7 @@ const Register = (): JSX.Element => {
 								Phone Number
 							</label>
 							<PhoneInput
+
 								required={true}
 								country={"ke"}
 								value={phone}

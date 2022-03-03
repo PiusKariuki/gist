@@ -3,7 +3,6 @@ import useManage from "../../Hooks/useManage";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import useSpinner from "shared/components/spinner/useSpinner";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,12 +19,10 @@ const CreateShop: React.FC = () => {
 		handlePhoneChange,
 		mailError,
 		load,
-		clearAttributes,
 		setImg,
 	} = useManage();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
-	let navigate = useNavigate();
 
 	const handleClick = () => {
 		hiddenInput.current.click();
@@ -134,8 +131,8 @@ const CreateShop: React.FC = () => {
 				<div className="flex flex-col-reverse w-full md:gap-y-[2rem] ">
 					{/* button */}
 					<div
-						className="flex w-full flex-row  lg:gap-x-60 order-1 mt-10 
-                  justify-between">
+						className="flex flex-row  lg:gap-x-60 order-1 mt-10 
+                  ">
 						<button
 							type="submit"
 							disabled={mailError.length > 0 || load || img.length < 1}
@@ -143,21 +140,7 @@ const CreateShop: React.FC = () => {
                      self-center text-white text-[1rem] font-[700] disabled:bg-gray-400 w-24">
 							Submit
 						</button>
-						{/*......................................
-                     *SPINNER
-                  ......................................*/}
-						{renderSpinner(load)}
-
-						<button
-							onClick={() => {
-								navigate(`/myAccount/shops/`);
-								clearAttributes();
-							}}
-							type="button"
-							className="bg-red-20 px-[1rem] py-[0.5rem] rounded-lg h-10
-                     self-center text-white text-[1rem] font-[700]  disabled:bg-gray-400 w-24">
-							Back
-						</button>
+						<div className="flex">{renderSpinner(load)}</div>
 					</div>
 
 					{img.length > 0 ? (

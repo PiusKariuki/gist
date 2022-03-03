@@ -8,6 +8,7 @@ import AddProduct from "../product/AddProduct";
 import MyProducts from "../product/MyProducts";
 import AddProductImages from "../product/AddProductImages";
 import EditProduct from "../product/EditProduct";
+import ProductPreview from "../product/ProductPreview";
 
 const MyShops = () => {
 	const { getShopsByUserId } = useShop();
@@ -30,7 +31,11 @@ const MyShops = () => {
 					element={<AddProductImages />}
 				/>
 				<Route path="/products/:shopId" element={<MyProducts />} />
-				<Route path="/products/edit/:productId" element={<EditProduct />} />     
+				<Route path="/products/edit/:productId" element={<EditProduct />} />
+				<Route
+					path="/products/preview/:productId"
+					element={<ProductPreview />}
+				/>
 			</Routes>
 		</div>
 	);

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import "shared/styles/phoneInput.css"
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../../Hooks/shop/useEditShop";
 import { useNavigate, useParams } from "react-router-dom";
@@ -52,6 +52,7 @@ const EditShop: React.FC = () => {
 	return (
 		<div className="flex flex-col rounded-2xl px-[1rem] py-[3rem]  relative">
 			<form
+				autoComplete="off"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 					updateShop(e, shopId);
 				}}
@@ -65,6 +66,7 @@ const EditShop: React.FC = () => {
 						Shop Name
 					</label>
 					<input
+						autoComplete="off"
 						onChange={handleChange}
 						value={shopName}
 						required
@@ -82,6 +84,7 @@ const EditShop: React.FC = () => {
 						Location
 					</label>
 					<input
+						autoComplete="off"
 						onChange={handleChange}
 						required
 						value={location}
@@ -99,6 +102,7 @@ const EditShop: React.FC = () => {
 						Shop email
 					</label>
 					<input
+						autoComplete="off"
 						onChange={handleChange}
 						value={email}
 						required
@@ -117,13 +121,13 @@ const EditShop: React.FC = () => {
 						Shop Telephone
 					</label>
 					<PhoneInput
+						autoComplete="off"
 						country={"us"}
 						value={phone}
 						required={true}
 						onChange={handlePhoneChange}
-						className="h-[2.25rem] outline-none 
-                     text-blue-20 border-0 text-[1.3rem] tracking-wider
-                     rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
+						className="h-[2.25rem] outline-none text-blue-20 border-0 text-[1.3rem]
+                  tracking-wider rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
 					/>
 					{/* text area */}
 					<label
@@ -133,6 +137,7 @@ const EditShop: React.FC = () => {
 						Description
 					</label>
 					<textarea
+						autoComplete="off"
 						onChange={handleChange}
 						value={desc}
 						required
@@ -156,20 +161,10 @@ const EditShop: React.FC = () => {
 							disabled={load}
 							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
                      text-[1rem] font-[700] disabled:bg-gray-400">
-							Submit
+							Update
 						</button>
 						{renderSpinner(load)}
 
-						<button
-							onClick={() => {
-								navigate(`/myAccount/shops/`);
-								getShopsByUserId();
-							}}
-							type="button"
-							className="bg-red-20 px-[2rem] py-[0.5rem] rounded-lg self-center
-                      text-white text-[1rem] font-[700]  disabled:bg-gray-400">
-							Back
-						</button>
 					</div>
 
 					{img.length > 0 ? (
@@ -182,9 +177,9 @@ const EditShop: React.FC = () => {
 							<FontAwesomeIcon
 								onClick={() => setImg("")}
 								icon={faTrash}
-								size="3x"
-								className="absolute top-[50%] left-[50%] opacity-90 text-red-500
-                        bg-gray-50 trans"
+								size="2x"
+								className="absolute bottom-[0%] right-[0%] opacity-90 text-red-500
+                        trans"
 							/>
 						</div>
 					) : (
@@ -198,7 +193,6 @@ const EditShop: React.FC = () => {
 					)}
 					<input
 						onChange={handleChange}
-						required
 						ref={hiddenInput}
 						type="file"
 						id="img"

@@ -5,9 +5,10 @@ import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
+import { useNavigate } from "react-router-dom";
 
 const useManage = () => {
-	const {_id } = useRecoilValue<any>(user);
+	const { _id } = useRecoilValue<any>(user);
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
 	const [img, setImg] = useState<any>("");
@@ -17,6 +18,7 @@ const useManage = () => {
 	const [mailError, setMailError] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
+	let navigate = useNavigate();
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
@@ -70,8 +72,9 @@ const useManage = () => {
 				text: "Your shop has been created",
 				timer: 1000,
 			});
+			navigate(`/myAccount/shops/`);
 			setLoad(false);
-         clearAttributes();
+			clearAttributes();
 		} catch (error: any) {
 			let errmsg = error.response.data.split(":");
 			setLoad(false);
@@ -109,8 +112,8 @@ const useManage = () => {
 		handlePhoneChange,
 		mailError,
 		load,
-      clearAttributes,
-      setImg
+		clearAttributes,
+		setImg,
 	};
 };
 
