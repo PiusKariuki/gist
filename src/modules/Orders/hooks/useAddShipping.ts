@@ -58,7 +58,7 @@ const useAddShipping = () => {
 				icon: "success",
 				title: "Shipping address has been added successfully",
 				text: "Click Ok below to proceed to add billing address",
-			}).then(() => navigate(`/orders/newBilling`));
+			}).then(() => navigate(`/orders/existing`));
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({

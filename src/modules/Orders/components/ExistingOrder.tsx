@@ -9,15 +9,11 @@ import OrderPreview from "./OrderPreview";
 const ExistingOrder: React.FC<{}> = () => {
 	const { renderSpinner } = useSpinner();
 	const {
-		billing,
 		shipping,
 		handleChange,
-		getBillingByUserId,
 		getShippingByUserId,
 		userShippings,
-		userBillings,
 		load,
-		handleSubmit,
 		shippingName,
 		openPreview,
 		setOpenPreview,
@@ -25,9 +21,8 @@ const ExistingOrder: React.FC<{}> = () => {
 	let navigate = useNavigate();
 
 	useEffect(() => {
-		getBillingByUserId();
 		getShippingByUserId();
-	}, [open]);
+	}, []);
 
 	useEffect(() => {
 		if (shippingName?.length > 0 && !load) {
@@ -39,7 +34,11 @@ const ExistingOrder: React.FC<{}> = () => {
 		<div className="flex w-full flex-col relative">
 			{openPreview ? (
 				<div className="flex fixed top-[0%] left-[0%]">
-					<OrderPreview address={shippingName} setOpen={setOpenPreview} />
+					<OrderPreview
+						shippingId={shipping}
+						address={shippingName}
+						setOpen={setOpenPreview}
+					/>
 				</div>
 			) : null}
 			<div
@@ -55,8 +54,7 @@ const ExistingOrder: React.FC<{}> = () => {
 			<p className="text-blue-30 font-[600]  text-[1.6rem] mb-[2rem]">
 				Final Step. Place your order
 			</p>
-			<div
-				className="flex flex-col gap-y-[0.1rem] w-full md:w-[40%]  ">
+			<div className="flex flex-col gap-y-[0.1rem] w-full md:w-[40%]  ">
 				{/* shipping address */}
 				<label
 					htmlFor="shipping"
@@ -90,8 +88,7 @@ const ExistingOrder: React.FC<{}> = () => {
 					))}
 				</select>
 				<div className="mt-[1rem]">{renderSpinner(load)}</div>
-				<div className="flex w-full justify-between">
-				</div>
+				<div className="flex w-full justify-between"></div>
 			</div>
 		</div>
 	);

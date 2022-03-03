@@ -23,7 +23,7 @@ const Topbar = () => {
 	const cart = useRecoilValue<any>(cartAtom);
 	let { userName, token, wallet } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
-
+   
 	let number = cart.length;
 
 	return (
@@ -88,7 +88,7 @@ const Topbar = () => {
 				<p
 					className="invisible 425:visible text-blue-20 text-center self-center lg:text-[1rem] 
          ">
-					Hello🖐 {userName}, GC {wallet}
+					Hello🖐 {userName}, GC {wallet }
 				</p>
 			)}
 			<div

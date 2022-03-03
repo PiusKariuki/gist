@@ -6,9 +6,10 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import { user } from "shared/recoil/user";
 
 const OrderPreview: React.FC<{
+	shippingId: string;
 	address: string;
 	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ address, setOpen }) => {
+}> = ({ address, setOpen,shippingId }) => {
 	const cartItems = useRecoilValue<any>(cartAtom);
 	const subTotal = useRecoilValue<any>(cartSelector);
 	const { handleSubmit, load } = useOrders();
@@ -43,7 +44,7 @@ const OrderPreview: React.FC<{
 					<span className="text-gray-20 text-[1.3rem] font-[700]">
 						Wallet balance:&nbsp;&nbsp;GC&nbsp;
 					</span>
-					{wallet -subTotal}
+					{wallet - subTotal}
 				</p>
 				<p className="text-blue-30 text-[1.3rem] space-x-4 font-[600]">
 					<span className="text-gray-20 text-[1.3rem] font-[700]">
@@ -54,7 +55,7 @@ const OrderPreview: React.FC<{
 
 				<div className="flex flex-row space-x-10 md:justify-between">
 					<button
-						onClick={handleSubmit}
+						onClick={()=>handleSubmit(shippingId)}
 						className="bg-gray-20 px-[0.8rem] py-[0.3rem] w-[8rem]
                   mt-[2rem] text-[1.2rem] text-white font-[700] rounded-xl hover:bg-blue-600
                   disabled:bg-gray-400">

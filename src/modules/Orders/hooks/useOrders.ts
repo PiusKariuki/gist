@@ -1,3 +1,4 @@
+import CartItem from "modules/Cart/components/CartItem";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -7,10 +8,8 @@ import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
 const useOrders = () => {
-	const [userBillings, setUserBillings] = useState<any>([]);
 	const [userShippings, setUserShippings] = useState<any>([]);
 
-	const [billing, setBilling] = useState<string>(userBillings[0]);
 	const [shipping, setShipping] = useState<string>(userShippings[0]);
 	const [load, setLoad] = useState<boolean>(false);
 
@@ -57,22 +56,6 @@ const useOrders = () => {
 		}
 	};
 
-	const getBillingByUserId = async () => {
-		setLoad(true);
-		try {
-			let { data } = await Axios.get(`/billing/all/${_id}`);
-			if (data.lenght < 1)
-				Swal.fire({
-					icon: "info",
-					title: "Looks like you dont have any shipping or order information.",
-					text: "Don't worry you can add new information in the button above",
-				});
-			setUserBillings(data);
-			setLoad(false);
-		} catch (error) {
-			setLoad(false);
-		}
-	};
 	const getShippingByUserId = async () => {
 		setLoad(true);
 		try {
@@ -84,7 +67,7 @@ const useOrders = () => {
 		}
 	};
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (shippingId: string) => {
 		setLoad(true);
 		let sentObj = cartItems.map((item: any) =>
 			Object.assign(
@@ -97,7 +80,8 @@ const useOrders = () => {
 					productId: item.productId,
 					shopId: item.shopId,
 					quantity: item.quantity,
-					sellerId: item.sellerId._id,
+					productOwnerId: item.sellerId,
+					shippingId,
 				}
 			)
 		);
@@ -109,7 +93,7 @@ const useOrders = () => {
 		}
 
 		try {
-			await Axios.post(`/orders/${_id}/${shipping}`, {
+			await Axios.post(`/orders/${_id}`, {
 				order: sentObj,
 			});
 
@@ -117,9 +101,11 @@ const useOrders = () => {
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been placed",
+				timer: 1500,
 			}).then(() => navigate("/"));
 			setCartAtom([]);
-         setOpenPreview(false);
+			setOpenPreview(false);
+			navigate("/");
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -130,12 +116,9 @@ const useOrders = () => {
 	};
 
 	return {
-		billing,
 		shipping,
-		getBillingByUserId,
 		getShippingByUserId,
 		userShippings,
-		userBillings,
 		load,
 		handleSubmit,
 		handleChange,
