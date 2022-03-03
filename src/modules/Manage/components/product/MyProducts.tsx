@@ -79,7 +79,7 @@ const MyShop: React.FC = (): JSX.Element => {
 			{/*edit modal */}
 			{open ? (
 				<div className="fixed top-[0%] md:top-[10%] md:right-[10%] z-50 bg-white shadow-xl">
-					<EditProductForm productId={productId} />
+					<EditProductForm/>
 				</div>
 			) : null}
 			{/*delete modal */}
