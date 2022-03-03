@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { imgUrl } from "shared/http/Http";
 
 const Hero = () => {
 	let navigate = useNavigate();
@@ -26,7 +27,8 @@ const Hero = () => {
 			</div>
 			{/* bg img */}
 			<div
-				className="flex  bg-hero w-[80vw] h-[30vh] bg-center bg-cover bg-no-repeat order-1
+				style={{ backgroundImage: `url(/img/hero.png)` }}
+				className="flex   w-[80vw] h-[30vh] bg-center bg-cover bg-no-repeat order-1
           md:order-2 md:min-w-[55vw] md:h-[45vh] lg:h-[55vh] self-center rounded-xl"
 			/>
 		</div>
