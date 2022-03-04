@@ -35,7 +35,7 @@ const Cart = () => {
                 px-[2rem]">
 						<div
 							style={{ backgroundImage: `url(/img/wallet.png)` }}
-							className="bg-contain bg-center  bg-no-repeat h-[10rem] w-[10rem]"
+							className="bg-cover bg-center  bg-no-repeat h-[10rem] w-[10rem]"
 						/>
 						<p className="text-red-20 font-[700] text-[1rem] md:text-[1.7rem]">
 							Your cart is empty.

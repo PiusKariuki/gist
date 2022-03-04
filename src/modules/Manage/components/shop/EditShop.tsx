@@ -172,7 +172,7 @@ const EditShop: React.FC = () => {
 							<img
 								src={img}
 								className=" flex  max-h-[14rem] md:max-h-[25rem] lg:max-h-[25rem] w-full 
-                        object-contain order-3"
+                        object-cover order-3 border-2 rounded-xl"
 							/>
 							<FontAwesomeIcon
 								onClick={() => setImg("")}

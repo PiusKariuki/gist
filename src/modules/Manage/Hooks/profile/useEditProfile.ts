@@ -81,8 +81,12 @@ const useEditProfile = () => {
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		setLoad(true);
-		try {
-			let { data } = await Axios.put(`/users/${userObj?._id}`, {
+		var updateObj = {};
+      {/*......................................
+         *Only push image when a new img has been uploaded
+      ......................................*/}
+		if (img.length > 60)
+			updateObj = {
 				firstName: fname,
 				lastName: lname,
 				email: email,
@@ -90,13 +94,37 @@ const useEditProfile = () => {
 				userName: userName,
 				profilePhoto: img,
 				phonenumber: phone,
-			});
+			};
+		else {
+			updateObj = {
+				firstName: fname,
+				lastName: lname,
+				email: email,
+				bio: bio,
+				userName: userName,
+				phonenumber: phone,
+			};
+		}
+		try {
+			let { data } = await Axios.put(`/users/${userObj?._id}`, updateObj);
 			Swal.fire({
 				icon: "success",
 				text: "Your profile has been updated",
 				timer: 1500,
 			});
-			// setUser((prev: any) => data);
+			let newObj = {
+				token: data.token,
+				_id: data.user._id,
+				userName: data.user.userName,
+				profilePhoto: data.user.profilePhoto,
+				phonenumber: data.user.phonenumber,
+				email: data.user.email,
+				firstName: data.user.firstName,
+				lastName: data.user.lastName,
+				bio: data.user.bio,
+				wallet: data.user.wallet,
+			};
+			setUser(newObj);
 			setLoad(false);
 		} catch (error: any) {
 			let msg = error.response.data.split(":");

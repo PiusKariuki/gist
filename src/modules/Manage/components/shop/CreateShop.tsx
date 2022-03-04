@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import useManage from "../../Hooks/useManage";
+import useManage from "../../Hooks/shop/useCreateShop";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import useSpinner from "shared/components/spinner/useSpinner";
@@ -155,8 +155,8 @@ const CreateShop: React.FC = () => {
 								onClick={() => setImg("")}
 								icon={faTrash}
 								size="3x"
-								className="absolute top-[50%] left-[50%] opacity-90 text-red-500
-                        bg-gray-50 trans"
+								className="absolute bottom-[0%] right-[0%] opacity-90 text-red-500
+                         trans"
 							/>
 						</div>
 					) : (

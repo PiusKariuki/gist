@@ -31,7 +31,7 @@ const RecentRooms: React.FC<Props> = ({
 			<div className="flex flex-row gap-x-[1rem]">
 				<div
 					style={{ backgroundImage: `url(${imgUrl}/${userImage})` }}
-					className="flex w-[3rem] h-[3rem] rounded-full bg-black-70 self-center bg-center 
+					className="flex w-[3rem] h-[3rem] rounded-full self-center bg-center 
                bg-no-repeat bg-cover"
 				/>
 				<div className="flex flex-col w-[16rem]">
@@ -45,10 +45,10 @@ const RecentRooms: React.FC<Props> = ({
 
 			<div
 				className="flex relative h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
-            bg-contain rounded-xl py-[1rem]
-            border-[0.1rem]"
-				style={{ backgroundImage: `url(${imgUrl}/${shopImage})` }}>
-			</div>
+            bg-cover rounded-xl py-[1rem] border-[0.1rem]"
+				style={{
+					backgroundImage: `url(${imgUrl}/0_61f951620019c849882d681d.png)`,
+				}}></div>
 		</div>
 	);
 };

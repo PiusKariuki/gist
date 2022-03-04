@@ -27,7 +27,7 @@ const ViewMyProduct: React.FC<Props> = ({
 
 	return (
 		<div
-			className="flex flex-col px-[1rem] py-[3rem] bg-white hover:border-[0.2rem] 
+			className="flex flex-col px-[1rem] py-[3rem] lg:py-[4rem] bg-white hover:border-[0.2rem] 
          hover:border-gray-200 border-[0.2rem] rounded-2xl border-white shadow-2xl  relative ">
 			<FontAwesomeIcon
 				icon={faPenToSquare}
@@ -47,19 +47,19 @@ const ViewMyProduct: React.FC<Props> = ({
 				src={`${imgUrl}/${images[0]}`}
 				alt=""
 				className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
-            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-cover  rounded-md"
+            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-cover  rounded-md border-2"
 			/>
 
 			<button
 				onClick={() => navigate(`/myAccount/shops/products/preview/${id}`)}
-				className="absolute bottom-[4%] left-[10%] bg-gray-20 px-[1rem] py-[0.3rem] 
+				className="absolute bottom-[2%] left-[10%] bg-gray-20 px-[1rem] py-[0.3rem] 
             rounded-md text-white font-bold">
 				View Product
 			</button>
 
 			<p
-				className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
-            bg-black-80 px-[1rem]">
+				className="absolute bottom-[2%] right-[10%] text-white font-[600] text-[1.2rem]
+            bg-black-80 px-[1rem] opacity-80 rounded-md">
 				GC {price}
 			</p>
 		</div>

@@ -19,8 +19,8 @@ const SearchProduct: React.FC<Props> = ({ name, img, price, userName, id }) => {
          flex-shrink-0"			>
 			<div
 				style={{ backgroundImage: `url(${imgUrl}/${img})` }}
-				className="bg-contain bg-center bg-no-repeat w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
-            rounded-2xl self-center"
+				className="bg-cover bg-center bg-no-repeat w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
+            rounded-2xl self-center border-2"
 			/>
 			<p className="text-gray-10 font-[900] text-[1rem] ">{name}</p>
 			<p className="text-gray-10 font-[300] text-[1rem] ">

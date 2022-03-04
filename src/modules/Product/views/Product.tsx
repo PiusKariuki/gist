@@ -47,7 +47,8 @@ const Product: React.FC = (): JSX.Element => {
 								<img
 									src={`${imgUrl}/${product?.images[index]}`}
 									alt="productImg"
-									className="h-[60vh] object-contain"
+									className="h-[40vh] w-[78vw] md:w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
+                           object-cover rounded-2xl border-2"
 								/>
 								<FontAwesomeIcon
 									onClick={() =>
@@ -95,7 +96,7 @@ const Product: React.FC = (): JSX.Element => {
 									<div
 										key={key}
 										style={{ backgroundImage: `url(${imgUrl}/${img})` }}
-										className="w-[12rem] h-[6rem] rounded-2xl bg-contain bg-center 
+										className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
                               bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer flex-shrink-0"
 										onClick={() => setIndex(key)}
 									/>

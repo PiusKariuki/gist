@@ -52,7 +52,7 @@ const Shop: React.FC = (): JSX.Element => {
 										<img
 											src={`${imgUrl}/${shopDetails[0]?.shopId?.image}`}
 											alt=""
-											className="h-[6rem] w-[8rem] md:w-[14rem] object-contain"
+											className="h-[6rem] w-[8rem] md:w-[14rem] object-cover border-2"
 										/>
 									) : null}
 								</div>

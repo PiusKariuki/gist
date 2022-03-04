@@ -14,13 +14,13 @@ const Products = () => {
 	const scrollRef = useRef<any>(null);
 
 	return (
-		<div className="flex flex-col py-[3rem] px-[2rem] h-full w-screen relative">
+		<div className="flex flex-col py-[3rem] px-[2rem] h-full  relative">
 			<p className="text-black-40 text-[1.4rem] md:text-[2.2rem] font-[600] mb-[2rem]">
 				Recommended products
 			</p>
 			<div
 				ref={scrollRef}
-				className="scroller flex flex-row  overflow-x-auto gap-x-8 md:flex-row ">
+				className="scroller flex flex-row  overflow-x-scroll gap-x-8 md:flex-row ">
 				{products.map((product: any, key: number) => (
 					<ViewProduct
 						name={product?.name}
@@ -29,6 +29,7 @@ const Products = () => {
 						key={key}
 						id={product?._id}
 						shopId={product?.shopId?._id}
+                  image={product?.images[0]}
 					/>
 				))}
 			</div>
@@ -38,12 +39,12 @@ const Products = () => {
 			<FontAwesomeIcon
 				onClick={() => scrollLeft(scrollRef)}
 				icon={faAnglesLeft}
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] left-10 top-[50%] text-gray-300"
+				className="z-10 hidden lg:flex lg:absolute text-[2rem] left-10 top-[50%] text-gray-300"
 			/>
 			<FontAwesomeIcon
 				onClick={() => scrollRight(scrollRef)}
 				icon={faAnglesRight}
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] right-10 top-[50%] text-gray-300"
+				className="z-10 hidden lg:flex lg:absolute text-[2rem] right-10 top-[50%] text-gray-300"
 			/>
 		</div>
 	);

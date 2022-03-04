@@ -42,7 +42,7 @@ const ShopProducts: React.FC<Props> = ({
 
 			<div
 				className="flex relative w-full h-[40vh] md:w-[22rem] 3xl:w-[30rem] 3xl:h-[20vh] 
-            bg-no-repeat bg-center bg-contain rounded-xl border-[0.1rem]"
+            bg-no-repeat bg-center bg-cover rounded-xl border-2"
 				style={{ backgroundImage: `url(${imgUrl}/0_${id}.png)` }}>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]

@@ -204,8 +204,8 @@ const Register = (): JSX.Element => {
 								<div className="flex relative">
 									<img
 										src={img}
-										className="flex max-h-[20rem]  rounded-2xl object-contain self-center 
-                              top-[-300%] right-[0%] w-[80vw] md:w-[40vw] lg:w-[40%]"
+										className="flex max-h-[20rem]  rounded- object-cover self-center 
+                              top-[-300%] right-[0%] w-[80vw] md:w-[4xl0vw] lg:w-[40%] border-2"
 									/>
 									<FontAwesomeIcon
 										onClick={() => setImg("")}

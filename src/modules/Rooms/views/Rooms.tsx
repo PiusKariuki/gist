@@ -120,7 +120,7 @@ const Rooms = () => {
 					</div>
 					{/* room images */}
 
-					<div className="fixed top-16 backdrop-blur-lg  z-50">
+					<div className="fixed top-16  z-50">
 						{open
 							? room?.productIds?.map((product: any, key: number) => (
 									<BuyModal

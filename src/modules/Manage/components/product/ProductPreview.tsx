@@ -47,7 +47,8 @@ const ProductPreview: React.FC = (): JSX.Element => {
 								<img
 									src={`${imgUrl}/${product?.images[index]}`}
 									alt="productImg"
-									className="h-[60vh] object-contain"
+									className=" h-[40vh] w-[78vw] md:w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
+                           object-cover rounded-2xl border-2"
 								/>
 								<FontAwesomeIcon
 									onClick={() =>
@@ -82,7 +83,7 @@ const ProductPreview: React.FC = (): JSX.Element => {
 								<img
 									src="/img/wallet.png"
 									alt=""
-									className="h-[60vh] object-contain"
+									className="h-[60vh]  object-contain"
 								/>
 							</div>
 						)}
@@ -95,7 +96,7 @@ const ProductPreview: React.FC = (): JSX.Element => {
 									<div
 										key={key}
 										style={{ backgroundImage: `url(${imgUrl}/${img})` }}
-										className="w-[12rem] h-[6rem] rounded-2xl bg-contain bg-center 
+										className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
                               bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer flex-shrink-0"
 										onClick={() => setIndex(key)}
 									/>
@@ -121,10 +122,9 @@ const ProductPreview: React.FC = (): JSX.Element => {
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}
 						</p>
-						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
+						<p className="text-left text-gray-10 font-[600] text-[1.4rem] mt-8">
 							{product?.description}
 						</p>
-
 					</div>
 				</div>
 			</div>

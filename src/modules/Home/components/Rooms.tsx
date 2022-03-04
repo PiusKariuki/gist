@@ -54,12 +54,12 @@ const Rooms = () => {
 			<FontAwesomeIcon
 				onClick={() => scrollLeft(scrollRef)}
 				icon={faAnglesLeft}
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] left-10 top-[50%] text-gray-300"
+				className="z-10 hidden lg:flex lg:absolute text-[2rem] left-10 top-[50%] text-gray-300"
 			/>
 			<FontAwesomeIcon
 				onClick={() => scrollRight(scrollRef)}
 				icon={faAnglesRight}
-				className="z-10 hidden lg:flex lg:absolute text-[4rem] right-10 top-[50%] text-gray-300"
+				className="z-10 hidden lg:flex lg:absolute text-[2rem] right-10 top-[50%] text-gray-300"
 			/>
 		</div>
 	);

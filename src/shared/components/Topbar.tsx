@@ -28,7 +28,7 @@ const Topbar = () => {
 
 	return (
 		<div
-			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[1rem] 
+			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[2rem] lg:px-[4rem] 
          gap-x-[1rem] w-full justify-evenly">
 			{/* div wrapper for input and icons */}
 			<p

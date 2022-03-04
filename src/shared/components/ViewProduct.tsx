@@ -8,6 +8,7 @@ interface Props {
 	userName: string;
 	id: string;
 	shopId: string;
+	image: string;
 }
 
 const ViewProduct: React.FC<Props> = ({
@@ -16,7 +17,9 @@ const ViewProduct: React.FC<Props> = ({
 	userName,
 	id,
 	shopId,
+   image
 }): JSX.Element => {
+   
 	let navigate = useNavigate();
 	return (
 		<div
@@ -43,7 +46,7 @@ const ViewProduct: React.FC<Props> = ({
 			<div
 				className="flex relative w-full h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
             bg-cover rounded-xl border-[0.1rem]"
-				style={{ backgroundImage: `url(${imgUrl}/0_${id}.png)` }}>
+				style={{ backgroundImage: `url(${imgUrl}/${image})` }}>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1rem]
                bg-gray-20 px-[1rem] opacity-80 rounded-xl">

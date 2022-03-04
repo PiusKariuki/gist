@@ -73,7 +73,6 @@ const Navbar: React.FC = (): JSX.Element => {
 				<FontAwesomeIcon icon={faTruck} size="1x" color="" />
 				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">my orders</p>
 			</NavLink>
-			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 		</div>
 	);
 };
