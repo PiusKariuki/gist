@@ -1,20 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
 
 const Hero = () => {
 	let navigate = useNavigate();
 	return (
-		<div className="flex flex-col md:flex-row py-[2.5rem] px-[2rem] md:gap-x-[2rem]">
+		<div className="flex flex-col md:flex-row py-[2.5rem] px-[2rem] md:space-x-8
+      lg:space-x-[5rem]">
 			<div className="flex flex-col order-2 md:order-1 self-center">
-				<p className="uppercase text-blue-20 font-[900] text-[2rem]">
-					Welcome to GIST-SHOP.
-					<br />
-					<span className="text-black-40">Social Shopping Platform.</span>
+				<p className="uppercase font-[900] text-[2rem] text-[#00bcd7]">
+					The shopping <br /> experience.
+					<span className="text-black-40"> Everyone is talking about!</span>
 				</p>
-				<p className="text-[1.2rem] mt-[1.5rem]">
-					An always live social shopping network, with your favorite brands and
-					shops.
+				<p className="text-[1rem] mt-[1.5rem]">
+					An always live social-shopping network, with your favorite brands,
+					artists, celebrities and useful products.
 				</p>
 				<button
 					onClick={() => navigate(`/login`)}

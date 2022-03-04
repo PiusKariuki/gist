@@ -6,6 +6,7 @@ import { useRef, useEffect } from "react";
 import Menu from "shared/components/Menu";
 import { cartOpen } from "shared/recoil/cart";
 import { menuOpen } from "shared/recoil/menu";
+import Black from "../components/Black";
 
 const Home = () => {
 	const cartState = useRecoilValue(cartOpen);
@@ -37,8 +38,9 @@ const Home = () => {
 
 		<div
 			className="flex flex-col flex-nowrap overflow-x-clip md:px-[4rem]">
-			<div className="fixed top-0 inset-x-1 z-50 bg-white">
+			<div className="fixed top-0 inset-x-0 z-50 bg-white">
 				<Topbar />
+            <Black />
 			</div>
 
 			<div className="relative">
@@ -58,7 +60,7 @@ const Home = () => {
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>
 
-				<div ref={box} className="mt-[4rem] ">
+				<div ref={box} className="mt-[12rem] ">
 					<Outlet />
 				</div>
 			</div>

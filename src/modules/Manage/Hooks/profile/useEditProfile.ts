@@ -67,6 +67,8 @@ const useEditProfile = () => {
 				setBio(e.target.value);
 				break;
 			case "img":
+            console.log(e.target.files[0]);
+            var img = new Image();   
 				getBase64(e.target.files[0])
 					.then((res) => {
 						setImg(res);

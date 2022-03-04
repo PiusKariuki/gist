@@ -200,7 +200,7 @@ const EditProfile = () => {
 							<img
 								src={img}
 								className=" flex  w-[14rem] h-[14rem] md:w-[14rem] md:h-[14rem]
-                        rounded-full object-contain border-2"
+                        rounded-full object-cover border-2"
 							/>
 							<FontAwesomeIcon
 								onClick={() => setImg("")}

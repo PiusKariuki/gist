@@ -23,12 +23,12 @@ const Topbar = () => {
 	const cart = useRecoilValue<any>(cartAtom);
 	let { userName, token, wallet } = useRecoilValue<any>(user);
 	const { handleChange, input, setInput } = useSearch();
-   
+
 	let number = cart.length;
 
 	return (
 		<div
-			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[2rem] lg:px-[4rem] 
+			className="flex flex-row flex-nowrap  py-[0.2rem] md:py-[1rem] px-[0.5rem] md:px-[2rem] lg:px-[4rem] 
          gap-x-[1rem] w-full justify-evenly">
 			{/* div wrapper for input and icons */}
 			<p
@@ -47,7 +47,7 @@ const Topbar = () => {
 					onChange={handleChange}
 					className={`${
 						searching
-							? "w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md md:px-[1.4rem] h-[2.6rem] outline-none"
+							? "w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md md:px-[1.4rem] h-[2.3rem] outline-none"
 							: token?.length < 1
 							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
@@ -61,7 +61,7 @@ const Topbar = () => {
 					color="red"
 					className={`${
 						searching
-							? "absolute text-[1.1rem] md:hidden right-[17%] top-[20%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
+							? "absolute text-[1.1rem] md:hidden right-[17%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
 							: "hidden"
 					}`}
 					onClick={() => {
@@ -76,7 +76,7 @@ const Topbar = () => {
 				<button
 					className={`${
 						searching
-							? "hidden md:flex  w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
+							? "hidden md:flex  w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] flex-nowrap"
 							: "flex w-[8rem] ml-auto  py-[0.3rem] self-center border-2 border-blue-20 text-[1.2rem] hover:bg-blue-400 rounded-md text-center hover:text-white justify-around  font-[600] "
 					}
              
@@ -88,7 +88,7 @@ const Topbar = () => {
 				<p
 					className="invisible 425:visible text-blue-20 text-center self-center lg:text-[1rem] 
          ">
-					Hello🖐 {userName}, GC {wallet }
+					Hello🖐 {userName}, GC {wallet}
 				</p>
 			)}
 			<div
@@ -106,11 +106,13 @@ const Topbar = () => {
 							: "self-center md:ml-[2rem]  fa-lg md:fa-3x "
 					}`}
 				/>
-				<div
-					className="absolute bg-blue-20 text-[1rem] font-[900] right-[-58%] top-[-20%] 
+				{searching ? null : (
+					<div
+						className="absolute bg-blue-20 text-[1rem] font-[900] right-[-58%] top-[-20%] 
                w-[1.8rem] h-[1.8rem] rounded-full text-white text-center pt-[0.2rem]">
-					{number}
-				</div>
+						{number}
+					</div>
+				)}
 			</div>
 			{token?.length > 0 ? (
 				<FontAwesomeIcon
