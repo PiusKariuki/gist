@@ -5,17 +5,22 @@ import { useSetRecoilState } from "recoil";
 import { deleteOpen } from "modules/Manage/store/store";
 import useDeleteProduct from "modules/Manage/Hooks/product/useDeleteProduct";
 import useSpinner from "shared/components/spinner/useSpinner";
+import useShopDetails from "modules/shop/Hooks/useShopDetails";
+import { useNavigate } from "react-router-dom";
 
 const DeleteProduct: React.FC<{
 	name: string;
 	productId: string;
-}> = ({ name, productId }) => {
+	shopId: any;
+}> = ({ name, productId, shopId }) => {
 	const [value, setValue] = useState();
 	const handleChange = (e: any) => {
 		setValue(e.target.value);
 	};
+	const { getShopDetails } = useShopDetails();
+	let navigate = useNavigate();
 	const setOpenDelete = useSetRecoilState<any>(deleteOpen);
-	const { load, deleteShop } = useDeleteProduct();
+	const { load, deleteProduct } = useDeleteProduct();
 	const { renderSpinner } = useSpinner();
 
 	return (
@@ -37,8 +42,9 @@ const DeleteProduct: React.FC<{
 			<form
 				className="flex flex-col justify-around gap-y-[4rem]"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-					deleteShop(e, productId);
+					deleteProduct(e, productId);
 					setOpenDelete(false);
+					navigate(`/myAccount/shops/products/${shopId}`);
 				}}>
 				<input
 					type="text"

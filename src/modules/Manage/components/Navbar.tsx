@@ -3,6 +3,7 @@ import {
 	faUser,
 	faShoppingBasket,
 	faGift,
+   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -25,7 +26,7 @@ const Navbar: React.FC = (): JSX.Element => {
 				}>
 				<FontAwesomeIcon icon={faHome} size="1x" color="" />
 				<p className="hidden md:flex text-[0.9rem] md:text-[1.2rem] font-[400]">
-					Home
+					home
 				</p>
 			</NavLink>
 			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
@@ -41,7 +42,7 @@ const Navbar: React.FC = (): JSX.Element => {
 				}>
 				<FontAwesomeIcon icon={faUser} size="1x" color="" />
 				<p className="hidden md:flex text-[0.9rem] md:text-[1.2rem] font-[400]">
-					Profile
+					profile
 				</p>
 			</NavLink>
 			<p className="lg:text-[2rem] text-black-80 font-[500] self-center">/</p>
@@ -56,7 +57,7 @@ const Navbar: React.FC = (): JSX.Element => {
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
 				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">My Shops</p>
+				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">my shop</p>
 			</NavLink>
 			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 			{/*......................................
@@ -69,8 +70,8 @@ const Navbar: React.FC = (): JSX.Element => {
 						? "text-blue-20 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 						: "text-black-80 flex flex-row flex-nowrap items-center  space-x-[0.2rem]"
 				}>
-				<FontAwesomeIcon icon={faShoppingBasket} size="1x" color="" />
-				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">My Orders</p>
+				<FontAwesomeIcon icon={faTruck} size="1x" color="" />
+				<p className="text-[0.9rem] md:text-[1.2rem] font-[400]">my orders</p>
 			</NavLink>
 			<p className="lg:text-[2rem] text-black-80 font-[500] self-start">/</p>
 		</div>

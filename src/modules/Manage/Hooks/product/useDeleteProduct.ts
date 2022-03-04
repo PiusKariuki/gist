@@ -9,7 +9,7 @@ const useDeleteProduct = () => {
 	const [load, setLoad] = useState(false);
 	const setOpenDelete = useSetRecoilState<any>(deleteOpen);
 
-	const deleteShop = async (
+	const deleteProduct = async (
 		e: React.FormEvent<HTMLFormElement>,
 		productId: string
 	) => {
@@ -34,7 +34,7 @@ const useDeleteProduct = () => {
 		}
 	};
 
-	return { load, deleteShop };
+	return { load, deleteProduct };
 };
 
 export default useDeleteProduct;

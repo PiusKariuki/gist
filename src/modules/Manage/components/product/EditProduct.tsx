@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import useEdit from "../../Hooks/product/useEdit";
-import { productOpen } from "../../store/store";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import useSpinner from "shared/components/spinner/useSpinner";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +18,6 @@ const EditProduct: React.FC = () => {
 		description,
 		images,
 		removeImg,
-		addProductImages,
 	} = useEdit();
 
 	let { productId } = useParams();
@@ -41,8 +38,6 @@ const EditProduct: React.FC = () => {
 				editProductById(e, productId);
 			}}
 			className="flex flex-col w-full px-[0.5rem]  py-[2rem] md:px-[2rem] space-y-5 relative">
-			{renderSpinner(load)}
-			{/* <p className="text-[1.4rem]  text-gray-20 font-[700]">Edit product Details</p> */}
 			{/*......................................
             *NAME AND PRICE
          ......................................*/}
@@ -70,7 +65,7 @@ const EditProduct: React.FC = () => {
 						htmlFor="price"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mb-[0.5rem]  ">
-						Price
+						Price(GC)
 					</label>
 					<input
 						onChange={handleChange}
@@ -144,7 +139,7 @@ const EditProduct: React.FC = () => {
 						onClick={handleClick}
 						className="bg-blue-20 px-[1rem] py-[0.2rem] rounded-lg text-white w-full md:w-[40%]
                      text-[1.2rem] font-bold">
-						Upload New Images
+						Add Images
 					</button>
 				</div>
 				{/* IMAGES */}
@@ -176,7 +171,8 @@ const EditProduct: React.FC = () => {
 								onClick={() => {
 									removeImg(key);
 								}}
-								className="absolute top-[10%] right-[40%]"
+								className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50]
+                        z-20"
 							/>
 						</div>
 					))}
@@ -184,11 +180,13 @@ const EditProduct: React.FC = () => {
 			</div>
 
 			<div className="flex flex-col w-full md:w-[50%]">
+            	{renderSpinner(load)}
 				<button
 					type="submit"
 					className="px-[3rem] py-[0.6rem] bg-blue-20 rounded-md  text-white font-bold">
-					Submit
+					Update
 				</button>
+			
 			</div>
 		</form>
 	);

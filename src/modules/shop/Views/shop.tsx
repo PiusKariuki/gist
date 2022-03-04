@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useShopDetails from "../Hooks/useShopDetails";
 import {
@@ -8,15 +8,18 @@ import {
 	faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ViewProduct from "shared/components/ViewProduct";
 import { imgUrl } from "shared/http/Http";
 import ShopProducts from "../components/ShopProducts";
+import { user } from "shared/recoil/user";
+import { useRecoilValue } from "recoil";
 
 const Shop: React.FC = (): JSX.Element => {
 	const { shopDetails, getShopDetails, load, errors } = useShopDetails();
 	let { shopId } = useParams();
 	const { renderSpinner } = useSpinner();
+	let { _id } = useRecoilValue<any>(user);
 
+	let navigate = useNavigate();
 	useEffect(() => {
 		getShopDetails(shopId);
 	}, []);
@@ -31,7 +34,7 @@ const Shop: React.FC = (): JSX.Element => {
 					<div className="w-full py-[1rem] bg-white sticky top-[4rem] z-20 border-b-4">
 						<p
 							className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
-                        text-center ">
+                       ">
 							{shopDetails[0]?.shopId?.name}
 						</p>
 					</div>
@@ -117,6 +120,17 @@ const Shop: React.FC = (): JSX.Element => {
 							</div>
 						</div>
 					</div>
+					{/*......................................
+                  *EDIT BTN
+               ......................................*/}
+					{shopDetails[0]?.ownerId === _id ? (
+					<button
+						onClick={() => navigate(`/myAccount/shops/edit/${shopId}`)}
+						className="bg-gray-20 text-white font-bold w-[8rem] py-[0.5rem]
+                  px-[1rem] rounded-lg hover:bg-blue-500 mt-[2rem]">
+						Edit
+					</button>
+					 ) : null} 
 
 					{/* shop products */}
 					<p className="text-black-40 text-[1.6rem] md:text-[2.5rem] font-[700] py-[2rem]">
@@ -130,7 +144,7 @@ const Shop: React.FC = (): JSX.Element => {
 								id={product?._id}
 								userName={product?.ownerId?.userName}
 								key={key}
-                        shopId={shopDetails[0]?.shopId?._id}
+								shopId={shopDetails[0]?.shopId?._id}
 							/>
 						))}
 					</div>

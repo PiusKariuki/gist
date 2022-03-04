@@ -47,12 +47,12 @@ const ViewMyProduct: React.FC<Props> = ({
 				src={`${imgUrl}/${images[0]}`}
 				alt=""
 				className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
-            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-contain  rounded-md"
+            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-cover  rounded-md"
 			/>
 
 			<button
 				onClick={() => navigate(`/myAccount/shops/products/preview/${id}`)}
-				className="absolute bottom-[4%] left-[10%] bg-gray-20 px-[1rem] py-[0.5rem] 
+				className="absolute bottom-[4%] left-[10%] bg-gray-20 px-[1rem] py-[0.3rem] 
             rounded-md text-white font-bold">
 				View Product
 			</button>

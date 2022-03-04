@@ -16,10 +16,6 @@ const useEdit = () => {
 	const [images, setImages] = useState<any>([]);
 	const [newImages, setNewImages] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
-	let navigate = useNavigate();
-
-   console.log(newImages);
-   
 
 	const getProductById = async (productId: any) => {
 		setLoad(true);
@@ -83,7 +79,7 @@ const useEdit = () => {
 				text: "",
 				timer: 1000,
 			});
-			navigate(`/myAccount/shops/`);
+
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
@@ -112,6 +108,8 @@ const useEdit = () => {
 				description,
 			});
 			if (newImages.length > 0) await addProductImages(productId);
+
+			await getProductById(productId);
 			Swal.fire({
 				icon: "success",
 				text: "Your product has been updated",

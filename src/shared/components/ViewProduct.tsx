@@ -45,8 +45,8 @@ const ViewProduct: React.FC<Props> = ({
             bg-contain rounded-xl border-[0.1rem]"
 				style={{ backgroundImage: `url(${imgUrl}/0_${id}.png)` }}>
 				<p
-					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
-            bg-black-80 px-[1rem]">
+					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1rem]
+               bg-gray-20 px-[1rem] opacity-80 rounded-xl">
 					GC {price}
 				</p>
 			</div>
