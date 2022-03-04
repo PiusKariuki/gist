@@ -36,7 +36,7 @@ const Home = () => {
 	return (
 
 		<div
-			className="flex flex-col flex-nowrap overflow-x-clip j">
+			className="flex flex-col flex-nowrap overflow-x-clip md:px-[4rem]">
 			<div className="fixed top-0 inset-x-1 z-50 bg-white">
 				<Topbar />
 			</div>

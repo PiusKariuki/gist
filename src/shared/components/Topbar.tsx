@@ -28,8 +28,8 @@ const Topbar = () => {
 
 	return (
 		<div
-			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[2rem] 
-         gap-x-[1rem]">
+			className="flex flex-row flex-nowrap  py-[1rem] px-[0.5rem] md:px-[1rem] 
+         gap-x-[1rem] w-full justify-evenly">
 			{/* div wrapper for input and icons */}
 			<p
 				onClick={() => {
@@ -38,7 +38,7 @@ const Topbar = () => {
 				className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold cursor-pointer">
 				Gist-Shop
 			</p>
-			<div className="relative mr-auto">
+			<div className="relative  flex justify-around">
 				<input
 					onFocus={() => {
 						setSearching(true);
@@ -47,12 +47,12 @@ const Topbar = () => {
 					onChange={handleChange}
 					className={`${
 						searching
-							? "w-[90vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none"
+							? "w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md md:px-[1.4rem] h-[2.6rem] outline-none"
 							: token?.length < 1
 							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 					}`}
-					placeholder="Type a product or shop name"
+					placeholder="search"
 					value={input}
 				/>
 				<FontAwesomeIcon
@@ -61,7 +61,7 @@ const Topbar = () => {
 					color="red"
 					className={`${
 						searching
-							? "absolute text-[1.1rem] md:hidden right-[17%] top-[30%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
+							? "absolute text-[1.1rem] md:hidden right-[17%] top-[20%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
 							: "hidden"
 					}`}
 					onClick={() => {

@@ -42,7 +42,7 @@ const ViewProduct: React.FC<Props> = ({
 
 			<div
 				className="flex relative w-full h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
-            bg-contain rounded-xl border-[0.1rem]"
+            bg-cover rounded-xl border-[0.1rem]"
 				style={{ backgroundImage: `url(${imgUrl}/0_${id}.png)` }}>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1rem]

@@ -32,7 +32,7 @@ const RecentRooms: React.FC<Props> = ({
 				<div
 					style={{ backgroundImage: `url(${imgUrl}/${userImage})` }}
 					className="flex w-[3rem] h-[3rem] rounded-full bg-black-70 self-center bg-center 
-               bg-no-repeat bg-contain"
+               bg-no-repeat bg-cover"
 				/>
 				<div className="flex flex-col w-[16rem]">
 					<p className="text-black-40 font-[900] text-[1rem] mb-[1rem]">

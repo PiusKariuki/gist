@@ -24,14 +24,13 @@ const useEditProfile = () => {
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
-	const [img, setImg] = useState<any>(imgUrl+"/"+userObj?.profilePhoto);
+	const [img, setImg] = useState<any>(imgUrl + "/" + userObj?.profilePhoto);
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
 	};
-   
 
 	const handleChange = (e: any) => {
 		setErrors("");
@@ -90,14 +89,14 @@ const useEditProfile = () => {
 				bio: bio,
 				userName: userName,
 				profilePhoto: img,
-            phonenumber: phone,
+				phonenumber: phone,
 			});
 			Swal.fire({
 				icon: "success",
 				text: "Your profile has been updated",
 				timer: 1500,
-			});      
-			setUser(data);
+			});
+			// setUser((prev: any) => data);
 			setLoad(false);
 		} catch (error: any) {
 			let msg = error.response.data.split(":");
@@ -127,7 +126,7 @@ const useEditProfile = () => {
 		handleSubmit,
 		confirmPassword,
 		img,
-      setImg
+		setImg,
 	};
 };
 
