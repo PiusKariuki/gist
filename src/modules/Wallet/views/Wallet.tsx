@@ -12,10 +12,10 @@ const Wallet = () => {
 		getTransactionsByUserID();
 	}, []);
 	return (
-		<div className="flex flex-col px-[2rem] py-[3rem] space-y-10">
+		<div className="flex flex-col px-[2rem] py-[3rem] space-y-10 ">
 			<div
 				className="flex flex-col bg-gray-20 text-white rounded-2xl space-y-3 items-center 
-            justify-center md:justify-start w-full md:w-[30vw] py-[0.5rem]">
+            w-full md:w-[30vw] py-[0.5rem] md:ml-8 ">
 				<p className="text-[1.2rem] md:text-[1.4rem] font-[500]">
 					Wallet balance
 				</p>
@@ -27,12 +27,15 @@ const Wallet = () => {
 			<p className="text-red-20 text-[1.1rem] md:text-[1.3rem] ml-8 font-[700]">
 				Your transactions
 			</p>
-			<div className="flex flex-col md:flex-row gap-y-4 gap-x-10 items-center">
+			<div
+				className="flex flex-col md:flex-row flex-wrap gap-y-10 gap-x-10 items-center 
+            justify-center">
 				{transactions?.map((trans: any, key: number) => (
 					<div
 						key={key}
-						className="flex flex-col shadow-lg px-[2rem] py-[1rem] h-[8rem] 
-               md:h-[10rem] justify-center space-y-6 rounded-xl">
+						className="flex flex-col shadow-lg px-[2rem] py-[1rem] h-[8rem] w-[80vw]
+                  md:w-[40vw] lg:w-[25vw] md:h-[10rem] justify-center space-y-6 
+                  rounded-xl">
 						<p className="text-[1rem] md:text-[1.1rem]">
 							{new Date(trans.createdAt).toLocaleString()}
 						</p>

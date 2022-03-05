@@ -46,7 +46,8 @@ const ViewProduct: React.FC<Props> = ({
 				<img
 					src={`${imgUrl}/${image}`}
 					alt=""
-					className="h-[40vh] w-[25rem] md:w-[25rem] object-scale-down object-center"
+					className="h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
+                object-scale-down object-center"
 				/>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1rem]

@@ -47,7 +47,7 @@ const RecentRooms: React.FC<Props> = ({
 				<img
 					src={`${imgUrl}/0_61f951620019c849882d681d.png`}
 					alt=""
-					className="h-[40vh] md:w-[25rem] object-scale-down"
+					className="h-[40vh] md:w-[25rem]  3xl:w-[48rem] 3xl:h-[30vh] object-scale-down"
 				/>
 			</div>
 		</div>

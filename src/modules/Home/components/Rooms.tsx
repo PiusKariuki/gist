@@ -26,16 +26,6 @@ const Rooms = () => {
 			<div
 				ref={scrollRef}
 				className="scroller flex flex-row gap-x-8 overflow-x-auto w-screen">
-				{/* {products.map((product: any, key: number) => (
-					<RecentRooms
-						name={product?.name}
-						userName={product?.ownerId?.userName}
-						img={product?.images[0]}
-						price={product?.price}
-						key={key}
-						id={product?._id}
-					/>
-				))} */}
 				{rooms.map((room: any, key: number) => (
 					<RecentRooms
 						title={room?.title}
