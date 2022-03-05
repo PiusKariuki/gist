@@ -54,7 +54,7 @@ const CreateShop: React.FC = () => {
 						id="shopName"
 						className="h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  ring-1 ring-gray-20"
 					/>
 					{/* location */}
 					<label
@@ -71,7 +71,7 @@ const CreateShop: React.FC = () => {
 						id="location"
 						className="h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  ring-1 ring-gray-20"
 					/>
 					{/* shop email */}
 					<label
@@ -88,7 +88,7 @@ const CreateShop: React.FC = () => {
 						id="email"
 						className="h-[2.25rem] outline-none
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  ring-1 ring-gray-20"
 					/>
 					<p className="text-red-20">{mailError}</p>
 					{/* Phone Number */}
@@ -105,7 +105,7 @@ const CreateShop: React.FC = () => {
 						onChange={handlePhoneChange}
 						className="h-[2.25rem] outline-none 
                   text-blue-20 border-0 text-[1.3rem] tracking-wider
-                  rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
+                  rounded-[0.25rem]  font-[900] px-[1rem] ring-1 ring-gray-20"
 					/>
 					{/* text area */}
 					<label
@@ -123,7 +123,7 @@ const CreateShop: React.FC = () => {
 						id="desc"
 						className="outline-none text-blue-20
                   rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500 "
+                  ring-1 ring-gray-20 "
 					/>
 				</div>
 
@@ -174,7 +174,7 @@ const CreateShop: React.FC = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/*"
+						accept="image/png"
 						className="hidden"
 					/>
 				</div>

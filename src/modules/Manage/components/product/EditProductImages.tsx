@@ -17,7 +17,7 @@ const EditProductImages = () => {
 				<input
 					onChange={handleChange}
 					type="file"
-					accept="image/*"
+					accept="image/png"
 					id="images"
 					className="hidden"
 					ref={hiddenInput}

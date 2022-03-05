@@ -89,7 +89,7 @@ const Login: React.FC = (): JSX.Element => {
 						value={email}
 						placeholder="Email"
 						className=" h-[2.25rem] outline-none rounded-[0.25rem] w-[80vw] md:w-[20vw]
-                        font-bold px-[1rem] ring-2 ring-blue-500"
+                        font-bold px-[1rem] ring-1 ring-gray-20"
 					/>
 					<p className="text-red-600 font-bold text-[1rem] text-center">
 						{mailErrors || errors?.emailErr}
@@ -106,7 +106,7 @@ const Login: React.FC = (): JSX.Element => {
 						placeholder="password"
 						value={password}
 						className="w-full0 h-[2.25rem] outline-none rounded-[0.25rem] w-[80vw]
-                        font-bold px-[1rem] ring-2 ring-blue-500 md:w-[20vw]"
+                        font-bold px-[1rem] ring-1 ring-gray-20 md:w-[20vw]"
 					/>
 					<p className="text-red-600 font-bold text-[1rem] text-center">
 						{passErrors || errors?.passErr}

@@ -17,20 +17,20 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 	return (
 		<div
 			className="flex flex-row flex-nowrap rounded-3xl py-[2rem] items-center
-      space-x-[1rem] lg:space-x-[3rem] w-full">
+            space-x-[0.7rem] lg:space-x-[3rem] w-full">
 			<img
 				src={`${imgUrl}/${image}`}
 				alt=""
-				className="flex w-[4rem] lg:w-[8rem] max-h-[5rem]"
+				className="flex w-[3rem] lg:w-[3rem] max-h-[5rem]"
 			/>
 			{/*.....................................rem.
             *
             ......................................*/}
 			<div className="flex flex-col w-full flex-wrap">
-				<p className="text-blue-20 md:text-[1.3rem] font-[800] capitalize truncate">
+				<p className="text-blue-20 md:text-[0.7rem] font-[800] capitalize truncate">
 					{name}
 				</p>
-				<p className="text-black-80 md:text-[1.4rem] font-[600] tracking-wider">
+				<p className="text-black-80 md:text-[0.7rem] font-[600] tracking-wider">
 					{amount} x GC {price}
 				</p>
 			</div>
@@ -41,7 +41,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 				onClick={() => removeItem(id)}
 				icon={faTrash}
 				color="red"
-				className="md:text-[1.5rem] font-bold"
+				className="md:text-[1rem] font-bold self-center"
 			/>
 		</div>
 	);

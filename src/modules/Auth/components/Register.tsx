@@ -93,8 +93,7 @@ const Register = (): JSX.Element => {
 								type="text"
 								id="fname"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 							/>
 						</div>
 
@@ -113,8 +112,7 @@ const Register = (): JSX.Element => {
 								type="text"
 								id="lname"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500 "
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20 "
 							/>
 						</div>
 					</div>
@@ -140,8 +138,7 @@ const Register = (): JSX.Element => {
 								type="text"
 								id="email"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{mailError ||
@@ -159,14 +156,12 @@ const Register = (): JSX.Element => {
 								Phone Number
 							</label>
 							<PhoneInput
-
 								required={true}
 								country={"ke"}
 								value={phone}
 								onChange={handlePhoneChange}
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 							/>
 						</div>
 					</div>
@@ -192,8 +187,7 @@ const Register = (): JSX.Element => {
 								rows={3}
 								cols={6}
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 							/>
 						</div>
 
@@ -204,7 +198,7 @@ const Register = (): JSX.Element => {
 								<div className="flex relative">
 									<img
 										src={img}
-										className="flex max-h-[20rem]  rounded- object-cover self-center 
+										className="flex max-h-[20rem] object-scale-down self-center 
                               top-[-300%] right-[0%] w-[80vw] md:w-[4xl0vw] lg:w-[40%] border-2"
 									/>
 									<FontAwesomeIcon
@@ -235,7 +229,7 @@ const Register = (): JSX.Element => {
 								ref={hiddenInput}
 								type="file"
 								id="img"
-								accept="image/*"
+								accept="image/png"
 								className="hidden"
 							/>
 						</div>
@@ -260,8 +254,7 @@ const Register = (): JSX.Element => {
 							type="text"
 							id="userName"
 							className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                     ring-blue-500"
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 
@@ -284,8 +277,7 @@ const Register = (): JSX.Element => {
 								type="password"
 								id="pass"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{passError || errors?.password?.message}
@@ -305,8 +297,7 @@ const Register = (): JSX.Element => {
 								type="password"
 								id="confirm"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                        ring-blue-500"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{passError || errors?.password?.message}

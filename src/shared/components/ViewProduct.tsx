@@ -17,9 +17,8 @@ const ViewProduct: React.FC<Props> = ({
 	userName,
 	id,
 	shopId,
-   image
+	image,
 }): JSX.Element => {
-   
 	let navigate = useNavigate();
 	return (
 		<div
@@ -43,10 +42,12 @@ const ViewProduct: React.FC<Props> = ({
 				</div>
 			</div>
 
-			<div
-				className="flex relative w-full h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
-            bg-cover rounded-xl border-[0.1rem]"
-				style={{ backgroundImage: `url(${imgUrl}/${image})` }}>
+			<div className="flex relative gradient border-[0.0625rem] rounded-xl">
+				<img
+					src={`${imgUrl}/${image}`}
+					alt=""
+					className="h-[40vh] w-[25rem] md:w-[25rem] object-scale-down object-center"
+				/>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1rem]
                bg-gray-20 px-[1rem] opacity-80 rounded-xl">

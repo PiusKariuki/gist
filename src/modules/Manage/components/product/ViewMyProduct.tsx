@@ -31,14 +31,14 @@ const ViewMyProduct: React.FC<Props> = ({
          hover:border-gray-200 border-[0.2rem] rounded-2xl border-white shadow-2xl  relative ">
 			<FontAwesomeIcon
 				icon={faPenToSquare}
-				color="blue"
-				className=" absolute right-5 top-3 font-[300] text-[1.6rem]"
+				color=""
+				className=" absolute right-5 top-3 font-[300] text-[1rem] text-gray-20"
 				onClick={() => navigate(`/myAccount/shops/products/edit/${id}`)}
 			/>
 			<FontAwesomeIcon
 				icon={faTrash}
 				color="red"
-				className=" ml-auto mt-[2rem] absolute left-5 -top-5 font-[300] text-[1.6rem]"
+				className=" ml-auto mt-[2rem] absolute left-5 -top-5 font-[300] text-[1rem]"
 				onClick={() => setOpenDelete(true)}
 			/>
 

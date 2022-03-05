@@ -57,7 +57,7 @@ const EditProduct: React.FC = () => {
 						id="name"
 						className=" h-[2.25rem] outline-none 
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide
-                     px-[1rem] ring-2 ring-blue-500"
+                     px-[1rem] ring-1 ring-gray-20"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
@@ -75,7 +75,7 @@ const EditProduct: React.FC = () => {
 						id="price"
 						className=" h-[2.25rem] outline-none
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide
-                     px-[1rem] ring-2 ring-blue-500"
+                     px-[1rem] ring-1 ring-gray-20"
 					/>
 				</div>
 			</div>
@@ -97,7 +97,7 @@ const EditProduct: React.FC = () => {
 						rows={3}
 						className=" outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  ring-1 ring-gray-20"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
@@ -115,7 +115,7 @@ const EditProduct: React.FC = () => {
 						id="quantity"
 						className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  ring-1 ring-gray-20"
 					/>
 				</div>
 			</div>
@@ -132,7 +132,7 @@ const EditProduct: React.FC = () => {
 						type="file"
 						id="images"
 						className="hidden"
-						accept="image/*"
+						accept="image/png"
 					/>
 					<button
 						type="button"
@@ -180,13 +180,12 @@ const EditProduct: React.FC = () => {
 			</div>
 
 			<div className="flex flex-col w-full md:w-[50%]">
-            	{renderSpinner(load)}
+				{renderSpinner(load)}
 				<button
 					type="submit"
 					className="px-[3rem] py-[0.6rem] bg-blue-20 rounded-md  text-white font-bold">
 					Update
 				</button>
-			
 			</div>
 		</form>
 	);

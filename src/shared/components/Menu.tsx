@@ -19,8 +19,8 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 	const setUser = useSetRecoilState(user);
 	return (
 		<div
-			className="w-[90vw] md:w-[40vw] min-h-screen flex flex-col gap-y-[2rem] 
-         px-[2rem] py-[3rem]">
+			className="w-[60vw] md:w-[20vw] min-h-screen flex flex-col gap-y-[2rem] 
+         px-[2rem] py-[4rem]">
 			<div
 				className="flex flex-row cursor-pointer items-start gap-x-[1rem]"
 				onClick={() => {

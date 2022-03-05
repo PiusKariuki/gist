@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
 	let navigate = useNavigate();
 	return (
-		<div className="flex flex-col md:flex-row py-[2.5rem] px-[2rem] md:space-x-8
-      lg:space-x-[5rem]">
+		<div className="flex flex-col md:flex-row py-[2.5rem] px-[2rem] space-y-10 md:space-y-0 
+      md:space-x-8 lg:space-x-[5rem]">
 			<div className="flex flex-col order-2 md:order-1 self-center">
 				<p className="uppercase font-[900] text-[2rem] text-[#00bcd7]">
 					The shopping <br /> experience.

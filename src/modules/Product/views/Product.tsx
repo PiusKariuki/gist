@@ -47,8 +47,8 @@ const Product: React.FC = (): JSX.Element => {
 								<img
 									src={`${imgUrl}/${product?.images[index]}`}
 									alt="productImg"
-									className="h-[40vh] w-[78vw] md:w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
-                           object-cover rounded-2xl border-2"
+									className="h-[40vh] max-w-[78vw] md:max-w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
+                           object-scale-down "
 								/>
 								<FontAwesomeIcon
 									onClick={() =>
@@ -184,7 +184,7 @@ const Product: React.FC = (): JSX.Element => {
 										uuidv4()
 									);
 								}}
-								className="blue-btn self-start px-[3.7rem]">
+								className="blue-btn self-start px-[3rem]">
 								{product?.quantity === 0 ? "Out of stock" : "Add To Cart"}
 							</button>
 						</div>

@@ -17,7 +17,7 @@ const AddProductImages = () => {
 				<input
 					onChange={handleChange}
 					type="file"
-					accept="image/*"
+					accept="image/png"
 					id="images"
 					className="hidden"
 					ref={hiddenInput}
@@ -32,7 +32,7 @@ const AddProductImages = () => {
 				<button
 					disabled={images?.length < 1}
 					type="button"
-					onClick={()=>addProductImages(productId)}
+					onClick={() => addProductImages(productId)}
 					className=" blue-btn bg-red-20 px-[1rem] py-[0.4rem] hover:bg-red-500
                   rounded-md h-12">
 					Submit
@@ -63,7 +63,7 @@ const AddProductImages = () => {
 					</div>
 				))}
 			</div>
-         <p className="text-[1.4rem] text-gray-20">Add product Images</p>
+			<p className="text-[1.4rem] text-gray-20">Add product Images</p>
 		</div>
 	);
 };

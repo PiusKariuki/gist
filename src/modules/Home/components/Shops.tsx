@@ -1,4 +1,7 @@
-import { faAnglesLeft, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import {
+	faArrowLeft,
+   faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useShop from "modules/shop/Hooks/useShop";
 import React, { useEffect, useRef } from "react";
@@ -14,7 +17,6 @@ const Shops = () => {
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 
 	const scrollRef = useRef<any>(null);
-   
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] relative">
@@ -37,16 +39,26 @@ const Shops = () => {
 				{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-				<FontAwesomeIcon
-					onClick={() => scrollLeft(scrollRef)}
-					icon={faAnglesLeft}
-					className="z-10 hidden lg:flex lg:absolute text-[2rem] left-10 top-[50%] text-gray-300"
-				/>
-				<FontAwesomeIcon
-					onClick={() => scrollRight(scrollRef)}
-					icon={faAnglesRight}
-					className="z-10 hidden lg:flex lg:absolute text-[2rem] right-10 top-[50%] text-gray-300"
-				/>
+				<div
+					className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  w-[3.125rem] 
+               h-[3.125rem] rounded-full z-10 hidden lg:flex lg:absolute  left-10 top-[50%] 
+               ">
+					<FontAwesomeIcon
+						onClick={() => scrollLeft(scrollRef)}
+						icon={faArrowLeft}
+						className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
+					/>
+				</div>
+
+				<div
+					className="bg-[rgba(0,0,0,.3)] hover:bg-[rgba(0,0,0,.6)] z-10 hidden lg:flex 
+               lg:absolute text-[2rem] w-[3.125rem] h-[3.125rem] rounded-full right-10 top-[50%]">
+					<FontAwesomeIcon
+						onClick={() => scrollRight(scrollRef)}
+						icon={faArrowRight}
+						className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
+					/>
+				</div>
 			</div>
 		</div>
 	);

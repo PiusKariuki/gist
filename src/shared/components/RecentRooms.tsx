@@ -43,12 +43,13 @@ const RecentRooms: React.FC<Props> = ({
 				</div>
 			</div>
 
-			<div
-				className="flex relative h-[40vh] md:w-[25rem] bg-no-repeat bg-center 
-            bg-cover rounded-xl py-[1rem] border-[0.1rem]"
-				style={{
-					backgroundImage: `url(${imgUrl}/0_61f951620019c849882d681d.png)`,
-				}}></div>
+			<div className="flex relative gradient border-[0.0625rem] rounded-xl">
+				<img
+					src={`${imgUrl}/0_61f951620019c849882d681d.png`}
+					alt=""
+					className="h-[40vh] md:w-[25rem] object-scale-down"
+				/>
+			</div>
 		</div>
 	);
 };

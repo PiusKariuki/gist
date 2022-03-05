@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import PhoneInput from "react-phone-number-input";
-import "shared/styles/phoneInput.css"
+import "shared/styles/phoneInput.css";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../../Hooks/shop/useEditShop";
 import { useNavigate, useParams } from "react-router-dom";
@@ -74,7 +74,7 @@ const EditShop: React.FC = () => {
 						id="shopName"
 						className=" h-[2.25rem] outline-none 
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     ring-2 ring-blue-500"
+                     ring-1 ring-gray-20"
 					/>
 					{/* location */}
 					<label
@@ -92,7 +92,7 @@ const EditShop: React.FC = () => {
 						id="location"
 						className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                 ring-2 ring-blue-500"
+                 ring-1 ring-gray-20"
 					/>
 					{/* shop email */}
 					<label
@@ -110,7 +110,7 @@ const EditShop: React.FC = () => {
 						id="email"
 						className=" h-[2.25rem] outline-none
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     ring-2 ring-blue-500"
+                     ring-1 ring-gray-20"
 					/>
 					<p className="text-red-20">{mailError}</p>
 					{/* Phone Number */}
@@ -127,7 +127,7 @@ const EditShop: React.FC = () => {
 						required={true}
 						onChange={handlePhoneChange}
 						className="h-[2.25rem] outline-none text-blue-20 border-0 text-[1.3rem]
-                  tracking-wider rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
+                  tracking-wider rounded-[0.25rem]  font-[900] px-[1rem] ring-1 ring-gray-20"
 					/>
 					{/* text area */}
 					<label
@@ -146,7 +146,7 @@ const EditShop: React.FC = () => {
 						id="desc"
 						className=" outline-none text-blue-20
                      rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     ring-2 ring-blue-500"
+                     ring-1 ring-gray-20"
 					/>
 				</div>
 
@@ -164,7 +164,6 @@ const EditShop: React.FC = () => {
 							Update
 						</button>
 						{renderSpinner(load)}
-
 					</div>
 
 					{img.length > 0 ? (
@@ -196,7 +195,7 @@ const EditShop: React.FC = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/*"
+						accept="image/png"
 						className="hidden"
 					/>
 				</div>

@@ -60,7 +60,7 @@ const Home = () => {
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>
 
-				<div ref={box} className="mt-[12rem] ">
+				<div ref={box} className=" mt-[8rem] md:mt-[12rem] ">
 					<Outlet />
 				</div>
 			</div>

@@ -32,31 +32,32 @@ body::-webkit-scrollbar {
 	.blue-btn {
 		@apply bg-blue-20 rounded-md  hover:rounded-xl hover:bg-[#0f4d92] disabled:bg-gray-400
      disabled:hover:rounded-md px-[1rem] py-[0.4rem] text-white font-[700] text-[1.4rem]
-     transition-all ease-in-out
-     ;
+     transition-all ease-in-out;
 	}
-   .outline-btn{
-      @apply px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-blue-20 text-blue-20
-   }
+	.outline-btn {
+		@apply px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-blue-20 text-blue-20;
+	}
 
+	/* ..................................datatable rows................................... */
+	.fQfBPh {
+		@apply text-gray-900 dark:text-gray-200  font-bold  text-lg text-opacity-100;
+	}
 
+	/* ...............................datatable header............................................... */
+	.guIQRM {
+		@apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+	}
+	/* ............................datatable footer......................................... */
+	.gyWNLn {
+		@apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+	}
+	/* .................................datatable title....................................... */
+	.hmmucc {
+		@apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+	}
 
-
-    /* ..................................datatable rows................................... */
-  .fQfBPh {
-    @apply text-gray-900 dark:text-gray-200  font-bold  text-lg text-opacity-100;
-  }
-
-  /* ...............................datatable header............................................... */
-  .guIQRM {
-    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
-  }
-  /* ............................datatable footer......................................... */
-  .gyWNLn {
-    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
-  }
-  /* .................................datatable title....................................... */
-  .hmmucc {
-    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
-  }
+	/* ................................gradient bg for cards........................ */
+	.gradient {
+		@apply bg-gradient-to-b from-[rgba(0,0,0,.25)] via-[hsla(0,0%,100%,0)] to-[rgba(0,0,0,.25)];
+	}
 }

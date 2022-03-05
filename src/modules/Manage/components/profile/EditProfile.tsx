@@ -71,8 +71,7 @@ const EditProfile = () => {
 							id="fname"
 							name="fname"
 							className="h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                     ring-blue-500"
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 
@@ -93,8 +92,7 @@ const EditProfile = () => {
 							id="lname"
 							name="lname"
 							className="h-[2.25rem] outline-none 
-                  text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                  ring-blue-500"
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 				</div>
@@ -120,14 +118,14 @@ const EditProfile = () => {
 							rows={3}
 							cols={6}
 							className=" outline-none text-blue-20
-                        rounded-[0.25rem] font-bold px-[1rem] ring-2 ring-blue-500"
+                        rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						<label
 							htmlFor="userName"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-                  mb-[0.5rem] text-black-80">
+							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem]
+                      mt-[3rem]  mb-[0.5rem] text-black-80">
 							Username
 						</label>
 						<input
@@ -138,8 +136,7 @@ const EditProfile = () => {
 							type="text"
 							id="userName"
 							className="h-[2.25rem] outline-none
-                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-2 
-                   ring-blue-500"
+                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 				</div>
@@ -167,7 +164,7 @@ const EditProfile = () => {
 							name="email"
 							className="h-[2.25rem] outline-none 
                      text-blue-20
-                     rounded-[0.25rem]  font-bold px-[1rem] ring-2 ring-blue-500"
+                     rounded-[0.25rem]  font-bold px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 
@@ -186,7 +183,7 @@ const EditProfile = () => {
 							onChange={handlePhoneChange}
 							className="h-[2.25rem] outline-none 
                      text-blue-20 border-0 text-[1.3rem] tracking-wider
-                     rounded-[0.25rem]  font-[900] px-[1rem] ring-2 ring-blue-500"
+                     rounded-[0.25rem]  font-[900] px-[1rem] ring-1 ring-gray-20"
 						/>
 					</div>
 				</div>
@@ -200,14 +197,15 @@ const EditProfile = () => {
 							<img
 								src={img}
 								className=" flex  w-[14rem] h-[14rem] md:w-[14rem] md:h-[14rem]
-                        rounded-full object-cover border-2"
+                        rounded-full object-scale-down border-2"
 							/>
 							<FontAwesomeIcon
 								onClick={() => setImg("")}
 								icon={faTrash}
 								size="1x"
-								className="absolute top-[50%] left-[30%] md:left-[10%] opacity-90 text-red-500
-                        translate-x-[-50%] translate-y-[-50%] transform-gpu z-20"
+								className="absolute bottom-[0%] left-[70%] md:left-[30%] lg:left-[20%]
+                         opacity-90 text-red-500 translate-x-[-50%] translate-y-[-50%]
+                          transform-gpu z-20"
 							/>
 						</div>
 					) : (
@@ -225,7 +223,7 @@ const EditProfile = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/*"
+						accept="image/png"
 						className="hidden"
 					/>
 					{/* img */}
