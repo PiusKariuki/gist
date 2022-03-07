@@ -17,7 +17,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 	return (
 		<div
 			className="flex flex-row flex-nowrap rounded-3xl py-[2rem] items-center
-            space-x-[0.7rem] lg:space-x-[3rem] w-full">
+            space-x-[0.7rem] lg:justify-between w-full">
 			<img
 				src={`${imgUrl}/${image}`}
 				alt=""

@@ -29,7 +29,7 @@ const Wallet = () => {
 			</p>
 			<div
 				className="flex flex-col md:flex-row flex-wrap gap-y-10 gap-x-10 items-center 
-            justify-center">
+           ">
 				{transactions?.map((trans: any, key: number) => (
 					<div
 						key={key}

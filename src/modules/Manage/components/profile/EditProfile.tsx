@@ -34,6 +34,8 @@ const EditProfile = () => {
 		hiddenInput.current.click();
 	};
 
+   
+
 	return (
 		<form
 			className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]

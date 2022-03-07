@@ -25,10 +25,10 @@ const Hero = () => {
 				</button>
 			</div>
 			{/* bg img */}
-			<div
-				style={{ backgroundImage: `url(/img/hero.png)` }}
-				className="flex   w-[80vw] h-[30vh] bg-center bg-cover bg-no-repeat order-1
-          md:order-2 md:min-w-[55vw] md:h-[45vh] lg:h-[55vh] self-center rounded-xl"
+			<img
+            src="/img/hero.png"
+				className="flex w-[80vw] h-[30vh] border-1 md:order-2 md:min-w-[55vw]
+             md:h-[45vh] lg:h-[55vh] self-center rounded-3xl object-scale-down"
 			/>
 		</div>
 	);
