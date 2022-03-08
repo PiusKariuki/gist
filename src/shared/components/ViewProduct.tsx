@@ -22,14 +22,15 @@ const ViewProduct: React.FC<Props> = ({
 	let navigate = useNavigate();
 	return (
 		<div
-			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200
-         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative"
+			className="flex flex-col px-[0.5rem]  py-[0.6rem] bg-white hover:border-[0.2rem] 
+         hover:border-gray-200 border-[0.2rem] rounded-2xl border-white hover:shadow-2xl
+         relative"
 			onClick={() => navigate(`/product/${id}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
 				<div
 					style={{ backgroundImage: `url(${imgUrl}/${shopId}.png)` }}
-					className="flex w-[3rem] h-[3rem] rounded-full self-center bg-center 
-               bg-no-repeat bg-cover"
+					className="flex w-[2rem] h-[2rem] rounded-full self-center bg-center 
+               bg-no-repeat bg-contain"
 				/>
 				<div className="flex flex-col w-[16rem]">
 					<p className="text-black-40 font-[700] text-[1rem] mb-[1rem]">

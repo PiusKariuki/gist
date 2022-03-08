@@ -18,10 +18,6 @@ const useGetOrder = () => {
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
-			// Swal.fire({
-			// 	icon: "error",
-			// 	title: "Failed to get your order",
-			// });
 		}
 	};
 

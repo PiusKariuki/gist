@@ -27,8 +27,12 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 					navigate(`/myAccount/profile`);
 					setMenuOpen(false);
 				}}>
-				<FontAwesomeIcon icon={faUser} size="2x" color="#6F00FF" />
-				<p className="text-[1.4rem] font-[700] text-gray-20">My Account</p>
+				<FontAwesomeIcon
+					icon={faUser}
+					color="#6F00FF"
+					className="text-[1rem] self-center"
+				/>
+				<p className="text-[1.4rem] font-[500] text-gray-20">My Account</p>
 			</div>
 
 			<div
@@ -37,8 +41,12 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 					navigate("/wallet");
 				}}
 				className="flex flex-row cursor-pointer items-start gap-x-[1rem]">
-				<FontAwesomeIcon icon={faWallet} size="2x" color="#6F00FF" />
-				<p className="text-[1.4rem] font-[700] text-gray-20">Wallet</p>
+				<FontAwesomeIcon
+					icon={faWallet}
+					color="#6F00FF"
+					className="text-[1rem] self-center"
+				/>
+				<p className="text-[1.4rem] font-[500] text-gray-20">Wallet</p>
 			</div>
 			<div
 				onClick={() => {
@@ -49,10 +57,10 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 				className="flex flex-row cursor-pointer items-start gap-x-[1rem] pl-[0.5rem]">
 				<FontAwesomeIcon
 					icon={faArrowRightFromBracket}
-					size="2x"
+					className="text-[1rem] self-center"
 					color="#F40009"
 				/>
-				<p className="text-[1.4rem] font-[700] text-red-20">Logout</p>
+				<p className="text-[1.4rem] font-[500] text-red-20">Logout</p>
 			</div>
 		</div>
 	);

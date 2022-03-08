@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
 import ViewOrder from "../components/ViewOrder";
-import useGetOrder from "../hooks/useGetOrder";
 import useMyOrders from "../hooks/useMyOrders";
 import "../styles/orders.css";
 

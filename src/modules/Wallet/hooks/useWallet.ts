@@ -9,7 +9,6 @@ const useWallet = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const [transactions, setTransactions] = useState<any>();
 	const [load, setLoad] = useState<boolean>(false);
-   
 
 	const getTransactionsByUserID = async () => {
 		setLoad(true);
@@ -25,7 +24,22 @@ const useWallet = () => {
 			});
 		}
 	};
-	return { getTransactionsByUserID, load, transactions };
+
+	const columns = [
+		{
+			name: "Date",
+			selector: (row: any) => new Date(row.createdAt).toLocaleString(),
+		},
+		{
+			name: "Reason",
+			selector: (row: any) => row.reason,
+		},
+		{
+			name: "Amount",
+			selector: (row: any) => row.amount,
+		},
+	];
+	return { getTransactionsByUserID, load, transactions, columns };
 };
 
 export default useWallet;
