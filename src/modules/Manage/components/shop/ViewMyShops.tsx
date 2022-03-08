@@ -44,8 +44,8 @@ const ViewMyShops: React.FC<Props> = ({ name, userName, img, id }) => {
 				<FontAwesomeIcon
 					icon={faPlus}
 					size="1x"
-					className="self-center"
-					color="red"
+					className="self-center text-[0.9rem]"
+					color="red "
 				/>
 			</button>
 			<button
@@ -60,8 +60,7 @@ const ViewMyShops: React.FC<Props> = ({ name, userName, img, id }) => {
 					}}
 					icon={faPen}
 					size="1x"
-					className="self-center"
-					color="blue"
+					className="self-center text-gray-20 text-[0.9rem]"
 				/>
 			</button>
 		</div>

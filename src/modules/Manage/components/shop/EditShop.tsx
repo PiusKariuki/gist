@@ -74,7 +74,7 @@ const EditShop: React.FC = () => {
 						id="shopName"
 						className=" h-[2.25rem] outline-none 
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     ring-1 ring-gray-20"
+                     form-ring"
 					/>
 					{/* location */}
 					<label
@@ -92,7 +92,7 @@ const EditShop: React.FC = () => {
 						id="location"
 						className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                 ring-1 ring-gray-20"
+                 form-ring"
 					/>
 					{/* shop email */}
 					<label
@@ -110,7 +110,7 @@ const EditShop: React.FC = () => {
 						id="email"
 						className=" h-[2.25rem] outline-none
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     ring-1 ring-gray-20"
+                     form-ring"
 					/>
 					<p className="text-red-20">{mailError}</p>
 					{/* Phone Number */}
@@ -127,7 +127,7 @@ const EditShop: React.FC = () => {
 						required={true}
 						onChange={handlePhoneChange}
 						className="h-[2.25rem] outline-none text-blue-20 border-0 text-[1.3rem]
-                  tracking-wider rounded-[0.25rem]  font-[900] px-[1rem] ring-1 ring-gray-20"
+                  tracking-wider rounded-[0.25rem]  font-[900] px-[1rem] form-ring"
 					/>
 					{/* text area */}
 					<label
@@ -146,7 +146,7 @@ const EditShop: React.FC = () => {
 						id="desc"
 						className=" outline-none text-blue-20
                      rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     ring-1 ring-gray-20"
+                     form-ring"
 					/>
 				</div>
 

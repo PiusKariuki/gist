@@ -40,7 +40,12 @@ const useManage = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch();
+					.catch((err) => {
+						Swal.fire({
+							icon: "error",
+							text: err,
+						});
+					});
 				break;
 			case "email":
 				setEmail(e.target.value);

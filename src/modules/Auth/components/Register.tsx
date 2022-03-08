@@ -93,7 +93,7 @@ const Register = (): JSX.Element => {
 								type="text"
 								id="fname"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 							/>
 						</div>
 
@@ -112,7 +112,7 @@ const Register = (): JSX.Element => {
 								type="text"
 								id="lname"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20 "
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring "
 							/>
 						</div>
 					</div>
@@ -138,7 +138,7 @@ const Register = (): JSX.Element => {
 								type="text"
 								id="email"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{mailError ||
@@ -161,7 +161,7 @@ const Register = (): JSX.Element => {
 								value={phone}
 								onChange={handlePhoneChange}
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 							/>
 						</div>
 					</div>
@@ -187,7 +187,7 @@ const Register = (): JSX.Element => {
 								rows={3}
 								cols={6}
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 							/>
 						</div>
 
@@ -254,7 +254,7 @@ const Register = (): JSX.Element => {
 							type="text"
 							id="userName"
 							className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 						/>
 					</div>
 
@@ -277,7 +277,7 @@ const Register = (): JSX.Element => {
 								type="password"
 								id="pass"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{passError || errors?.password?.message}
@@ -297,7 +297,7 @@ const Register = (): JSX.Element => {
 								type="password"
 								id="confirm"
 								className="py-[0.1rem] md:py-[0.3rem] outline-none 
-                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 							/>
 							<p className="text-red-600 font-bold text-[1rem] text-center">
 								{passError || errors?.password?.message}

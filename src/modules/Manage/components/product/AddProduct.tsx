@@ -1,18 +1,11 @@
 import React from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useAddProduct from "../../Hooks/product/useAddProduct";
 
 const AddProduct: React.FC = () => {
-	const {
-		name,
-		price,
-		quantity,
-		handleChange,
-		addProduct,
-		load,
-		desc,
-	} = useAddProduct();
+	const { name, price, quantity, handleChange, addProduct, load, desc } =
+		useAddProduct();
 	let { shopId } = useParams<string>();
 	const { renderSpinner } = useSpinner();
 	return (
@@ -46,7 +39,7 @@ const AddProduct: React.FC = () => {
 						id="name"
 						className=" h-[2.25rem] outline-none w-full
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-1 ring-gray-20"
+                  form-ring"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
@@ -66,7 +59,7 @@ const AddProduct: React.FC = () => {
 						id="price"
 						className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-1 ring-gray-20"
+                  form-ring"
 					/>
 				</div>
 			</div>
@@ -90,7 +83,7 @@ const AddProduct: React.FC = () => {
 						id="desc"
 						className="  outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-1 ring-gray-20"
+                  form-ring"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
@@ -110,7 +103,7 @@ const AddProduct: React.FC = () => {
 						id="quantity"
 						className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-1 ring-gray-20"
+                  form-ring"
 					/>
 				</div>
 			</div>

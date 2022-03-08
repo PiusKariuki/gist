@@ -24,7 +24,7 @@ const useEditProfile = () => {
 	const [load, setLoad] = useState(false);
 	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
-	const [img, setImg] = useState<any>(imgUrl + "/" + userObj?._id+".png");
+	const [img, setImg] = useState<any>(imgUrl + "/" + userObj?._id + ".png");
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 
@@ -67,13 +67,16 @@ const useEditProfile = () => {
 				setBio(e.target.value);
 				break;
 			case "img":
-            console.log(e.target.files[0]);
-            var img = new Image();   
 				getBase64(e.target.files[0])
 					.then((res) => {
 						setImg(res);
 					})
-					.catch();
+					.catch((err) => {
+						Swal.fire({
+							icon: "error",
+							text: err,
+						});
+					});
 				break;
 			default:
 				break;
@@ -84,9 +87,11 @@ const useEditProfile = () => {
 		e.preventDefault();
 		setLoad(true);
 		var updateObj = {};
-      {/*......................................
+		{
+			/*......................................
          *Only push image when a new img has been uploaded
-      ......................................*/}
+      ......................................*/
+		}
 		if (img.length > 60)
 			updateObj = {
 				firstName: fname,

@@ -54,7 +54,7 @@ const ViewMyProduct: React.FC<Props> = ({
 				onClick={() => navigate(`/myAccount/shops/products/preview/${id}`)}
 				className="absolute bottom-[2%] left-[10%] bg-gray-20 px-[1rem] py-[0.3rem] 
             rounded-md text-white font-bold">
-				View Product
+				View
 			</button>
 
 			<p

@@ -60,4 +60,7 @@ body::-webkit-scrollbar {
 	.gradient {
 		@apply bg-gradient-to-b from-[rgba(0,0,0,.25)] via-[hsla(0,0%,100%,0)] to-[rgba(0,0,0,.25)];
 	}
+	.form-ring {
+		@apply ring-1 ring-gray-300;
+	}
 }

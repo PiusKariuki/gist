@@ -71,7 +71,12 @@ const useRegister = () => {
 					.then((res) => {
 						setImg(res);
 					})
-					.catch((err) => err);
+					.catch((err) => {
+						Swal.fire({
+							icon: "error",
+							text: err,
+						});
+					});
 				break;
 			default:
 				break;

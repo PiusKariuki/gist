@@ -57,7 +57,7 @@ const EditProduct: React.FC = () => {
 						id="name"
 						className=" h-[2.25rem] outline-none 
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide
-                     px-[1rem] ring-1 ring-gray-20"
+                     px-[1rem] form-ring"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
@@ -75,7 +75,7 @@ const EditProduct: React.FC = () => {
 						id="price"
 						className=" h-[2.25rem] outline-none
                      text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide
-                     px-[1rem] ring-1 ring-gray-20"
+                     px-[1rem] form-ring"
 					/>
 				</div>
 			</div>
@@ -97,7 +97,7 @@ const EditProduct: React.FC = () => {
 						rows={3}
 						className=" outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-1 ring-gray-20"
+                  form-ring"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
@@ -115,7 +115,7 @@ const EditProduct: React.FC = () => {
 						id="quantity"
 						className=" h-[2.25rem] outline-none 
                   text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-1 ring-gray-20"
+                  form-ring"
 					/>
 				</div>
 			</div>

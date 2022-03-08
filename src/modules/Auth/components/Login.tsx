@@ -1,5 +1,8 @@
-
-import { faHouseUser, faKey, faUserLock } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHouseUser,
+	faKey,
+	faUserLock,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +21,7 @@ const Login: React.FC = (): JSX.Element => {
 		passErrors,
 	} = useLogin();
 	const { renderSpinner } = useSpinner();
-   let navigate = useNavigate();
+	let navigate = useNavigate();
 
 	return (
 		<div
@@ -89,7 +92,7 @@ const Login: React.FC = (): JSX.Element => {
 						value={email}
 						placeholder="Email"
 						className=" h-[2.25rem] outline-none rounded-[0.25rem] w-[80vw] md:w-[20vw]
-                        font-bold px-[1rem] ring-1 ring-gray-20 bg-white"
+                        font-bold px-[1rem] form-ring bg-white"
 					/>
 					<p className="text-red-600 font-bold text-[1rem] text-center">
 						{mailErrors || errors?.emailErr}
@@ -106,7 +109,7 @@ const Login: React.FC = (): JSX.Element => {
 						placeholder="password"
 						value={password}
 						className="w-full0 h-[2.25rem] outline-none rounded-[0.25rem] w-[80vw]
-                        font-bold px-[1rem] ring-1 ring-gray-20 md:w-[20vw] bg-white"
+                        font-bold px-[1rem] form-ring md:w-[20vw] bg-white"
 					/>
 					<p className="text-red-600 font-bold text-[1rem] text-center">
 						{passErrors || errors?.passErr}

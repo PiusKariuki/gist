@@ -45,7 +45,12 @@ const useAddShop = () => {
 					.then((res: any) => {
 						setImages((prev: any) => [...prev, res]);
 					})
-					.catch();
+					.catch((err) => {
+						Swal.fire({
+							icon: "error",
+							text: err,
+						});
+					});
 				break;
 			default:
 				break;

@@ -34,8 +34,6 @@ const EditProfile = () => {
 		hiddenInput.current.click();
 	};
 
-   
-
 	return (
 		<form
 			className="flex flex-col  gap-y-[0.1rem] w-full py-[5rem] px-[2rem] lg:px-[4rem]
@@ -73,7 +71,7 @@ const EditProfile = () => {
 							id="fname"
 							name="fname"
 							className="h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 						/>
 					</div>
 
@@ -94,7 +92,7 @@ const EditProfile = () => {
 							id="lname"
 							name="lname"
 							className="h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 						/>
 					</div>
 				</div>
@@ -120,7 +118,7 @@ const EditProfile = () => {
 							rows={3}
 							cols={6}
 							className=" outline-none text-blue-20
-                        rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                        rounded-[0.25rem] font-bold px-[1rem] form-ring"
 						/>
 					</div>
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
@@ -138,7 +136,7 @@ const EditProfile = () => {
 							type="text"
 							id="userName"
 							className="h-[2.25rem] outline-none
-                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] ring-1 ring-gray-20"
+                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
 						/>
 					</div>
 				</div>
@@ -166,7 +164,7 @@ const EditProfile = () => {
 							name="email"
 							className="h-[2.25rem] outline-none 
                      text-blue-20
-                     rounded-[0.25rem]  font-bold px-[1rem] ring-1 ring-gray-20"
+                     rounded-[0.25rem]  font-bold px-[1rem] form-ring"
 						/>
 					</div>
 
@@ -185,7 +183,7 @@ const EditProfile = () => {
 							onChange={handlePhoneChange}
 							className="h-[2.25rem] outline-none 
                      text-blue-20 border-0 text-[1.3rem] tracking-wider
-                     rounded-[0.25rem]  font-[900] px-[1rem] ring-1 ring-gray-20"
+                     rounded-[0.25rem]  font-[900] px-[1rem] form-ring"
 						/>
 					</div>
 				</div>
