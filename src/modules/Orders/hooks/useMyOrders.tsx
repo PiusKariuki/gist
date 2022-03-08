@@ -4,21 +4,19 @@ import useRequest from "shared/http/useRequest";
 import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
-const useMyOrders = () => {
+const useOrderByShopID = () => {
 	const { Axios } = useRequest();
 	const [orders, setOrders] = useState<any>([]);
 	const [load, setLoad] = useState(false);
 	const { _id } = useRecoilValue<any>(user);
 	const [shops, setMyShops] = useState<any>([]);
 	const [shopId, setShopId] = useState("");
-	let actions = ["edit", "view"];
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
 	const [openView, setOpenView] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
-	const [currentShop, setCurrentShop] = useState("");
 	const [order, setOrder] = useState<any>({});
-
+   
 	const columns = [
 		{
 			name: "Date Placed",
@@ -43,7 +41,6 @@ const useMyOrders = () => {
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
-							setCurrentShop(obj?.shopId);
 							setOrderId(e.currentTarget.value);
 							setOpen(true);
 							setOpenView(false);
@@ -55,8 +52,7 @@ const useMyOrders = () => {
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
-							// setCurrentShop(obj?.shopId);
-							// setOrderId(e.currentTarget.value);
+							setOrderId(e.currentTarget.value);
 							getOrderById(e.currentTarget.value);
 							setOpen(false);
 						}}>
@@ -84,7 +80,7 @@ const useMyOrders = () => {
 		}
 	};
 
-	const getMyOrders = async (id: string) => {
+	const getOrderByShopID = async (id: string) => {
 		setLoad(true);
 		try {
 			let { data } = await Axios.get(`/orders/all/shop/${id}`);
@@ -92,10 +88,6 @@ const useMyOrders = () => {
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
-			Swal.fire({
-				icon: "error",
-				title: "Failed to get your orders",
-			});
 		}
 	};
 
@@ -111,14 +103,12 @@ const useMyOrders = () => {
 			await Axios.put(`/orders/orders/${orderId}`, {
 				status,
 			});
-
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been updated",
-				timer: 1500,
 			}).then(() => {
-				getMyOrders(shopId);
+				getOrderByShopID(shopId);
 				setOpen(false);
 			});
 		} catch (error) {
@@ -144,7 +134,7 @@ const useMyOrders = () => {
 	};
 
 	return {
-		getMyOrders,
+		getOrderByShopID,
 		columns,
 		load,
 		orders,
@@ -159,11 +149,10 @@ const useMyOrders = () => {
 		orderId,
 		editOrder,
 		setStatus,
-		setCurrentShop,
-		currentShop,
+		shopId,
 		getOrderById,
 		order,
 	};
 };
 
-export default useMyOrders;
+export default useOrderByShopID;

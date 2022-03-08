@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
@@ -35,7 +35,7 @@ const customStyles = {
 
 const MyOrders = () => {
 	const {
-		getMyOrders,
+		getOrderByShopID,
 		columns,
 		load,
 		getMyShops,
@@ -44,14 +44,13 @@ const MyOrders = () => {
 		open,
 		setOpen,
 		orderId,
-		currentShop,
+		shopId,
 		openView,
 		setOpenView,
-		getOrderById,
-      order
+		order,
 	} = useMyOrders();
 
-   
+	const [currentShop, setCurrentShop] = useState("");
 	const { renderSpinner } = useSpinner();
 	const formRef = useRef<any>();
 
@@ -66,16 +65,13 @@ const MyOrders = () => {
 	}
 
 	useEffect(() => {
-		if (shops.length > 0) getMyOrders(currentShop);
-	}, [open, currentShop, orderId]);
+		 getOrderByShopID(currentShop);
+	}, [open]);
+
 
 	useEffect(() => {
 		getMyShops();
 	}, []);
-
-   // useEffect(() => {
-	// 	getOrderById(orderId);
-   // }, [openView])
 
 	return (
 		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">
@@ -98,8 +94,8 @@ const MyOrders = () => {
 							key={key}
 							value={shop?._Id}
 							onClick={() => {
-								// setCurrentShop(shop?._id);
-								getMyOrders(shop?._id);
+								setCurrentShop(shop?._id);
+								getOrderByShopID(shop?._id);
 							}}>
 							{shop?.name}
 						</button>
@@ -118,7 +114,7 @@ const MyOrders = () => {
 							? "fixed opacity-100 z-50 right-[20%] top-[15%] md:top-48  md:right-[20%] lg:right-[40%]"
 							: "hidden"
 					}`}>
-					<EditOrder setOpen={setOpen} orderId={orderId} shopId={currentShop} />
+					<EditOrder setOpen={setOpen} orderId={orderId} shopId={shopId} />
 				</div>
 
 				<div
@@ -130,7 +126,7 @@ const MyOrders = () => {
 					<ViewOrder
 						setOpenView={setOpenView}
 						orderId={orderId}
-                  order={order}
+						order={order}
 					/>
 				</div>
 
