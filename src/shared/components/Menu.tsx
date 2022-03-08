@@ -29,7 +29,7 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 				}}>
 				<FontAwesomeIcon
 					icon={faUser}
-					color="#6F00FF"
+					color="#33546D"
 					className="text-[1rem] self-center"
 				/>
 				<p className="text-[1.4rem] font-[500] text-gray-20">My Account</p>
@@ -43,7 +43,7 @@ const Menu: React.FC<Props> = ({ setMenuOpen }) => {
 				className="flex flex-row cursor-pointer items-start gap-x-[1rem]">
 				<FontAwesomeIcon
 					icon={faWallet}
-					color="#6F00FF"
+					color="#33546D"
 					className="text-[1rem] self-center"
 				/>
 				<p className="text-[1.4rem] font-[500] text-gray-20">Wallet</p>

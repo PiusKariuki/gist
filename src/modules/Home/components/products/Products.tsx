@@ -1,7 +1,7 @@
 import useProducts from "modules/Product/hooks/useProducts";
 import React, { useEffect, useRef } from "react";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
-import ViewProduct from "../../../shared/components/ViewProduct";
+import ViewProduct from "./ViewProduct";
 import {
 	faArrowLeft,
 	faArrowRight,

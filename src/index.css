@@ -63,4 +63,8 @@ body::-webkit-scrollbar {
 	.form-ring {
 		@apply ring-1 ring-gray-300;
 	}
+
+	.card-border {
+		@apply border-[0.1rem] border-white hover:border-gray-300;
+	}
 }

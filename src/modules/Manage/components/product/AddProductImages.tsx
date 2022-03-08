@@ -17,7 +17,7 @@ const AddProductImages = () => {
 				<input
 					onChange={handleChange}
 					type="file"
-					accept="image/png"
+					accept="image/*"
 					id="images"
 					className="hidden"
 					ref={hiddenInput}

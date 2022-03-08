@@ -1,8 +1,8 @@
 import React from 'react';
 import Hero from './Hero';
-import Products from './Products';
-import Rooms from './Rooms';
-import Shops from './Shops';
+import Products from './products/Products';
+import Rooms from './rooms/Rooms';
+import Shops from './shops/Shops';
 
 const Preview = () => {
 	return (

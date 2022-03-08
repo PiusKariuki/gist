@@ -223,7 +223,7 @@ const EditProfile = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/png"
+						accept="image/*"
 						className="hidden"
 					/>
 					{/* img */}

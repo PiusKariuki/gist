@@ -34,6 +34,7 @@ const AddProduct: React.FC = () => {
 					<input
 						onChange={handleChange}
 						required
+                  autoFocus
 						value={name}
 						type="text"
 						id="name"

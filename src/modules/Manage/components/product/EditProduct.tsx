@@ -132,7 +132,7 @@ const EditProduct: React.FC = () => {
 						type="file"
 						id="images"
 						className="hidden"
-						accept="image/png"
+						accept="image/*"
 					/>
 					<button
 						type="button"

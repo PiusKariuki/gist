@@ -28,8 +28,8 @@ const Topbar = () => {
 
 	return (
 		<div
-			className="flex flex-row flex-nowrap  py-[0.2rem] md:py-[1rem] px-[0.5rem] md:px-[2rem] lg:px-[4rem] 
-         gap-x-[1rem] w-full justify-evenly">
+			className="flex flex-row  my-2 py-[0.2rem] px-[0.8rem] md:px-[2rem] lg:px-[4rem] 
+         gap-x-[1rem] w-full justify-evenly max-h-12">
 			{/* div wrapper for input and icons */}
 			<p
 				onClick={() => {
@@ -47,10 +47,10 @@ const Topbar = () => {
 					onChange={handleChange}
 					className={`${
 						searching
-							? "w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md md:px-[1.4rem] h-[2.3rem] outline-none"
+							? " w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md md:px-[1.4rem] outline-none"
 							: token?.length < 1
-							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
-							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] h-[2.6rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 					}`}
 					placeholder="search"
 					value={input}
@@ -99,7 +99,7 @@ const Topbar = () => {
 				className="relative flex text-center">
 				<FontAwesomeIcon
 					icon={faShoppingCart}
-					color="blue"
+					color="#33546D"
 					className={`${
 						searching
 							? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"
@@ -121,7 +121,7 @@ const Topbar = () => {
 						setCartOpen((prev: boolean) => (prev ? !prev : prev));
 					}}
 					icon={faBars}
-					color="blue"
+					color="#33546D"
 					className={`${
 						searching
 							? "hidden md:flex md:ml-[2rem] self-center fa-lg md:fa-3x"

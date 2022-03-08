@@ -5,7 +5,6 @@ export const getBase64 = (file: any) => {
 
 		i.onload = () => {
 			if (i.width < 2000 && i.height < 2000){
-            console.log("accepted");
             resolve(baseURL);
          } 
 			else {

@@ -20,9 +20,8 @@ const Searching = () => {
 	const { shops, getShops } = useShop();
 	let navigate = useNavigate();
 	useEffect(() => {
-      	getShops();
+		getShops();
 		getProducts();
-	
 	}, []);
 
 	useEffect(() => {
@@ -42,15 +41,17 @@ const Searching = () => {
 
 	useEffect(() => {
 		if (search.length < 1) navigate("/");
-	},[]);
+	}, []);
 
 	return (
 		<div className="flex flex-col px-[2rem] md:px-[3rem] py-[1rem]">
 			{renderSpinner(load)}
 			{filteredProducts.length > 0 ? (
-				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem]">
-					Products.
-				</p>
+				<div className="flex sticky top-[6.8rem] w-full bg-white py-8 mb-4 pl-4">
+					<p className="text-gray-20 font-[800] text-[2rem] md:text-[2rem] underline">
+						Products.
+					</p>
+				</div>
 			) : load ? null : (
 				<div
 					className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
@@ -80,9 +81,11 @@ const Searching = () => {
 			</div>
 
 			{filteredShops.length > 0 ? (
-				<p className="text-gray-10 font-[800] text-[2rem] md:text-[2rem] my-[2rem]">
-					Shops.
-				</p>
+				<div className="flex sticky top-[6.8rem] w-full bg-white py-8 mb-4 pl-4">
+					<p className="text-gray-20 font-[800] text-[2rem] md:text-[2rem] underline">
+						Shops.
+					</p>
+				</div>
 			) : null}
 
 			{/* shops */}

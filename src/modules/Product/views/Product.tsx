@@ -105,16 +105,16 @@ const Product: React.FC = (): JSX.Element => {
 						</div>
 					</div>
 
-					<div className="flex flex-col lg:gap-y-[0.5rem] w-full">
-						<p className="text-left text-gray-10 font-[600] text-[1.25rem] lg:text-[1.6rem]">
+					<div className="flex flex-col lg:gap-y-[0.5rem] w-full self-center">
+						<p className="text-left text-gray-10 font-[500] text-[1.25rem] lg:text-[1.6rem]">
 							{product?.name}
 						</p>
 						<p className="text-left text-gray-10 font-[400] text-[0.78rem] lg:text-[1rem]">
-							By <span className="text-blue-20">Nike</span>
+							by <span className="text-blue-20">Nike</span>
 						</p>
-						<p className="text-left text-blue-20 font-[600] text-[1.4rem]">
+						<p className="text-left text-red-20 font-[400] text-[1.2rem]">
 							{product?.quantity === 0
-								? "$" + product.price
+								? "GC" + product.price
 								: product.price === undefined
 								? ""
 								: "GC " + product?.price}
@@ -122,7 +122,7 @@ const Product: React.FC = (): JSX.Element => {
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}
 						</p>
-						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
+						<p className="text-left text-gray-10 font-[500] text-[1rem] mt-8">
 							{product?.description}
 						</p>
 
@@ -184,7 +184,7 @@ const Product: React.FC = (): JSX.Element => {
 										uuidv4()
 									);
 								}}
-								className="blue-btn self-start px-[3rem]">
+								className="blue-btn self-start px-[3rem] w-full">
 								{product?.quantity === 0 ? "Out of stock" : "Add To Cart"}
 							</button>
 						</div>

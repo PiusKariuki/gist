@@ -27,8 +27,8 @@ const ViewMyProduct: React.FC<Props> = ({
 
 	return (
 		<div
-			className="flex flex-col px-[1rem] py-[3rem] lg:py-[4rem] bg-white hover:border-[0.2rem] 
-         hover:border-gray-200 border-[0.2rem] rounded-2xl border-white shadow-2xl  relative ">
+			className="flex flex-col px-[1rem] py-[3rem] lg:py-[4rem] bg-white card-border
+          rounded-md border-white shadow-2xl  relative ">
 			<FontAwesomeIcon
 				icon={faPenToSquare}
 				color=""
@@ -43,12 +43,14 @@ const ViewMyProduct: React.FC<Props> = ({
 			/>
 
 			<p className="text-blue-20 font-[500] text-[1.4rem] my-[1rem]">{name}</p>
-			<img
-				src={`${imgUrl}/${images[0]}`}
-				alt=""
-				className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
-            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-cover  rounded-md border-2"
-			/>
+			<div className="flex gradient card-border rounded-md">
+				<img
+					src={`${imgUrl}/${images[0]}`}
+					alt=""
+					className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
+            lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-scale-down  rounded-md "
+				/>
+			</div>
 
 			<button
 				onClick={() => navigate(`/myAccount/shops/products/preview/${id}`)}

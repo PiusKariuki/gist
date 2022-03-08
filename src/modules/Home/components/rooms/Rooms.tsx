@@ -1,6 +1,6 @@
 import useRoom from "modules/Rooms/hooks/useRoom";
 import React, { useEffect, useRef } from "react";
-import RecentRooms from "shared/components/RecentRooms";
+import RecentRooms from "modules/Home/components/rooms/RecentRooms";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";

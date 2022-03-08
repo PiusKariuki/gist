@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useShop from "modules/shop/Hooks/useShop";
 import React, { useEffect, useRef } from "react";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
-import ViewShop from "../../../shared/components/ViewShop";
-import "../styles/shop.css";
+import ViewShop from "./ViewShop";
+import "../../styles/shop.css";
 
 const Shops = () => {
 	const { shops, getShops } = useShop();

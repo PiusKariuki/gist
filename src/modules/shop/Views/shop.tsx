@@ -31,7 +31,7 @@ const Shop: React.FC = (): JSX.Element => {
 					{/*......................................
                   *NAME
                ......................................*/}
-					<div className="w-full py-[1rem] bg-white sticky top-[4rem] z-20 border-b-4">
+					<div className="w-full py-[1rem] bg-white sticky top-[8rem] z-20 border-b-4">
 						<p
 							className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                        ">
@@ -44,15 +44,16 @@ const Shop: React.FC = (): JSX.Element => {
                      *AVATAR and # OF PRODUCTS
                   ......................................*/}
 						<div
-							className="lg:flex lg:flex-row space-y-8 lg:space-y-[2rem] lg:w-full 
-                     lg:justify-between lg:items-center ">
-							<div className="flex flex-row space-x-10 lg:self-center py-[2rem]">
-								<div className="flex flex-col ">
+							className="lg:flex md:flex-row space-y-8 md:space-y-[2rem] md:w-full 
+                     md:justify-between lg:items-center ">
+							<div className="flex flex-row space-x-10 self-center lg:self-center py-[2rem]">
+								<div className="flex flex-col md:self-end ">
 									{shopDetails.length > 0 ? (
 										<img
 											src={`${imgUrl}/${shopDetails[0]?.shopId?.image}`}
 											alt=""
-											className="h-[6rem] w-[8rem] md:w-[14rem] object-cover border-2"
+											className="h-[6rem] w-[8rem] md:w-[14rem] object-cover card-border
+                                 self-center"
 										/>
 									) : null}
 								</div>
@@ -124,13 +125,13 @@ const Shop: React.FC = (): JSX.Element => {
                   *EDIT BTN
                ......................................*/}
 					{shopDetails[0]?.ownerId === _id ? (
-					<button
-						onClick={() => navigate(`/myAccount/shops/edit/${shopId}`)}
-						className="bg-gray-20 text-white font-bold w-[8rem] py-[0.5rem]
+						<button
+							onClick={() => navigate(`/myAccount/shops/edit/${shopId}`)}
+							className="bg-gray-20 text-white font-bold w-[8rem] py-[0.5rem]
                   px-[1rem] rounded-lg hover:bg-blue-500 mt-[2rem]">
-						Edit
-					</button>
-					 ) : null} 
+							Edit
+						</button>
+					) : null}
 
 					{/* shop products */}
 					<p className="text-black-40 text-[1.6rem] md:text-[2.5rem] font-[700] py-[2rem]">
@@ -139,6 +140,7 @@ const Shop: React.FC = (): JSX.Element => {
 					<div className="flex flex-col md:flex-row flex-wrap gap-[2rem] ">
 						{shopDetails?.map((product: any, key: number) => (
 							<ShopProducts
+								image={product?.images[0]}
 								name={product?.name}
 								price={product?.price}
 								id={product?._id}

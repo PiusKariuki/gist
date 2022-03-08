@@ -25,15 +25,18 @@ const RecentRooms: React.FC<Props> = ({
 	let img = "0_61f951620019c849882d681d.png";
 	return (
 		<div
-			className="flex flex-col px-[0.5rem] py-[0.3rem] bg-white hover:border-[0.2rem] hover:border-gray-200
-         border-[0.2rem] rounded-2xl border-white hover:shadow-2xl relative"
+			className="flex flex-col px-[0.5rem] py-[0.3rem] bg-white card-border
+         rounded-md hover:shadow-2xl relative"
 			onClick={() => navigate(`/rooms/${roomId}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
-				<div
-					style={{ backgroundImage: `url(${imgUrl}/${userImage})` }}
-					className="flex w-[1.5rem] h-[1.5rem] rounded-full self-center bg-center 
-               bg-no-repeat bg-contain"
+				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300" >
+				<img
+					src={`${imgUrl}/${userImage}`}
+					alt=""
+					className="w-8 h-8 rounded-full self-center object-scale-down"
 				/>
+            </div>
+
 				<div className="flex flex-col w-[16rem]">
 					<p className="text-black-40 font-[500] text-[1rem] mb-[1rem]">
 						{title}
@@ -43,7 +46,7 @@ const RecentRooms: React.FC<Props> = ({
 				</div>
 			</div>
 
-			<div className="flex relative gradient border-[0.0625rem] rounded-xl">
+			<div className="flex relative gradient border-[0.0625rem] rounded-md">
 				<img
 					src={`${imgUrl}/0_61f951620019c849882d681d.png`}
 					alt=""

@@ -81,6 +81,7 @@ const CreateShop: React.FC = () => {
 						Shop email
 					</label>
 					<input
+                  autoComplete="off"
 						onChange={handleChange}
 						value={email}
 						required
@@ -174,7 +175,7 @@ const CreateShop: React.FC = () => {
 						ref={hiddenInput}
 						type="file"
 						id="img"
-						accept="image/png"
+						accept="image/*"
 						className="hidden"
 					/>
 				</div>
