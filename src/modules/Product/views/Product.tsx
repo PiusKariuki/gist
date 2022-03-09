@@ -1,5 +1,5 @@
 import useCart from "modules/Cart/hooks/useCart";
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
@@ -14,7 +14,7 @@ import {
 	faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { imgUrl } from "shared/http/Http";
-import "../styles/product.css"
+import "../styles/product.css";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 
 const Product: React.FC = (): JSX.Element => {
@@ -25,8 +25,8 @@ const Product: React.FC = (): JSX.Element => {
 	const { productId } = useParams();
 	const { addToCart } = useCart();
 
-   const { scrollRight, scrollLeft } = useHorizontalScroll();
-		const scrollRef = useRef<any>(null);
+	const { scrollRight, scrollLeft } = useHorizontalScroll();
+	const scrollRef = useRef<any>(null);
 
 	useEffect(() => {
 		getProductById(productId);
@@ -114,27 +114,35 @@ const Product: React.FC = (): JSX.Element => {
 								{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-								<div
-									className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  w-[3.125rem]
-                           h-[3.125rem] rounded-full translate-y-[-50%]
-                           z-10 hidden lg:flex lg:absolute  left-[-10%] top-[50%] 
-                           ">
-									<FontAwesomeIcon
-										onClick={() => scrollLeft(scrollRef)}
-										icon={faArrowLeft}
-										className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
-									/>
-								</div>
-								<div
-									className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  z-10 hidden
-                           lg:flex lg:absolute text-[2rem] translate-y-[-50%]
-                           w-[3.125rem] h-[3.125rem] rounded-full right-[-10%] top-[50%]">
-									<FontAwesomeIcon
-										onClick={() => scrollRight(scrollRef)}
-										icon={faArrowRight}
-										className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
-									/>
-								</div>
+								{product?.images?.length > 2 ? (
+									<>
+										<div
+											className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]
+                                 w-[3.125rem]
+                                 h-[3.125rem] rounded-full translate-y-[-50%]
+                                 z-10 hidden lg:flex lg:absolute  left-[-10%] top-[50%] 
+                                 ">
+											<FontAwesomeIcon
+												onClick={() => scrollLeft(scrollRef)}
+												icon={faArrowLeft}
+												className="flex text-[1.25rem] self-center mx-auto 
+                                    text-[#00bcd7]"
+											/>
+										</div>
+										<div
+											className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)] 
+                                 z-10 hidden
+                                 lg:flex lg:absolute text-[2rem] translate-y-[-50%]
+                                 w-[3.125rem] h-[3.125rem] rounded-full right-[-10%] top-[50%]">
+											<FontAwesomeIcon
+												onClick={() => scrollRight(scrollRef)}
+												icon={faArrowRight}
+												className="flex text-[1.25rem] self-center mx-auto
+                                     text-[#00bcd7]"
+											/>
+										</div>
+									</>
+								) : null}
 							</div>
 						</div>
 					</div>
