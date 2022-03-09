@@ -35,7 +35,7 @@ const Topbar = () => {
 				onClick={() => {
 					navigate("/");
 				}}
-				className="hidden md:flex text-blue-20 text-[1.6rem] font-semibold cursor-pointer">
+				className="hidden md:flex text-blue-40 text-[1.6rem] font-semibold cursor-pointer">
 				Gist-Shop
 			</p>
 			<div className="relative  flex justify-around">
@@ -86,7 +86,7 @@ const Topbar = () => {
 				</button>
 			) : (
 				<p
-					className="invisible 425:visible text-blue-20 text-center self-center lg:text-[1rem] 
+					className="invisible 425:visible text-blue-40 text-center self-center lg:text-[1rem] 
          ">
 					Hello🖐 {userName}, GC. {wallet}
 				</p>
@@ -106,13 +106,13 @@ const Topbar = () => {
 							: "self-center md:ml-[2rem]  fa-lg md:fa-3x "
 					}`}
 				/>
-				{searching ? null : (
+				{/* {searching ? null : ( */}
 					<div
 						className="absolute bg-blue-20 text-[1rem] font-[900] right-[-58%] top-[-20%] 
                w-[1.8rem] h-[1.8rem] rounded-full text-white text-center pt-[0.2rem]">
 						{number}
 					</div>
-				)}
+				{/* )} */}
 			</div>
 			{token?.length > 0 ? (
 				<FontAwesomeIcon

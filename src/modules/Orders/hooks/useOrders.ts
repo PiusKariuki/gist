@@ -23,11 +23,11 @@ const useOrders = () => {
 	const [shippingName, setShippingName] = useState<any>("");
 	const [openPreview, setOpenPreview] = useState(false);
 
-	const getShippingById = async () => {
+	const getShippingById = async (shippingId: any) => {
 		setLoad(true);
 		setLoad(false);
 		try {
-			let { data } = await Axios.get(`/address/${shipping}`);
+			let { data } = await Axios.get(`/address/${shippingId}`);
 			setShippingName(data.name);
 		} catch (error) {
 			setLoad(false);
@@ -66,7 +66,7 @@ const useOrders = () => {
 		}
 	};
 
-	const handleSubmit = async (shippingId: string) => {
+	const handleSubmit = async (shippingId: any) => {
 		setLoad(true);
 		let sentObj = cartItems.map((item: any) =>
 			Object.assign(

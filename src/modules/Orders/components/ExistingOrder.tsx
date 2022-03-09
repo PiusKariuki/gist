@@ -15,8 +15,6 @@ const ExistingOrder: React.FC<{}> = () => {
 		userShippings,
 		load,
 		shippingName,
-		openPreview,
-		setOpenPreview,
 	} = useOrders();
 	let navigate = useNavigate();
 
@@ -24,59 +22,42 @@ const ExistingOrder: React.FC<{}> = () => {
 		getShippingByUserId();
 	}, []);
 
-	useEffect(() => {
-		if (shippingName?.length > 0 && !load) {
-			setOpenPreview(true);
-		}
-	}, []);
-   
-
 	return (
 		<div className="flex w-full flex-col relative">
-			{openPreview ? (
-				<div className="flex fixed top-[0%] left-[0%]">
-					<OrderPreview
-						shippingId={shipping}
-						address={shippingName}
-						setOpen={setOpenPreview}
-					/>
-				</div>
-			) : null}
 			<div
 				onClick={() => navigate(`/orders`)}
 				className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
             shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
-            items-center cursor-pointer my-[3rem]">
-				<FontAwesomeIcon icon={faCircleInfo} size="2x" />
-				<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
+            items-center cursor-pointer my-[3rem] group hover:bg-gray-20 hover:text-white">
+				<FontAwesomeIcon
+					icon={faCircleInfo}
+					className="self-center text-[1.1rem] group-hover:text-white"
+				/>
+				<p
+					className="text-blue-40 text-[0.9rem] md:text-[1.1rem] font-[500]
+               group-hover:text-white">
 					Go back and input new info.
 				</p>
 			</div>
-			<p className="text-blue-30 font-[600]  text-[1.6rem] mb-[2rem]">
+			<p className="text-gray-20 font-[600]  text-[1.2rem] mb-8">
 				Final Step. Place your order
 			</p>
 			<div className="flex flex-col gap-y-[0.1rem] w-full md:w-[40%]  ">
 				{/* shipping address */}
-				<label
-					htmlFor="shipping"
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-               mb-[0.5rem] text-gray-20">
-					Shipping Address
-				</label>
 				<select
 					onChange={handleChange}
 					value={shipping}
 					required
 					id="shipping"
-					className=" h-[2.25rem] outline-none text-blue-30
-               rounded-[0.25rem]  font-bold px-[1rem] ring-2 ring-gray-20">
+					className=" h-[2.25rem] outline-none text-blue-40
+               rounded-[0.25rem]  font-bold px-[1rem] form-ring">
 					<option
 						disabled
 						selected
 						value=""
-						className="text-[1rem] text-blue-30">
+						className="text-[1rem] text-gray-20 font-[700]">
 						{" "}
-						-- select an option --{" "}
+						-- select a shipping address --{" "}
 					</option>
 					{userShippings?.map((ship: any, key: number) => (
 						<option
@@ -92,8 +73,8 @@ const ExistingOrder: React.FC<{}> = () => {
 				<div className="flex w-full justify-between">
 					<button
 						type="button"
-						disabled={shippingName?.length <1}
-						onClick={() => setOpenPreview(true)}
+						disabled={shippingName?.length < 1}
+						onClick={() => navigate(`/orders/preview/${shipping}`)}
 						className="blue-btn">
 						Preview order
 					</button>

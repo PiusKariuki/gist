@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Existing from "../components/ExistingOrder";
 import NewShipping from "../components/NewShipping";
+import OrderPreview from "../components/OrderPreview";
 
 const Orders:React.FC = () => {
 	return (
@@ -9,6 +10,7 @@ const Orders:React.FC = () => {
 			<Routes>
 				<Route path="/" element={<NewShipping />} />
 				<Route path="/existing" element={<Existing />} />
+				<Route path="/preview/:addressId" element={<OrderPreview />} />
 			</Routes>
 		</div>
 	);
