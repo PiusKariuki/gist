@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { imgUrl } from "shared/http/Http";
 
 interface Props {
@@ -30,11 +30,11 @@ const SearchShop: React.FC<Props> = ({ name, img, userName, id }) => {
 				<p className="text-black-40 font-[500] text-[1rem]">
 					by&nbsp;&nbsp;&nbsp;{userName}
 				</p>
-				<button
-					onClick={() => navigate(`/shop/${id}`, { replace: true })}
-					className="blue-btn w-1/3">
-					Visit
-				</button>
+
+				<Link to={`/shop/${id}`} className="card-link">
+					{" "}
+					visit
+				</Link>
 			</div>
 		</div>
 	);

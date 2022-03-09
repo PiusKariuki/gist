@@ -4,7 +4,7 @@ export const getBase64 = (file: any) => {
 		let i = new Image();
 
 		i.onload = () => {
-			if (i.width < 2000 && i.height < 2000){
+			if (i.width < 1920 && i.height < 1080){
             resolve(baseURL);
          } 
 			else {

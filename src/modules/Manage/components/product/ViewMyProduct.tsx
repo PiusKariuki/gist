@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSetRecoilState } from "recoil";
 import { deleteOpen, productOpen } from "../../store/store";
 import { imgUrl } from "shared/http/Http";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 interface Props {
 	name: string;
@@ -52,17 +52,16 @@ const ViewMyProduct: React.FC<Props> = ({
 				/>
 			</div>
 
-			<button
-				onClick={() => navigate(`/myAccount/shops/products/preview/${id}`)}
-				className="absolute bottom-[2%] left-[10%] bg-gray-20 px-[1rem] py-[0.3rem] 
-            rounded-md text-white font-bold">
-				View
-			</button>
+			<Link
+				to={`/myAccount/shops/products/preview/${id}`}
+				className="card-link absolute bottom-[2%] left-[10%]">
+				view
+			</Link>
 
 			<p
 				className="absolute bottom-[2%] right-[10%] text-white font-[600] text-[1.2rem]
             bg-black-80 px-[1rem] opacity-80 rounded-md">
-				GC {price}
+				GC. {price}
 			</p>
 		</div>
 	);

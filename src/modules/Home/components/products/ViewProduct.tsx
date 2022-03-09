@@ -54,9 +54,9 @@ const ViewProduct: React.FC<Props> = ({
                 object-scale-down object-center"
 				/>
 				<p
-					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1rem]
-               bg-gray-20 px-[1rem] opacity-80 rounded-xl">
-					GC {price}
+					className="absolute bottom-[4%] right-[5%] text-white font-[600] text-[1rem]
+               bg-gray-20 px-[1rem] opacity-50 rounded-xl">
+					GC. {price}
 				</p>
 			</div>
 		</div>

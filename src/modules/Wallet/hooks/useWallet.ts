@@ -36,7 +36,7 @@ const useWallet = () => {
 		},
 		{
 			name: "Amount",
-			selector: (row: any) => row.amount,
+			selector: (row: any) => "GC." + row.amount,
 		},
 	];
 	return { getTransactionsByUserID, load, transactions, columns };

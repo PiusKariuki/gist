@@ -117,7 +117,7 @@ const ProductPreview: React.FC = (): JSX.Element => {
 								? "$" + product.price
 								: product.price === undefined
 								? ""
-								: "GC " + product?.price}
+								: "GC. " + product?.price}
 						</p>
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}

@@ -37,7 +37,8 @@ const useOrderByShopID = () => {
 			actions: (
 				<div className="flex w-full gap-x-[2rem]">
 					<button
-						className="red-btn px-[1rem] py-[0.4rem]"
+						className="bg-gray-20 hover:bg-blue-40 text-white px-[1rem] py-[0.3rem] h-8
+                  rounded-2xl"
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
@@ -48,7 +49,8 @@ const useOrderByShopID = () => {
 						Edit
 					</button>
 					<button
-						className="red-btn px-[1rem] py-[0.4rem]"
+						className="bg-blue-40  hover:bg-gray-20 text-white px-[1rem] py-[0.3rem] h-8
+                  rounded-2xl"
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {

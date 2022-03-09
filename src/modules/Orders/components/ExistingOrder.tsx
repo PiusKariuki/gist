@@ -29,6 +29,7 @@ const ExistingOrder: React.FC<{}> = () => {
 			setOpenPreview(true);
 		}
 	}, []);
+   
 
 	return (
 		<div className="flex w-full flex-col relative">
@@ -88,7 +89,15 @@ const ExistingOrder: React.FC<{}> = () => {
 					))}
 				</select>
 				<div className="mt-[1rem]">{renderSpinner(load)}</div>
-				<div className="flex w-full justify-between"></div>
+				<div className="flex w-full justify-between">
+					<button
+						type="button"
+						disabled={shippingName?.length <1}
+						onClick={() => setOpenPreview(true)}
+						className="blue-btn">
+						Preview order
+					</button>
+				</div>
 			</div>
 		</div>
 	);

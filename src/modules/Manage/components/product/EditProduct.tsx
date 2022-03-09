@@ -65,7 +65,7 @@ const EditProduct: React.FC = () => {
 						htmlFor="price"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
                      mb-[0.5rem]  ">
-						Price(GC)
+						Price(GC.)
 					</label>
 					<input
 						onChange={handleChange}

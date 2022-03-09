@@ -22,7 +22,7 @@ const MyShop: React.FC = (): JSX.Element => {
 
 	return (
 		<div className="flex flex-col w-full md:w-screen">
-			<div className="w-full py-[1rem] bg-white sticky top-0 z-20 border-b-4 mb-[2rem]">
+			<div className="w-full py-[1rem] bg-white  border-b-4 mb-[2rem]">
 				<p
 					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                md:px-[2rem] lg:px-[4.5rem]">

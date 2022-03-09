@@ -49,7 +49,7 @@ const AddProduct: React.FC = () => {
 						htmlFor="price"
 						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
                 pt-[2rem] ">
-						Price(GC)
+						Price(GC.)
 					</label>
 					<input
 						min="0"

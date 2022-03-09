@@ -43,7 +43,7 @@ const BuyModal: React.FC<Props> = ({
 					<p className="text-[1rem] font-[700] text-black-40 flex- flex-wrap">
 						{name}
 					</p>
-					<p className="text-[1rem] text-red-20">GC {price}</p>
+					<p className="text-[1rem] text-red-20">GC. {price}</p>
 					<p className="text-[1rem] text-black-40">{quantity}</p>
 				</div>
 				<div className="flex">

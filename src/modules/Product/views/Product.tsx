@@ -12,6 +12,7 @@ import {
 	faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { imgUrl } from "shared/http/Http";
+import "../styles/product.css"
 
 const Product: React.FC = (): JSX.Element => {
 	const [index, setIndex] = useState<number>(0);
@@ -40,7 +41,7 @@ const Product: React.FC = (): JSX.Element => {
 						<p
 							className="text-black text-[1.2rem] md:text-[2.25rem] font-[800] text-left
                      w-[8rem] md:w-[16rem]">
-							Product Details.
+							Product Details
 						</p>
 						{product?.images?.length > 0 ? (
 							<div className="relative">
@@ -90,7 +91,7 @@ const Product: React.FC = (): JSX.Element => {
 
 						<div
 							className="flex flex-row gap-[2rem] overflow-x-scroll max-w-[80vw]
-                     md:max-w-[40vw]">
+                     md:max-w-[40vw] scroller">
 							{product?.images?.map((img: string, key: number) => {
 								return (
 									<div
@@ -105,7 +106,7 @@ const Product: React.FC = (): JSX.Element => {
 						</div>
 					</div>
 
-					<div className="flex flex-col lg:gap-y-[0.5rem] w-full self-center">
+					<div className="flex flex-col lg:gap-y-[0.5rem] w-full self-end">
 						<p className="text-left text-gray-10 font-[500] text-[1.25rem] lg:text-[1.6rem]">
 							{product?.name}
 						</p>
@@ -114,15 +115,15 @@ const Product: React.FC = (): JSX.Element => {
 						</p>
 						<p className="text-left text-red-20 font-[400] text-[1.2rem]">
 							{product?.quantity === 0
-								? "GC" + product.price
+								? "GC. " + product.price
 								: product.price === undefined
 								? ""
-								: "GC " + product?.price}
+								: "GC. " + product?.price}
 						</p>
 						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 							{product?.quantity === 0 ? null : "Available"}
 						</p>
-						<p className="text-left text-gray-10 font-[500] text-[1rem] mt-8">
+						<p className="text-left text-gray-10 font-[500] text-[1rem] mt-8 mb-6">
 							{product?.description}
 						</p>
 

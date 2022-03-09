@@ -48,12 +48,12 @@ const Cart = () => {
 				<>
 					<div className="flex flex-row md:text-[1rem] justify-between self-start ">
 						<p className="font-[500]">Estimated shipping &nbsp;&nbsp;</p>
-						<p className="font-[600] text-blue-20">GC0.00</p>
+						<p className="font-[600] text-blue-20">GC. 0.00</p>
 					</div>
 
 					<div className="flex flex-row md:text-[1rem] justify-between self-start ">
 						<p className="font-[500]">Estimated tax &nbsp;&nbsp;</p>
-						<p className="font-[600] text-blue-20">GC0.00</p>
+						<p className="font-[600] text-blue-20">GC. 0.00</p>
 					</div>
 
 					<div
@@ -61,7 +61,7 @@ const Cart = () => {
                   self-start ">
 						<p className="font-[500]">Estimated total &nbsp;&nbsp;</p>
 						<p className="font-[600] text-blue-20 text-left">
-							GC{isNaN(totalValue) ? 0 : totalValue}
+							GC. {isNaN(totalValue) ? 0 : totalValue}
 						</p>
 					</div>
 

@@ -49,7 +49,7 @@ const Searching = () => {
 			{filteredProducts.length > 0 ? (
 				<div className="flex sticky top-[6.8rem] w-full bg-white py-8 mb-4 pl-4">
 					<p className="text-gray-20 font-[800] text-[2rem] md:text-[2rem] underline">
-						Products.
+						Products
 					</p>
 				</div>
 			) : load ? null : (
@@ -83,7 +83,7 @@ const Searching = () => {
 			{filteredShops.length > 0 ? (
 				<div className="flex sticky top-[6.8rem] w-full bg-white py-8 mb-4 pl-4">
 					<p className="text-gray-20 font-[800] text-[2rem] md:text-[2rem] underline">
-						Shops.
+						Shops
 					</p>
 				</div>
 			) : null}

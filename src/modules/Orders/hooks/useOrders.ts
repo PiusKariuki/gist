@@ -1,4 +1,3 @@
-import CartItem from "modules/Cart/components/CartItem";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";

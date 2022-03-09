@@ -88,7 +88,7 @@ const Topbar = () => {
 				<p
 					className="invisible 425:visible text-blue-20 text-center self-center lg:text-[1rem] 
          ">
-					Hello🖐 {userName}, GC {wallet}
+					Hello🖐 {userName}, GC. {wallet}
 				</p>
 			)}
 			<div

@@ -67,4 +67,7 @@ body::-webkit-scrollbar {
 	.card-border {
 		@apply border-[0.1rem] border-white hover:border-gray-300;
 	}
+   .card-link {
+      @apply text-blue-40 underline text-[1.2rem] font-[600];
+   }
 }

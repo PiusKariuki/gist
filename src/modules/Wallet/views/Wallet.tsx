@@ -55,7 +55,7 @@ const Wallet = () => {
 					Wallet balance
 				</p>
 				<p className="text-[1rem] md:text-[1.2rem] font-[700]">
-					GC {wallet || 0}
+					GC. {wallet || 0}
 				</p>
 			</div>
 			{renderSpinner(load)}

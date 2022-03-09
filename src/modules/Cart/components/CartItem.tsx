@@ -31,7 +31,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 					{name}
 				</p>
 				<p className="text-black-80 md:text-[0.7rem] font-[600] tracking-wider">
-					{amount} x GC {price}
+					{amount} x GC. {price}
 				</p>
 			</div>
 			{/*......................................

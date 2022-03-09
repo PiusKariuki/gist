@@ -56,7 +56,7 @@ const ShopProducts: React.FC<Props> = ({
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
             bg-black-80 px-[1rem]">
-					GC {price}
+					GC. {price}
 				</p>
 			</div>
 		</div>

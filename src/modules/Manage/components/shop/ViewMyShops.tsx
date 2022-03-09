@@ -1,12 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { imgUrl } from "shared/http/Http";
-import {
-	faEdit,
-	faPen,
-	faPlus,
-	faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPen, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
@@ -31,11 +26,9 @@ const ViewMyShops: React.FC<Props> = ({ name, userName, img, id }) => {
 				/>
 			</div>
 			<p className="text-blue-20 font-[900] text-[1rem] my-[1rem]">{name}</p>
-			<button
-				onClick={() => navigate(`/myAccount/shops/products/${id}`)}
-				className="blue-btn w-1/3 py-[0.1rem] rounded-lg">
-				Products
-			</button>
+			<Link to={`/myAccount/shops/products/${id}`} className="card-link">
+				view products
+			</Link>
 			{/* absolute btns */}
 			<button
 				onClick={() => {

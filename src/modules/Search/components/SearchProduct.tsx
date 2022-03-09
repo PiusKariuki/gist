@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { imgUrl } from "shared/http/Http";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const SearchProduct: React.FC<Props> = ({ name, img, price, userName, id }) => {
-	let navigate = useNavigate();
+
 	return (
 		<div
 			className="flex flex-col rounded-lg shadow-lg pt-[0.2rem] px-[0.2rem]
@@ -31,13 +31,13 @@ const SearchProduct: React.FC<Props> = ({ name, img, price, userName, id }) => {
 					<span className="font-[400]">{userName || "Pius"}</span>
 				</p>
 				<p className="text-red-20 font-[400] text-[1rem] ">
-					$:&nbsp;&nbsp;&nbsp;{price}
+					GC.&nbsp;&nbsp;&nbsp;{price}
 				</p>
-				<button
-					onClick={() => navigate(`/product/${id}`, { replace: true })}
-					className="blue-btn w-1/3">
-					View
-				</button>
+				<Link
+					to={`/product/${id}`}
+					className="card-link">
+					view
+				</Link>
 			</div>
 		</div>
 	);

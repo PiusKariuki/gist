@@ -89,7 +89,7 @@ const MyOrders = () => {
 				<div className="flex flex-row gap-[0.5rem] mt-[2rem]">
 					{shops?.map((shop: any, key: number) => (
 						<button
-							className="outline outline-blue-20 rounded-md text-blue-20 font-[800] 
+							className="outline outline-blue-40 rounded-md text-blue-40 font-[800] 
                      px-[0.5rem] py-[0.1rem] text-[1rem]"
 							key={key}
 							value={shop?._Id}

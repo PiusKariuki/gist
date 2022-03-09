@@ -22,8 +22,8 @@ const ViewShop: React.FC<Props> = ({ name, userName, img, id }) => {
 			}}
 			onClick={() => navigate(`/shop/${id}`)}>
 			<p
-				className="absolute bottom-[4%] left-[5%] text-white font-[900] text-[1rem]
-            px-2 rounded-md z-10">
+				className="absolute bottom-[4%] right-[5%] text-white font-[900] text-[1rem]
+            bg-gray-20 opacity-70 px-2 rounded-md z-10">
 				{name}
 			</p>
 		</div>
