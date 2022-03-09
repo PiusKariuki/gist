@@ -12,10 +12,6 @@ interface Props {
 }
 
 const ViewOrder: React.FC<Props> = ({ order, setOpenView }) => {
-	let navigate = useNavigate();
-   console.log(order);
-   
-
 	return (
 		<div
 			className="flex flex-col p-[1rem] bg-white hover:border-[0.2rem] hover:border-gray-200

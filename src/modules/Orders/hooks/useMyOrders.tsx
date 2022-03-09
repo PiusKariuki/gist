@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
 import { user } from "shared/recoil/user";
@@ -16,7 +17,8 @@ const useOrderByShopID = () => {
 	const [openView, setOpenView] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
 	const [order, setOrder] = useState<any>({});
-   
+	let navigate = useNavigate();
+
 	const columns = [
 		{
 			name: "Date Placed",
@@ -27,14 +29,18 @@ const useOrderByShopID = () => {
 			selector: (row: any) => row.status,
 		},
 		{
-			name: "Actions",
-			selector: (row: any) => row.actions,
+			name: "Edit",
+			selector: (row: any) => row.edit,
+		},
+		{
+			name: "View",
+			selector: (row: any) => row.view,
 		},
 	];
 
 	let populate = orders.map((obj: any) =>
 		Object.assign(obj, {
-			actions: (
+			edit: (
 				<div className="flex w-full gap-x-[2rem]">
 					<button
 						className="bg-gray-20 hover:bg-blue-40 text-white px-[1rem] py-[0.3rem] h-8
@@ -42,19 +48,23 @@ const useOrderByShopID = () => {
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
-							setOrderId(e.currentTarget.value);
+                     setOrderId(e.currentTarget.value)
 							setOpen(true);
 							setOpenView(false);
 						}}>
 						Edit
 					</button>
+               
+				</div>
+			),
+			view: (
+				<div className="flex w-full gap-x-[2rem]">
 					<button
 						className="bg-blue-40  hover:bg-gray-20 text-white px-[1rem] py-[0.3rem] h-8
                   rounded-2xl"
 						id={obj._id}
 						value={obj._id}
 						onClick={(e) => {
-							setOrderId(e.currentTarget.value);
 							getOrderById(e.currentTarget.value);
 							setOpen(false);
 						}}>
@@ -123,6 +133,11 @@ const useOrderByShopID = () => {
 		}
 	};
 
+	{
+		/*......................................
+      *get order by id and then naviigate to the product  id. happens on click view
+   ......................................*/
+	}
 	const getOrderById = async (id: string) => {
 		setLoad(true);
 		try {
@@ -130,6 +145,7 @@ const useOrderByShopID = () => {
 			setOpenView(true);
 			setOrder(data);
 			setLoad(false);
+			navigate(`/product/${data?.itemId?.productId?._id}`);
 		} catch (error) {
 			setLoad(false);
 		}

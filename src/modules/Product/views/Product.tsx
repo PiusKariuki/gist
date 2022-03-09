@@ -1,11 +1,13 @@
 import useCart from "modules/Cart/hooks/useCart";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+	faArrowLeft,
+	faArrowRight,
 	faChevronCircleLeft,
 	faChevronCircleRight,
 	faChevronRight,
@@ -13,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { imgUrl } from "shared/http/Http";
 import "../styles/product.css"
+import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 
 const Product: React.FC = (): JSX.Element => {
 	const [index, setIndex] = useState<number>(0);
@@ -21,6 +24,9 @@ const Product: React.FC = (): JSX.Element => {
 	const { renderSpinner } = useSpinner();
 	const { productId } = useParams();
 	const { addToCart } = useCart();
+
+   const { scrollRight, scrollLeft } = useHorizontalScroll();
+		const scrollRef = useRef<any>(null);
 
 	useEffect(() => {
 		getProductById(productId);
@@ -88,21 +94,48 @@ const Product: React.FC = (): JSX.Element => {
 								/>
 							</div>
 						)}
-
-						<div
-							className="flex flex-row gap-[2rem] overflow-x-scroll max-w-[80vw]
-                     md:max-w-[40vw] scroller">
-							{product?.images?.map((img: string, key: number) => {
-								return (
-									<div
-										key={key}
-										style={{ backgroundImage: `url(${imgUrl}/${img})` }}
-										className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
-                              bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer flex-shrink-0"
-										onClick={() => setIndex(key)}
+						<div className="flex relative">
+							<div
+								ref={scrollRef}
+								className="flex flex-row gap-[2rem] overflow-x-scroll w-[80vw]
+                        md:w-[40vw] scroller">
+								{product?.images?.map((img: string, key: number) => {
+									return (
+										<div
+											key={key}
+											style={{ backgroundImage: `url(${imgUrl}/${img})` }}
+											className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
+                              bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer 
+                              flex-shrink-0"
+											onClick={() => setIndex(key)}
+										/>
+									);
+								})}
+								{/*......................................
+                  *FLOATING BTNS FOR HORIZONTAL SCROLL
+               ......................................*/}
+								<div
+									className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  w-[3.125rem]
+                           h-[3.125rem] rounded-full translate-y-[-50%]
+                           z-10 hidden lg:flex lg:absolute  left-[-10%] top-[50%] 
+                           ">
+									<FontAwesomeIcon
+										onClick={() => scrollLeft(scrollRef)}
+										icon={faArrowLeft}
+										className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
 									/>
-								);
-							})}
+								</div>
+								<div
+									className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  z-10 hidden
+                           lg:flex lg:absolute text-[2rem] translate-y-[-50%]
+                           w-[3.125rem] h-[3.125rem] rounded-full right-[-10%] top-[50%]">
+									<FontAwesomeIcon
+										onClick={() => scrollRight(scrollRef)}
+										icon={faArrowRight}
+										className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
+									/>
+								</div>
+							</div>
 						</div>
 					</div>
 
