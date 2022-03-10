@@ -128,7 +128,7 @@ const Shop: React.FC = (): JSX.Element => {
 						<button
 							onClick={() => navigate(`/myAccount/shops/edit/${shopId}`)}
 							className="bg-gray-20 text-white font-bold w-[8rem] py-[0.5rem]
-                  px-[1rem] rounded-lg hover:bg-blue-500 mt-[2rem]">
+                  px-[1rem] rounded-lg hover:bg-blue-40 mt-[2rem]">
 							Edit
 						</button>
 					) : null}

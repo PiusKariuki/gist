@@ -39,8 +39,8 @@ const DeleteShop: React.FC<{
 					type="text"
 					required
 					className="border-[0.0625rem] border-black-70 h-[2.25rem] outline-none
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  focus:ring-2 focus:ring-blue-500"
+               text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+               form-ring"
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
 				/>
 				<button

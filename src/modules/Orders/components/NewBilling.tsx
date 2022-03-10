@@ -54,7 +54,7 @@ const NewBilling = () => {
 					id="name"
 					className=" h-[2.25rem] outline-none w-full md:w-[60%]
                   text-blue-30 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-gray-20"
+                  form-ring"
 				/>
 				{/*......................................
                *zipcode
@@ -68,7 +68,7 @@ const NewBilling = () => {
 					id="zip"
 					className=" h-[2.25rem] outline-none w-full md:w-[60%]
                   text-blue-30 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-gray-20"
+                  form-ring"
 				/>
 				{/*......................................
                *street
@@ -82,7 +82,7 @@ const NewBilling = () => {
 					id="street"
 					className=" h-[2.25rem] outline-none w-full md:w-[60%]
                   text-blue-30 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-gray-20 mb-[3rem]"
+                  form-ring mb-[3rem]"
 				/>
 				<button
 					disabled={load}

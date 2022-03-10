@@ -54,7 +54,7 @@ const NewInfo = () => {
 						id="name"
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  form-ring"
 					/>
 					{/*......................................
                *zipcode
@@ -68,7 +68,7 @@ const NewInfo = () => {
 						id="zip"
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  form-ring"
 					/>
 					{/*......................................
                *street
@@ -82,7 +82,7 @@ const NewInfo = () => {
 						id="street"
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  form-ring"
 					/>
 				</div>
 				{/*......................................
@@ -101,7 +101,7 @@ const NewInfo = () => {
 						id="name"
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  form-ring"
 					/>
 					{/*......................................
                *zipcode
@@ -115,7 +115,7 @@ const NewInfo = () => {
 						id="zip"
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  form-ring"
 					/>
 					{/*......................................
                *street
@@ -129,7 +129,7 @@ const NewInfo = () => {
 						id="street"
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  ring-2 ring-blue-500"
+                  form-ring"
 					/>
 
 					<div className="flex justify-between">

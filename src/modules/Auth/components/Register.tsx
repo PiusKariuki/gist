@@ -213,7 +213,7 @@ const Register = (): JSX.Element => {
 								<>
 									<button
 										type="button"
-										className="bg-blue-500 self-center w-full px-[1rem] py-[0.4rem]
+										className="bg-blue-40 self-center w-full px-[1rem] py-[0.4rem]
                              mt-auto rounded-md font-[600] text-white"
 										onClick={handleClick}>
 										Upload Profile Photo

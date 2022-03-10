@@ -211,7 +211,7 @@ const EditProfile = () => {
 					) : (
 						<button
 							type="button"
-							className="bg-blue-500 w-[14rem] px-[1rem] py-[0.4rem]
+							className="bg-blue-40 w-[14rem] px-[1rem] py-[0.4rem]
                      mt-auto rounded-md font-[600] text-white"
 							onClick={handleClick}>
 							Upload profile photo
@@ -249,7 +249,7 @@ const EditProfile = () => {
 							name="pass"
 							className="h-[2.25rem] outline-none
                       text-blue-20  rounded-[0.25rem] font-bold px-[1rem] ring-2
-                       ring-blue-500"
+                       ring-blue-40"
 						/>
 						<p className="text-red-600 font-bold text-[1rem] text-center">
 							{passError || errors?.password?.message}
@@ -270,7 +270,7 @@ const EditProfile = () => {
 							id="confirm"
 							className="h-[2.25rem] outline-none
                       text-blue-20  rounded-[0.25rem] font-bold px-[1rem] ring-2
-                       ring-blue-500"
+                       ring-blue-40"
 						/>
 						<p className="text-red-600 font-bold text-[1rem] text-center">
 							{passError || errors?.password?.message}
