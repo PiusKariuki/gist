@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Rooms = () => {
 	const { renderSpinner } = useSpinner();
-	const { load, rooms, getAllRooms } = useRoom();
+	const { load, rooms, getRecentRooms } = useRoom();
 	useEffect(() => {
-		getAllRooms();
+		getRecentRooms();
 	}, []);
 
 	const { scrollRight, scrollLeft } = useHorizontalScroll();

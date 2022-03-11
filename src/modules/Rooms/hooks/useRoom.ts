@@ -18,6 +18,17 @@ const useRoom = () => {
 			setLoad(false);
 		}
 	};
+   
+	const getRecentRooms = async () => {
+		setLoad(true);
+		try {
+			let { data } = await Axios.get("/rooms/recent");
+			setRooms(data);
+			setLoad(false);
+		} catch (error) {
+			setLoad(false);
+		}
+	};
 
 	const getRoomById = async (roomId: any) => {
 		setLoad(true);
@@ -34,7 +45,7 @@ const useRoom = () => {
 			// });
 		}
 	};
-	return { room, load, getRoomById,rooms,getAllRooms };
+	return { room, load, getRoomById,rooms,getAllRooms,getRecentRooms };
 };
 
 export default useRoom;

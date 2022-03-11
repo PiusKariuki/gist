@@ -18,6 +18,18 @@ const useProducts = () => {
          setErrors(error);
       }
    }
+
+   const getRecentProducts = async () => {
+      setLoad(true);
+      try {
+         let { data } = await Axios.get(`/products/products/products/recent`);
+         setProducts(data);
+         setLoad(false);
+      } catch (error) {
+         setLoad(false);
+         setErrors(error);
+      }
+   }
    const getProductById = async (productId:any) => {
       setLoad(true);
       try {
@@ -30,7 +42,7 @@ const useProducts = () => {
       }
    }
 
-  return {getProducts, products,errors,load,getProductById,product}
+  return {getProducts, products,errors,load,getProductById,product,getRecentProducts}
 };
 
 export default useProducts;

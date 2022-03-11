@@ -7,20 +7,23 @@ import {
 	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useSpinner from "shared/components/spinner/useSpinner";
 
 const Products = () => {
-	const { getProducts, products, errors, load } = useProducts();
+	const { getRecentProducts, products, errors, load } = useProducts();
 	useEffect(() => {
-		getProducts();
+		getRecentProducts();
 	}, []);
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 	const scrollRef = useRef<any>(null);
+   const {renderSpinner} = useSpinner();
 
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full  relative">
 			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem]">
 				Recommended products
 			</p>
+         {renderSpinner(load)}
 			<div
 				ref={scrollRef}
 				className="scroller flex flex-row  overflow-x-scroll gap-x-8 md:flex-row ">

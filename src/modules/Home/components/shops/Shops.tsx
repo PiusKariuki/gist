@@ -1,21 +1,19 @@
-import {
-	faArrowLeft,
-   faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useShop from "modules/shop/Hooks/useShop";
 import React, { useEffect, useRef } from "react";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 import ViewShop from "./ViewShop";
 import "../../styles/shop.css";
+import useSpinner from "shared/components/spinner/useSpinner";
 
 const Shops = () => {
-	const { shops, getShops } = useShop();
+	const { shops, getRecentShops, load } = useShop();
 	useEffect(() => {
-		getShops();
+		getRecentShops();
 	}, []);
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
-
+	const { renderSpinner } = useSpinner();
 	const scrollRef = useRef<any>(null);
 
 	return (
@@ -23,6 +21,7 @@ const Shops = () => {
 			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem]">
 				Popular shops
 			</p>
+			{renderSpinner(load)}
 			<div
 				ref={scrollRef}
 				className="scroller flex flex-row gap-x-8 overflow-x-scroll">
