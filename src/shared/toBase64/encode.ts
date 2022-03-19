@@ -4,7 +4,7 @@ export const getBase64 = (file: any) => {
 		let i = new Image();
 
 		i.onload = () => {
-			if (i.width < 1920 && i.height < 1080){
+			if (i.width < 2000 && i.height < 2000){
             resolve(baseURL);
          } 
 			else {
@@ -17,7 +17,6 @@ export const getBase64 = (file: any) => {
 
 		// Convert the file to base64 text
 		reader.readAsDataURL(file);
-
 		// on reader load somthing...
 		reader.onload = () => {
 			// Make a fileInfo Object

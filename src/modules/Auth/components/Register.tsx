@@ -22,11 +22,11 @@ const Register = (): JSX.Element => {
 		load,
 		errors,
 		phone,
-		phoneErr,
 		handlePhoneChange,
 		confirmPassword,
-		img,
+		displayImg,
 		setImg,
+      setDisplayImg,
 	} = useRegister();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -47,10 +47,10 @@ const Register = (): JSX.Element => {
 				className=" absolute -top-10 right-0 bg-white
             flex  flex-row w-[8rem] md:w-[15rem] px-[1.2rem] md:px-[2rem] 
             py-[0.5rem] 
-            shadow-2xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
+            shadow-2xl self-center md:self-start rounded-xl text-blue-40 space-x-3 mt-[3rem] 
             items-center cursor-pointer">
-				<FontAwesomeIcon icon={faHouseUser} size="2x" />
-				<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
+				<FontAwesomeIcon icon={faHouseUser} size="2x" className="text-blue-40"/>
+				<p className="text-blue-40 text-[0.9rem] md:text-[1.1rem] font-[700]">
 					Home.
 				</p>
 			</div>
@@ -194,15 +194,18 @@ const Register = (): JSX.Element => {
 						<div
 							className="flex flex-col md:flex-row w-[90%] md:w-[40%] space-x-10
                      space-y-10">
-							{img?.length > 1 ? (
+							{displayImg?.length > 1 ? (
 								<div className="flex relative">
 									<img
-										src={img}
+										src={displayImg}
 										className="flex max-h-[20rem] object-scale-down self-center 
                               top-[-300%] right-[0%] w-[80vw] md:w-[4xl0vw] lg:w-[40%] border-2"
 									/>
 									<FontAwesomeIcon
-										onClick={() => setImg("")}
+										onClick={() => {
+                                setImg("");
+                                setDisplayImg("");
+                              }}
 										icon={faTrash}
 										size="3x"
 										className="absolute top-[50%] left-[50%] opacity-90 text-red-500
@@ -314,7 +317,7 @@ const Register = (): JSX.Element => {
 						load ||
 						phone?.length < 4 ||
 						confirmPassword !== password ||
-						img?.length < 1
+						displayImg?.length < 1
 					}
 					type="submit"
 					className="btn py-[0.5rem] mt-[3rem] md:max-w-[7rem] text-white text-[1.2rem]

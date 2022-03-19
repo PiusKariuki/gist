@@ -13,6 +13,7 @@ const MyShopHome = () => {
 	useEffect(() => {
 		getShopsByUserId();
 	}, []);
+   
 
 	return (
 		<div className="flex flex-col md:px-[1.5rem] py-[3rem] w-full md:w-screen space-y-10">
@@ -32,19 +33,19 @@ const MyShopHome = () => {
 
 			{renderSpinner(load)}
 			<div className="flex flex-col md:flex-row md:justify-self-center gap-8 flex-wrap">
-				{myShops?.length > 0}
 
-				{myShops.map((shop: any, key: number) => (
-					<div className="relative" key={key}>
-						<ViewMyShops
-							key={key}
-							img={shop.image}
-							name={shop.name}
-							userName={shop?.userId?.userName}
-							id={shop._id}
-						/>
-					</div>
-				))}
+				{
+					myShops.length && myShops.map((shop: any, key: number) => (
+						<div className="relative" key={key}>
+							<ViewMyShops
+								key={key}
+								img={shop.image}
+								name={shop.name}
+								userName={shop?.userId?.userName}
+								id={shop._id}
+							/>
+						</div>
+					))}
 			</div>
 		</div>
 	);
