@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { emailRegex, sixChars, phoneRegex } from "shared/regEx/regEx";
+import { emailRegex } from "shared/regEx/regEx";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 import { useNavigate } from "react-router-dom";
+// import uploadToFireBase from "shared/firebase/uploadToFirebase";
 
 const useManage = () => {
 	const { _id } = useRecoilValue<any>(user);
@@ -60,40 +61,12 @@ const useManage = () => {
 		}
 	};
 
-	const createShop = async (e: React.FormEvent<HTMLFormElement>) => {
-		setLoad(true);
-		e.preventDefault();
-		try {
-			await Axios.post(`/shop/${_id}`, {
-				name: shopName,
-				email: email,
-				location: location,
-				phoneNumber: phone,
-				description: desc,
-				image: img,
-			});
-			Swal.fire({
-				icon: "success",
-				text: "Your shop has been created",
-				timer: 1000,
-			});
-			navigate(`/myAccount/shops/`);
-			setLoad(false);
-			clearAttributes();
-		} catch (error: any) {
-			let errmsg = error.response.data.split(":");
-			setLoad(false);
-
-			Swal.fire({
-				icon: "error",
-				text:
-					error.response.status === 409
-						? "Please choose a different shop name"
-						: errmsg[2],
-				timer: 2000,
-			});
-		}
-	};
+	const createShop = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setLoad(true);
+      // uploadToFireBase(img,"shop")
+			
+   }
 
 	const clearAttributes = () => {
 		setDesc("");

@@ -18,7 +18,7 @@ const Register = (): JSX.Element => {
 		bio,
 		userName,
 		handleChange,
-		register,
+		upload,
 		load,
 		errors,
 		phone,
@@ -26,7 +26,7 @@ const Register = (): JSX.Element => {
 		confirmPassword,
 		displayImg,
 		setImg,
-      setDisplayImg,
+		setDisplayImg,
 	} = useRegister();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -49,7 +49,11 @@ const Register = (): JSX.Element => {
             py-[0.5rem] 
             shadow-2xl self-center md:self-start rounded-xl text-blue-40 space-x-3 mt-[3rem] 
             items-center cursor-pointer">
-				<FontAwesomeIcon icon={faHouseUser} size="2x" className="text-blue-40"/>
+				<FontAwesomeIcon
+					icon={faHouseUser}
+					size="2x"
+					className="text-blue-40"
+				/>
 				<p className="text-blue-40 text-[0.9rem] md:text-[1.1rem] font-[700]">
 					Home.
 				</p>
@@ -65,7 +69,10 @@ const Register = (): JSX.Element => {
 			<form
 				autoComplete="off"
 				className="flex flex-col w-full py-[2rem] "
-				onSubmit={register}>
+				onSubmit={(e) => {
+					e.preventDefault();
+					upload();
+				}}>
 				<div className="flex flex-col">
 					<p
 						className="text-[1.2rem] lg:text-[2.2rem] text-blue-20 font-[900] mb-[1rem] 
@@ -203,9 +210,9 @@ const Register = (): JSX.Element => {
 									/>
 									<FontAwesomeIcon
 										onClick={() => {
-                                setImg("");
-                                setDisplayImg("");
-                              }}
+											setImg("");
+											setDisplayImg("");
+										}}
 										icon={faTrash}
 										size="3x"
 										className="absolute top-[50%] left-[50%] opacity-90 text-red-500

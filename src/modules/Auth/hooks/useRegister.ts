@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { storage } from "shared/firebase";
-import { Axios } from "shared/http/Http";
 import { user } from "shared/recoil/user";
 import { emailRegex, sixChars } from "shared/regEx/regEx";
 import { getBase64 } from "shared/toBase64/encode";
 import Swal from "sweetalert2";
-import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import uploadToFireBase from "shared/firebase/uploadToFirebase";
+import useFirebase from "shared/firebase/useFirebase";
+import { Axios } from "shared/http/Http";
 
 const useRegister = () => {
+	const { uploadToFireBase } = useFirebase();
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");
 	const [email, setEmail] = useState("");
@@ -27,7 +26,7 @@ const useRegister = () => {
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 	const setUser = useSetRecoilState(user);
-	const [firebaseUrl, setFirebaseUrl] = useState<any>("");
+	const [firebaseUrl, setFirebaseUrl] = useState("");
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
@@ -89,87 +88,48 @@ const useRegister = () => {
 		}
 	};
 
-	const register = (e: any) => {
-		e.preventDefault();
+   //call  back fn passed to  useFirebase 
+	const getUrlAndCreateUser = async (url: string) => {
 		setLoad(true);
 		setErrors({});
+		try {
+			let uri = await url;
+			//req obj
+			let newUser = {
+				email: email,
+				password: password,
+				firstName: fname,
+				lastName: lname,
+				userName: userName,
+				bio: bio,
+				phonenumber: phone,
+				profilePhoto: uri,
+			};
 
-		//upload img to firebase first and get the firebaseurl
-		uploadToFireBase(img, "user")
-			.then((res) => {
-				setFirebaseUrl(res);
-			})
-			.then(
-				() => {
-					//req obj
-					let newUser = {
-						email: email,
-						password: password,
-						firstName: fname,
-						lastName: lname,
-						userName: userName,
-						bio: bio,
-						phonenumber: phone,
-						profilePhoto: firebaseUrl,
-					};
-					//now send the axios request to the server
-					Axios.post("/register", newUser)
-						.then(
-							({ data }) => {
-								//destructure the data object
-								//store the data object in recoil
-								//stop the loader
-								let newObj = {
-									token: data.token,
-									_id: data.user._id,
-									userName: data.user.userName,
-									profilePhoto: data.user.profilePhoto,
-									phonenumber: data.user.phonenumber,
-									email: data.user.email,
-									firstName: data.user.firstName,
-									lastName: data.user.lastName,
-									bio: data.user.bio,
-									wallet: data.user.wallet,
-								};
-								setUser(newObj);
-								setLoad(false);
-								setErrors("");
-							},
-							(e) => {
-								Swal.fire({
-									icon: "error",
-									title: e.response?.data?.message,
-								});
-
-								setErrors(e?.response?.data);
-								setLoad(false);
-							}
-						)
-						.catch((e) => {
-							Swal.fire({
-								icon: "error",
-								title: e.response?.data?.message,
-							});
-
-							setErrors(e?.response?.data);
-							setLoad(false);
-						});
-				},
-				(err) => {
-					Swal.fire({
-						icon: "error",
-						title: "Failed to upload image. Try again later",
-					});
-					setLoad(false);
-				}
-			)
-			.catch((err) => {
+			//nested try for db setErrors
+			try {
+				let newObj = await Axios.post("/register", newUser);
+				setUser(newObj);
+				setLoad(false);
+				setErrors("");
+			} catch (e: any) {
+				setErrors(e?.response?.data);
+				setLoad(false);
 				Swal.fire({
 					icon: "error",
-					title: "Failed to upload image. Try again later",
+					title: e.response?.data?.message,
 				});
-				setLoad(false);
-			});
+			}
+
+			//end nested trycatch
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+   //called when the regsiter btn is  clicked
+	const upload = () => {
+		uploadToFireBase(img, "user/display_picture", getUrlAndCreateUser);
 	};
 
 	return {
@@ -182,7 +142,7 @@ const useRegister = () => {
 		bio,
 		userName,
 		handleChange,
-		register,
+		upload,
 		load,
 		errors,
 		phone,
