@@ -26,7 +26,6 @@ const useRegister = () => {
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 	const setUser = useSetRecoilState(user);
-	const [firebaseUrl, setFirebaseUrl] = useState("");
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
@@ -88,8 +87,8 @@ const useRegister = () => {
 		}
 	};
 
-   //call  back fn passed to  useFirebase 
-	const getUrlAndCreateUser = async (url: string) => {
+	//call  back fn passed to  useFirebase
+	const upload = async (url: string) => {
 		setLoad(true);
 		setErrors({});
 		try {
@@ -122,14 +121,17 @@ const useRegister = () => {
 			}
 
 			//end nested trycatch
-		} catch (error) {
-			console.log(error);
+		} catch (error: any) {
+			Swal.fire({
+				icon: "error",
+				title: "error uploading image",
+			});
 		}
 	};
 
-   //called when the regsiter btn is  clicked
-	const upload = () => {
-		uploadToFireBase(img, "user/display_picture", getUrlAndCreateUser);
+	//called when the regsiter btn is  clicked
+	const getUrlAndCreateUser = () => {
+		uploadToFireBase(img, "user/display_picture", upload);
 	};
 
 	return {
@@ -142,7 +144,7 @@ const useRegister = () => {
 		bio,
 		userName,
 		handleChange,
-		upload,
+		getUrlAndCreateUser,
 		load,
 		errors,
 		phone,

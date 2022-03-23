@@ -18,7 +18,7 @@ const Register = (): JSX.Element => {
 		bio,
 		userName,
 		handleChange,
-		upload,
+		getUrlAndCreateUser,
 		load,
 		errors,
 		phone,
@@ -71,7 +71,7 @@ const Register = (): JSX.Element => {
 				className="flex flex-col w-full py-[2rem] "
 				onSubmit={(e) => {
 					e.preventDefault();
-					upload();
+					getUrlAndCreateUser();
 				}}>
 				<div className="flex flex-col">
 					<p

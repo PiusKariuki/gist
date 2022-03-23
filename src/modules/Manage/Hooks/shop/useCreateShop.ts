@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 import { useNavigate } from "react-router-dom";
-// import uploadToFireBase from "shared/firebase/uploadToFirebase";
+import useFirebase from "shared/firebase/useFirebase";
 
 const useManage = () => {
 	const { _id } = useRecoilValue<any>(user);
@@ -20,11 +20,17 @@ const useManage = () => {
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
+	const { uploadToFireBase } = useFirebase();
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
 	};
 
+	/**
+	 * Description
+	 * @param {any} e
+	 * @returns {any}
+	 */
 	const handleChange = (e: any) => {
 		switch (e.target.id) {
 			case "shopName":
@@ -61,13 +67,56 @@ const useManage = () => {
 		}
 	};
 
-	const createShop = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      setLoad(true);
-      // uploadToFireBase(img,"shop")
-			
-   }
+	/**
+	 * Description call  back fn passed to  useFirebase
+	 * @param {string} url
+	 * @returns {any}
+	 */
+	const upload = async (url: string) => {
+		try {
+         setLoad(false);
+			let uri = await url;
+			await Axios.post(`/shop/${_id}`, {
+				name: shopName,
+				email: email,
+				location: location,
+				phoneNumber: phone,
+				description: desc,
+				image: uri,
+			});
+			Swal.fire({
+				icon: "success",
+				text: "Your shop has been created",
+				timer: 1000,
+			});
+			navigate(`/myAccount/shops/`);
+			clearAttributes();
+		} catch (error: any) {
+         console.log(error.response.data.message);   
+         setLoad(false);
+			Swal.fire({
+				icon: "error",
+				text:error?.response?.data?.message,
+				timer: 2000,
+			});
+		}
+	};
 
+	/**
+	 * Description called once form is submitted
+	 * @param {React.FormEvent<HTMLFormElement>} e
+	 * @returns {any}
+	 */
+	const createShop = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		uploadToFireBase(img, "/shop/images", upload);
+		setLoad(true);
+	};
+
+	/**
+	 * Description: clear form values and errors
+	 * @returns {any}
+	 */
 	const clearAttributes = () => {
 		setDesc("");
 		setEmail("");
@@ -76,6 +125,7 @@ const useManage = () => {
 		setMailError("");
 		setPhone("");
 		setShopName("");
+   
 	};
 
 	return {

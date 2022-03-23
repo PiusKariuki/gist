@@ -10,7 +10,7 @@ const useFirebase = () => {
 		const uploadTask = uploadBytesResumable(storageRef, img);
 
 		try {
-			let data = await uploadTask.on(
+			 await uploadTask.on(
 				"state_changed",
 				(snapshot) => {
 					Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
