@@ -12,7 +12,8 @@ const useManage = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
-	const [img, setImg] = useState<any>("");
+		const [img, setImg] = useState<any>("");
+		const [displayImg, setDisplayImg] = useState<any>("");
 	const [desc, setDesc] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
 	const [phone, setPhone] = useState<string>("");
@@ -45,7 +46,8 @@ const useManage = () => {
 			case "img":
 				getBase64(e.target.files[0])
 					.then((res) => {
-						setImg(res);
+						setDisplayImg(res);
+						setImg(e.target.files[0]);
 					})
 					.catch((err) => {
 						Swal.fire({
@@ -91,8 +93,7 @@ const useManage = () => {
 			});
 			navigate(`/myAccount/shops/`);
 			clearAttributes();
-		} catch (error: any) {
-         console.log(error.response.data.message);   
+		} catch (error: any) { 
          setLoad(false);
 			Swal.fire({
 				icon: "error",
@@ -139,6 +140,8 @@ const useManage = () => {
 		handleChange,
 		handlePhoneChange,
 		mailError,
+      displayImg,
+      setDisplayImg,
 		load,
 		clearAttributes,
 		setImg,

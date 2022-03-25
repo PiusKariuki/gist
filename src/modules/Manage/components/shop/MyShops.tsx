@@ -25,7 +25,8 @@ const MyShops = () => {
 				<Route path="/" element={<MyShopHome />} />
 				<Route path="/create" element={<CreateShop />} />
 				<Route path="/edit/:shopId" element={<EditShopModal />} />
-				<Route path="/add/:shopId" element={<AddProduct />} />
+				{/* <Route path="/add/:shopId" element={<AddProduct />} /> */}
+				<Route path="/add/:shopId" element={<AddProductImages />} />
 				<Route
 					path="/add/:shopId/images/:productId"
 					element={<AddProductImages />}

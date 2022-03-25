@@ -14,12 +14,13 @@ const useAddShop = () => {
 	const [quantity, setQuantity] = useState<any>("");
 	const [desc, setDesc] = useState<any>("");
 	const [images, setImages] = useState<any>([]);
+	const [displays, setDisplays] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 	const [openProduct, setOpenProduct] = useState<boolean>(false);
 	const [prodID, setProdID] = useState("");
 	let navigate = useNavigate();
-	const { uploadToFireBase } = useFirebase();
+	const { uploadArrayToFireBase } = useFirebase();
 
 	const clearAttributes = () => {
 		setName("");
@@ -27,6 +28,7 @@ const useAddShop = () => {
 		setQuantity("");
 		setImages([]);
 		setDesc("");
+		setDisplays("");
 	};
 
 	const handleChange = (e: any) => {
@@ -44,9 +46,10 @@ const useAddShop = () => {
 				setDesc(e.target.value);
 				break;
 			case "images":
+				setImages((prev: any) => [...prev, e.target.files[0]]);
 				getBase64(e.target.files[0])
 					.then((res: any) => {
-						setImages((prev: any) => [...prev, res]);
+						setDisplays((prev: any) => [...prev, res]);
 					})
 					.catch((err) => {
 						Swal.fire({
@@ -96,19 +99,22 @@ const useAddShop = () => {
 		}
 	};
 
-	const upload = async (url: string) => {
+	const upload = async(url: any) => {
+		console.log(url);
+
 		try {
 			setLoad(false);
-			let uri = await url;
-			await Axios.put(`/products/images/${prodID}`, {
-				images: uri,
-			});
+			// let uri = await url;
+			// console.log(uri);
+			// await Axios.put(`/products/images/${prodID}`, {
+			// 	images: uri,
+			// });
 			Swal.fire({
 				icon: "success",
 				text: "A product has been added to your shop",
 				timer: 1000,
 			});
-			navigate(`/myAccount/shops/`);
+			// navigate(`/myAccount/shops/`);
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
@@ -124,14 +130,18 @@ const useAddShop = () => {
 	const addProductImages = (productID: any) => {
 		setProdID(productID);
 		setLoad(true);
-		uploadToFireBase(images, "/products/images", upload);
+		uploadArrayToFireBase(images, "/products/images", upload)
 	};
 
 	const removeImg = (index: number) => {
-		if (index > -1)
+		if (index > -1) {
 			setImages((prev: any) =>
 				prev.filter((img: any) => prev.indexOf(img) !== index)
 			);
+			setDisplays((prev: any) =>
+				prev.filter((img: any) => prev.indexOf(img) !== index)
+			);
+		}
 	};
 
 	return {
@@ -149,6 +159,8 @@ const useAddShop = () => {
 		setOpenProduct,
 		desc,
 		addProductImages,
+		displays,
+		setDisplays,
 	};
 };
 

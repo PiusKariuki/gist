@@ -6,7 +6,7 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useAddShop from "../../Hooks/product/useAddProduct";
 
 const AddProductImages = () => {
-	const { handleChange, load, images, removeImg, addProductImages } =
+	const { handleChange, load, images, removeImg, addProductImages,displays } =
 		useAddShop();
 	const hiddenInput = useRef<any>(null);
 	const { renderSpinner } = useSpinner();
@@ -43,7 +43,7 @@ const AddProductImages = () => {
 			<div
 				className="flex flex-row flex-wrap gap-[2rem] max-h-[60vh] md:max-h-[38vh] md:h-[40vh]
                 lg:max-h-[59vh]  overflow-y-scroll">
-				{images?.map((img: any, key: number) => (
+				{displays && displays?.map((img: any, key: number) => (
 					<div className="relative flex flex-col" key={key}>
 						<img
 							src={img}

@@ -70,8 +70,7 @@ const Register = (): JSX.Element => {
 				autoComplete="off"
 				className="flex flex-col w-full py-[2rem] "
 				onSubmit={(e) => {
-					e.preventDefault();
-					getUrlAndCreateUser();
+					getUrlAndCreateUser(e);
 				}}>
 				<div className="flex flex-col">
 					<p

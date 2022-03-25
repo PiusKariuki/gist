@@ -12,7 +12,8 @@ const CreateShop: React.FC = () => {
 		email,
 		location,
 		desc,
-		img,
+		displayImg,
+		setDisplayImg,
 		phone,
 		createShop,
 		handleChange,
@@ -81,7 +82,7 @@ const CreateShop: React.FC = () => {
 						Shop email
 					</label>
 					<input
-                  autoComplete="off"
+						autoComplete="off"
 						onChange={handleChange}
 						value={email}
 						required
@@ -136,7 +137,7 @@ const CreateShop: React.FC = () => {
                   ">
 						<button
 							type="submit"
-							disabled={mailError.length > 0 || load || img.length < 1}
+							disabled={mailError?.length > 0 || load || displayImg?.length < 1}
 							className="bg-blue-20  px-[1rem] py-[0.5rem]  rounded-lg  h-10
                      self-center text-white text-[1rem] font-[700] disabled:bg-gray-400 w-24">
 							Submit
@@ -144,16 +145,19 @@ const CreateShop: React.FC = () => {
 						<div className="flex">{renderSpinner(load)}</div>
 					</div>
 
-					{img.length > 0 ? (
+					{displayImg.length > 0 ? (
 						<div className="flex relative  order-3">
 							<img
-								src={img}
+								src={displayImg}
 								className=" flex  max-h-[14rem] md:max-h-[25rem] lg:max-h-[25rem] w-full 
                         object-contain 
                         order-3"
 							/>
 							<FontAwesomeIcon
-								onClick={() => setImg("")}
+								onClick={() => {
+									setImg("");
+									setDisplayImg("");
+								}}
 								icon={faTrash}
 								size="3x"
 								className="absolute bottom-[0%] right-[0%] opacity-90 text-red-500

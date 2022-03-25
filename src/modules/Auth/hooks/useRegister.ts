@@ -26,6 +26,7 @@ const useRegister = () => {
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 	const setUser = useSetRecoilState(user);
+   
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
@@ -87,10 +88,13 @@ const useRegister = () => {
 		}
 	};
 
-	//call  back fn passed to  useFirebase
+
+	/**
+	 * Description call  back fn passed to  useFirebase
+	 * @param {string} url
+	 * @returns {any}
+	 */
 	const upload = async (url: string) => {
-		setLoad(true);
-		setErrors({});
 		try {
 			let uri = await url;
 			//req obj
@@ -104,34 +108,41 @@ const useRegister = () => {
 				phonenumber: phone,
 				profilePhoto: uri,
 			};
-
-			//nested try for db setErrors
-			try {
-				let newObj = await Axios.post("/register", newUser);
-				setUser(newObj);
-				setLoad(false);
-				setErrors("");
-			} catch (e: any) {
-				setErrors(e?.response?.data);
-				setLoad(false);
-				Swal.fire({
-					icon: "error",
-					title: e.response?.data?.message,
-				});
-			}
-
-			//end nested trycatch
-		} catch (error: any) {
+			let {data} = await Axios.post("/register", newUser);
+			let newObj = {
+				token: data.token,
+				_id: data.user._id,
+				userName: data.user.userName,
+				profilePhoto: data.user.profilePhoto,
+				phonenumber: data.user.phonenumber,
+				email: data.user.email,
+				firstName: data.user.firstName,
+				lastName: data.user.lastName,
+				bio: data.user.bio,
+				wallet: data.user.wallet,
+			};
+			setUser(newObj);
+			setLoad(false);
+			setErrors("");
+		} catch (e: any) {
+			setErrors(e?.response?.data);
+			setLoad(false);
 			Swal.fire({
 				icon: "error",
-				title: "error uploading image",
+				title: e.response?.data?.message,
 			});
 		}
 	};
 
-	//called when the regsiter btn is  clicked
-	const getUrlAndCreateUser = () => {
+	/**
+	 * Description called when the register btn is  clicked
+	 * @param {React.FormEvent<HTMLFormElement>} e
+	 * @returns {any}
+	 */
+	const getUrlAndCreateUser = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		uploadToFireBase(img, "user/display_picture", upload);
+		setLoad(true);
 	};
 
 	return {

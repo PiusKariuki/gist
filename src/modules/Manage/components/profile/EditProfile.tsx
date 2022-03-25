@@ -190,7 +190,7 @@ const EditProfile = () => {
                *BTN AND IMAGE
             ......................................*/}
 				<div className="flex flex-col my-[2rem] space-y-10">
-					{img.length > 0 ? (
+					{img?.length > 0 ? (
 						<div className="flex relative">
 							<img
 								src={img}
@@ -226,55 +226,6 @@ const EditProfile = () => {
 					/>
 					{/* img */}
 				</div>
-				{/*......................................
-                  *
-                  *PASSWORD and confirm password
-                  *
-                  ......................................*/}
-				{/* <div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem]">
-					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
-						<label
-							htmlFor="pass"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-                     mb-[0.5rem] text-black-80">
-							Password
-						</label>
-						<input
-							onChange={handleChange}
-							value={password}
-							type="password"
-							id="pass"
-							name="pass"
-							className="h-[2.25rem] outline-none
-                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] ring-2
-                       ring-blue-40"
-						/>
-						<p className="text-red-600 font-bold text-[1rem] text-center">
-							{passError || errors?.password?.message}
-						</p>
-					</div>
-
-					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
-						<label
-							htmlFor="pass"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mt-[3rem] 
-                     mb-[0.5rem] text-black-80">
-							Confirm Password
-						</label>
-						<input
-							onChange={handleChange}
-							value={confirmPassword}
-							type="password"
-							id="confirm"
-							className="h-[2.25rem] outline-none
-                      text-blue-20  rounded-[0.25rem] font-bold px-[1rem] ring-2
-                       ring-blue-40"
-						/>
-						<p className="text-red-600 font-bold text-[1rem] text-center">
-							{passError || errors?.password?.message}
-						</p>
-					</div>
-				</div> */}
 			</div>
 
 			<div className="mt-[1rem]">{renderSpinner(load)}</div>
@@ -285,7 +236,7 @@ const EditProfile = () => {
 					load ||
 					phone?.length < 4 ||
 					confirmPassword !== password ||
-					img.length < 1
+					img?.length < 1
 				}
 				type="submit"
 				className="bg-blue-20 py-[0.2rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
