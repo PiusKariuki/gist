@@ -37,8 +37,8 @@ const MyOrders = () => {
 		getOrderByShopID,
 		columns,
 		load,
-		getMyShops,
-		shops,
+		getMyShop,
+		shop,
 		populate,
 		open,
 		setOpen,
@@ -60,15 +60,17 @@ const MyOrders = () => {
       ......................................*/
 	}
 
+
 	useEffect(() => {
 		 getOrderByShopID(currentShop);
 	}, [open]);
 
 
 	useEffect(() => {
-		getMyShops();
+		getMyShop();
 	}, []);
 
+   
 	return (
 		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">
 			<div ref={formRef} className="flex flex-col gap-y-[0.1rem]  px-[1rem]">
@@ -79,15 +81,14 @@ const MyOrders = () => {
 				</p>
 				{/*......................................
                *
-               *map users' shops and create  btns
+               *map users' shop and create  btns
                *
                ......................................*/}
 				<div className="flex flex-row gap-[0.5rem] mt-[2rem]">
-					{shops?.map((shop: any, key: number) => (
+	
 						<button
 							className="outline outline-blue-40 rounded-md text-blue-40 font-[800] 
                      px-[0.5rem] py-[0.1rem] text-[1rem]"
-							key={key}
 							value={shop?._Id}
 							onClick={() => {
 								setCurrentShop(shop?._id);
@@ -95,7 +96,7 @@ const MyOrders = () => {
 							}}>
 							{shop?.name}
 						</button>
-					))}
+	
 				</div>
 
 				<div className="absolute top-48 left-[48%] mt-[1rem]">

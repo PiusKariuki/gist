@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 
 const MyShopHome = () => {
-	const { myShops, load, getShopsByUserId } = useShop();
+	const { myShop, load, getShopsByUserId } = useShop();
 	let navigate = useNavigate();
 	const { renderSpinner } = useSpinner();
 	useEffect(() => {
@@ -17,7 +17,7 @@ const MyShopHome = () => {
 
 	return (
 		<div className="flex flex-col md:px-[1.5rem] py-[3rem] w-full md:w-screen space-y-10">
-			{myShops?.length > 0 || load ? null : (
+			{myShop  || load ? null : (
 				<button
 					onClick={() => navigate(`/myAccount/shops/create`)}
 					className="flex px-[1rem] py-[0.5rem] bg-blue-20 rounded-md text-white text-center
@@ -33,19 +33,15 @@ const MyShopHome = () => {
 
 			{renderSpinner(load)}
 			<div className="flex flex-col md:flex-row md:justify-self-center gap-8 flex-wrap">
-
-				{
-					myShops.length && myShops.map((shop: any, key: number) => (
-						<div className="relative" key={key}>
+	
+						<div className="relative">
 							<ViewMyShops
-								key={key}
-								img={shop.image}
-								name={shop.name}
-								userName={shop?.userId?.userName}
-								id={shop._id}
+								img={myShop?.image}
+								name={myShop?.name}
+								userName={myShop?.userId?.userName}
+								id={myShop._id}
 							/>
 						</div>
-					))}
 			</div>
 		</div>
 	);

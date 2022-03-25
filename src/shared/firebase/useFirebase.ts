@@ -1,5 +1,5 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import React, { useState } from "react";
+import { updateDoc,doc } from "firebase/firestore";
 import { storage } from "shared/firebase";
 import Swal from "sweetalert2";
 
@@ -34,6 +34,10 @@ const useFirebase = () => {
 			});
 		}
 	};
+
+   const changeImage = (img: string, folder:string,callback:any) => {
+      const storageRef = ref(storage,folder);
+   }
 
 	return { uploadToFireBase };
 };

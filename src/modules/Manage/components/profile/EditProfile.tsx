@@ -18,9 +18,7 @@ const EditProfile = () => {
 		userName,
 		handleChange,
 		load,
-		errors,
 		phone,
-		phoneErr,
 		handlePhoneChange,
 		handleSubmit,
 		confirmPassword,
@@ -285,7 +283,6 @@ const EditProfile = () => {
 					passError.length > 1 ||
 					mailError.length > 1 ||
 					load ||
-					phoneErr.length > 0 ||
 					phone?.length < 4 ||
 					confirmPassword !== password ||
 					img.length < 1

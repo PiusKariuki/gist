@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 import { useNavigate } from "react-router-dom";
+import useFirebase from "shared/firebase/useFirebase";
 
 const useAddShop = () => {
 	const { _id } = useRecoilValue<any>(user);
@@ -16,7 +17,9 @@ const useAddShop = () => {
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 	const [openProduct, setOpenProduct] = useState<boolean>(false);
+	const [prodID, setProdID] = useState("");
 	let navigate = useNavigate();
+	const { uploadToFireBase } = useFirebase();
 
 	const clearAttributes = () => {
 		setName("");
@@ -93,11 +96,12 @@ const useAddShop = () => {
 		}
 	};
 
-	const addProductImages = async (productID: any) => {
-		setLoad(true);
+	const upload = async (url: string) => {
 		try {
-			await Axios.put(`/products/images/${productID}`, {
-				images: images,
+			setLoad(false);
+			let uri = await url;
+			await Axios.put(`/products/images/${prodID}`, {
+				images: uri,
 			});
 			Swal.fire({
 				icon: "success",
@@ -108,13 +112,19 @@ const useAddShop = () => {
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
-			let errmsg = error.response.data.split(":");
 			setLoad(false);
 			Swal.fire({
 				icon: "error",
-				text: "Failed to add images to  your shop",
+				text: error?.response?.data?.message,
+				timer: 2000,
 			});
 		}
+	};
+
+	const addProductImages = (productID: any) => {
+		setProdID(productID);
+		setLoad(true);
+		uploadToFireBase(images, "/products/images", upload);
 	};
 
 	const removeImg = (index: number) => {

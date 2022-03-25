@@ -6,11 +6,12 @@ import useRequest from "shared/http/useRequest";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 import { imgUrl } from "shared/http/Http";
+import useFirebase from "shared/firebase/useFirebase";
 
 const useEditProfile = () => {
 	const setUser = useSetRecoilState(user);
 	const userObj = useRecoilValue<any>(user);
-
+	const { uploadToFireBase } = useFirebase();
 	const [mailError, setMailError] = useState("");
 	const [passError, setPassError] = useState("");
 	const [email, setEmail] = useState(userObj?.email);
@@ -22,14 +23,30 @@ const useEditProfile = () => {
 	const [userName, setUserName] = useState(userObj?.userName);
 	const [phone, setPhone] = useState(userObj?.phonenumber);
 	const [load, setLoad] = useState(false);
-	const [phoneErr, setPhoneErr] = useState("");
 	const { Axios } = useRequest();
-	const [img, setImg] = useState<any>(imgUrl + "/" + userObj?._id + ".png");
+	const [img, setImg] = useState<any>(userObj?.profilePhoto);
+	//set a new image onchange
+	const [newImg, setNewImg] = useState("");
 	// api errors
 	const [errors, setErrors] = useState<any>({});
 
 	const handlePhoneChange = (e: string) => {
 		setPhone(e);
+	};
+
+	const uploadNewImage = async (url: string) => {
+		setLoad(true);
+		try {
+			let uri = await url;
+			setNewImg(uri);
+			setLoad(false);
+		} catch (error) {
+			setLoad(false);
+			Swal.fire({
+				icon: "error",
+				text: "Error uploading image",
+			});
+		}
 	};
 
 	const handleChange = (e: any) => {
@@ -67,6 +84,11 @@ const useEditProfile = () => {
 				setBio(e.target.value);
 				break;
 			case "img":
+				uploadToFireBase(
+					e.target.files[0],
+					"user/display_picture",
+					uploadNewImage
+				);
 				getBase64(e.target.files[0])
 					.then((res) => {
 						setImg(res);
@@ -99,7 +121,7 @@ const useEditProfile = () => {
 				email: email,
 				bio: bio,
 				userName: userName,
-				profilePhoto: img,
+				profilePhoto: newImg,
 				phonenumber: phone,
 			};
 		else {
@@ -154,9 +176,7 @@ const useEditProfile = () => {
 		userName,
 		handleChange,
 		load,
-		errors,
 		phone,
-		phoneErr,
 		handlePhoneChange,
 		handleSubmit,
 		confirmPassword,

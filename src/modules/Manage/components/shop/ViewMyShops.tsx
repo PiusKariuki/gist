@@ -13,6 +13,7 @@ interface Props {
 
 const ViewMyShops: React.FC<Props> = ({ name, userName, img, id }) => {
 	let navigate = useNavigate();
+
 	return (
 		<div
 			className="flex flex-col rounded-lg shadow-lg card-border px-[0.5rem] py-[0.8rem]

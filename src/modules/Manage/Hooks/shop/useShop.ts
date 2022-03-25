@@ -7,14 +7,14 @@ import Swal from "sweetalert2";
 const useShop = () => {
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
-	const [myShops, setMyShops] = useState<any>([]);
+	const [myShop, setMyShop] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 
 	const getShopsByUserId = async () => {
 		setLoad(true);
 		try {
 			let { data } = await Axios.get(`/shop/${_id}`);
-			setMyShops(data);
+			setMyShop(data);
 			setLoad(false);
 		} catch (error) {
 			Swal.fire({
@@ -25,7 +25,7 @@ const useShop = () => {
 		}
 	};
 
-	return { myShops, load, getShopsByUserId };
+	return { myShop, load, getShopsByUserId };
 };
 
 export default useShop;

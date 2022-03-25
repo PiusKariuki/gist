@@ -10,7 +10,7 @@ const useOrderByShopID = () => {
 	const [orders, setOrders] = useState<any>([]);
 	const [load, setLoad] = useState(false);
 	const { _id } = useRecoilValue<any>(user);
-	const [shops, setMyShops] = useState<any>([]);
+	const [shop, setMyShop] = useState<any>([]);
 	const [shopId, setShopId] = useState("");
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
@@ -77,11 +77,11 @@ const useOrderByShopID = () => {
 		})
 	);
 
-	const getMyShops = async () => {
+	const getMyShop = async () => {
 		setLoad(true);
 		try {
 			let { data } = await Axios.get(`/shop/${_id}`);
-			setMyShops(data);
+			setMyShop(data);
 			setLoad(false);
 		} catch (error) {
 			setLoad(false);
@@ -156,9 +156,9 @@ const useOrderByShopID = () => {
 		columns,
 		load,
 		orders,
-		getMyShops,
+		getMyShop,
 		setShopId,
-		shops,
+		shop,
 		populate,
 		open,
 		setOpen,
