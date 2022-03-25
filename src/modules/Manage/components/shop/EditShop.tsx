@@ -49,6 +49,8 @@ const EditShop: React.FC = () => {
 	// 	getShopsByUserId();
 	// }, [updateShop]);
 
+   
+
 	return (
 		<div className="flex flex-col rounded-2xl px-[1rem] py-[3rem]  relative">
 			<form

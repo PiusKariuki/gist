@@ -20,7 +20,7 @@ const ViewMyShops: React.FC<Props> = ({ name, userName, img, id }) => {
          flex-shrink-0 relative">
 			<div className="flex gradient rounded-md  border-[0.1rem] border-gray-300">
 				<img
-					src={imgUrl + "/" + img}
+					src={img}
 					alt=""
 					className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
                lg:w-[23rem] 2xl:w-[23rem] 3xl:w-[45rem] object-contain  rounded-md "

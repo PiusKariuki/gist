@@ -35,13 +35,11 @@ const useEditProfile = () => {
 	};
 
 	const uploadNewImage = async (url: string) => {
-		setLoad(true);
+		setLoad(false);
 		try {
 			let uri = await url;
 			setNewImg(uri);
-			setLoad(false);
 		} catch (error) {
-			setLoad(false);
 			Swal.fire({
 				icon: "error",
 				text: "Error uploading image",
@@ -84,6 +82,7 @@ const useEditProfile = () => {
 				setBio(e.target.value);
 				break;
 			case "img":
+				setLoad(true);
 				uploadToFireBase(
 					e.target.files[0],
 					"user/display_picture",

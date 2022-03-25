@@ -6,9 +6,11 @@ import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
 import { imgUrl } from "shared/http/Http";
+import useFirebase from "shared/firebase/useFirebase";
 
 const useEditShop = () => {
 	const { _id } = useRecoilValue<any>(user);
+	const { uploadToFireBase } = useFirebase();
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
 	const [img, setImg] = useState<any>("");
@@ -18,6 +20,8 @@ const useEditShop = () => {
 	const [mailError, setMailError] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
+	//set a new image onchange
+	const [newImg, setNewImg] = useState("");
 
 	const getShopById = async (shopId: any) => {
 		setLoad(true);
@@ -33,14 +37,22 @@ const useEditShop = () => {
 			setPhone(phoneNumber);
 			setEmail(email);
 			setLoad(false);
-         setImg(imgUrl+"/"+image)
+			setImg(image);
 		} catch (error) {
 			setLoad(false);
-			// Swal.fire({
-			// 	icon: "error",
-			// 	text: "Something went wrong",
-			// 	timer: 1000,
-			// });
+		}
+	};
+
+	const uploadNewImage = async (url: string) => {
+		setLoad(false);
+		try {
+			let uri = await url;
+			setNewImg(uri);
+		} catch (error) {
+			Swal.fire({
+				icon: "error",
+				text: "Error uploading image",
+			});
 		}
 	};
 
@@ -73,6 +85,12 @@ const useEditShop = () => {
 				setDesc(e.target.value);
 				break;
 			case "img":
+				setLoad(true);
+				uploadToFireBase(
+					e.target.files[0],
+					"/shop/images",
+					uploadNewImage
+				);
 				getBase64(e.target.files[0])
 					.then((res) => {
 						setImg(res);
@@ -103,15 +121,29 @@ const useEditShop = () => {
 	) => {
 		setLoad(true);
 		e.preventDefault();
-		try {
-			await Axios.put(`/shop/shop/${shopId}`, {
+		var updateObj = {};
+
+		if (img?.length > 60)
+			updateObj = {
 				name: shopName,
 				email,
 				location,
 				phoneNumber: phone,
-				image: img,
+				image: newImg,
 				description: desc,
-			});
+			};
+		else {
+			updateObj = {
+				name: shopName,
+				email,
+				location,
+				phoneNumber: phone,
+				description: desc,
+			};
+		}
+
+		try {
+			await Axios.put(`/shop/shop/${shopId}`, updateObj);
 			Swal.fire({
 				icon: "success",
 				text: "Your shop has been updated",
@@ -146,7 +178,7 @@ const useEditShop = () => {
 		updateShop,
 		getShopById,
 		handleImgChange,
-      setImg
+		setImg,
 	};
 };
 
