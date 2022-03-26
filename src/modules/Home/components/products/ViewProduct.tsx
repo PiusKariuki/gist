@@ -7,6 +7,7 @@ interface Props {
 	id: string;
 	shopId: string;
 	image: string;
+   shopImage: string;
 }
 
 const ViewProduct: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const ViewProduct: React.FC<Props> = ({
 	id,
 	shopId,
 	image,
+   shopImage
 }): JSX.Element => {
 	let navigate = useNavigate();
 	return (
@@ -27,7 +29,7 @@ const ViewProduct: React.FC<Props> = ({
 			<div className="flex flex-row gap-x-[1rem]">
 				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300">
 					<img
-						src={shopId}
+						src={shopImage}
 						alt=""
 						className="w-8 h-8 rounded-full self-center object-scale-down"
 					/>

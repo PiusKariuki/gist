@@ -22,7 +22,7 @@ const useProducts = () => {
    const getRecentProducts = async () => {
       setLoad(true);
       try {
-         let { data } = await Axios.get(`/products/products/products/recent`);
+         let { data } = await Axios.get(`/products`);
          setProducts(data);
          setLoad(false);
       } catch (error) {

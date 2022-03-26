@@ -20,7 +20,7 @@ const useShop = () => {
 	const getRecentShops = async () => {
 		setLoad(true);
 		try {
-			let { data } = await Axios.get(`/shop/shop/shop/recent`);
+			let { data } = await Axios.get(`/shop`);
 			setShops(data);
 			setLoad(false);
 		} catch (error) {

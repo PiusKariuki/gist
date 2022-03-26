@@ -30,6 +30,8 @@ const Product: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
+   console.log(product);
+   
 
 	return (
 		<div
@@ -99,13 +101,14 @@ const Product: React.FC = (): JSX.Element => {
 								className="flex flex-row gap-[2rem] overflow-x-scroll w-[80vw]
                         md:w-[40vw] scroller">
 								{product?.images?.map((img: string, key: number) => {
+                           console.log(img);
 									return (
-										<div
+										<img
+                                 src={img}
 											key={key}
-											style={{ backgroundImage: `url(${img})` }}
 											className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
-                              bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer 
-                              flex-shrink-0"
+                                 bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer 
+                                 flex-shrink-0"
 											onClick={() => setIndex(key)}
 										/>
 									);
@@ -151,7 +154,7 @@ const Product: React.FC = (): JSX.Element => {
 							{product?.name}
 						</p>
 						<p className="text-left text-gray-10 font-[400] text-[0.78rem] lg:text-[1rem]">
-							by <span className="text-blue-20">Nike</span>
+							by <span className="text-blue-20">{product?.ownerId?.userName}</span>
 						</p>
 						<p className="text-left text-red-20 font-[400] text-[1.2rem]">
 							{product?.quantity === 0

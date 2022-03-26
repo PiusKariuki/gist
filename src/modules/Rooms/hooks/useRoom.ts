@@ -22,7 +22,7 @@ const useRoom = () => {
 	const getRecentRooms = async () => {
 		setLoad(true);
 		try {
-			let { data } = await Axios.get("/rooms/recent");
+			let { data } = await Axios.get("/rooms");
 			setRooms(data);
 			setLoad(false);
 		} catch (error) {

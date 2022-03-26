@@ -18,6 +18,8 @@ const Products = () => {
 	const scrollRef = useRef<any>(null);
    const {renderSpinner} = useSpinner();
 
+   
+
 	return (
 		<div className="flex flex-col py-[3rem] px-[2rem] h-full  relative">
 			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem]">
@@ -36,6 +38,7 @@ const Products = () => {
 						id={product?._id}
 						shopId={product?.shopId?._id}
 						image={product?.images[0]}
+                  shopImage={product?.shopId?.image}
 					/>
 				))}
 			</div>
