@@ -20,6 +20,8 @@ const MyShop: React.FC = (): JSX.Element => {
 		getShopDetails(shopId);
 	}, [openDelete]);
 
+   console.log(shopDetails);
+   
 	return (
 		<div className="flex flex-col w-full md:w-screen">
 			<div className="w-full py-[1rem] bg-white  border-b-4 mb-[2rem]">

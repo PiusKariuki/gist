@@ -4,7 +4,7 @@ import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFirebase from "shared/firebase/useFirebase";
 
 const useAddShop = () => {
@@ -13,14 +13,19 @@ const useAddShop = () => {
 	const [price, setPrice] = useState<number>(0);
 	const [quantity, setQuantity] = useState<any>("");
 	const [desc, setDesc] = useState<any>("");
+	const [variations, setVariations] = useState<any>("");
 	const [images, setImages] = useState<any>([]);
 	const [displays, setDisplays] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
 	const [openProduct, setOpenProduct] = useState<boolean>(false);
-	const [prodID, setProdID] = useState("");
 	let navigate = useNavigate();
-	const { uploadArrayToFireBase } = useFirebase();
+	const { uploadToFireBase } = useFirebase();
+	const [downloadUrls, setDownloadUrls] = useState<any>([]);
+	const { productId } = useParams<string>();
+
+   
+   
 
 	const clearAttributes = () => {
 		setName("");
@@ -45,11 +50,14 @@ const useAddShop = () => {
 			case "desc":
 				setDesc(e.target.value);
 				break;
+			case "variations":
+				setVariations(e.target.value);
+				break;
 			case "images":
-				setImages((prev: any) => [...prev, e.target.files[0]]);
 				getBase64(e.target.files[0])
 					.then((res: any) => {
 						setDisplays((prev: any) => [...prev, res]);
+						setImages((prev: any) => [...prev, e.target.files[0]]);
 					})
 					.catch((err) => {
 						Swal.fire({
@@ -70,14 +78,15 @@ const useAddShop = () => {
 		setLoad(true);
 		e.preventDefault();
 		try {
-			let { data } = await Axios.post(`/products/${shopId}`, {
+			let { data} = await Axios.post(`/products/${shopId}`, {
 				name,
 				price,
 				quantity,
 				ownerId: _id,
 				description: desc,
+				variations,
 			});
-			navigate(`/myAccount/shops/add/${shopId}/images/${data._id}`);
+			navigate(`/myAccount/shops/add/${shopId}/images/${data.data._id}`);
 			clearAttributes();
 			setLoad(false);
 			Swal.fire({
@@ -99,22 +108,25 @@ const useAddShop = () => {
 		}
 	};
 
-	const upload = async(url: any) => {
-		console.log(url);
+	const upload = async (url: Promise<string>) => {
+		let uri = await url;
+
+      
+		setDownloadUrls((prev: Array<string>) =>
+			prev.includes(uri) ? [...prev] : [...prev, uri]
+		);
+		setLoad(false);     
 
 		try {
-			setLoad(false);
-			// let uri = await url;
-			// console.log(uri);
-			// await Axios.put(`/products/images/${prodID}`, {
-			// 	images: uri,
-			// });
+			await Axios.put(`/products/products/${productId}`, {
+				images: downloadUrls,
+			});
 			Swal.fire({
 				icon: "success",
 				text: "A product has been added to your shop",
 				timer: 1000,
 			});
-			// navigate(`/myAccount/shops/`);
+			navigate(`/myAccount/shops/`);
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
@@ -127,10 +139,11 @@ const useAddShop = () => {
 		}
 	};
 
-	const addProductImages = (productID: any) => {
-		setProdID(productID);
+	const addProductImages = () => {
 		setLoad(true);
-		uploadArrayToFireBase(images, "/products/images", upload)
+		images.forEach((image: any) => {
+			uploadToFireBase(image, "/products/images", upload);
+		});
 	};
 
 	const removeImg = (index: number) => {
@@ -161,6 +174,7 @@ const useAddShop = () => {
 		addProductImages,
 		displays,
 		setDisplays,
+		variations,
 	};
 };
 

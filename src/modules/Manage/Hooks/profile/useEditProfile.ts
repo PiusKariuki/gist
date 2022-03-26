@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import useRequest from "shared/http/useRequest";
 import { getBase64 } from "shared/toBase64/encode";
 import { user } from "shared/recoil/user";
-import { imgUrl } from "shared/http/Http";
 import useFirebase from "shared/firebase/useFirebase";
 
 const useEditProfile = () => {

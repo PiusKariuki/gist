@@ -3,7 +3,6 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSetRecoilState } from "recoil";
 import { deleteOpen, productOpen } from "../../store/store";
-import { imgUrl } from "shared/http/Http";
 import { useNavigate, Link } from "react-router-dom";
 
 interface Props {
@@ -24,6 +23,7 @@ const ViewMyProduct: React.FC<Props> = ({
 	const setOpen = useSetRecoilState(productOpen);
 	const setOpenDelete = useSetRecoilState(deleteOpen);
 	let navigate = useNavigate();
+   
 
 	return (
 		<div
@@ -45,7 +45,7 @@ const ViewMyProduct: React.FC<Props> = ({
 			<p className="text-blue-20 font-[500] text-[1.4rem] my-[1rem]">{name}</p>
 			<div className="flex gradient card-border rounded-md">
 				<img
-					src={`${imgUrl}/${images[0]}`}
+					src={images[0]}
 					alt=""
 					className="h-[35vh] md:h-[25vh] lg:h-[30vh] w-[80vw] md:w-[38vw] 
             lg:w-[20rem] 2xl:w-[23rem] 3xl:w-[45rem] object-scale-down  rounded-md "

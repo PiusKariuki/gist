@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { emailRegex, sixChars, phoneRegex } from "shared/regEx/regEx";
+import { emailRegex } from "shared/regEx/regEx";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
 import { getBase64 } from "shared/toBase64/encode";
-import { user } from "shared/recoil/user";
-import { imgUrl } from "shared/http/Http";
+
 import useFirebase from "shared/firebase/useFirebase";
+import { useParams } from "react-router-dom";
 
 const useEditShop = () => {
-	const { _id } = useRecoilValue<any>(user);
 	const { uploadToFireBase } = useFirebase();
 	const [shopName, setShopName] = useState<string>("");
 	const [location, setLocation] = useState<string>("");
@@ -20,10 +18,10 @@ const useEditShop = () => {
 	const [mailError, setMailError] = useState<string>("");
 	const [load, setLoad] = useState<boolean>(false);
 	const { Axios } = useRequest();
-	//set a new image onchange
-	const [newImg, setNewImg] = useState("");
+	const [displayImg, setDisplayImg] = useState("");
+	let { shopId } = useParams<string>();
 
-	const getShopById = async (shopId: any) => {
+	const getShopById = async () => {
 		setLoad(true);
 		try {
 			let {
@@ -37,22 +35,9 @@ const useEditShop = () => {
 			setPhone(phoneNumber);
 			setEmail(email);
 			setLoad(false);
-			setImg(image);
+			setDisplayImg(image);
 		} catch (error) {
 			setLoad(false);
-		}
-	};
-
-	const uploadNewImage = async (url: string) => {
-		setLoad(false);
-		try {
-			let uri = await url;
-			setNewImg(uri);
-		} catch (error) {
-			Swal.fire({
-				icon: "error",
-				text: "Error uploading image",
-			});
 		}
 	};
 
@@ -85,15 +70,10 @@ const useEditShop = () => {
 				setDesc(e.target.value);
 				break;
 			case "img":
-				setLoad(true);
-				uploadToFireBase(
-					e.target.files[0],
-					"/shop/images",
-					uploadNewImage
-				);
 				getBase64(e.target.files[0])
-					.then((res) => {
-						setImg(res);
+					.then((res: any) => {
+						setDisplayImg(res);
+						setImg(e.target.files[0]);
 					})
 					.catch((err) => {
 						Swal.fire({
@@ -115,21 +95,18 @@ const useEditShop = () => {
 		}
 	};
 
-	const updateShop = async (
-		e: React.FormEvent<HTMLFormElement>,
-		shopId: any
-	) => {
-		setLoad(true);
-		e.preventDefault();
+	const upload = async (url: Promise<string>) => {
+		setLoad(false);
+		let uri = await url;
 		var updateObj = {};
 
-		if (img?.length > 60)
+		if (displayImg?.length > 60)
 			updateObj = {
 				name: shopName,
 				email,
 				location,
 				phoneNumber: phone,
-				image: newImg,
+				image: uri,
 				description: desc,
 			};
 		else {
@@ -164,6 +141,13 @@ const useEditShop = () => {
 			});
 		}
 	};
+
+	const updateShop = (e: React.FormEvent<HTMLFormElement>) => {
+		setLoad(true);
+		e.preventDefault();
+		uploadToFireBase(img, "/shop/images", upload);
+	};
+
 	return {
 		shopName,
 		email,
@@ -179,6 +163,8 @@ const useEditShop = () => {
 		getShopById,
 		handleImgChange,
 		setImg,
+		setDisplayImg,
+		displayImg,
 	};
 };
 

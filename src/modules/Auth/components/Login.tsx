@@ -112,7 +112,7 @@ const Login: React.FC = (): JSX.Element => {
                         font-bold px-[1rem] form-ring md:w-[20vw] bg-white"
 					/>
 					<p className="text-red-600 font-bold text-[1rem] text-center">
-						{passErrors || errors?.passErr}
+						{passErrors || errors?.passErr|| errors}
 					</p>
 
 					{/*......................................

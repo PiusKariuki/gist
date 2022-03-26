@@ -11,18 +11,33 @@ const useFirebase = () => {
 	 * @param {any} callback
 	 * @returns {any}
 	 */
-	const uploadToFireBase = async (img: any, folder: string, callback: any) => {
+	const uploadToFireBase = async (
+		img: any,
+		folder: string,
+		callback: any
+	): Promise<any> => {
 		//create a storage ref
 		const storageRef = ref(storage, `/${folder}/${img.name}`);
 		const uploadTask = uploadBytesResumable(storageRef, img);
 
 		try {
-			await uploadTask.on(
+			uploadTask.on(
 				"state_changed",
 				(snapshot) => {
-					Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+					let snap = Math.round(
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+					);
+
+					Swal.fire({
+						icon: "info",
+						title: "Uploading image...",
+						titleText: `Uploading image...: ${Math.round(
+							(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+						)}%`,
+					});
+					if (snap === 100) Swal.close();
 				},
-				(err) =>
+				() =>
 					Swal.fire({
 						icon: "error",
 						text: "error uploading profile photo",
@@ -30,7 +45,7 @@ const useFirebase = () => {
 				async () => {
 					try {
 						let url = await getDownloadURL(uploadTask.snapshot.ref);
-						callback(url);
+						return callback(url);
 					} catch (error) {}
 				}
 			);
@@ -42,59 +57,7 @@ const useFirebase = () => {
 		}
 	};
 
-	/**
-	 * Description
-	 * @param {any} img
-	 * @param {string} folder
-	 * @param {any} callback
-	 * @returns {any}
-	 */
-	const uploadArrayToFireBase = async (
-		img: [any],
-		folder: string,
-		callback: any
-	) => {
-		try {
-			let uris: Array<string> = [];
-			let urls: any =  img?.map(async (item: any) => {
-				//create a storage ref
-				const storageRef = ref(storage, `/${folder}/${item?.name}`);
-				const uploadTask = uploadBytesResumable(storageRef, item);
-				uploadTask.on(
-					"state_changed",
-					(snapshot) => {
-						Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-					},
-					(err) =>
-						Swal.fire({
-							icon: "error",
-							text: "error uploading profile photo",
-						}),
-					async () => {
-						try {
-							let url = await getDownloadURL(uploadTask.snapshot.ref);
-							uris.push(url);
-							return url;
-						} catch (error) {
-							Swal.fire({
-								icon: "error",
-								text: "error uploading image",
-							});
-						}
-					}
-				);
-				return uris;
-			});
-			callback(uris);
-		} catch (error) {
-			Swal.fire({
-				icon: "error",
-				text: "error uploading images",
-			});
-		}
-	};
-
-	return { uploadToFireBase, uploadArrayToFireBase };
+	return { uploadToFireBase };
 };
 
 export default useFirebase;

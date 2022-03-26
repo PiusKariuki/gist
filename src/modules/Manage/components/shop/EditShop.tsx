@@ -3,7 +3,6 @@ import PhoneInput from "react-phone-number-input";
 import "shared/styles/phoneInput.css";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../../Hooks/shop/useEditShop";
-import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import useShop from "../../Hooks/shop/useShop";
@@ -23,31 +22,22 @@ const EditShop: React.FC = () => {
 		updateShop,
 		getShopById,
 		setImg,
+		setDisplayImg,
+		displayImg,
 	} = useEditShop();
 
 	const { getShopsByUserId } = useShop();
 
-	let navigate = useNavigate();
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
 
 	const handleClick = () => {
 		hiddenInput.current.click();
 	};
-	let { shopId } = useParams<string>();
-
 	useEffect(() => {
-		getShopById(shopId);
+		getShopById();
 		getShopsByUserId();
 	}, []);
-	{
-		/*......................................
-      *fetch shops after updates
-   ......................................*/
-	}
-	// useEffect(() => {
-	// 	getShopsByUserId();
-	// }, [updateShop]);
 
    
 
@@ -56,7 +46,7 @@ const EditShop: React.FC = () => {
 			<form
 				autoComplete="off"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-					updateShop(e, shopId);
+					updateShop(e);
 				}}
 				className="flex flex-col md:flex-row gap-y-[0.5rem] md:space-x-10">
 				<div className=" flex flex-col w-full md:w-[45%]">
@@ -168,15 +158,18 @@ const EditShop: React.FC = () => {
 						{renderSpinner(load)}
 					</div>
 
-					{img.length > 0 ? (
+					{displayImg.length > 0 ? (
 						<div className="flex relative  order-3">
 							<img
-								src={img}
+								src={displayImg}
 								className=" flex  max-h-[14rem] md:max-h-[25rem] lg:max-h-[25rem] w-full 
                         object-cover order-3 border-2 rounded-xl"
 							/>
 							<FontAwesomeIcon
-								onClick={() => setImg("")}
+								onClick={() => {
+									setImg("");
+									setDisplayImg("");
+								}}
 								icon={faTrash}
 								size="2x"
 								className="absolute bottom-[0%] right-[0%] opacity-90 text-red-500

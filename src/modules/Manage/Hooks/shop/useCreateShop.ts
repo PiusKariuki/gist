@@ -126,7 +126,6 @@ const useManage = () => {
 		setMailError("");
 		setPhone("");
 		setShopName("");
-   
 	};
 
 	return {

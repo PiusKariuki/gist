@@ -13,7 +13,7 @@ const useLogin = () => {
 	const [password, setPassword] = useState("");
 	const [load, setLoad] = useState(false);
 	// api errors
-	const [errors, setErrors] = useState<any>({});
+	const [errors, setErrors] = useState<any>("");
 
 	// regex errors
 	const [passErrors, setPassErrors] = useState("");
@@ -41,7 +41,7 @@ const useLogin = () => {
 	const login = async (e: any) => {
 		e.preventDefault();
 		setLoad(true);
-		setErrors({});
+		setErrors("");
 		try {
 			const { data } = await Axios.post("/login", {
 				email: email,
@@ -52,7 +52,7 @@ const useLogin = () => {
 			setErrors("");
          navigate("/");
 		} catch (e: any) {
-			setErrors(e?.response?.data);
+			setErrors(e?.response?.data?.message);
 			setLoad(false);
 		}
 	};

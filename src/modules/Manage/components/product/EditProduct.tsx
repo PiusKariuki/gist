@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import useEdit from "../../Hooks/product/useEdit";
 import useSpinner from "shared/components/spinner/useSpinner";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { imgUrl } from "shared/http/Http";
+
 
 const EditProduct: React.FC = () => {
 	const {
@@ -16,21 +16,17 @@ const EditProduct: React.FC = () => {
 		load,
 		handleChange,
 		description,
-		images,
+		displays,
 		removeImg,
+      shopId
 	} = useEdit();
 
 	let { productId } = useParams();
 	const { renderSpinner } = useSpinner();
-	const hiddenInput = useRef<any>(null);
-	const handleClick = () => {
-		hiddenInput.current.click();
-	};
-
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
-
+   
 	return (
 		<form
 			autoComplete="off"
@@ -126,25 +122,15 @@ const EditProduct: React.FC = () => {
 			<div className="flex flex-col md:flex-row  md:space-x-10">
 				{/* upload btn  and hidden input*/}
 				<div className="flex flex-col w-full">
-					<input
-						ref={hiddenInput}
-						onChange={handleChange}
-						type="file"
-						id="images"
-						className="hidden"
-						accept="image/*"
-					/>
-					<button
-						type="button"
-						onClick={handleClick}
-						className="bg-blue-20 px-[1rem] py-[0.2rem] rounded-lg text-white w-full md:w-[40%]
-                     text-[1.2rem] font-bold">
-						Add Images
-					</button>
+					<Link
+						to={`/myAccount/shops/add/${shopId}/images/${productId}`}
+						className="card-link">
+						Upload New Product Images
+					</Link>
 				</div>
 				{/* IMAGES */}
 				<div className="flex flex-row flex-wrap w-full">
-					{images?.map((img: any, key: number) => (
+					{displays?.map((img: any, key: number) => (
 						<div className="relative flex flex-col" key={key}>
 							{img.length > 60 ? (
 								<img
@@ -156,14 +142,14 @@ const EditProduct: React.FC = () => {
 								/>
 							) : (
 								<img
-									src={`${imgUrl}/${img}`}
+									src={img}
 									alt={img}
 									key={key}
 									className="h-[6rem] w-[4rem] lg:w-[8rem] mx-[1.4rem] object-contain
                             cursor-pointer"
 								/>
 							)}
-
+{/* 
 							<FontAwesomeIcon
 								icon={faTrash}
 								size="1x"
@@ -173,7 +159,7 @@ const EditProduct: React.FC = () => {
 								}}
 								className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50]
                         z-20"
-							/>
+							/> */}
 						</div>
 					))}
 				</div>

@@ -219,18 +219,18 @@ const Register = (): JSX.Element => {
 									/>
 								</div>
 							) : (
-								<>
-									<button
-										type="button"
-										className="bg-blue-40 self-center w-full px-[1rem] py-[0.4rem]
-                             mt-auto rounded-md font-[600] text-white"
-										onClick={handleClick}>
-										Upload Profile Photo
-									</button>
+								<div className="flex flex-col mt-auto">
 									<p className="text-red-600 font-bold text-[1rem] text-center">
 										Please upload a photo
 									</p>
-								</>
+									<button
+										type="button"
+										className="bg-blue-40 self-center w-full px-[1rem] py-[0.4rem]
+                              rounded-md font-[600] text-white"
+										onClick={handleClick}>
+										Upload Profile Photo
+									</button>
+								</div>
 							)}
 
 							<input
