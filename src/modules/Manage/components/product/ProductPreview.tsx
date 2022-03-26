@@ -2,20 +2,15 @@ import useCart from "modules/Cart/hooks/useCart";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
-import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faChevronCircleLeft,
-	faChevronCircleRight,
 	faChevronRight,
 	faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { imgUrl } from "shared/http/Http";
 import useProducts from "modules/Product/hooks/useProducts";
 
 const ProductPreview: React.FC = (): JSX.Element => {
 	const [index, setIndex] = useState<number>(0);
-	const [orders, setOrders] = useState<number>(1);
 	const { getProductById, product, errors, load } = useProducts();
 	const { renderSpinner } = useSpinner();
 	const { productId } = useParams();
@@ -45,7 +40,7 @@ const ProductPreview: React.FC = (): JSX.Element => {
 						{product?.images?.length > 0 ? (
 							<div className="relative">
 								<img
-									src={`${imgUrl}/${product?.images[index]}`}
+									src={product?.images[index]}
 									alt="productImg"
 									className=" h-[40vh] w-[78vw] md:w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
                            object-cover rounded-2xl border-2"
@@ -95,7 +90,7 @@ const ProductPreview: React.FC = (): JSX.Element => {
 								return (
 									<div
 										key={key}
-										style={{ backgroundImage: `url(${imgUrl}/${img})` }}
+										style={{ backgroundImage: `url(${img})` }}
 										className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
                               bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer flex-shrink-0"
 										onClick={() => setIndex(key)}

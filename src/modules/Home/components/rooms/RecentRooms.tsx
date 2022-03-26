@@ -1,8 +1,5 @@
 import React from "react";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
 
 interface Props {
 	roomId: string;
@@ -31,7 +28,7 @@ const RecentRooms: React.FC<Props> = ({
 			<div className="flex flex-row gap-x-[1rem]">
 				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300" >
 				<img
-					src={`${imgUrl}/${userImage}`}
+					src={userImage}
 					alt=""
 					className="w-8 h-8 rounded-full self-center object-scale-down"
 				/>
@@ -48,7 +45,7 @@ const RecentRooms: React.FC<Props> = ({
 
 			<div className="flex relative gradient border-[0.0625rem] rounded-md">
 				<img
-					src={`${imgUrl}/0_61f951620019c849882d681d.png`}
+					src={shopImage}
 					alt=""
 					className="h-[40vh] md:w-[25rem]  3xl:w-[48rem] 3xl:h-[30vh] object-scale-down"
 				/>

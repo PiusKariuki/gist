@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
 
 interface Props {
 	img: string;
@@ -19,7 +18,7 @@ const SearchShop: React.FC<Props> = ({ name, img, userName, id }) => {
 			onClick={() => navigate(`/shop/${id}`, { replace: true })}>
 			<div className="flex gradient rounded-t-lg mb-4 justify-center">
 				<img
-					src={`${imgUrl}/${img}`}
+					src={img}
 					className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
                self-center  object-scale-down"
 				/>

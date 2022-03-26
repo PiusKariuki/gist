@@ -1,5 +1,4 @@
 import React from "react";
-import { imgUrl } from "shared/http/Http";
 
 interface Props {
 	imgs: Array<string>;
@@ -15,7 +14,7 @@ const RoomImages: React.FC<Props> = ({ imgs }) => {
 					key={key}
 					className="flex bg-center bg-cover bg-no-repeat w-[90vw] md:w-[16rem] h-[12rem] rounded-lg
                shadow-lg border-2"
-					style={{ backgroundImage: `url(${imgUrl}/${img})` }}
+					style={{ backgroundImage: `url(${img})` }}
 				/>
 			))}
 		</div>

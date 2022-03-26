@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
 
 interface Props {
 	name: string;
@@ -27,7 +26,7 @@ const ShopProducts: React.FC<Props> = ({
 			onClick={() => navigate(`/product/${id}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
 				<div
-					style={{ backgroundImage: `url(${imgUrl}/${shopId}.png)` }}
+					style={{ backgroundImage: `url(${shopId})` }}
 					className="flex rounded-full self-center bg-center w-8 h-8 card-border
                bg-no-repeat bg-contain"
 				/>
@@ -47,7 +46,7 @@ const ShopProducts: React.FC<Props> = ({
             card-border gradient"
 			>
 				<img
-					src={`${imgUrl}/${image}`}
+					src={image}
 					alt=""
 					className="object-scale-down
                h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "

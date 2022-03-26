@@ -24,9 +24,6 @@ const useAddShop = () => {
 	const [downloadUrls, setDownloadUrls] = useState<any>([]);
 	const { productId } = useParams<string>();
 
-   
-   
-
 	const clearAttributes = () => {
 		setName("");
 		setPrice(0);
@@ -78,7 +75,7 @@ const useAddShop = () => {
 		setLoad(true);
 		e.preventDefault();
 		try {
-			let { data} = await Axios.post(`/products/${shopId}`, {
+			let { data } = await Axios.post(`/products/${shopId}`, {
 				name,
 				price,
 				quantity,
@@ -110,23 +107,23 @@ const useAddShop = () => {
 
 	const upload = async (url: Promise<string>) => {
 		let uri = await url;
-
-      
 		setDownloadUrls((prev: Array<string>) =>
-			prev.includes(uri) ? [...prev] : [...prev, uri]
+			prev.includes(uri) ? [...prev, uri] : [...prev, uri]
 		);
-		setLoad(false);     
+		setLoad(false);
 
 		try {
-			await Axios.put(`/products/products/${productId}`, {
-				images: downloadUrls,
-			});
+			// console.log(downloadUrls);
+			if (downloadUrls.length === displays.length)
+				await Axios.put(`/products/products/${productId}`, {
+					images: downloadUrls,
+				});
 			Swal.fire({
 				icon: "success",
 				text: "A product has been added to your shop",
 				timer: 1000,
 			});
-			navigate(`/myAccount/shops/`);
+			// navigate(`/myAccount/shops/`);
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
@@ -139,10 +136,10 @@ const useAddShop = () => {
 		}
 	};
 
-	const addProductImages = () => {
+	const addProductImages = async () => {
 		setLoad(true);
-		images.forEach((image: any) => {
-			uploadToFireBase(image, "/products/images", upload);
+		await images.forEach(async (image: any) => {
+			await uploadToFireBase(image, "/products/images", upload);
 		});
 	};
 
@@ -175,6 +172,7 @@ const useAddShop = () => {
 		displays,
 		setDisplays,
 		variations,
+		downloadUrls,
 	};
 };
 

@@ -8,7 +8,6 @@ import {
 	faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { imgUrl } from "shared/http/Http";
 import ShopProducts from "../components/ShopProducts";
 import { user } from "shared/recoil/user";
 import { useRecoilValue } from "recoil";
@@ -50,7 +49,7 @@ const Shop: React.FC = (): JSX.Element => {
 								<div className="flex flex-col md:self-end ">
 									{shopDetails.length > 0 ? (
 										<img
-											src={`${imgUrl}/${shopDetails[0]?.shopId?.image}`}
+											src={shopDetails[0]?.shopId?.image}
 											alt=""
 											className="h-[6rem] w-[8rem] md:w-[14rem] object-cover card-border
                                  self-center"

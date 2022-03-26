@@ -1,7 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
-
 interface Props {
 	name: string;
 	price: string;
@@ -29,7 +27,7 @@ const ViewProduct: React.FC<Props> = ({
 			<div className="flex flex-row gap-x-[1rem]">
 				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300">
 					<img
-						src={`${imgUrl}/${shopId}.png`}
+						src={shopId}
 						alt=""
 						className="w-8 h-8 rounded-full self-center object-scale-down"
 					/>
@@ -48,7 +46,7 @@ const ViewProduct: React.FC<Props> = ({
 
 			<div className="flex relative gradient border-[0.0625rem] rounded-md">
 				<img
-					src={`${imgUrl}/${image}`}
+					src={image}
 					alt=""
 					className="h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
                 object-scale-down object-center"

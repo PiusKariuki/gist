@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
 
 interface Props {
 	name: string;
@@ -18,7 +17,7 @@ const ViewShop: React.FC<Props> = ({ name, userName, img, id }) => {
           bg-center bg-cover flex-shrink-0  card-border rounded-md hover:shadow-2xl
            bg-white px-[3rem]"
 			style={{
-				backgroundImage: `url(${imgUrl}/6221ba43b6df2720266b5b3b.png)`,
+				backgroundImage: `url(${img})`,
 			}}
 			onClick={() => navigate(`/shop/${id}`)}>
 			<p

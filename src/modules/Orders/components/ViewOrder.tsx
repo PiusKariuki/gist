@@ -1,10 +1,7 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { imgUrl } from "shared/http/Http";
-import useGetOrder from "../hooks/useGetOrder";
-import useMyOrders from "../hooks/useMyOrders";
+import React from "react";
+
 interface Props {
 	order: any;
 	orderId: string;
@@ -40,7 +37,7 @@ const ViewOrder: React.FC<Props> = ({ order, setOpenView }) => {
             bg-cover rounded-xl
             border-[0.1rem]"
 				style={{
-					backgroundImage: `url(${imgUrl}/${order?.itemId?.productId}.png)`,
+					backgroundImage: `url(${order?.itemId?.productId})`,
 				}}>
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]

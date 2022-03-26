@@ -6,7 +6,7 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useAddShop from "../../Hooks/product/useAddProduct";
 
 const AddProductImages = () => {
-	const { handleChange, load, images, removeImg, addProductImages,displays } =
+	const { handleChange, load, images, removeImg, addProductImages,displays,downloadUrls } =
 		useAddShop();
 	const hiddenInput = useRef<any>(null);
 	const { renderSpinner } = useSpinner();

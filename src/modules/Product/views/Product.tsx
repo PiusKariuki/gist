@@ -13,7 +13,6 @@ import {
 	faChevronRight,
 	faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { imgUrl } from "shared/http/Http";
 import "../styles/product.css";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 
@@ -52,7 +51,7 @@ const Product: React.FC = (): JSX.Element => {
 						{product?.images?.length > 0 ? (
 							<div className="relative">
 								<img
-									src={`${imgUrl}/${product?.images[index]}`}
+									src={product?.images[index]}
 									alt="productImg"
 									className="h-[40vh] max-w-[78vw] md:max-w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
                            object-scale-down "
@@ -103,7 +102,7 @@ const Product: React.FC = (): JSX.Element => {
 									return (
 										<div
 											key={key}
-											style={{ backgroundImage: `url(${imgUrl}/${img})` }}
+											style={{ backgroundImage: `url(${img})` }}
 											className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
                               bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer 
                               flex-shrink-0"
