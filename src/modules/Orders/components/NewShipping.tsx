@@ -4,15 +4,21 @@ import useSpinner from "shared/components/spinner/useSpinner";
 import useAddShipping from "../hooks/useAddShipping";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-number-input";
+import "shared/styles/phoneInput.css";
 
 const NewShipping = () => {
 	const {
 		shippingName,
-		shippingStreet,
-		shippingZip,
+		address1,
+		address2,
+		state,
+		city,
+		phone,
 		addShipping,
 		handleShippingChange,
 		shipLoad,
+      handlePhoneChange
 	} = useAddShipping();
 	const { renderSpinner } = useSpinner();
 	let navigate = useNavigate();
@@ -22,7 +28,6 @@ const NewShipping = () => {
 			<div className="absolute top-[10%] left-[35%] z-10">
 				{renderSpinner(shipLoad)}
 			</div>
-
 			<div
 				onClick={() => navigate(`/orders/existing`)}
 				className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
@@ -44,9 +49,13 @@ const NewShipping = () => {
 			<form
 				autoComplete="off"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-					addShipping(e);
+               e.preventDefault();
+					addShipping();
 				}}
-				className="flex flex-col w-full space-y-10 md:gap-x-20 ">
+				className="flex flex-row flex-wrap w-full gap-y-10 md:gap-x-20 ">
+				{/*......................................
+                  *name
+               ......................................*/}
 				<input
 					placeholder="Shipping Name"
 					onChange={handleShippingChange}
@@ -54,45 +63,88 @@ const NewShipping = () => {
 					value={shippingName}
 					type="text"
 					id="name"
-					className=" h-[2.25rem] outline-none w-full md:w-[50%]
-                  text-blue-30 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+					className=" h-[2.25rem] outline-none w-full md:w-[40%] text-blue-40
+                rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+               form-ring"
+				/>
+				{/*......................................
+               *ADDRESS 1
+            ......................................*/}
+				<input
+					placeholder="Primary address"
+					onChange={handleShippingChange}
+					required
+					value={address1}
+					type="text"
+					id="address1"
+					className=" h-[2.25rem] outline-none w-full md:w-[40%]
+                  text-blue-40 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
                   form-ring"
 				/>
 				{/*......................................
-               *zipcode
+               *Address 2
             ......................................*/}
 				<input
-					placeholder="Zip Code"
+					placeholder="Secondary address"
 					onChange={handleShippingChange}
-					required
-					value={shippingZip}
+					// required
+					value={address2}
 					type="text"
-					id="zip"
-					className=" h-[2.25rem] outline-none w-full md:w-[50%]
-                  text-blue-30 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring"
+					id="address2"
+					className=" h-[2.25rem] outline-none w-full md:w-[40%]
+                  text-blue-40 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                  form-ring "
 				/>
 				{/*......................................
-               *street
+               *CITY
             ......................................*/}
 				<input
-					placeholder="Street"
+					placeholder="City"
 					onChange={handleShippingChange}
 					required
-					value={shippingStreet}
+					value={city}
 					type="text"
-					id="street"
-					className=" h-[2.25rem] outline-none w-full md:w-[50%]
-                  text-blue-30 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring mb-[3rem]"
+					id="city"
+					className=" h-[2.25rem] outline-none w-full md:w-[40%]
+               text-blue-40 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+               form-ring "
 				/>
-				<button
-					disabled={shipLoad}
-					type="submit"
-					className="blue-btn px-[1rem] py-[0.3rem] w-[40%] md:w-[20%] lg:w-[10%] ">
-					Continue
-				</button>
-			</form>
+				{/*......................................
+               *STATE
+            ......................................*/}
+				<input
+					placeholder="State"
+					onChange={handleShippingChange}
+					required
+					value={state}
+					type="text"
+					id="state"
+					className=" h-[2.25rem] outline-none w-full md:w-[40%]
+               text-blue-40 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+               form-ring "
+				/>
+				{/*......................................
+               *PHONE
+            ......................................*/}
+				<PhoneInput
+					placeholder="Phone"
+					id="phone"
+					required={true}
+					country={"ke"}
+					value={phone}
+					onChange={handlePhoneChange}
+					className="py-[0.1rem] md:py-[0.3rem] outline-none w-full md:w-[40%]
+               h-[2.25rem]  text-blue-40 rounded-[0.25rem] font-bold px-[1rem] form-ring"
+				/>
+
+           <button
+				disabled={shipLoad}
+				type="submit"
+				className="h-[2.25rem] blue-btn px-[1rem] py-[0.3rem] w-[40%] md:w-[20%] lg:w-[10%] ">
+				Continue
+			</button> 
+			</form>{" "}
+			
 		</div>
 	);
 };

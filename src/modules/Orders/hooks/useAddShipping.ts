@@ -8,8 +8,11 @@ import { shippingOpen } from "../store/store";
 
 const useAddShipping = () => {
 	const [shippingName, setShippingName] = useState("");
-	const [shippingStreet, setStreet] = useState("");
-	const [shippingZip, setZip] = useState("");
+	const [address1, setAddress1] = useState("");
+	const [address2, setAddress2] = useState("");
+	const [state, setState] = useState("");
+	const [phone, setPhone] = useState("");
+	const [city, setCity] = useState("");
 	const [shipLoad, setLoad] = useState(false);
 	const { Axios } = useRequest();
 	const setOpen = useSetRecoilState(shippingOpen);
@@ -18,9 +21,11 @@ const useAddShipping = () => {
 
 	const clearShippingAttributes = () => {
 		setShippingName("");
-		setStreet("");
-		setZip("");
 	};
+
+   const handlePhoneChange = (e: string) => {
+			setPhone(e);
+		};
 
 	const handleShippingChange = (e: any) => {
 		let id = e.target.id;
@@ -29,26 +34,41 @@ const useAddShipping = () => {
 				setShippingName(e.target.value);
 				break;
 
-			case "street":
-				setStreet(e.target.value);
+			case "address1":
+				setAddress1(e.target.value);
 				break;
-			case "zip":
-				setZip(e.target.value);
+
+			case "address2":
+				setAddress2(e.target.value);
 				break;
+
+			case "city":
+				setCity(e.target.value);
+				break;
+
+			case "state":
+				setState(e.target.value);
+				break;
+
+			// case "phone":
+			// 	setPhone(e);
+			// 	break;
 
 			default:
 				break;
 		}
 	};
 
-	const addShipping = async (e: any) => {
-		e.preventDefault();
+	const addShipping = async () => {
 		setLoad(true);
 		try {
 			await Axios.post(`/address`, {
 				name: shippingName,
-				street: shippingStreet,
-				zipCode: shippingZip,
+				addrress1: address1,
+				addrress2: address2,
+				city,
+				state,
+				phone,
 				userId: _id,
 			});
 			setLoad(false);
@@ -70,12 +90,16 @@ const useAddShipping = () => {
 
 	return {
 		shippingName,
-		shippingStreet,
-		shippingZip,
+		address1,
+		address2,
+		state,
+		city,
+		phone,
 		addShipping,
 		handleShippingChange,
 		clearShippingAttributes,
 		shipLoad,
+		handlePhoneChange,
 	};
 };
 
