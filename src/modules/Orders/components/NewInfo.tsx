@@ -18,8 +18,7 @@ const NewInfo = () => {
 
 	const {
 		shippingName,
-		shippingStreet,
-		shippingZip,
+
 		addShipping,
 		handleShippingChange,
 		clearShippingAttributes,
@@ -33,7 +32,7 @@ const NewInfo = () => {
 			<form
 				autoComplete="off"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-					addShipping(e);
+					addShipping();
 					addBilling(e);
 				}}
 				className="flex flex-col md:flex-row w-full py-[6rem] px-[3rem]
@@ -106,7 +105,7 @@ const NewInfo = () => {
 					{/*......................................
                *zipcode
             ......................................*/}
-					<input
+					{/* <input
 						placeholder="Zip Code"
 						onChange={handleShippingChange}
 						required
@@ -116,11 +115,11 @@ const NewInfo = () => {
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
                   form-ring"
-					/>
+					/> */}
 					{/*......................................
                *street
             ......................................*/}
-					<input
+					{/* <input
 						placeholder="Street"
 						onChange={handleShippingChange}
 						required
@@ -130,7 +129,7 @@ const NewInfo = () => {
 						className=" h-[2.25rem] outline-none w-full
                   text-black-80 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
                   form-ring"
-					/>
+					/> */}
 
 					<div className="flex justify-between">
 						<button

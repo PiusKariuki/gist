@@ -32,7 +32,7 @@ const EditProductImages = () => {
 				<button
 					disabled={images?.length < 1}
 					type="button"
-					onClick={() => addProductImages(productId)}
+					onClick={ addProductImages}
 					className=" blue-btn bg-red-20 px-[1rem] py-[0.4rem] hover:bg-red-500
                   rounded-md h-12">
 					Submit

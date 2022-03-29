@@ -120,10 +120,10 @@ const useAddShop = () => {
 				});
 			Swal.fire({
 				icon: "success",
-				text: "A product has been added to your shop",
+				text: "Images uploaded successfully",
 				timer: 1000,
 			});
-			// navigate(`/myAccount/shops/`);
+			navigate(`/myAccount/shops/`);
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {
