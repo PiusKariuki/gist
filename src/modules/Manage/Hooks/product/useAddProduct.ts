@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import useRequest from "shared/http/useRequest";
 import Swal from "sweetalert2";
@@ -24,7 +24,6 @@ const useAddShop = () => {
 	const [downloadUrls, setDownloadUrls] = useState<any>([]);
 	const { productId } = useParams<string>();
 
-	console.log(downloadUrls);
 
 	const clearAttributes = () => {
 		setName("");
@@ -87,7 +86,7 @@ const useAddShop = () => {
 				variations,
 			});
 			navigate(`/myAccount/shops/add/${shopId}/images/${data.data._id}`);
-			// clearAttributes();
+			clearAttributes();
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
@@ -108,15 +107,17 @@ const useAddShop = () => {
 		}
 	};
 
-	const upload = async (url: Promise<string>) => {
-		setLoad(false);
+	const handleImgUpload = async (url: Promise<string>) => {
+		setLoad(true);
 		let uri = await url;
 		setDownloadUrls((prev: Array<string>) =>
 			prev.includes(uri) ? [...prev] : [...prev, uri]
 		);
+	};
 
+	const uploadImagesToMongo = async () => {
+      setLoad(true);
 		try {
-			// if (downloadUrls.length > 0)
 			await Axios.put(`/products/products/${productId}`, {
 				images: downloadUrls,
 			});
@@ -139,9 +140,8 @@ const useAddShop = () => {
 	};
 
 	const addProductImages = () => {
-		setLoad(true);
-		images.forEach((image: any) => {
-			uploadToFireBase(image, "/products/images", upload);
+		images.forEach((image: any, key: number) => {
+			uploadToFireBase(image, "/products/images", handleImgUpload);
 		});
 	};
 
@@ -175,6 +175,7 @@ const useAddShop = () => {
 		setDisplays,
 		variations,
 		downloadUrls,
+		uploadImagesToMongo,
 	};
 };
 
