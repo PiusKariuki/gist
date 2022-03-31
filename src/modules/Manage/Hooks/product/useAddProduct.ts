@@ -24,6 +24,8 @@ const useAddShop = () => {
 	const [downloadUrls, setDownloadUrls] = useState<any>([]);
 	const { productId } = useParams<string>();
 
+	console.log(downloadUrls);
+
 	const clearAttributes = () => {
 		setName("");
 		setPrice(0);
@@ -31,6 +33,7 @@ const useAddShop = () => {
 		setImages([]);
 		setDesc("");
 		setDisplays("");
+		setDownloadUrls([]);
 	};
 
 	const handleChange = (e: any) => {
@@ -84,7 +87,7 @@ const useAddShop = () => {
 				variations,
 			});
 			navigate(`/myAccount/shops/add/${shopId}/images/${data.data._id}`);
-			clearAttributes();
+			// clearAttributes();
 			setLoad(false);
 			Swal.fire({
 				icon: "success",
@@ -106,18 +109,17 @@ const useAddShop = () => {
 	};
 
 	const upload = async (url: Promise<string>) => {
+		setLoad(false);
 		let uri = await url;
 		setDownloadUrls((prev: Array<string>) =>
-			prev.includes(uri) ? [...prev, uri] : [...prev, uri]
+			prev.includes(uri) ? [...prev] : [...prev, uri]
 		);
-		setLoad(false);
 
 		try {
-			// console.log(downloadUrls);
-			if (downloadUrls.length === displays.length)
-				await Axios.put(`/products/products/${productId}`, {
-					images: downloadUrls,
-				});
+			// if (downloadUrls.length > 0)
+			await Axios.put(`/products/products/${productId}`, {
+				images: downloadUrls,
+			});
 			Swal.fire({
 				icon: "success",
 				text: "Images uploaded successfully",
@@ -136,10 +138,10 @@ const useAddShop = () => {
 		}
 	};
 
-	const addProductImages = async () => {
+	const addProductImages = () => {
 		setLoad(true);
-		await images.forEach(async (image: any) => {
-			await uploadToFireBase(image, "/products/images", upload);
+		images.forEach((image: any) => {
+			uploadToFireBase(image, "/products/images", upload);
 		});
 	};
 
