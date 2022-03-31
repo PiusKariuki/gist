@@ -29,7 +29,6 @@ const Shops = () => {
 					shops?.map((shop: any, key: number) => (
 						<ViewShop
 							name={shop?.name}
-							userName={shop?.userId?.userName}
 							img={shop?.image}
 							id={shop?._id}
 							key={key}

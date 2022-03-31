@@ -30,7 +30,7 @@ const Product: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
-   console.log(product);
+
    
 
 	return (
@@ -101,7 +101,6 @@ const Product: React.FC = (): JSX.Element => {
 								className="flex flex-row gap-[2rem] overflow-x-scroll w-[80vw]
                         md:w-[40vw] scroller">
 								{product?.images?.map((img: string, key: number) => {
-                           console.log(img);
 									return (
 										<img
                                  src={img}

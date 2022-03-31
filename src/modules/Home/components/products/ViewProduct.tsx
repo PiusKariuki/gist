@@ -5,9 +5,8 @@ interface Props {
 	price: string;
 	userName: string;
 	id: string;
-	shopId: string;
 	image: string;
-   shopImage: string;
+	shopImage: string;
 }
 
 const ViewProduct: React.FC<Props> = ({
@@ -15,16 +14,14 @@ const ViewProduct: React.FC<Props> = ({
 	price,
 	userName,
 	id,
-	shopId,
 	image,
-   shopImage
+	shopImage,
 }): JSX.Element => {
 	let navigate = useNavigate();
 	return (
 		<div
 			className="flex flex-col px-[0.5rem]  py-[0.6rem] bg-white card-border
-         hover:card-border rounded-md  hover:shadow-2xl
-         relative"
+         hover:card-border rounded-md  hover:shadow-2xl relative"
 			onClick={() => navigate(`/product/${id}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
 				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300">
@@ -32,6 +29,10 @@ const ViewProduct: React.FC<Props> = ({
 						src={shopImage}
 						alt=""
 						className="w-8 h-8 rounded-full self-center object-scale-down"
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
 					/>
 				</div>
 
@@ -46,12 +47,18 @@ const ViewProduct: React.FC<Props> = ({
 				</div>
 			</div>
 
-			<div className="flex relative gradient border-[0.0625rem] rounded-md">
+			<div
+				className="flex relative gradient border-[0.0625rem] rounded-md
+            bg-cover bg-center bg-no-repeat">
 				<img
 					src={image}
-					alt=""
-					className="h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
-                object-scale-down object-center"
+					alt="/img/picture.png"
+					className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
+                object-scale-down z-10"
+					onError={({ currentTarget }) => {
+						currentTarget.onerror = null;
+						currentTarget.src = "/img/picture.png";
+					}}
 				/>
 				<p
 					className="absolute bottom-[4%] right-[5%] text-white font-[600] text-[1rem]

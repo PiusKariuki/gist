@@ -57,6 +57,7 @@ module.exports = {
 				expectrum: "url('/img/expectrum.png')",
 				cart: "url('/img/cart.png')",
 				hero: "url('/img/hero.png')",
+				picture: "url('/img/picture.png')",
 			},
 		},
 	},
