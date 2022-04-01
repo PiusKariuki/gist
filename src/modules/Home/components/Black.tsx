@@ -10,7 +10,7 @@ const Black = () => {
 			<p className="text-[0.9rem] font-[600]">Books</p>
 			<p className="text-[0.9rem] font-[600]">Sports</p>
 			<p className="text-[0.9rem] font-[600]">Cooking</p>
-			<p className="text-[0.9rem] font-[600]">Help & support</p>
+			{/* <p className="text-[0.9rem] font-[600]">Help & support</p> */}
 		</div>
 	);
 };

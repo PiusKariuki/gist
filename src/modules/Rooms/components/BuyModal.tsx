@@ -29,15 +29,24 @@ const BuyModal: React.FC<Props> = ({
 			<p className="text-[1.4rem] text-center font-[700]">
 				Products available for purchase
 			</p>
-         <FontAwesomeIcon icon={faXmark} size="2x" color="red"  className="absolute top-5 left-12"
-         onClick={()=>setOpen(false)}
-         />
+			<FontAwesomeIcon
+				icon={faXmark}
+				size="2x"
+				color="red"
+				className="absolute top-5 left-12"
+				onClick={() => setOpen(false)}
+			/>
 			<hr />
 
 			<div className="flex flex-row justify-around ">
-				<div
-					style={{ backgroundImage: `url(/img/${image})` }}
+				<img
+					src={image}
+					alt=""
 					className="w-[4rem] h-4rem] bg-contain bg-no-repeat bg-center rounded-xl border-2"
+					onError={({ currentTarget }) => {
+						currentTarget.onerror = null;
+						currentTarget.src = "/img/picture.png";
+					}}
 				/>
 				<div className="flex flex-col">
 					<p className="text-[1rem] font-[700] text-black-40 flex- flex-wrap">
@@ -55,7 +64,7 @@ const BuyModal: React.FC<Props> = ({
 					</button>
 				</div>
 			</div>
-         <hr />
+			<hr />
 		</div>
 	);
 };
