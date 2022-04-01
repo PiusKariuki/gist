@@ -9,7 +9,6 @@ interface Props {
 
 const ViewShop: React.FC<Props> = ({ name, img, id }) => {
 	let navigate = useNavigate();
-	console.log(img);
 
 	return (
 		<div

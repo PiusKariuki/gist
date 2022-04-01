@@ -57,6 +57,10 @@ const Product: React.FC = (): JSX.Element => {
 									alt="productImg"
 									className="h-[40vh] max-w-[78vw] md:max-w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
                            object-scale-down "
+									onError={({ currentTarget }) => {
+										currentTarget.onerror = null;
+										currentTarget.src = "/img/picture.png";
+									}}
 								/>
 								<FontAwesomeIcon
 									onClick={() =>
@@ -82,16 +86,16 @@ const Product: React.FC = (): JSX.Element => {
 								/>
 							</div>
 						) : load ? null : (
-							<div className="flex flex-col py-[2rem]">
+							<div className="flex flex-col py-[2rem] gap-y-8">
 								<p
 									className="text-left text-gray-10 font-[500] text-[1rem] 
                            lg:text-[1rem]">
 									This product has no images
 								</p>
 								<img
-									src="/img/wallet.png"
+									src="/img/picture.png"
 									alt=""
-									className="h-[60vh] object-contain"
+									className="h-[40vh] object-contain self-start"
 								/>
 							</div>
 						)}
@@ -103,7 +107,7 @@ const Product: React.FC = (): JSX.Element => {
 								{product?.images?.map((img: string, key: number) => {
 									return (
 										<img
-                                 src={img}
+											src={img}
 											key={key}
 											className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
                                  bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer 
@@ -153,7 +157,8 @@ const Product: React.FC = (): JSX.Element => {
 							{product?.name}
 						</p>
 						<p className="text-left text-gray-10 font-[400] text-[0.78rem] lg:text-[1rem]">
-							by <span className="text-blue-20">{product?.ownerId?.userName}</span>
+							by{" "}
+							<span className="text-blue-20">{product?.ownerId?.userName}</span>
 						</p>
 						<p className="text-left text-red-20 font-[400] text-[1.2rem]">
 							{product?.quantity === 0

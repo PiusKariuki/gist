@@ -25,7 +25,6 @@ const Rooms = () => {
 		getRoomById(roomId);
 	}, []);
 
-	let price = 16.5;
 	return (
 		<>
 			<div
@@ -49,7 +48,7 @@ const Rooms = () => {
 						className="red-btn py-[0.5rem] md:absolute left-2 top-[60%] lg:top-[80%]
                    mb-[4rem] z-10"
 						onClick={() => setOpen((prev: boolean) => !prev)}>
-						from $ {price}
+						Buy
 					</button>
 					<div className="inline-flex sticky top-4 left-6">
 						<button

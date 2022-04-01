@@ -28,7 +28,7 @@ const ViewProduct: React.FC<Props> = ({
 					<img
 						src={shopImage}
 						alt=""
-						className="w-8 h-8 rounded-full self-center object-scale-down"
+						className="w-8 h-8 rounded-full self-center object-cover"
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
 							currentTarget.src = "/img/picture.png";
@@ -50,16 +50,32 @@ const ViewProduct: React.FC<Props> = ({
 			<div
 				className="flex relative gradient border-[0.0625rem] rounded-md
             bg-cover bg-center bg-no-repeat">
-				<img
-					src={image}
-					alt="/img/picture.png"
-					className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
-                object-scale-down z-10"
-					onError={({ currentTarget }) => {
-						currentTarget.onerror = null;
-						currentTarget.src = "/img/picture.png";
-					}}
-				/>
+				{image?.length > 0 ? (
+					<img
+						src={image}
+						alt=""
+						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
+                  object-scale-down z-10"
+						onError={({ currentTarget }) => {
+							currentTarget.currentSrc === undefined
+								? (currentTarget.src = "/img/picture.png")
+								: null;
+							currentTarget.onerror = null;
+						}}
+					/>
+				) : (
+					<img
+						src="/img/picture.png"
+						alt=""
+						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
+                  object-cover z-10"
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
+					/>
+				)}
+
 				<p
 					className="absolute bottom-[4%] right-[5%] text-white font-[600] text-[1rem]
                bg-gray-20 px-[1rem] opacity-50 rounded-xl">

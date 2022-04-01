@@ -23,6 +23,8 @@ const Shop: React.FC = (): JSX.Element => {
 		getShopDetails(shopId);
 	}, []);
 
+   console.log(shopDetails);
+   
 	return (
 		<>
 			{load || shopDetails.length > 0 ? (
@@ -51,8 +53,12 @@ const Shop: React.FC = (): JSX.Element => {
 										<img
 											src={shopDetails[0]?.shopId?.image}
 											alt=""
-											className="h-[6rem] w-[8rem] md:w-[14rem] object-cover card-border
+											className="h-[6rem] w-[8rem] md:w-[14rem] object-scale-down card-border
                                  self-center"
+											onError={({ currentTarget }) => {
+												currentTarget.onerror = null;
+												currentTarget.src = "/img/picture.png";
+											}}
 										/>
 									) : null}
 								</div>
@@ -133,7 +139,9 @@ const Shop: React.FC = (): JSX.Element => {
 					) : null}
 
 					{/* shop products */}
-					<p className="text-black-40 text-[1.6rem] md:text-[2.5rem] font-[700] py-[2rem]">
+					<p
+						className="sticky top-32 text-black-40 text-[1.6rem] md:text-[2.5rem] 
+               font-[700] py-[2rem]">
 						Products
 					</p>
 					<div className="flex flex-col md:flex-row flex-wrap gap-[2rem] ">

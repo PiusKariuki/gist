@@ -17,7 +17,6 @@ const Products = () => {
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 	const scrollRef = useRef<any>(null);
    const {renderSpinner} = useSpinner();
-
    
 
 	return (

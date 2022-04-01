@@ -7,7 +7,7 @@ interface Props {
 	userName: string;
 	id: string;
 	shopId: string;
-   image: string;
+	image: string;
 }
 
 const ShopProducts: React.FC<Props> = ({
@@ -16,7 +16,7 @@ const ShopProducts: React.FC<Props> = ({
 	userName,
 	id,
 	shopId,
-   image
+	image,
 }): JSX.Element => {
 	let navigate = useNavigate();
 	return (
@@ -43,14 +43,30 @@ const ShopProducts: React.FC<Props> = ({
 
 			<div
 				className="flex relative w-full bg-no-repeat bg-center bg-contain rounded-md
-            card-border gradient"
-			>
-				<img
-					src={image}
-					alt=""
-					className="object-scale-down
+            card-border gradient">
+				{image !== undefined ? (
+					<img
+						src={image}
+						alt=""
+						className="object-scale-down
                h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
-				/>
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
+					/>
+				) : (
+					<img
+						src="img/picture.png"
+						alt=""
+						className="object-scale-down
+                  h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
+					/>
+				)}
 
 				<p
 					className="absolute bottom-[4%] right-[10%] text-white font-[600] text-[1.2rem]
