@@ -45,7 +45,6 @@ const MyOrders = () => {
 		shopId,
 	} = useMyOrders();
 
-	const [currentShop, setCurrentShop] = useState("");
 	const { renderSpinner } = useSpinner();
 	const formRef = useRef<any>();
 
@@ -60,7 +59,7 @@ const MyOrders = () => {
 	}
 
 	useEffect(() => {
-		 getOrderByShopID(currentShop);
+		 getOrderByShopID(shopId);
 	}, [open]);
 
 

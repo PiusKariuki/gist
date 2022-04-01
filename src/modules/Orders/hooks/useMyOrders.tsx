@@ -10,13 +10,10 @@ const useOrderByShopID = () => {
 	const [orders, setOrders] = useState<any>([]);
 	const [load, setLoad] = useState(false);
 	const { _id } = useRecoilValue<any>(user);
-	const [shop, setMyShop] = useState<any>([]);
 	const [shopId, setShopId] = useState("");
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
-	const [openView, setOpenView] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
-	const [order, setOrder] = useState<any>({});
 	let navigate = useNavigate();
 
 	const columns = [
@@ -50,7 +47,6 @@ const useOrderByShopID = () => {
 						onClick={(e) => {
 							setOrderId(e.currentTarget.value);
 							setOpen(true);
-							setOpenView(false);
 						}}>
 						Edit
 					</button>
@@ -71,7 +67,6 @@ const useOrderByShopID = () => {
 					</button>
 				</div>
 			),
-
 			date: new Date(obj.createdAt).toLocaleDateString(),
 		})
 	);
@@ -80,7 +75,7 @@ const useOrderByShopID = () => {
 		setLoad(true);
 		try {
 			let { data } = await Axios.get(`/shop/${_id}`);
-			setMyShop(data);
+			setShopId(data._id);
 			setLoad(false);
 			await getOrderByShopID(data?._id);
 		} catch (error) {
@@ -115,10 +110,9 @@ const useOrderByShopID = () => {
 			await Axios.put(`/orders/orders/${orderId}`, {
 				status,
 			});
-         await getOrderByShopID(orders._id)
+			await getOrderByShopID(shopId);
 			setLoad(false);
-         getOrderByShopID(shopId);
-				setOpen(false);
+			setOpen(false);
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been updated",
@@ -142,8 +136,6 @@ const useOrderByShopID = () => {
 		setLoad(true);
 		try {
 			let { data } = await Axios.get(`/orders/orders/${id}`);
-			setOpenView(true);
-			setOrder(data);
 			setLoad(false);
 			navigate(`/product/${data?.itemId?.productId?._id}`);
 		} catch (error) {
@@ -155,21 +147,14 @@ const useOrderByShopID = () => {
 		getOrderByShopID,
 		columns,
 		load,
-		orders,
 		getMyShop,
-		setShopId,
-		shop,
 		populate,
 		open,
 		setOpen,
-		openView,
-		setOpenView,
 		orderId,
+		shopId,
 		editOrder,
 		setStatus,
-		shopId,
-		getOrderById,
-		order,
 	};
 };
 
