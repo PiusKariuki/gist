@@ -55,8 +55,8 @@ const Product: React.FC = (): JSX.Element => {
 								<img
 									src={product?.images[index]}
 									alt="productImg"
-									className="h-[40vh] max-w-[78vw] md:max-w-[30rem] md:h-[60vh] 2xl:h-[20vh] 
-                           object-scale-down "
+									className="h-[40vh] max-w-[78vw] md:max-w-[30rem] lg:max-w-[40rem]
+                            md:h-[60vh] 2xl:h-[20vh] xl:object-scale-down "
 									onError={({ currentTarget }) => {
 										currentTarget.onerror = null;
 										currentTarget.src = "/img/picture.png";
@@ -86,12 +86,7 @@ const Product: React.FC = (): JSX.Element => {
 								/>
 							</div>
 						) : load ? null : (
-							<div className="flex flex-col py-[2rem] gap-y-8">
-								<p
-									className="text-left text-gray-10 font-[500] text-[1rem] 
-                           lg:text-[1rem]">
-									This product has no images
-								</p>
+							<div className="flex flex-col py-[2rem]">
 								<img
 									src="/img/picture.png"
 									alt=""

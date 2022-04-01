@@ -38,7 +38,6 @@ const MyOrders = () => {
 		columns,
 		load,
 		getMyShop,
-		shop,
 		populate,
 		open,
 		setOpen,
@@ -59,7 +58,6 @@ const MyOrders = () => {
       *set the current shop each time the edit btn is clicked for reference
       ......................................*/
 	}
-
 
 	useEffect(() => {
 		 getOrderByShopID(currentShop);
@@ -84,19 +82,7 @@ const MyOrders = () => {
                *map users' shop and create  btns
                *
                ......................................*/}
-				<div className="flex flex-row gap-[0.5rem] mt-[2rem]">
-						<button
-							className="outline outline-blue-40 rounded-md text-blue-40 font-[800] 
-                     px-[0.5rem] py-[0.1rem] text-[1rem]"
-							value={shop?._Id}
-							onClick={() => {
-								setCurrentShop(shop?._id);
-								getOrderByShopID(shop?._id);
-							}}>
-							{shop?.name}
-						</button>
-				</div>
-
+	
 				<div className="absolute top-48 left-[48%] mt-[1rem]">
 					{renderSpinner(load)}
 				</div>

@@ -18,7 +18,7 @@ const useRequest = () => {
 		return request;
 	});
 
-	// Axios.request({ url: "" }).catch(function (error) {
+	// Axios.request({ url: baseUrl }).catch(function (error) {
 	// 	if (!error.response) {
 	// 		Swal.fire({
 	// 			icon: "error",
