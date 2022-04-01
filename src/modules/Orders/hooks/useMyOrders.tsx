@@ -83,6 +83,7 @@ const useOrderByShopID = () => {
 			let { data } = await Axios.get(`/shop/${_id}`);
 			setMyShop(data);
 			setLoad(false);
+         await getOrderByShopID(data?._id)
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import useShop from "../../Hooks/shop/useShop";
-import CreateShop from "./CreateShop";
-import EditShopModal from "./EditShop";
+import useShop from "../Hooks/shop/useShop";
+import CreateShop from "../components/shop/CreateShop";
+import EditShopModal from "../components/shop/EditShop";
 import { Route, Routes } from "react-router-dom";
-import MyShopHome from "./MyShopHome";
-import AddProduct from "../product/AddProduct";
-import MyProducts from "../product/MyProducts";
-import AddProductImages from "../product/AddProductImages";
-import EditProduct from "../product/EditProduct";
-import ProductPreview from "../product/ProductPreview";
+import MyShopHome from "../components/shop/MyShopHome";
+import AddProduct from "../components/product/AddProduct";
+import MyProducts from "../components/product/MyProducts";
+import AddProductImages from "../components/product/AddProductImages";
+import EditProduct from "../components/product/EditProduct";
+import ProductPreview from "../components/product/ProductPreview";
 
-const MyShops = () => {
+const MyShopsRoutesComponent = () => {
 	const { getShopsByUserId } = useShop();
 
 	useEffect(() => {
@@ -41,4 +41,4 @@ const MyShops = () => {
 	);
 };
 
-export default MyShops;
+export default MyShopsRoutesComponent;

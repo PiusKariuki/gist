@@ -34,7 +34,6 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 					className="flex w-[3rem] lg:w-[3rem] max-h-[5rem]"
 				/>
 			)}
-
 			{/*.....................................rem.
             *
             ......................................*/}

@@ -3,7 +3,7 @@ import Register from "modules/Auth/components/Register";
 import Preview from "modules/Home/components/Preview";
 import Home from "modules/Home/views/Home";
 import EditProfile from "modules/Manage/components/profile/EditProfile";
-import MyShops from "modules/Manage/components/shop/MyShops";
+import MyShopsRoutes from "modules/Manage/routes/MyShopRoutes";
 import Manage from "modules/Manage/views/Manage";
 import MyOrders from "modules/Orders/views/MyOrders";
 import Orders from "modules/Orders/views/Orders";
@@ -44,7 +44,7 @@ const App: React.FC = (): JSX.Element => {
 					</RequireAuth>
 				}>
 				<Route path="/myAccount/profile" element={<EditProfile />} />
-				<Route path="/myAccount/shops/*" element={<MyShops />} />
+				<Route path="/myAccount/shops/*" element={<MyShopsRoutes />} />
 				<Route path="/myAccount/orders" element={<MyOrders />} />
 			</Route>
 

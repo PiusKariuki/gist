@@ -196,6 +196,10 @@ const EditProfile = () => {
 								src={img}
 								className=" flex  w-[14rem] h-[14rem] md:w-[14rem] md:h-[14rem]
                         rounded-full object-scale-down border-2"
+								onError={({ currentTarget }) => {
+									currentTarget.onerror = null;
+									currentTarget.src = "/img/picture.png";
+								}}
 							/>
 							<FontAwesomeIcon
 								onClick={() => setImg("")}
@@ -209,7 +213,7 @@ const EditProfile = () => {
 					) : (
 						<button
 							type="button"
-							className="bg-blue-40 w-[14rem] px-[1rem] py-[0.4rem]
+							className="bg-blue-40 w-[14rem] px-[1rem] py-[0.1rem]
                      mt-auto rounded-md font-[600] text-white"
 							onClick={handleClick}>
 							Upload profile photo
@@ -240,7 +244,7 @@ const EditProfile = () => {
 				}
 				type="submit"
 				className="bg-blue-20 py-[0.2rem] mt-[3rem]  text-white text-[1.4rem] rounded-lg
-            font-bold w-full md:w-[40%] lg:w-[40%] hover:bg-blue-600 self-start disabled:bg-gray-400">
+            font-bold w-[14rem] hover:bg-blue-600 self-start disabled:bg-gray-400">
 				Update
 			</button>
 		</form>

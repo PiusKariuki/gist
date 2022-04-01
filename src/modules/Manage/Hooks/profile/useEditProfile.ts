@@ -81,14 +81,15 @@ const useEditProfile = () => {
 				setBio(e.target.value);
 				break;
 			case "img":
-				setLoad(true);
-				uploadToFireBase(
-					e.target.files[0],
-					"user/display_picture",
-					uploadNewImage
-				);
+
 				getBase64(e.target.files[0])
 					.then((res) => {
+                  setLoad(true);
+						uploadToFireBase(
+							e.target.files[0],
+							"user/display_picture",
+							uploadNewImage
+						);
 						setImg(res);
 					})
 					.catch((err) => {
