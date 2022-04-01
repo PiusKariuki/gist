@@ -16,11 +16,23 @@ const SearchProduct: React.FC<Props> = ({ name, img, price, userName, id }) => {
 			className="flex flex-col rounded-lg shadow-lg pt-[0.2rem] px-[0.2rem]
          pb-[0.8rem] flex-shrink-0">
 			<div className="flex gradient rounded-t-md mb-4 justify-center">
-				<img
-					src={img}
-					className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
-               self-center  object-scale-down"
-				/>
+				{img?.length > 0 ? (
+					<img
+						src={img}
+						className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
+                  self-center  object-scale-down"
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
+					/>
+				) : (
+					<img
+						src="/img/picture.png"
+						className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
+                  self-center  object-scale-down"
+					/>
+				)}
 			</div>
 
 			<div className="flex flex-col space-y-2 px-2">
@@ -32,9 +44,7 @@ const SearchProduct: React.FC<Props> = ({ name, img, price, userName, id }) => {
 				<p className="text-red-20 font-[400] text-[1rem] ">
 					GC.&nbsp;&nbsp;&nbsp;{price}
 				</p>
-				<Link
-					to={`/product/${id}`}
-					className="card-link">
+				<Link to={`/product/${id}`} className="card-link">
 					view
 				</Link>
 			</div>

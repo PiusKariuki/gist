@@ -17,11 +17,23 @@ const SearchShop: React.FC<Props> = ({ name, img, userName, id }) => {
          pb-[0.8rem] flex-shrink-0"
 			onClick={() => navigate(`/shop/${id}`, { replace: true })}>
 			<div className="flex gradient rounded-t-lg mb-4 justify-center">
-				<img
-					src={img}
-					className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
-               self-center  object-scale-down"
-				/>
+				{img?.length > 0 ? (
+					<img
+						src={img}
+						className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
+                  self-center  object-scale-down"
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
+					/>
+				) : (
+					<img
+						src="/img/picture.png"
+						className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
+                  self-center  object-scale-down"
+					/>
+				)}
 			</div>
 
 			<div className="flex flex-col space-y-2 px-2">
