@@ -17,11 +17,24 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 		<div
 			className="flex flex-row flex-nowrap rounded-3xl py-[2rem] items-center
             space-x-[0.7rem] lg:justify-between w-full">
-			<img
-				src={image}
-				alt=""
-				className="flex w-[3rem] lg:w-[3rem] max-h-[5rem]"
-			/>
+			{image?.length > 0 ? (
+				<img
+					src={image}
+					alt=""
+					className="flex w-[3rem] lg:w-[3rem] max-h-[5rem]"
+					onError={({ currentTarget }) => {
+						currentTarget.onerror = null;
+						currentTarget.src = "/img/picture.png";
+					}}
+				/>
+			) : (
+				<img
+					src="img/picture.png"
+					alt=""
+					className="flex w-[3rem] lg:w-[3rem] max-h-[5rem]"
+				/>
+			)}
+
 			{/*.....................................rem.
             *
             ......................................*/}
