@@ -25,6 +25,7 @@ const useCart = () => {
 		shopId: string,
 		productId: string,
 		sellerId: string,
+      variation: string,
 		id: string
 	) => {
 		setCartAtom((prev: any) => [
@@ -36,6 +37,7 @@ const useCart = () => {
 				shopId: shopId,
 				productId: productId,
 				sellerId: sellerId,
+            variation,
 				id: id,
 			},
 			...prev,

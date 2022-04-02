@@ -29,7 +29,7 @@ const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
 				/>
 			) : (
 				<img
-					src="img/picture.png"
+					src="/img/picture.png"
 					alt=""
 					className="flex w-[3rem] lg:w-[3rem] max-h-[5rem]"
 				/>

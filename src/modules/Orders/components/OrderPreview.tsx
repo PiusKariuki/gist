@@ -26,39 +26,39 @@ const OrderPreview: React.FC = () => {
 			<div
 				className="flex  flex-wrap space-x-2  space-y-2 md:space-x-10 items-center 
                md:space-y-0 bg-white">
-				<p className="text-gray-20 text-[0.9rem] space-x-4 font-[600">
+				<p className="text-gray-20 text-[1.3rem] space-x-4 font-[600]">
 					Products:{" "}
 				</p>
 				{cartItems.map((item: any, key: number) => (
 					<p
 						key={key}
-						className="text-blue-40 px-[0.2rem] shadow-2xl font-[600] rounded-xl">
+						className="text-blue-40 px-[0.2rem] shadow-2xl font-[600] rounded-xl text-[1.2rem]">
 						{item.name}
 					</p>
 				))}
 			</div>
-			<p className="text-gray-20 text-[0.9rem] space-x-4 font-[600]">
-				<span className="font-[400]">
+			<p className="space-x-4 font-[600] text-[1.3rem] text-blue-40">
+				<span className="text-gray-20  ">
 					Sub total:&nbsp;&nbsp;GC.&nbsp;&nbsp;
 				</span>
 				{subTotal}
 			</p>
-			<p className="text-gray-20 text-[0.9rem] space-x-4 font-[600]">
-				<span className="font-[500]">
+			<p className=" text-[1.3rem] space-x-4 font-[600] text-blue-40">
+				<span className="text-gray-20">
 					Wallet balance:&nbsp;&nbsp;GC.&nbsp;&nbsp;
 				</span>
 				{wallet - subTotal}
 			</p>
-			<p className="text-gray-20 text-[0.9rem] space-x-4 font-[600]">
-				<span className="font-[500]">Shipping Address:&nbsp;&nbsp;</span>
+			<p className="text-[1.3rem] space-x-4 font-[600] text-blue-40">
+				<span className="text-gray-20">Shipping Address:&nbsp;&nbsp;</span>
 				{shippingName}
 			</p>
 
 			<div className="flex flex-row space-x-10">
 				<button
 					onClick={() => handleSubmit(addressId)}
-					className="bg-gray-20 px-[0.2rem] py-[0.3rem] w-[8rem]
-                  mt-[2rem] text-[0.9rem] text-white font-[700] rounded-2xl hover:bg-blue-600
+					className="bg-gray-20 px-[0.2rem] py-[0.5rem] w-[8rem]
+                  mt-[2rem] text-[1.2rem] text-white font-[700] rounded-2xl hover:bg-blue-600
                   disabled:bg-gray-400">
 					Place order
 				</button>

@@ -83,7 +83,7 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 			</div>
 
 			<button
-				disabled={orders === 0 || product?.quantity === 0 || variation !==null}
+				disabled={orders === 0 || product?.quantity === 0 || variation ===null}
 				onClick={() => {
 					setOrders(1);
 					addToCart(
@@ -94,6 +94,7 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 						product?.shopId,
 						product?._id,
 						product?.ownerId,
+                  product?.variations?.[variation],
 						uuidv4()
 					);
 				}}
