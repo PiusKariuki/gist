@@ -22,8 +22,6 @@ const Shop: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getShopDetails(shopId);
 	}, []);
-
-   console.log(shopDetails);
    
 	return (
 		<>
@@ -40,92 +38,6 @@ const Shop: React.FC = (): JSX.Element => {
 						</p>
 					</div>
 					{renderSpinner(load)}
-					<div className="flex flex-col space-y-[2rem] ">
-						{/*......................................
-                     *AVATAR and # OF PRODUCTS
-                  ......................................*/}
-						<div
-							className="lg:flex md:flex-row space-y-8 md:space-y-[2rem] md:w-full 
-                     md:justify-between lg:items-center ">
-							<div className="flex flex-row space-x-10 self-center lg:self-center py-[2rem]">
-								<div className="flex flex-col md:self-end ">
-									{shopDetails.length > 0 ? (
-										<img
-											src={shopDetails[0]?.shopId?.image}
-											alt=""
-											className="h-[6rem] w-[8rem] md:w-[14rem] object-scale-down card-border
-                                 self-center"
-											onError={({ currentTarget }) => {
-												currentTarget.onerror = null;
-												currentTarget.src = "/img/picture.png";
-											}}
-										/>
-									) : null}
-								</div>
-
-								<div className="flex flex-col space-y-auto lg:self-center lg:pt-[3rem]">
-									<p className="text-black-80 text-[1.4rem] md:text-[1.4rem] font-[600]">
-										Products
-									</p>
-									<p className="text-blue-20 text-[2rem] md:text-[2rem] font-[600]">
-										{shopDetails.length}
-									</p>
-								</div>
-							</div>
-							{/*......................................
-                     *EMAIL AND LOCATION
-                  ......................................*/}
-							<div className="flex flex-row space-x-10">
-								<div className="flex flex-col space-y-2">
-									<FontAwesomeIcon
-										icon={faEnvelope}
-										size="2x"
-										color="rgb(0 30 43)"
-									/>
-									<p className="text-blue-20 text-[1.2rem] md:text-[1.4rem] font-[700]">
-										{shopDetails[0]?.shopId?.email}
-									</p>
-								</div>
-								<div className="flex flex-col space-y-2">
-									<FontAwesomeIcon
-										icon={faLocationDot}
-										size="2x"
-										color="rgb(0 30 43)"
-									/>
-									<p className="text-blue-20 text-[1.2rem] md:text-[1.4rem] font-[700]">
-										{shopDetails[0]?.shopId?.location}
-									</p>
-								</div>
-							</div>
-							{/*......................................
-                     *PHONE
-                  ......................................*/}
-
-							<div className="flex flex-row ">
-								<div className="flex flex-col space-y-2 ">
-									<FontAwesomeIcon
-										icon={faPhone}
-										size="2x"
-										color="rgb(0 30 43)"
-										className=""
-									/>
-									<p className="text-blue-20 text-[1.2rem] md:text-[1.4rem] font-[700]">
-										{shopDetails[0]?.shopId?.phoneNumber}
-									</p>
-								</div>
-							</div>
-						</div>
-						{/*......................................
-                     *DESCRIPTION
-                  ......................................*/}
-						<div className="flex flex-row">
-							<div className="flex flex-col space-y-auto ">
-								<p className="text-blue-20 text-[0.9rem] md:text-[1rem] font-[600]">
-									{shopDetails[0]?.shopId?.description}
-								</p>
-							</div>
-						</div>
-					</div>
 					{/*......................................
                   *EDIT BTN
                ......................................*/}

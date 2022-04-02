@@ -1,238 +1,37 @@
 import useCart from "modules/Cart/hooks/useCart";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
-import { v4 as uuidv4 } from "uuid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faArrowLeft,
-	faArrowRight,
-	faChevronCircleLeft,
-	faChevronCircleRight,
-	faChevronRight,
-	faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
 import "../styles/product.css";
-import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
+import Thumbnails from "../components/Thumbnails";
+import MainImg from "../components/MainImg";
+import Details from "../components/Details";
+import ActionBtns from "../components/ActionBtns";
 
 const Product: React.FC = (): JSX.Element => {
 	const [index, setIndex] = useState<number>(0);
-	const [orders, setOrders] = useState<number>(1);
-	const { getProductById, product, errors, load } = useProducts();
+	const { getProductById, product, load } = useProducts();
 	const { renderSpinner } = useSpinner();
 	const { productId } = useParams();
-	const { addToCart } = useCart();
-
-	const { scrollRight, scrollLeft } = useHorizontalScroll();
-	const scrollRef = useRef<any>(null);
 
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
 
-   
-
 	return (
-		<div
-			className="flex flex-col items-start px-[1rem] md:px-[5rem] xl:px-[10rem] py-[4rem] 
-          gap-[5rem] min-h-screen">
-			<div
-				className="flex flex-col  flex-wrap items-start
-             md:justify-center  md:gap-[2rem]">
+		<div className="flex flex-col md:flex-row w-screen px-10 py-10 mx-auto gap-x-10 gap-y-16">
+			<div className="flex flex-col w-full md:w-[55%] space-y-10">
+				<MainImg setIndex={setIndex} images={product?.images} index={index} />
 				{renderSpinner(load)}
-				<div
-					className="flex flex-col lg:flex-row gap-y-[2rem] lg:gap-x-[10rem] lg:gap-0
-               max-w-5xl">
-					<div className="gap-[2rem] flex flex-col w-full">
-						<p
-							className="text-black text-[1.2rem] md:text-[2.25rem] font-[800] text-left
-                     w-[8rem] md:w-[16rem]">
-							Product Details
-						</p>
-						{product?.images?.length > 0 ? (
-							<div className="relative">
-								<img
-									src={product?.images[index]}
-									alt="productImg"
-									className="h-[40vh] max-w-[78vw] md:max-w-[30rem] lg:max-w-[40rem]
-                            md:h-[60vh] 2xl:h-[20vh] xl:object-scale-down "
-									onError={({ currentTarget }) => {
-										currentTarget.onerror = null;
-										currentTarget.src = "/img/picture.png";
-									}}
-								/>
-								<FontAwesomeIcon
-									onClick={() =>
-										setIndex((prev: number) =>
-											prev === 0 ? product?.images?.length - 1 : prev - 1
-										)
-									}
-									icon={faChevronLeft}
-									size="4x"
-									className="hidden md:flex absolute  left-[-8%] top-[40%] md:left-[-18%]
-                           text-gray-300"
-								/>
-								<FontAwesomeIcon
-									onClick={() =>
-										setIndex((prev: number) =>
-											prev === product?.images?.length - 1 ? 0 : prev + 1
-										)
-									}
-									icon={faChevronRight}
-									size="4x"
-									className="hidden md:flex absolute right-[-8%] top-[40%] md:right-[-18%]
-                           text-gray-300"
-								/>
-							</div>
-						) : load ? null : (
-							<div className="flex flex-col py-[2rem]">
-								<img
-									src="/img/picture.png"
-									alt=""
-									className="h-[40vh] object-contain self-start"
-								/>
-							</div>
-						)}
-						<div className="flex relative">
-							<div
-								ref={scrollRef}
-								className="flex flex-row gap-[2rem] overflow-x-scroll w-[80vw]
-                        md:w-[40vw] scroller">
-								{product?.images?.map((img: string, key: number) => {
-									return (
-										<img
-											src={img}
-											key={key}
-											className="w-[12rem] h-[6rem] rounded-2xl bg-cover bg-center 
-                                 bg-no-repeat border-[0.12rem] border-black-40 cursor-pointer 
-                                 flex-shrink-0"
-											onClick={() => setIndex(key)}
-										/>
-									);
-								})}
-								{/*......................................
-                  *FLOATING BTNS FOR HORIZONTAL SCROLL
-               ......................................*/}
-								{product?.images?.length > 2 ? (
-									<>
-										<div
-											className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]
-                                 w-[3.125rem]
-                                 h-[3.125rem] rounded-full translate-y-[-50%]
-                                 z-10 hidden lg:flex lg:absolute  left-[-10%] top-[50%] 
-                                 ">
-											<FontAwesomeIcon
-												onClick={() => scrollLeft(scrollRef)}
-												icon={faArrowLeft}
-												className="flex text-[1.25rem] self-center mx-auto 
-                                    text-[#00bcd7]"
-											/>
-										</div>
-										<div
-											className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)] 
-                                 z-10 hidden
-                                 lg:flex lg:absolute text-[2rem] translate-y-[-50%]
-                                 w-[3.125rem] h-[3.125rem] rounded-full right-[-10%] top-[50%]">
-											<FontAwesomeIcon
-												onClick={() => scrollRight(scrollRef)}
-												icon={faArrowRight}
-												className="flex text-[1.25rem] self-center mx-auto
-                                     text-[#00bcd7]"
-											/>
-										</div>
-									</>
-								) : null}
-							</div>
-						</div>
-					</div>
+				<Thumbnails setIndex={setIndex} images={product?.images} />
+			</div>
 
-					<div className="flex flex-col lg:gap-y-[0.5rem] w-full self-end">
-						<p className="text-left text-gray-10 font-[500] text-[1.25rem] lg:text-[1.6rem]">
-							{product?.name}
-						</p>
-						<p className="text-left text-gray-10 font-[400] text-[0.78rem] lg:text-[1rem]">
-							by{" "}
-							<span className="text-blue-20">{product?.ownerId?.userName}</span>
-						</p>
-						<p className="text-left text-red-20 font-[400] text-[1.2rem]">
-							{product?.quantity === 0
-								? "GC. " + product.price
-								: product.price === undefined
-								? ""
-								: "GC. " + product?.price}
-						</p>
-						<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
-							{product?.quantity === 0 ? null : "Available"}
-						</p>
-						<p className="text-left text-gray-10 font-[500] text-[1rem] mt-8 mb-6">
-							{product?.description}
-						</p>
+			<div className="flex flex-col w-full md:w-[20%] space-y-10 self-center">
+				<Details product={product} />
 
-						{/* btns */}
-						<div
-							className="flex flex-col gap-x-[1rem] my-[2rem] gap-[1.5rem] mt-auto
-                      items-center self-start">
-							<div
-								className="inline-flex rounded-md shadow-sm border-[0.1rem]
-                        border-blue-20">
-								<button
-									onClick={() =>
-										setOrders((prev) => (prev === 0 ? 0 : prev - 1))
-									}
-									disabled={product.quantity === 0}
-									type="button"
-									className="px-[1.3rem] py-[0.5rem] font-[600] rounded-l-lg text-black-40">
-									<FontAwesomeIcon
-										icon={faChevronCircleLeft}
-										size="2x"
-										color="#33546D"
-									/>
-								</button>
-								<button
-									disabled={product.quantity === 0}
-									type="button"
-									className="px-[2rem] py-[0.5rem] font-[600] text-black-40 border-blue-20
-                           border-x-[0.1rem]">
-									{orders}
-								</button>
-								<button
-									onClick={() =>
-										setOrders((prev) =>
-											prev === product?.quantity ? prev : prev + 1
-										)
-									}
-									disabled={product.quantity === 0}
-									type="button"
-									className="px-[1.3rem] py-[0.5rem] font-[600] text-black-40 rounded-r-lg">
-									<FontAwesomeIcon
-										icon={faChevronCircleRight}
-										size="2x"
-										color="#33546D"
-									/>
-								</button>
-							</div>
-							<button
-								disabled={orders === 0 || product?.quantity === 0}
-								onClick={() => {
-									setOrders(1);
-									addToCart(
-										orders,
-										product?.price,
-										product?.images[0],
-										product?.name,
-										product?.shopId,
-										product?._id,
-										product?.ownerId,
-										uuidv4()
-									);
-								}}
-								className="blue-btn self-start px-[3rem] w-full">
-								{product?.quantity === 0 ? "Out of stock" : "Add To Cart"}
-							</button>
-						</div>
-					</div>
-				</div>
+				{/* btns */}
+				<ActionBtns product={product} />
 			</div>
 		</div>
 	);
