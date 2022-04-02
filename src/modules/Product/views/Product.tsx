@@ -21,13 +21,13 @@ const Product: React.FC = (): JSX.Element => {
 
 	return (
 		<div className="flex flex-col md:flex-row w-screen px-10 py-10 mx-auto gap-x-10 gap-y-16">
-			<div className="flex flex-col w-full md:w-[55%] space-y-10">
+			<div className="flex flex-col w-full  space-y-10">
 				<MainImg setIndex={setIndex} images={product?.images} index={index} />
 				{renderSpinner(load)}
 				<Thumbnails setIndex={setIndex} images={product?.images} />
 			</div>
 
-			<div className="flex flex-col w-full md:w-[20%] space-y-10 self-center">
+			<div className="flex flex-col w-full  space-y-10 self-center">
 				<Details product={product} />
 
 				{/* btns */}

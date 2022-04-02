@@ -59,7 +59,7 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 					/>
 				</button>
 			</div>
-			<div className="flex flex-row space-x-10">
+			<div className="flex flex-row space-x-4 self-start">
 				<p className="font-[600] self-center">Variations:</p>
 				{/* variants */}
 				{product &&

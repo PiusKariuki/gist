@@ -45,8 +45,8 @@ const MainImg: React.FC<Props> = ({ images, index, setIndex }) => {
 				}
 				icon={faChevronLeft}
 				size="3x"
-				className="hidden md:flex absolute  left-0 top-[40%] md:left-0
-                  text-gray-300"
+				className="hidden md:flex absolute  left-0 top-[40%] md:left-8
+               text-gray-300"
 			/>
 			<FontAwesomeIcon
 				onClick={() =>
@@ -56,8 +56,7 @@ const MainImg: React.FC<Props> = ({ images, index, setIndex }) => {
 				}
 				icon={faChevronRight}
 				size="3x"
-				className="hidden md:flex absolute right-0 top-[40%] md:right-0
-                  2xl:right-[-10%] text-gray-300"
+				className="hidden md:flex absolute right-0 top-[40%] md:right-8 text-gray-300"
 			/>
          </>
          :null}

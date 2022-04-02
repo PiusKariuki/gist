@@ -6,7 +6,7 @@ interface Props {
 
 const Details:React.FC<Props> = ({product}) => {
 	return (
-		<div>
+		<div className="w-full flex flex-col">
 			<p className="text-left text-gray-10 font-[500] text-[1.25rem] lg:text-[1.6rem]">
 				{product?.name}
 			</p>
@@ -20,10 +20,10 @@ const Details:React.FC<Props> = ({product}) => {
 					? ""
 					: "GC. " + product?.price}
 			</p>
-			<p className="text-left text-gray-10 font-[600] text-[1.4rem]">
+			{/* <p className="text-left text-gray-10 font-[600] text-[1.4rem]">
 				{product?.quantity === 0 ? null : "Available"}
-			</p>
-			<p className="text-left text-gray-10 font-[500] text-[1rem] mt-8 mb-6">
+			</p> */}
+			<p className="text-left text-gray-10 font-[500] text-[1rem] mt-8 mb-6 w-[90%]">
 				{product?.description}
 			</p>
 		</div>

@@ -5,6 +5,7 @@ import BuyModal from "../components/BuyModal";
 import RoomImages from "../components/RoomImages";
 import RoomProducts from "../components/RoomProducts";
 import useRoom from "../hooks/useRoom";
+import "../styles/rooms.css";
 
 interface Props {
 	title: string;
@@ -25,31 +26,38 @@ const Rooms = () => {
 		getRoomById(roomId);
 	}, []);
 
+	console.log(room?.productPrice);
+
 	return (
 		<>
-			<div
-				className="flex flex-col md:flex-row gap-y-[2rem] md:max-h-screen relative
-            overflow-y-clip ]">
-				<div className="fixed inset-y-80 inset-x-80 z-50">
+			<div className="flex flex-col md:flex-row gap-y-[2rem] relative overflow-y-clip ]">
+				{/* <div className="fixed inset-y-80 inset-x-80 z-50">
 					{renderSpinner(load)}
-				</div>
+				</div> */}
 
-				<video
-					controls
-					src="/img/room.mp4"
-					className="h-[30vh] md:h-screen md:w-[50vw] lg:px-[0.3rem]
-               bg-black-70"
-				/>
-
-				<div
-					className="flex flex-col px-[1rem] md:px-[2rem] md:mt-[8rem] gap-y-[2rem]
-               md:self-center w-full  md:h-[80vh]">
+				<div className="flex w-full relative">
+					<video
+						controls
+						src="/img/room.mp4"
+						className="h-[30vh] md:h-[80vh] md:w-[50vw] lg:px-[0.3rem]
+                  bg-black-70"></video>
+					<p
+						className="absolute top-[40%] md:top-[45%] left-[10%] translate-x-[-50%]
+                translate-y-[-50] text-white">
+						GC.{room?.productPrice}
+					</p>
 					<button
-						className="red-btn py-[0.5rem] md:absolute left-2 top-[60%] lg:top-[80%]
+						className="red-btn py-[0.5rem] absolute top-[50%] left-[10%] translate-x-[-50%]
+                   translate-y-[-50]
                    mb-[4rem] z-10"
 						onClick={() => setOpen((prev: boolean) => !prev)}>
 						Buy
 					</button>
+				</div>
+
+				<div
+					className="flex flex-col px-[1rem] md:px-[2rem] md:mt-[8rem] gap-y-[2rem]
+               md:self-center w-full  md:h-[80vh]">
 					<div className="inline-flex sticky top-4 left-6">
 						<button
 							onClick={() => setDetails((prev: boolean) => !prev)}
@@ -101,8 +109,8 @@ const Rooms = () => {
 					) : null}
 
 					{/* products */}
-               
-					<div className="flex flex-col md:max-h-screen overflow-y-scroll py-10">
+
+					<div className="flex flex-col md:max-h-screen  py-10">
 						{details
 							? room?.productIds?.map((product: any, key: number) => (
 									<RoomProducts
@@ -114,7 +122,9 @@ const Rooms = () => {
 									/>
 							  ))
 							: room?.productIds?.map((product: any, key: number) => (
-									<RoomImages imgs={product.images} key={key} />
+									<div className="flex overflow-y-scroll scroller">
+										<RoomImages imgs={product.images} key={key} />
+									</div>
 							  ))}
 					</div>
 					{/* room images */}

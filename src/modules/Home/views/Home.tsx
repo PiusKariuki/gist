@@ -40,7 +40,7 @@ const Home = () => {
 			className="flex flex-col flex-nowrap overflow-x-clip md:px-[4rem]">
 			<div className="fixed top-0 inset-x-0 z-50 bg-white">
 				<Topbar />
-            <Black />
+            {/* <Black /> */}
 			</div>
 
 			<div className="relative">

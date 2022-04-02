@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { user } from "shared/recoil/user";
 
-
-
 const Hero = () => {
 	let navigate = useNavigate();
 
-   const {token} = useRecoilValue<any>(user);
+	const { token } = useRecoilValue<any>(user);
 	return (
 		<div
 			className="flex flex-col md:flex-row py-[2.5rem] px-[2rem] space-y-10 md:space-y-0 
@@ -31,23 +29,13 @@ const Hero = () => {
              duration-300">
 						Join For Free
 					</button>
-				) : (
-					<button
-						onClick={() => navigate(`/myAccount/profile`)}
-						className="bg-red-20 w-[9rem] rounded-md py-[1rem] px-[1rem] text-white
-               font-[900]  mt-[1.4rem] hover:bg-red-600 hover:scale-110 trasition
-               ease-in-out
-               duration-300">
-						View my profile
-					</button>
-				)}
+				) : null}
 			</div>
 			{/* bg img */}
-			<img
-				src="/img/hero.png"
+			<iframe
 				className="flex w-[80vw] h-[30vh] border-1 md:order-2 md:min-w-[55vw]
-             md:h-[45vh] lg:h-[55vh] self-center rounded-3xl object-scale-down"
-			/>
+             md:h-[45vh] lg:h-[55vh] self-center rounded-md object-scale-down"
+				src="https://www.youtube.com/embed/wq1GDVwWz3g?autoplay=0&controls=0"></iframe>
 		</div>
 	);
 };

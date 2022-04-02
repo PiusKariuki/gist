@@ -25,31 +25,22 @@ const ShopProducts: React.FC<Props> = ({
          hover:card-border  border-[0.1rem] rounded-md border-white hover:shadow-2xl relative"
 			onClick={() => navigate(`/product/${id}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
-				<div
-					style={{ backgroundImage: `url(${shopId})` }}
-					className="flex rounded-full self-center bg-center w-8 h-8 card-border
-               bg-no-repeat bg-contain"
-				/>
 				<div className="flex flex-col">
 					<p className="text-black-40 font-[700] text-[1rem] mb-[1rem]">
 						{name}
-						<br />
-						<span className="font-[400]">
-							{userName?.length > 0 ? userName : "unknown"}
-						</span>
 					</p>
 				</div>
 			</div>
 
 			<div
 				className="flex relative w-full bg-no-repeat bg-center bg-contain rounded-md
-            card-border gradient">
+            card-border gradient justify-evenly flex-wrap">
 				{image !== undefined ? (
 					<img
 						src={image}
 						alt=""
 						className="object-scale-down
-               h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
+                  h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
 							currentTarget.src = "/img/picture.png";

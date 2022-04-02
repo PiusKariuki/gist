@@ -24,7 +24,8 @@ const ViewProduct: React.FC<Props> = ({
          hover:card-border rounded-md  hover:shadow-2xl relative"
 			onClick={() => navigate(`/product/${id}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
-				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300">
+				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300 
+            self-center">
 					<img
 						src={shopImage}
 						alt=""

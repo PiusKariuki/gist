@@ -15,17 +15,16 @@ const Thumbnails: React.FC<Props> = ({ images, setIndex }) => {
 	const scrollRef = useRef<any>(null);
 
 	return (
-		<div className="flex relative">
+		<div className="flex relative justify-center">
 			<div
 				ref={scrollRef}
-				className="flex flex-row gap-[2rem] overflow-x-scroll w-[80vw]
-            md:w-[40vw] scroller">
+				className="flex flex-row gap-[2rem] overflow-x-scroll scroller">
 				{images?.map((img: string, key: number) => {
 					return (
 						<img
 							src={img}
 							key={key}
-							className="w-[6rem] md:w-[12rem] md:h-[6rem] rounded-2xl bg-cover bg-center 
+							className="w-[6rem] md:w-[6rem] md:h-[4rem] rounded-lg bg-cover bg-center 
                      bg-no-repeat  cursor-pointer 
                      flex-shrink-0"
 							onClick={() => setIndex(key)}
@@ -35,13 +34,13 @@ const Thumbnails: React.FC<Props> = ({ images, setIndex }) => {
 				{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-				{images?.length > 2 ? (
+				{images?.length > 5 ? (
 					<>
 						<div
-							className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]
+							className=" 
                      w-[3.125rem]
                      h-[3.125rem] rounded-full translate-y-[-50%]
-                     z-10 hidden lg:flex lg:absolute  left-[-10%] top-[50%] 
+                     z-10 hidden lg:flex lg:absolute  left-0 top-[50%] 
                      ">
 							<FontAwesomeIcon
 								onClick={() => scrollLeft(scrollRef)}
@@ -51,10 +50,10 @@ const Thumbnails: React.FC<Props> = ({ images, setIndex }) => {
 							/>
 						</div>
 						<div
-							className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)] 
+							className="
                      z-10 hidden
                      lg:flex lg:absolute text-[2rem] translate-y-[-50%]
-                     w-[3.125rem] h-[3.125rem] rounded-full right-[10%] top-[50%]
+                     w-[3.125rem] h-[3.125rem] rounded-full right-0 top-[50%]
                      ">
 							<FontAwesomeIcon
 								onClick={() => scrollRight(scrollRef)}

@@ -44,10 +44,10 @@ const Searching = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col px-[2rem] md:px-[3rem] py-[1rem]">
+		<div className="flex flex-col px-[2rem] md:px-[3rem] w-screen">
 			{renderSpinner(load)}
 			{filteredProducts.length > 0 ? (
-				<div className="flex sticky top-[6.8rem] w-full bg-white py-8 mb-4 pl-4">
+				<div className="flex  w-full bg-white  mb-4 pl pl-8">
 					<p className="text-gray-20 font-[800] text-[2rem] md:text-[2rem] underline">
 						Products
 					</p>
@@ -55,7 +55,7 @@ const Searching = () => {
 			) : load ? null : (
 				<div
 					className="flex  flex-row w-[15rem] md:w-[20rem] px-[1.2rem] md:px-[2rem] py-[0.5rem] 
-            shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3 mt-[3rem] 
+            shadow-xl self-center md:self-start rounded-xl text-blue-30 space-x-3  
             items-center cursor-pointer">
 					<FontAwesomeIcon icon={faCircleExclamation} size="2x" />
 					<p className="text-blue-30 text-[0.9rem] md:text-[1.1rem] font-[700]">
@@ -65,8 +65,8 @@ const Searching = () => {
 			)}
 
 			<div
-				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] 
-            justify-start gap-y-[2rem] pb-[4rem]">
+				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] w-full
+            justify-around gap-y-[2rem] pb-[4rem]">
 				{filteredProducts.length > 0 &&
 					filteredProducts.map((product: any, key: number) => (
 						<SearchProduct
@@ -81,7 +81,7 @@ const Searching = () => {
 			</div>
 
 			{filteredShops.length > 0 ? (
-				<div className="flex sticky top-[6.8rem] w-full bg-white py-8 mb-4 pl-4">
+				<div className="flex  w-full bg-white py-8 mb-4 pl-4">
 					<p className="text-gray-20 font-[800] text-[2rem] md:text-[2rem] underline">
 						Shops
 					</p>

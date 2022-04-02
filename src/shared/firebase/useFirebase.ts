@@ -31,9 +31,7 @@ const useFirebase = () => {
 					Swal.fire({
 						icon: "info",
 						title: "Uploading image...",
-						titleText: `Uploading image...: ${Math.round(
-							(snapshot.bytesTransferred / snapshot.totalBytes) * 100
-						)}%`,
+						titleText: `Uploading image. Please wait`,
 					});
 					if (snap === 100) Swal.close();
 				},

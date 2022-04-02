@@ -6,6 +6,8 @@ import { cartAtom, cartSelector } from "shared/recoil/cart";
 import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
+
+
 const useOrders = () => {
 	const [userShippings, setUserShippings] = useState<any>([]);
 
@@ -22,6 +24,9 @@ const useOrders = () => {
 	const [tax, setTax] = useState(0);
 	const [shippingName, setShippingName] = useState<any>("");
 	const [openPreview, setOpenPreview] = useState(false);
+	const setUser = useSetRecoilState(user);
+
+
 
 	const getShippingById = async (shippingId: any) => {
 		setLoad(true);
