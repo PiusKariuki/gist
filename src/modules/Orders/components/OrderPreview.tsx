@@ -1,11 +1,39 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { cartAtom, cartSelector } from "shared/recoil/cart";
 import { useRecoilValue } from "recoil";
 import useOrders from "../hooks/useOrders";
 import useSpinner from "shared/components/spinner/useSpinner";
 import { user } from "shared/recoil/user";
 import { useParams } from "react-router-dom";
+import DataTable, { Alignment, createTheme } from "react-data-table-component";
+import "../styles/orders.css";
 
+createTheme("light", {
+	text: {
+		fontSize: "2rem",
+		fontWeight: "2px",
+		primary: "#000000",
+	},
+	background: {
+		default: "inherit",
+	},
+});
+
+const customStyles = {
+	cells: {
+		style: {
+			minHeight: "72px",
+			fontSize: "1rem",
+			fontWeight: "500",
+		},
+	},
+	headCells: {
+		style: {
+			fontSize: "1.5rem",
+			fontWeight: "600",
+		},
+	},
+};
 
 const OrderPreview: React.FC = () => {
 	const cartItems = useRecoilValue<any>(cartAtom);
@@ -15,55 +43,71 @@ const OrderPreview: React.FC = () => {
 	const { wallet } = useRecoilValue<any>(user);
 	let { addressId } = useParams<string>();
 
-   useLayoutEffect(()=>{
-      getShippingById(addressId)
-   },[])
+	useEffect(() => {
+		getShippingById(addressId);
+	}, []);
+
+	const columns = [
+		{
+			name: "Name",
+			selector: (row: any) => row.name,
+		},
+		{
+			name: "Quantity",
+			selector: (row: any) => row.quantity,
+		},
+		{
+			name: "Cost(GC.)",
+			selector: (row: any) => row.price,
+		},
+	];
+
+	const subHeader = () => (
+		<div className="flex flex-col space-y-4 mb-2 text-[0.9rem] font-[600] mt-6">
+			<p className="text-gray-20  justify-self-start">
+				Subtotal:
+				<span className="text-blue-30"> GC.{subTotal}</span>
+			</p>
+			<p className="text-gray-20 justify-self-start">
+				Wallet balance:
+				<span className="text-blue-30"> GC.{wallet - subTotal}</span>
+			</p>
+			<p className="text-gray-20 justify-self-start">
+				Shipping Address:
+				<span className="text-blue-30"> {shippingName}</span>
+			</p>
+			<button
+				onClick={() => handleSubmit(addressId)}
+				className="text-blue-30 border-blue-30 border-2 px-4 py-1 rounded-md w-64
+            hover:bg-blue-30 hover:text-white font-[700]">
+				Place order
+			</button>
+		</div>
+	);
 
 	return (
-		<div
-			className="flex flex-col py-[3rem] px-[1rem]  bg-white z-50 opacity-100
-            rounded-md gap-y-[2rem]  w-[80vw] md:w-[60vw]">
-			<div
-				className="flex  flex-wrap space-x-2  space-y-2 md:space-x-10 items-center 
-               md:space-y-0 bg-white">
-				<p className="text-gray-20 text-[1.3rem] space-x-4 font-[600]">
-					Products:{" "}
-				</p>
-				{cartItems.map((item: any, key: number) => (
-					<p
-						key={key}
-						className="text-blue-40 px-[0.2rem] shadow-2xl font-[600] rounded-xl text-[1.2rem]">
-						{item.name}
-					</p>
-				))}
+		<div className="flex  w-screen flex-col px-8 py-1 justify-center">
+			<div className="flex flex-col  w-[90%] border-2">
+				<DataTable
+					columns={columns}
+					data={cartItems}
+					responsive
+					pagination
+					customStyles={customStyles}
+					subHeaderWrap
+					striped
+					title="Orders"
+					theme="light"
+					fixedHeader
+					fixedHeaderScrollHeight="500px"
+					pointerOnHover
+					className="bg text-color"
+					subHeader
+					subHeaderAlign={Alignment.LEFT}
+					// subHeaderComponent={subHeader()}
+				/>
 			</div>
-			<p className="space-x-4 font-[600] text-[1.3rem] text-blue-40">
-				<span className="text-gray-20  ">
-					Sub total:&nbsp;&nbsp;GC.&nbsp;&nbsp;
-				</span>
-				{subTotal}
-			</p>
-			<p className=" text-[1.3rem] space-x-4 font-[600] text-blue-40">
-				<span className="text-gray-20">
-					Wallet balance:&nbsp;&nbsp;GC.&nbsp;&nbsp;
-				</span>
-				{wallet - subTotal}
-			</p>
-			<p className="text-[1.3rem] space-x-4 font-[600] text-blue-40">
-				<span className="text-gray-20">Shipping Address:&nbsp;&nbsp;</span>
-				{shippingName}
-			</p>
-
-			<div className="flex flex-row space-x-10">
-				<button
-					onClick={() => handleSubmit(addressId)}
-					className="bg-gray-20 px-[0.2rem] py-[0.5rem] w-[8rem]
-                  mt-[2rem] text-[1.2rem] text-white font-[700] rounded-2xl hover:bg-blue-600
-                  disabled:bg-gray-400">
-					Place order
-				</button>
-				{renderSpinner(load)}
-			</div>
+         {subHeader()}
 		</div>
 	);
 };

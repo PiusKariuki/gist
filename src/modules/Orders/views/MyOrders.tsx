@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef} from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import EditOrder from "../components/EditOrder";
@@ -100,7 +100,6 @@ const MyOrders = () => {
 				<DataTable
 					columns={columns}
 					data={populate}
-					selectableRows
 					responsive
 					pagination
 					customStyles={customStyles}

@@ -1,3 +1,4 @@
+import useLogin from "modules/Auth/hooks/useLogin";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -5,8 +6,6 @@ import useRequest from "shared/http/useRequest";
 import { cartAtom, cartSelector } from "shared/recoil/cart";
 import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
-
-
 
 const useOrders = () => {
 	const [userShippings, setUserShippings] = useState<any>([]);
@@ -16,7 +15,6 @@ const useOrders = () => {
 
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const cartItems = useRecoilValue<any>(cartAtom);
-	const subTotal = useRecoilValue<any>(cartSelector);
 	const { _id } = useRecoilValue<any>(user);
 	const { Axios } = useRequest();
 	let navigate = useNavigate();
@@ -25,8 +23,6 @@ const useOrders = () => {
 	const [shippingName, setShippingName] = useState<any>("");
 	const [openPreview, setOpenPreview] = useState(false);
 	const setUser = useSetRecoilState(user);
-
-
 
 	const getShippingById = async (shippingId: any) => {
 		setLoad(true);
@@ -102,6 +98,8 @@ const useOrders = () => {
 			});
 
 			setLoad(false);
+			// setUser(data);
+
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been placed",

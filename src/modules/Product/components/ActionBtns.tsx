@@ -16,8 +16,6 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 	const [orders, setOrders] = useState<number>(1);
 	const [variation, setVariation] = useState<any>(null);
 	const { addToCart } = useCart();
-
-   console.log(variation);
    
 	return (
 		<div

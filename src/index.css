@@ -55,6 +55,10 @@ body::-webkit-scrollbar {
 	.hmmucc {
 		@apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
 	}
+	/* subheader */
+	.kJEgDS {
+		justify-content: flex-start;
+	}
 
 	/* ................................gradient bg for cards........................ */
 	.gradient {
