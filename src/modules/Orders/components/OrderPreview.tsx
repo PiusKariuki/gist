@@ -87,6 +87,7 @@ const OrderPreview: React.FC = () => {
 
 	return (
 		<div className="flex  w-screen flex-col px-8 py-1 justify-center">
+			{renderSpinner(load)}
 			<div className="flex flex-col  w-[90%] border-2">
 				<DataTable
 					columns={columns}
@@ -104,10 +105,9 @@ const OrderPreview: React.FC = () => {
 					className="bg text-color"
 					subHeader
 					subHeaderAlign={Alignment.LEFT}
-					// subHeaderComponent={subHeader()}
 				/>
 			</div>
-         {subHeader()}
+			{subHeader()}
 		</div>
 	);
 };

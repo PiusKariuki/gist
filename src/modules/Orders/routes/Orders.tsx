@@ -4,7 +4,7 @@ import Existing from "../components/ExistingOrder";
 import NewShipping from "../components/NewShipping";
 import OrderPreview from "../components/OrderPreview";
 
-const Orders:React.FC = () => {
+const Orders: React.FC = () => {
 	return (
 		<div className="flex flex-col w-full relative px-[3rem] py-[2rem] lg:py-[1rem]">
 			<Routes>

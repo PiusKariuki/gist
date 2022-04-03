@@ -66,7 +66,7 @@ const Searching = () => {
 
 			<div
 				className="flex flex-col md:flex-row flex-wrap gap-x-[2rem] w-full
-            justify-around gap-y-[2rem] pb-[4rem]">
+            justify-start gap-y-[2rem] pb-[4rem]">
 				{filteredProducts.length > 0 &&
 					filteredProducts.map((product: any, key: number) => (
 						<SearchProduct

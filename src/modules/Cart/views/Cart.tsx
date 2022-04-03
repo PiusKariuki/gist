@@ -4,6 +4,7 @@ import CartItem from "../components/CartItem";
 import useCart from "../hooks/useCart";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { cartAtom, cartOpen } from "shared/recoil/cart";
+import "../styles/cart.css"
 
 const Cart = () => {
 	const { addToCart, removeItem, totalValue } = useCart();
@@ -16,8 +17,8 @@ const Cart = () => {
 			className="w-[60vw] md:w-[30vw] lg:w-[20vw] flex flex-col px-[0.5rem] py-[2rem] gap-y-[0.5rem]
           min-h-screen">
 			<div
-				className="flex flex-col gap-[2rem] bg-white max-h-[60vh] lg:max-h-[50vh] overflow-y-scroll
-            px-[0.8rem] md:px-[0.8rem] py-[3rem] border-t-2">
+				className="flex flex-col gap-[2rem] bg-white max-h-[60vh] lg:max-h-[50vh] 
+            overflow-y-scroll  px-[0.8rem] md:px-[0.8rem] py-[3rem] border-t-2 scroller">
 				{cartValue.length > 0 ? (
 					cartValue?.map((item: any, key: number) => (
 						<CartItem

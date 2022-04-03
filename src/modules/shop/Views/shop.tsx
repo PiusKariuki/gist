@@ -17,7 +17,7 @@ const Shop: React.FC = (): JSX.Element => {
 		<div className="flex w-screen flex-col gap-y-4 px-4">
 			{renderSpinner(load)}
 			{/* shop existence conditional */}
-			{shopDetails && shopDetails.length ? (
+			{!load && shopDetails && shopDetails.length ? (
 				<div className="flex flex-col w-full">
 					<p
 						className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]

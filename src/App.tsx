@@ -6,7 +6,7 @@ import EditProfile from "modules/Manage/components/profile/EditProfile";
 import MyShopsRoutes from "modules/Manage/routes/MyShopRoutes";
 import Manage from "modules/Manage/views/Manage";
 import MyOrders from "modules/Orders/views/MyOrders";
-import Orders from "modules/Orders/views/Orders";
+import Orders from "modules/Orders/routes/Orders";
 import Product from "modules/Product/views/Product";
 import Rooms from "modules/Rooms/views/Rooms";
 import Searching from "modules/Search/views/Searching";
