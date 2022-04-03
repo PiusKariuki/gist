@@ -21,7 +21,7 @@ const ShopProducts: React.FC<Props> = ({
 	let navigate = useNavigate();
 	return (
 		<div
-			className="flex flex-col px-[0.2rem] pb-[0.2rem] pt-[1rem] bg-white hover:border-[0.1rem] 
+			className="flex flex-col px-[1rem] pb-[1rem] pt-[1rem] bg-white hover:border-[0.1rem] 
          hover:card-border  border-[0.1rem] rounded-md border-white hover:shadow-2xl relative"
 			onClick={() => navigate(`/product/${id}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
