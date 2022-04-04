@@ -7,6 +7,19 @@ import { cartAtom, cartSelector } from "shared/recoil/cart";
 import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
+interface UserObject {
+	token: string;
+	_id: string;
+	userName: string;
+	profilePhoto: string;
+	phonenumber: string;
+	email: string;
+	firstName: string;
+	lastName: string;
+	bio: string;
+	wallet: number;
+}
+
 const useOrders = () => {
 	const [userShippings, setUserShippings] = useState<any>([]);
 
@@ -93,18 +106,33 @@ const useOrders = () => {
 		}
 
 		try {
-			await Axios.post(`/orders/${_id}`, {
+			let {
+				data: { user_balance },
+			} = await Axios.post(`/orders/${_id}`, {
 				order: sentObj,
 			});
 
 			setLoad(false);
-			// setUser(data);
+			setUser((prev: UserObject) => {
+				return {
+					token: prev.token,
+					_id: prev._id,
+					userName: prev.userName,
+					profilePhoto: prev.profilePhoto,
+					phonenumber: prev.phonenumber,
+					email: prev.email,
+					firstName: prev.firstName,
+					lastName: prev.lastName,
+					bio: prev.bio,
+					wallet: user_balance,
+				};
+			});
 
 			Swal.fire({
 				icon: "success",
 				title: "Your order has been placed",
 				timer: 1500,
-			}).then(() => navigate("/"));
+			});
 			setCartAtom([]);
 			setOpenPreview(false);
 			navigate("/");

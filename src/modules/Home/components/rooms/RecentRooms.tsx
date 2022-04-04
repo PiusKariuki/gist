@@ -26,7 +26,8 @@ const RecentRooms: React.FC<Props> = ({
          rounded-md hover:shadow-2xl relative"
 			onClick={() => navigate(`/rooms/${roomId}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
-				<div className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300
+				<div
+					className="flex gradient rounded-full h-8 w-8 border-[.1rem] border-gray-300
              self-center">
 					<img
 						src={userImage}
@@ -49,15 +50,31 @@ const RecentRooms: React.FC<Props> = ({
 			</div>
 
 			<div className="flex relative gradient border-[0.0625rem] rounded-md">
-				<img
-					src={shopImage}
-					alt=""
-					className="h-[40vh] md:w-[25rem]  3xl:w-[48rem] 3xl:h-[30vh] object-scale-down"
-					onError={({ currentTarget }) => {
-						currentTarget.onerror = null;
-						currentTarget.src = "/img/picture.png";
-					}}
-				/>
+				{shopImage?.length > 0 ? (
+					<img
+						src={shopImage}
+						alt=""
+						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
+                  object-scale-down z-10"
+						onError={({ currentTarget }) => {
+							currentTarget.currentSrc === undefined
+								? (currentTarget.src = "/img/picture.png")
+								: null;
+							currentTarget.onerror = null;
+						}}
+					/>
+				) : (
+					<img
+						src="/img/picture.png"
+						alt=""
+						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
+                  object-cover z-10"
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null;
+							currentTarget.src = "/img/picture.png";
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	);

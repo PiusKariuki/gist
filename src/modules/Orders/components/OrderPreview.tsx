@@ -86,9 +86,9 @@ const OrderPreview: React.FC = () => {
 	);
 
 	return (
-		<div className="flex  w-screen flex-col px-8 py-1 justify-center">
+		<div className="flex flex-col flex-nowrap w-screen ml-[-2rem]  px-4 py-1  ">
 			{renderSpinner(load)}
-			<div className="flex flex-col  w-[90%] border-2">
+			<div className="flex flex-col self-start justify-self-start w-[86%] border-2">
 				<DataTable
 					columns={columns}
 					data={cartItems}
