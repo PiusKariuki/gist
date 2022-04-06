@@ -18,7 +18,7 @@ const MainImg: React.FC<Props> = ({ images, index, setIndex }) => {
             <img
 					src={images && images[index]}
 					alt="productImg"
-					className="w-full object-scale-down flex max-h-[80vh] md:max-h-[60vh] xl:max-h-[90vh]"
+					className="w-full object-cover flex max-h-[80vh] md:max-h-[60vh] xl:max-h-[90vh]"
 					onError={({ currentTarget }) => {
 						currentTarget.onerror = null;
 						currentTarget.src = "/img/picture.png";

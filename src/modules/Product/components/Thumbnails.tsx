@@ -25,7 +25,7 @@ const Thumbnails: React.FC<Props> = ({ images, setIndex }) => {
 							src={img}
 							key={key}
 							className="w-[6rem] md:w-[6rem] md:h-[4rem] rounded-lg bg-cover bg-center 
-                     bg-no-repeat  cursor-pointer 
+                     bg-no-repeat  cursor-pointer  object-center object-cover
                      flex-shrink-0"
 							onClick={() => setIndex(key)}
 						/>
