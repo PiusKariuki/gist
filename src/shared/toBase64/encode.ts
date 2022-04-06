@@ -4,10 +4,9 @@ export const getBase64 = (file: any) => {
 		let i = new Image();
 
 		i.onload = () => {
-			if (i?.width < 800 && i?.height < 800){
-            resolve(baseURL);
-         } 
-			else {
+			if (i?.width < 1000 && i?.height < 1000) {
+				resolve(baseURL);
+			} else {
 				rejected("Image size is too large");
 			}
 		};
