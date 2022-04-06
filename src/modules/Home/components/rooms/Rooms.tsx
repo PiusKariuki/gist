@@ -43,13 +43,13 @@ const Rooms = () => {
 					{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-					{rooms?.length && rooms.length > 5 ? (
+					{rooms?.length && rooms.length > 3 ? (
 						<>
 							<div
 								className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]   w-[3.125rem]
-                h-[3.125rem] rounded-full
-               z-10 hidden lg:flex lg:absolute  left-10 top-[50%] 
-               ">
+                        h-[3.125rem] rounded-full
+                        z-10 hidden lg:flex lg:absolute  left-10 top-[50%] 
+                        ">
 								<FontAwesomeIcon
 									onClick={() => scrollLeft(scrollRef)}
 									icon={faArrowLeft}
