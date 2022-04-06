@@ -12,14 +12,14 @@ const ViewShop: React.FC<Props> = ({ name, img, id }) => {
 
 	return (
 		<div
-			className="flex relative flex-shrink-0  card-border rounded-md hover:shadow-2xl
-         bg-white px-[3rem] gradient"
+			className="flex relative flex-shrink-0  card-border rounded-lg hover:shadow-2xl
+         bg-white gradient"
 			onClick={() => navigate(`/shop/${id}`)}>
 			<img
 				src={img}
 				alt=""
 				className="object-cover w-[18rem] h-[40vh] 3xl:w-[48rem] 3xl:h-[30vh] 
-            object-center z-10"
+            object-center z-10 rounded-lg"
 				onError={({ currentTarget }) => {
 					currentTarget.onerror = null;
 					currentTarget.src = "/img/picture.png";

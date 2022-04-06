@@ -24,7 +24,7 @@ const RecentRooms: React.FC<Props> = ({
 	return (
 		<div
 			className="flex flex-col px-[0.5rem] py-[0.3rem] bg-white card-border
-         rounded-md hover:shadow-2xl relative"
+         rounded-lg hover:shadow-2xl relative"
 			onClick={() => navigate(`/rooms/${roomId}`)}>
 			<div className="flex flex-row gap-x-[1rem]">
 				<div
@@ -56,7 +56,7 @@ const RecentRooms: React.FC<Props> = ({
 						src={shopImage}
 						alt=""
 						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
-                  object-scale-down z-10"
+                  object-cover z-10 rounded-lg"
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
 							currentTarget.src = "/img/picture.png";
@@ -67,7 +67,7 @@ const RecentRooms: React.FC<Props> = ({
 						src="/img/picture.png"
 						alt=""
 						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
-                  object-scale-down z-10"
+                  object-cover z-10"
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
 							currentTarget.src = "/img/picture.png";
