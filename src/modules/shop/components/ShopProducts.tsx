@@ -39,7 +39,7 @@ const ShopProducts: React.FC<Props> = ({
 					<img
 						src={image}
 						alt=""
-						className="object-scale-down
+						className="object-cover rounded-md
                   h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
@@ -50,7 +50,7 @@ const ShopProducts: React.FC<Props> = ({
 					<img
 						src="img/picture.png"
 						alt=""
-						className="object-scale-down
+						className="object-cover rounded-md
                   h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;

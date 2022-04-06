@@ -21,7 +21,7 @@ const SearchShop: React.FC<Props> = ({ name, img, userName, id }) => {
 					<img
 						src={img}
 						className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
-                  self-center  object-scale-down"
+                  self-center  object-cover rounded-md"
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
 							currentTarget.src = "/img/picture.png";
@@ -31,7 +31,7 @@ const SearchShop: React.FC<Props> = ({ name, img, userName, id }) => {
 					<img
 						src="/img/picture.png"
 						className="w-[60vw] md:w-[30vw] lg:w-[24vw] h-[12rem] 
-                  self-center  object-scale-down"
+                  self-center  object-cover rounded-md"
 					/>
 				)}
 			</div>
