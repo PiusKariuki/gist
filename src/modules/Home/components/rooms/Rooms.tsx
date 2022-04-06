@@ -27,7 +27,7 @@ const Rooms = () => {
 					{renderSpinner(load)}
 					<div
 						ref={scrollRef}
-						className="scroller flex flex-row gap-x-8 overflow-x-auto w-screen">
+						className="scroller flex flex-row gap-x-8 overflow-x-scroll w-screen">
 						{rooms.map((room: any, key: number) => (
 							<RecentRooms
 								title={room?.title}
