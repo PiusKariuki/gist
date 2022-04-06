@@ -56,7 +56,7 @@ const ViewProduct: React.FC<Props> = ({
 						src={image}
 						alt=""
 						className="flex h-[40vh] w-[25rem] md:w-[25rem]  3xl:w-[52rem] 3xl:h-[20vh]
-                  object-scale-down z-10"
+                  object-cover z-10"
 						onError={({ currentTarget }) => {
 							currentTarget.currentSrc === undefined
 								? (currentTarget.src = "/img/picture.png")
