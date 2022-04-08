@@ -39,7 +39,7 @@ const ShopProducts: React.FC<Props> = ({
 					<img
 						src={image}
 						alt=""
-						className="object-cover rounded-md
+						className="object-cover rounded-md object-center w-[90vw]
                   h-[40vh] md:h-[30vh] md:w-[16rem] lg:h-[35vh] 3xl:w-[30rem] 3xl:h-[20vh] "
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;

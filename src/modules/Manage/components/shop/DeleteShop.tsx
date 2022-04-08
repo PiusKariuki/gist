@@ -1,11 +1,11 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import useDeleteShop from "../../Hooks/shop/useDeleteShop";
+import useDeleteShop from "../../Hooks/shop/useCloseShop";
 
 const DeleteShop: React.FC<{
 	name: string;
-	shopId: string;
+	shopId: string | undefined;
 	setOpenDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ name, shopId, setOpenDelete }) => {
 	const { load, deleteShop } = useDeleteShop();
@@ -15,8 +15,8 @@ const DeleteShop: React.FC<{
 	};
 	return (
 		<div
-			className="flex flex-col py-[3rem] px-[1rem] relative bg-white justify-around 
-         rounded-md gap-y-[3rem] shadow-lg">
+			className="flex flex-col py-[3rem] px-[1rem] relative z-50 bg-shite
+         justify-around rounded-md gap-y-[3rem] shadow-lg w-full md:w-1/2">
 			<FontAwesomeIcon
 				icon={faXmark}
 				size="2x"
@@ -47,9 +47,9 @@ const DeleteShop: React.FC<{
 					type="submit"
 					disabled={value !== name}
 					className=" border-[0.2rem] border-red-20 px-[1rem] py-[0.4rem]
-               text-red-20 text-[700] disabled:bg-gray-200 disabled:border-red-300
+               text-red-20 font-[700] disabled:bg-gray-200 disabled:border-red-300
                disabled:text-red-200">
-					I understand the consequences, delete this shop.
+					I understand the consequences,close this shop.
 				</button>
 			</form>
 		</div>

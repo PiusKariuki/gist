@@ -14,11 +14,11 @@ const Cart = () => {
 
 	return (
 		<div
-			className="w-[60vw] md:w-[30vw] lg:w-[20vw] flex flex-col px-[0.5rem] py-[2rem] gap-y-[0.5rem]
+			className="w-[70vw] md:w-[30vw] lg:w-[20vw] flex flex-col px-[0.5rem] py-[2rem] gap-y-[0.5rem]
           min-h-screen">
 			<div
-				className="flex flex-col gap-[2rem] bg-white max-h-[60vh] lg:max-h-[50vh] 
-            overflow-y-scroll  px-[0.8rem] md:px-[0.8rem] py-[3rem] border-t-2 scroller">
+				className="flex flex-col gap-y-4 md:gap-y-[2rem] bg-white max-h-[60vh] lg:max-h-[50vh] 
+            overflow-y-scroll  px-[0.8rem] md:px-[0.8rem] py-[2rem] border-t-2 ">
 				{cartValue.length > 0 ? (
 					cartValue?.map((item: any, key: number) => (
 						<CartItem
@@ -34,10 +34,6 @@ const Cart = () => {
 					<div
 						className="flex flex-row self-center items-center py-[3rem] gap-x-[2rem]
                 px-[2rem]">
-						<div
-							style={{ backgroundImage: `url(/img/wallet.png)` }}
-							className="bg-contain bg-center  bg-no-repeat h-[10rem] w-[7rem]"
-						/>
 						<p className="text-red-20 font-[700] text-[1rem] md:text-[1rem]">
 							Your cart is empty.
 						</p>
@@ -46,8 +42,8 @@ const Cart = () => {
 			</div>
 
 			{cartValue.length > 0 ? (
-				<>
-					<div className="flex flex-row md:text-[1rem] justify-between self-start ">
+				<div className=" mt-auto mb-4">
+					<div className="flex flex-row md:text-[1rem] justify-between self-start">
 						<p className="font-[500]">Estimated shipping &nbsp;&nbsp;</p>
 						<p className="font-[600] text-blue-20">GC. 0.00</p>
 					</div>
@@ -78,7 +74,7 @@ const Cart = () => {
                   disabled:bg-gray-300  my-[1.5rem]">
 						Checkout
 					</button>
-				</>
+				</div>
 			) : null}
 		</div>
 	);

@@ -1,6 +1,5 @@
 import {
 	faTimes,
-	faArrowRight,
 	faShoppingCart,
 	faBars,
 } from "@fortawesome/free-solid-svg-icons";
@@ -47,21 +46,20 @@ const Topbar = () => {
 					onChange={handleChange}
 					className={`${
 						searching
-							? " w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md md:px-[1.4rem] outline-none"
+							? " w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md px-4 md:px-[1.4rem] outline-none"
 							: token?.length < 1
-							? "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
-							: "little:w-[25vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							? "little:w-[50vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							: "little:w-[50vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 					}`}
 					placeholder="search"
 					value={input}
 				/>
 				<FontAwesomeIcon
 					icon={faTimes}
-					// size="1x"
 					color="red"
 					className={`${
 						searching
-							? "absolute text-[1.1rem] md:hidden right-[17%] top-[15%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%]"
+							? "absolute text-[1.1rem] md:hidden right-[17%] top-[35%] md:top-[30%] lg:top-[15%] lg:text-[1.5rem] lg:right-[10%] translate-x-[-50%] translate-y-[-50]"
 							: "hidden"
 					}`}
 					onClick={() => {
@@ -107,11 +105,11 @@ const Topbar = () => {
 					}`}
 				/>
 				{/* {searching ? null : ( */}
-					<div
-						className="absolute bg-blue-20 text-[1rem] font-[900] right-[-58%] top-[-20%] 
+				<div
+					className="absolute bg-blue-20 text-[1rem] font-[900] right-[-58%] top-[-20%] 
                w-[1.8rem] h-[1.8rem] rounded-full text-white text-center pt-[0.2rem]">
-						{number}
-					</div>
+					{number}
+				</div>
 				{/* )} */}
 			</div>
 			{token?.length > 0 ? (

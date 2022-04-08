@@ -108,7 +108,7 @@ const useRegister = () => {
 				phonenumber: phone,
 				profilePhoto: uri,
 			};
-			let {data} = await Axios.post("/register", newUser);
+			let {data} = await Axios.post("/registerv1", newUser);
 			let newObj = {
 				token: data.token,
 				_id: data.user._id,

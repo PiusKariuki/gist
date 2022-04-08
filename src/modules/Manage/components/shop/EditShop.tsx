@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "shared/styles/phoneInput.css";
 import useSpinner from "shared/components/spinner/useSpinner";
@@ -6,6 +6,8 @@ import useEditShop from "../../Hooks/shop/useEditShop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import useShop from "../../Hooks/shop/useShop";
+import DeleteShop from "./DeleteShop";
+import { useParams } from "react-router-dom";
 
 const EditShop: React.FC = () => {
 	const {
@@ -27,6 +29,8 @@ const EditShop: React.FC = () => {
 	} = useEditShop();
 
 	const { getShopsByUserId } = useShop();
+	let { shopId } = useParams<string>();
+	const [openDelete, setOpenDelete] = useState(false);
 
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -39,10 +43,20 @@ const EditShop: React.FC = () => {
 		getShopsByUserId();
 	}, []);
 
-   
-
 	return (
 		<div className="flex flex-col rounded-2xl px-[1rem] py-[3rem]  relative">
+			{openDelete ? (
+				<div
+					className="w-screen h-screen flex fixed z-50 bg-white top-0 left-0 items-center 
+                  justify-center opacity-95">
+					<DeleteShop
+						name={shopName}
+						shopId={shopId}
+						setOpenDelete={setOpenDelete}
+					/>
+				</div>
+			) : null}
+
 			<form
 				autoComplete="off"
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -146,14 +160,22 @@ const EditShop: React.FC = () => {
 				<div className="flex flex-col-reverse w-full md:w-[45%] gap-y-[2rem] ">
 					{/* button */}
 					<div
-						className="flex w-full flex-row gap-x-[1rem] lg:gap-x-40 order-1 
+						className="flex w-full flex-row justify-between lg:gap-x-40 order-1 
                ">
 						<button
 							type="submit"
 							disabled={load}
-							className="bg-blue-20  px-[2rem] py-[0.5rem]  rounded-lg self-center text-white
+							className="bg-blue-20  px-[2rem] py-[0.3rem]  rounded-lg self-center text-white
                      text-[1rem] font-[700] disabled:bg-gray-400">
 							Update
+						</button>
+						<button
+							type="button"
+							onClick={() => setOpenDelete(true)}
+							disabled={load}
+							className="px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-red-20
+                      text-red-20 hover:text-white hover:bg-red-20 font-[700]">
+							Close shop
 						</button>
 						{renderSpinner(load)}
 					</div>
