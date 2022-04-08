@@ -5,6 +5,7 @@ import useRequest from "shared/http/useRequest";
 import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
+
 const useOrderByShopID = () => {
 	const { Axios } = useRequest();
 	const [orders, setOrders] = useState<any>([]);
@@ -14,62 +15,26 @@ const useOrderByShopID = () => {
 	const [orderId, setOrderId] = useState<any>("");
 	const [open, setOpen] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
+
 	let navigate = useNavigate();
 
 	const columns = [
 		{
 			name: "Date Placed",
-			selector: (row: any) => row.date,
+			selector: (row: any) => new Date(row.date).toLocaleDateString(),
 		},
 		{
 			name: "Status",
 			selector: (row: any) => row.status,
 		},
 		{
-			name: "Edit",
-			selector: (row: any) => row.edit,
-		},
-		{
-			name: "View",
-			selector: (row: any) => row.view,
+			name: "actions",
+			selector: (row: any) => row.actions,
 		},
 	];
 
-	let populate = orders.map((obj: any) =>
-		Object.assign(obj, {
-			edit: (
-				<div className="flex w-full gap-x-[2rem]">
-					<button
-						className="bg-gray-20 hover:bg-blue-40 text-white px-[1rem] py-[0.3rem] h-8
-                  rounded-2xl"
-						id={obj._id}
-						value={obj._id}
-						onClick={(e) => {
-							setOrderId(e.currentTarget.value);
-							setOpen(true);
-						}}>
-						Edit
-					</button>
-				</div>
-			),
-			view: (
-				<div className="flex w-full gap-x-[2rem]">
-					<button
-						className="bg-blue-40  hover:bg-gray-20 text-white px-[1rem] py-[0.3rem] h-8
-                  rounded-2xl"
-						id={obj._id}
-						value={obj._id}
-						onClick={(e) => {
-							getOrderById(e.currentTarget.value);
-							setOpen(false);
-						}}>
-						View
-					</button>
-				</div>
-			),
-			date: new Date(obj.createdAt).toLocaleDateString(),
-		})
-	);
+
+
 
 	const getMyShop = async () => {
 		setLoad(true);
@@ -98,7 +63,18 @@ const useOrderByShopID = () => {
 		}
 	};
 
-	// .............................edit order part
+	const getOrdersByUserID = async () => {
+		setLoad(true);
+		try {
+			let { data } = await Axios.get(`/orders/${_id}`);
+			setOrders(data);
+			setLoad(false);
+		} catch (error) {
+			setLoad(false);
+		}
+	};
+
+	
 	const editOrder = async (
 		e: React.FormEvent<HTMLFormElement>,
 		orderId: string,
@@ -129,7 +105,7 @@ const useOrderByShopID = () => {
 
 	{
 		/*......................................
-      *get order by id and then naviigate to the product  id. happens on click view
+      *get order by id and then naviigate to the product  
    ......................................*/
 	}
 	const getOrderById = async (id: string) => {
@@ -145,16 +121,19 @@ const useOrderByShopID = () => {
 
 	return {
 		getOrderByShopID,
+		getOrdersByUserID,
 		columns,
 		load,
 		getMyShop,
-		populate,
 		open,
 		setOpen,
 		orderId,
 		shopId,
 		editOrder,
 		setStatus,
+		orders,
+      getOrderById,
+      setOrderId
 	};
 };
 

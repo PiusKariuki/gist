@@ -1,6 +1,7 @@
-import React, { useEffect, useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
+import useTable from "shared/hooks/useTable";
 import EditOrder from "../components/EditOrder";
 import useMyOrders from "../hooks/useMyOrders";
 import "../styles/orders.css";
@@ -38,15 +39,21 @@ const MyOrders = () => {
 		columns,
 		load,
 		getMyShop,
-		populate,
 		open,
 		setOpen,
 		orderId,
 		shopId,
+		getOrdersByUserID,
+		orders,
+		getOrderById,
+		setOrderId,
 	} = useMyOrders();
 
 	const { renderSpinner } = useSpinner();
 	const formRef = useRef<any>();
+	const [actions, setActions] = useState(["view", "edit"]);
+	const { populate } = useTable();
+   
 
 	{
 		/*......................................
@@ -59,29 +66,65 @@ const MyOrders = () => {
 	}
 
 	useEffect(() => {
-		 getOrderByShopID(shopId);
+		getOrderByShopID(shopId);
 	}, [open]);
-
 
 	useEffect(() => {
 		getMyShop();
 	}, []);
 
    
+	/**
+	 * Description: Action btns click handler
+	 * @param {string} action
+	 * @param {string} target
+	 * @returns {any}
+	 */
+	const handleClick = async (action: string,target: string) => {
+		switch (action) {
+			case "view":
+				await getOrderById(target);
+				setOpen(false);
+				break;
+			case "edit":
+				setOrderId(target);
+				setOpen(true);
+				break;
+
+			default:
+				break;
+		}
+	};
+
 	return (
 		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">
 			<div ref={formRef} className="flex flex-col gap-y-[0.1rem]  px-[1rem]">
-				<p
-					className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.3rem] mt-[3rem] 
-               mb-[0rem] text-black-80">
-					Select a shop to view its orders
-				</p>
+				<div className="inline-flex gap-x-4 items-center">
+					<button
+						onClick={async() => {
+							await getOrderByShopID(shopId);
+							setActions(["view", "edit"]);
+						}}
+						className="text-blue-40  disabled:text-gray-20 font-semibold self-start  py-2">
+						My shop orders
+					</button>
+					<p className="text-gray-20 font-semibold">/</p>
+					<button
+						onClick={async () => {
+							setActions(["view"]);
+							await getOrdersByUserID();
+						}}
+						className="text-blue-40  disabled:text-gray-20 font-semibold self-start  py-2">
+						My orders
+					</button>
+				</div>
+
 				{/*......................................
                *
                *map users' shop and create  btns
                *
                ......................................*/}
-	
+
 				<div className="absolute top-48 left-[48%] mt-[1rem]">
 					{renderSpinner(load)}
 				</div>
@@ -89,17 +132,13 @@ const MyOrders = () => {
 
 			<div className="flex flex-col w-full border-2 mt-[4rem] relative">
 				<div
-					className={`${
-						open
-							? "fixed z-50 right-[0%] top-[8%]"
-							: "hidden"
-					}`}>
+					className={`${open ? "fixed z-50 right-[0%] top-[8%]" : "hidden"}`}>
 					<EditOrder setOpen={setOpen} orderId={orderId} shopId={shopId} />
 				</div>
 
 				<DataTable
 					columns={columns}
-					data={populate}
+					data={populate(orders, actions, handleClick)}
 					responsive
 					pagination
 					customStyles={customStyles}

@@ -1,4 +1,3 @@
-import useCart from "modules/Cart/hooks/useCart";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
