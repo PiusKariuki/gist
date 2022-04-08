@@ -79,8 +79,8 @@ const ViewProduct: React.FC<Props> = ({
 
 				<p
 					className="absolute bottom-[4%] right-[5%] text-white font-[600] text-[1rem]
-               bg-gray-20 px-[1rem] opacity-50 rounded-xl z-20">
-					GC. {price}
+               bg-gray-20 px-[1rem] opacity-100 rounded-xl z-20">
+					GC. {price.toLocaleString()}
 				</p>
 			</div>
 		</div>

@@ -113,7 +113,7 @@ const useEditProfile = () => {
          *Only push image when a new img has been uploaded
       ......................................*/
 		}
-		if (img.length > 60)
+		if (img?.length > 60)
 			updateObj = {
 				firstName: fname,
 				lastName: lname,
@@ -135,6 +135,7 @@ const useEditProfile = () => {
 		}
 		try {
 			let { data } = await Axios.put(`/users/${userObj?._id}`, updateObj);
+         
 			Swal.fire({
 				icon: "success",
 				text: "Your profile has been updated",

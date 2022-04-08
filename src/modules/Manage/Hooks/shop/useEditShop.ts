@@ -30,7 +30,7 @@ const useEditShop = () => {
 
 			setShopName(name);
 			setLocation(location);
-			setImg(image);
+			// setImg(image);
 			setDesc(description);
 			setPhone(phoneNumber);
 			setEmail(email);
