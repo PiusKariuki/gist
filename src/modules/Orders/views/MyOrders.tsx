@@ -55,16 +55,6 @@ const MyOrders = () => {
 	const { populate } = useTable();
    
 
-	{
-		/*......................................
-      *
-      *get orders
-
-      *use load and open in dependency array
-      *set the current shop each time the edit btn is clicked for reference
-      ......................................*/
-	}
-
 	useEffect(() => {
 		getOrderByShopID(shopId);
 	}, [open]);
@@ -101,29 +91,25 @@ const MyOrders = () => {
 			<div ref={formRef} className="flex flex-col gap-y-[0.1rem]  px-[1rem]">
 				<div className="inline-flex gap-x-4 items-center">
 					<button
-						onClick={async() => {
+						disabled={actions.length > 1}
+						onClick={async () => {
 							await getOrderByShopID(shopId);
 							setActions(["view", "edit"]);
 						}}
-						className="text-blue-40  disabled:text-gray-20 font-semibold self-start  py-2">
+						className="text-gray-20  disabled:text-blue-40 font-semibold self-start  py-2">
 						My shop orders
 					</button>
 					<p className="text-gray-20 font-semibold">/</p>
 					<button
+						disabled={actions.length <2}
 						onClick={async () => {
 							setActions(["view"]);
 							await getOrdersByUserID();
 						}}
-						className="text-blue-40  disabled:text-gray-20 font-semibold self-start  py-2">
+						className="text-gray-20  disabled:text-blue-40 font-semibold self-start  py-2">
 						My orders
 					</button>
 				</div>
-
-				{/*......................................
-               *
-               *map users' shop and create  btns
-               *
-               ......................................*/}
 
 				<div className="absolute top-48 left-[48%] mt-[1rem]">
 					{renderSpinner(load)}
