@@ -87,7 +87,8 @@ const useOrders = () => {
 		 * @param {any} (item
 		 * @returns {any}
 		 */
-		let filteredCart = cartItems.filter((item: any) => item.sellerId !== _id);
+		let filteredCart = cartItems.filter((item: any) => item.sellerId._id !== _id);
+      
 
 		let sentObj = filteredCart.map((item: any) =>
 			Object.assign(

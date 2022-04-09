@@ -19,7 +19,6 @@ const RecentRooms: React.FC<Props> = ({
 	userImage,
 }) => {
 	let navigate = useNavigate();
-	console.log(shopImage);
 
 	return (
 		<div

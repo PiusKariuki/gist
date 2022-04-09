@@ -42,7 +42,7 @@ const OrderPreview: React.FC = () => {
 	const { renderSpinner } = useSpinner();
 	const { wallet } = useRecoilValue<any>(user);
 	let { addressId } = useParams<string>();
-
+   
 	useEffect(() => {
 		getShippingById(addressId);
 	}, []);
