@@ -26,7 +26,6 @@ const Rooms = () => {
 		getRoomById(roomId);
 	}, []);
 
-	console.log(room?.productPrice);
 
 	return (
 		<>
@@ -122,8 +121,8 @@ const Rooms = () => {
 									/>
 							  ))
 							: room?.productIds?.map((product: any, key: number) => (
-									<div className="flex overflow-y-scroll scroller">
-										<RoomImages imgs={product.images} key={key} />
+									<div key={key} className="flex overflow-y-scroll scroller">
+										<RoomImages imgs={product.images} />
 									</div>
 							  ))}
 					</div>

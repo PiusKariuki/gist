@@ -24,7 +24,7 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 			{/* increase order */}
 			<div
 				className="inline-flex rounded-md shadow-sm border-[0.1rem]
-            border-blue-20">
+            border-blue-20 self-start">
 				<button
 					onClick={() => setOrders((prev) => (prev === 0 ? 0 : prev - 1))}
 					disabled={product.quantity === 0}
@@ -57,31 +57,30 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 					/>
 				</button>
 			</div>
-			<div className="flex flex-row space-x-4 self-start">
-				<p className="font-[600] self-center">Variations:</p>
+			<div className="flex flex-col self-start">
+				<p className="font-[600] self-start text-[1.2rem]">Variations:</p>
 				{/* variants */}
-				{product &&
-					product?.variations?.map((variant: string, index: number) => (
-						<button
-							key={index}
-							onClick={() =>
-								setVariation(index)
-							}
-							type="button"
-							className="text-blue-30 border-blue-30 border-2 px-4 py-1 rounded-3xl 
-                     hover:bg-blue-30 hover:text-white font-[700]">
-							{index === variation ? (
-                        <FontAwesomeIcon
-                        icon={faCircleCheck}
-                        size="1x"
-                        />
-                     ): variant}
-						</button>
-					))}
+				<div className="flex flex-row flex-wrap w-full gap-4 mr-4">
+					{product &&
+						product?.variations?.map((variant: string, index: number) => (
+							<button
+								key={index}
+								onClick={() => setVariation(index)}
+								type="button"
+								className="text-blue-30 border-blue-30 border-2 px-4 py-1 rounded-3xl 
+                        hover:bg-blue-30 hover:text-white font-[700]">
+								{index === variation ? (
+									<FontAwesomeIcon icon={faCircleCheck} size="1x" />
+								) : (
+									variant
+								)}
+							</button>
+						))}
+				</div>
 			</div>
 
 			<button
-				disabled={orders === 0 || product?.quantity === 0 || variation ===null}
+				disabled={orders === 0 || product?.quantity === 0 || variation === null}
 				onClick={() => {
 					setOrders(1);
 					addToCart(
@@ -92,11 +91,11 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 						product?.shopId,
 						product?._id,
 						product?.ownerId,
-                  product?.variations?.[variation],
+						product?.variations?.[variation],
 						uuidv4()
 					);
 				}}
-				className="blue-btn self-start px-[3rem] w-full">
+				className="blue-btn self-start px-[3rem]">
 				{product?.quantity === 0 ? "Out of stock" : "Add To Cart"}
 			</button>
 		</div>

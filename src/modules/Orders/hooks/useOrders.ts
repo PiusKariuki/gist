@@ -82,7 +82,14 @@ const useOrders = () => {
 
 	const handleSubmit = async (shippingId: any) => {
 		setLoad(true);
-		let sentObj = cartItems.map((item: any) =>
+		/**
+		 * Description filtered the cart items to avoid buying ftom your own shop
+		 * @param {any} (item
+		 * @returns {any}
+		 */
+		let filteredCart = cartItems.filter((item: any) => item.sellerId !== _id);
+
+		let sentObj = filteredCart.map((item: any) =>
 			Object.assign(
 				{},
 				{},

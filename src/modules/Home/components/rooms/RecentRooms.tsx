@@ -33,7 +33,7 @@ const RecentRooms: React.FC<Props> = ({
 					<img
 						src={userImage}
 						alt=""
-						className="w-8 h-8 rounded-full self-center object-scale-down"
+						className="w-8 h-8 rounded-full self-center object-cover"
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null;
 							currentTarget.src = "/img/picture.png";

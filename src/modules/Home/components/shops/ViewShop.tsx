@@ -27,7 +27,7 @@ const ViewShop: React.FC<Props> = ({ name, img, id }) => {
 			/>
 			<p
 				className="absolute bottom-[4%] right-[5%] text-white font-[900] text-[1rem]
-            bg-gray-20 opacity-70 px-2 rounded-md z-10">
+            bg-gray-20 opacity-100 px-2 rounded-md z-10">
 				{name}
 			</p>
 		</div>

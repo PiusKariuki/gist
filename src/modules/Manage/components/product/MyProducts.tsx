@@ -62,10 +62,10 @@ const MyShop: React.FC = (): JSX.Element => {
 				</div>
 			) : (
 				<div className="flex flex-row self-center items-center py-[10rem] gap-x-[2rem] px-[2rem]">
-					<div
+					{/* <div
 						style={{ backgroundImage: `url(/img/wallet.png)` }}
 						className="bg-contain bg-center  bg-no-repeat h-[10rem] w-[10rem]"
-					/>
+					/> */}
 					<p className="text-red-20 font-[700] text-[1rem] md:text-[1.7rem]">
 						This shop is empty right now.
 					</p>

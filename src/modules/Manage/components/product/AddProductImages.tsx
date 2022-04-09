@@ -24,7 +24,7 @@ const AddProductImages = () => {
 	}, [downloadUrls]);
 
 	return (
-		<div className="flex flex-col-reverse">
+		<div className="flex flex-col-reverse w-full min-h-[50vh]">
 			<div className="flex flex-row space-x-10">
 				<input
 					onChange={handleChange}
@@ -37,10 +37,10 @@ const AddProductImages = () => {
 				<button
 					type="button"
 					onClick={() => hiddenInput.current.click()}
-					className="blue-btn px-[1rem] py-[0.4rem]">
+					className="blue-btn px-[1rem] py-[0.4rem] ">
 					Upload
 				</button>
-				{renderSpinner(load)}
+
 				<button
 					disabled={images?.length < 1}
 					type="button"
@@ -50,7 +50,7 @@ const AddProductImages = () => {
 					Submit
 				</button>
 			</div>
-
+			{renderSpinner(load)}
 			{/* images */}
 			<div
 				className="flex flex-row flex-wrap gap-[2rem] max-h-[60vh] md:max-h-[38vh] md:h-[40vh]
@@ -76,7 +76,8 @@ const AddProductImages = () => {
 						</div>
 					))}
 			</div>
-			<p className="text-[1.4rem] text-gray-20">Add product Images</p>
+			<p className="text-[1.4rem] text-gray-20 self-center mb-auto underline font-semibold
+         ">Add product Images</p>
 		</div>
 	);
 };

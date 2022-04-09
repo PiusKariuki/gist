@@ -155,6 +155,7 @@ const EditShop: React.FC = () => {
                      form-ring"
 					/>
 				</div>
+				{renderSpinner(load)}
 
 				{/* second col */}
 				<div className="flex flex-col-reverse w-full md:w-[45%] gap-y-[2rem] ">
@@ -177,7 +178,6 @@ const EditShop: React.FC = () => {
                       text-red-20 hover:text-white hover:bg-red-20 font-[700]">
 							Close shop
 						</button>
-						{renderSpinner(load)}
 					</div>
 
 					{displayImg.length > 0 ? (
