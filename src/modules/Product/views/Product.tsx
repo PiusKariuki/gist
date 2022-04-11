@@ -17,6 +17,8 @@ const Product: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
+   console.log(product);
+   
 
 	return (
 		<div className="flex flex-col md:flex-row w-screen px-10 py-10 mx-auto gap-x-10 gap-y-16">

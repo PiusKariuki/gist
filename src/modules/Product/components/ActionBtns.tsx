@@ -1,11 +1,13 @@
 import {
 	faChevronCircleLeft,
 	faChevronCircleRight,
-   faCircleCheck,
+	faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useCart from "modules/Cart/hooks/useCart";
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { user } from "shared/recoil/user";
 import { v4 as uuidv4 } from "uuid";
 
 interface Props {
@@ -16,7 +18,8 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 	const [orders, setOrders] = useState<number>(1);
 	const [variation, setVariation] = useState<any>(null);
 	const { addToCart } = useCart();
-   
+	const { _id } = useRecoilValue<any>(user);
+
 	return (
 		<div
 			className="flex flex-col gap-x-[1rem] my-[2rem] gap-[1.5rem] mt-auto
@@ -79,25 +82,30 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 				</div>
 			</div>
 
-			<button
-				disabled={orders === 0 || product?.quantity === 0 || variation === null}
-				onClick={() => {
-					setOrders(1);
-					addToCart(
-						orders,
-						product?.price,
-						product?.images[0],
-						product?.name,
-						product?.shopId,
-						product?._id,
-						product?.ownerId,
-						product?.variations?.[variation],
-						uuidv4()
-					);
-				}}
-				className="blue-btn self-start px-[3rem]">
-				{product?.quantity === 0 ? "Out of stock" : "Add To Cart"}
-			</button>
+			{/* prevent adding your own product to cart */}
+			{product?.ownerId?._id !== _id ? (
+				<button
+					disabled={
+						orders === 0 || product?.quantity === 0 || variation === null
+					}
+					onClick={() => {
+						setOrders(1);
+						addToCart(
+							orders,
+							product?.price,
+							product?.images[0],
+							product?.name,
+							product?.shopId,
+							product?._id,
+							product?.ownerId,
+							product?.variations?.[variation],
+							uuidv4()
+						);
+					}}
+					className="blue-btn self-start px-[3rem]">
+					{product?.quantity === 0 ? "Out of stock" : "Add To Cart"}
+				</button>
+			) : null}
 		</div>
 	);
 };

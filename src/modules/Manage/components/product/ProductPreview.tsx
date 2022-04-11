@@ -75,11 +75,11 @@ const ProductPreview: React.FC = (): JSX.Element => {
                            lg:text-[1rem]">
 									This product has no images
 								</p>
-								<img
-									src="/img/wallet.png"
+								{/* <img
+									src="/img/picture.png"
 									alt=""
 									className="h-[60vh]  object-contain"
-								/>
+								/> */}
 							</div>
 						)}
 
