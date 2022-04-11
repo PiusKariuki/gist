@@ -2,10 +2,10 @@ import { useRef, useEffect } from "react";
 
 const useHorizontalScroll = () => {
 	const scrollLeft = (ref: React.MutableRefObject<any>) => {
-		ref.current.scrollLeft -= 240;
+		ref.current.scrollLeft -= 550;
 	};
 	const scrollRight = (ref: React.MutableRefObject<any>) => {
-		ref.current.scrollLeft += 240;
+		ref.current.scrollLeft += 550;
 	};
 
 	return { scrollLeft, scrollRight };
