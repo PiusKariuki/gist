@@ -46,7 +46,7 @@ const ExistingOrder: React.FC<{}> = () => {
 				{/* shipping address */}
 				<select
 					onChange={handleChange}
-					value={shipping}
+					// value={shipping}
 					required
 					id="shipping"
 					className=" h-[2.25rem] outline-none text-blue-40
@@ -62,7 +62,7 @@ const ExistingOrder: React.FC<{}> = () => {
 					{userShippings?.map((ship: any, key: number) => (
 						<option
 							id={ship.name}
-							value={ship._id}
+							value={ship?._id}
 							key={key}
 							className="text-[1.2rem] text-blue-30 font-bold">
 							{ship?.name}
@@ -73,8 +73,8 @@ const ExistingOrder: React.FC<{}> = () => {
 				<div className="flex w-full justify-between">
 					<button
 						type="button"
-						disabled={shippingName?.length < 1}
-						onClick={() => navigate(`/orders/preview/${shipping}`)}
+						disabled={shipping?._id === undefined}
+						onClick={() => navigate(`/orders/preview/${shipping._id}`)}
 						className="blue-btn">
 						Preview order
 					</button>

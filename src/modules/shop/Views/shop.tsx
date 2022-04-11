@@ -46,9 +46,6 @@ const Shop: React.FC = (): JSX.Element => {
 						</div>
 					</div>
 				) : null
-				// <p className="text-red-20 font-[700] text-[1rem] md:text-[1.7rem]">
-				// 	This shop has no products
-				// </p>
 			}
 		</div>
 	);

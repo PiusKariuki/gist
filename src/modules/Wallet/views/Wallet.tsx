@@ -65,7 +65,6 @@ const Wallet = () => {
 				<DataTable
 					columns={columns}
 					data={transactions}
-					selectableRows
 					responsive
 					pagination
 					customStyles={customStyles}

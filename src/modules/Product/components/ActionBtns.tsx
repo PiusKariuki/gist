@@ -60,7 +60,7 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 					/>
 				</button>
 			</div>
-			<div className="flex flex-col self-start">
+			<div className="flex flex-col md:flex-row self-start gap-x-4">
 				<p className="font-[600] self-start text-[1.2rem]">Variations:</p>
 				{/* variants */}
 				<div className="flex flex-row flex-wrap w-full md:w-4/5 gap-4 mr-4">

@@ -23,7 +23,8 @@ interface UserObject {
 const useOrders = () => {
 	const [userShippings, setUserShippings] = useState<any>([]);
 
-	const [shipping, setShipping] = useState<string>(userShippings[0]);
+	// set the selected address to the key of the select
+	const [shipping, setShipping] = useState<any>({});
 	const [load, setLoad] = useState<boolean>(false);
 
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
@@ -37,12 +38,15 @@ const useOrders = () => {
 	const [openPreview, setOpenPreview] = useState(false);
 	const setUser = useSetRecoilState(user);
 
+
 	const getShippingById = async (shippingId: any) => {
 		setLoad(true);
-		setLoad(false);
+
 		try {
 			let { data } = await Axios.get(`/address/${shippingId}`);
 			setShippingName(data.name);
+         setShipping(data)
+			setLoad(false);
 		} catch (error) {
 			setLoad(false);
 			Swal.fire({
@@ -54,10 +58,10 @@ const useOrders = () => {
 
 	const handleChange = async (e: any) => {
 		setLoad(true);
-		setShipping(e.target.value);
 		try {
 			let { data } = await Axios.get(`/address/${e.target.value}`);
 			setShippingName(data.name);
+			setShipping(data);
 			setLoad(false);
 			setOpenPreview(true);
 		} catch (error) {
@@ -87,8 +91,9 @@ const useOrders = () => {
 		 * @param {any} (item
 		 * @returns {any}
 		 */
-		let filteredCart = cartItems.filter((item: any) => item.sellerId._id !== _id);
-      
+		let filteredCart = cartItems.filter(
+			(item: any) => item.sellerId._id !== _id
+		);
 
 		let sentObj = filteredCart.map((item: any) =>
 			Object.assign(
@@ -102,7 +107,17 @@ const useOrders = () => {
 					shopId: item.shopId,
 					quantity: item.quantity,
 					productOwnerId: item.sellerId,
-					shippingId,
+					shippingId: shipping?._id,
+					shippingAddress: `{"name": ${shipping?.name},"addrress1": ${shipping?.addrress1},"addrress2": ${shipping?.addrress2},"city": ${shipping?.city},"state":${shipping?.state},"phone": ${shipping?.phone},"userId": ${shipping?.userId?._id}}`,
+					// shippingAddress: {
+					// 	name: shipping?.name,
+					// 	address1: shipping?.address1,
+					// 	address2: shipping?.address2,
+					// 	city: shipping?.city,
+					// 	state: shipping?.state,
+					// 	phone: shipping?.phone,
+					// 	userId: shipping?.userId?._id,
+					// },
 				}
 			)
 		);

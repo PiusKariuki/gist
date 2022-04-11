@@ -18,7 +18,8 @@ const EditProduct: React.FC = () => {
 		description,
 		displays,
 		removeImg,
-      shopId
+      shopId,
+      variations
 	} = useEdit();
 
 	let { productId } = useParams();
@@ -115,6 +116,30 @@ const EditProduct: React.FC = () => {
 					/>
 				</div>
 			</div>
+			{/*......................................
+               * VARIATIONS
+            ......................................*/}
+			<div className="flex flex-col md:flex-row md:space-x-10">
+				<div className="flex flex-col w-full">
+					{/* description */}
+					<label
+						htmlFor="variations"
+						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
+                pt-[2rem] ">
+						Variations
+					</label>
+					<input
+						onChange={handleChange}
+						required
+						value={variations}
+						id="variations"
+						className="  outline-none 
+                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
+                  form-ring"
+					/>
+				</div>
+				<div className="flex flex-col w-full"></div>
+			</div>
 
 			{/*......................................
             *IMAGES
@@ -149,7 +174,7 @@ const EditProduct: React.FC = () => {
                             cursor-pointer"
 								/>
 							)}
-{/* 
+							{/* 
 							<FontAwesomeIcon
 								icon={faTrash}
 								size="1x"

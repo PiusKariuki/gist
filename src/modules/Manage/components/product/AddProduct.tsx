@@ -109,7 +109,7 @@ const AddProduct: React.FC = () => {
 				</div>
 			</div>
 			{/*......................................
-               * QUANTITY AND DESCRIPTION
+               * VARIATIONS
             ......................................*/}
 			<div className="flex flex-col md:flex-row md:space-x-10">
 				<div className="flex flex-col w-full">

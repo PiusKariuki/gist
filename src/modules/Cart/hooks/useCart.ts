@@ -14,6 +14,8 @@ interface Cart {
 const useCart = () => {
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const totalValue = useRecoilValue(cartSelector);
+	const cart = useRecoilValue(cartAtom);
+   
 
 	// the id is a uuid string to identify components in the cart to avoid deleting all similr
 	//products.
@@ -25,23 +27,31 @@ const useCart = () => {
 		shopId: string,
 		productId: string,
 		sellerId: string,
-      variation: string,
+		variation: string,
 		id: string
 	) => {
-		setCartAtom((prev: any) => [
-			{
-				name: name,
-				quantity: quantity,
-				price: price,
-				image: image,
-				shopId: shopId,
-				productId: productId,
-				sellerId: sellerId,
-            variation,
-				id: id,
-			},
-			...prev,
-		]);
+		const checkCart = cart.findIndex((el: any) => el.productId === productId);
+		if (checkCart !== -1)
+			setCartAtom((prev: any) => [
+				prev[checkCart].quantity + quantity,
+				...prev,
+			]);
+		else {
+			setCartAtom((prev: any) => [
+				{
+					name: name,
+					quantity: quantity,
+					price: price,
+					image: image,
+					shopId: shopId,
+					productId: productId,
+					sellerId: sellerId,
+					variation,
+					id: id,
+				},
+				...prev,
+			]);
+		}
 
 		Swal.fire({
 			icon: "success",

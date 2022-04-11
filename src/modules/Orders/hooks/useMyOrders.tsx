@@ -16,12 +16,26 @@ const useOrderByShopID = () => {
 	const [open, setOpen] = useState<boolean>(false);
 	const [status, setStatus] = useState("pending");
 
+
+   
 	let navigate = useNavigate();
 
 	const columns = [
 		{
 			name: "Date Placed",
 			selector: (row: any) => new Date(row.date).toLocaleDateString(),
+		},
+		{
+			name: "Product",
+			selector: (row: any) => row.itemId.productId.name,
+		},
+		{
+			name: "Qty",
+			selector: (row: any) => row.itemId.productId.quantity,
+		},
+		{
+			name: "variations",
+			selector: (row: any) => row.itemId.productId.variations,
 		},
 		{
 			name: "Status",

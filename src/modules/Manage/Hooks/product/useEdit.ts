@@ -17,12 +17,13 @@ const useEdit = () => {
 	const [displays, setDisplays] = useState<any>([]);
 	const [load, setLoad] = useState<boolean>(false);
 	const [shopId, setShopId] = useState("");
+	const [variations, setVariations] = useState("");
 
 	const getProductById = async (productId: any) => {
 		setLoad(true);
 		try {
 			let {
-				data: { images, name, price, quantity, description, shopId },
+				data: { images, name, price, quantity, description, shopId,variations },
 			} = await Axios.get(`/products/products/${productId}`);
 			setDisplays(images);
 			setPrice(price);
@@ -31,6 +32,7 @@ const useEdit = () => {
 			setLoad(false);
 			setDescription(description);
 			setShopId(shopId._id);
+         setVariations(variations)
 		} catch (error) {
 			setLoad(false);
 		}
@@ -46,6 +48,9 @@ const useEdit = () => {
 				break;
 			case "quantity":
 				setQuantity(e.target.value);
+				break;
+			case "variations":
+				setVariations(e.target.value);
 				break;
 			case "desc":
 				setDescription(e.target.value);
@@ -76,8 +81,6 @@ const useEdit = () => {
 		setDescription("");
 	};
 
-
-
 	const editProductById = async (
 		e: React.FormEvent<HTMLFormElement>,
 		productId: any
@@ -91,6 +94,7 @@ const useEdit = () => {
 				quantity,
 				ownerId: _id,
 				description,
+            variations
 			});
 
 			await getProductById(productId);
@@ -136,7 +140,8 @@ const useEdit = () => {
 		load,
 		handleChange,
 		description,
-      shopId
+		shopId,
+      variations
 	};
 };
 
