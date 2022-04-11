@@ -63,7 +63,7 @@ const ActionBtns: React.FC<Props> = ({ product }) => {
 			<div className="flex flex-col self-start">
 				<p className="font-[600] self-start text-[1.2rem]">Variations:</p>
 				{/* variants */}
-				<div className="flex flex-row flex-wrap w-full gap-4 mr-4">
+				<div className="flex flex-row flex-wrap w-full md:w-4/5 gap-4 mr-4">
 					{product &&
 						product?.variations?.map((variant: string, index: number) => (
 							<button

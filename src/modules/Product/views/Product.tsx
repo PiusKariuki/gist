@@ -17,7 +17,7 @@ const Product: React.FC = (): JSX.Element => {
 	useEffect(() => {
 		getProductById(productId);
 	}, []);
-   console.log(product);
+
    
 
 	return (
