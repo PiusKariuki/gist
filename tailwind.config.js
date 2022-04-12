@@ -15,7 +15,7 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"Nunito"', "sans-serif"],
+				sans: ['"Dosis"', "sans-serif"],
 			},
 			colors: {
 				gray: {
