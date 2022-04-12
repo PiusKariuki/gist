@@ -57,13 +57,12 @@ const EditShop: React.FC = () => {
 					/>
 				</div>
 			) : null}
-			{/* <div className="flex"> */}
+
 			<FontAwesomeIcon
 				icon={faCircleArrowLeft}
 				onClick={() => navigate(`/myAccount/shops`)}
 				className="back"
 			/>
-			{/* </div> */}
 
 			<form
 				autoComplete="off"

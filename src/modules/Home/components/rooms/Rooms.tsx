@@ -1,16 +1,17 @@
-import useRoom from "modules/Rooms/hooks/useRoom";
 import React, { useEffect, useRef } from "react";
 import RecentRooms from "modules/Home/components/rooms/RecentRooms";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useFetch from "shared/hooks/useFetch";
 
 const Rooms = () => {
 	const { renderSpinner } = useSpinner();
-	const { load, rooms, getRecentRooms } = useRoom();
+	const { data, getObject, load } = useFetch();
+
 	useEffect(() => {
-		getRecentRooms();
+		getObject("/rooms", "GET");
 	}, []);
 
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
@@ -22,13 +23,13 @@ const Rooms = () => {
 			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem]">
 				Recent rooms
 			</p>
-			{rooms?.length > 0 ? (
+			{data?.length > 0 ? (
 				<>
 					{renderSpinner(load)}
 					<div
 						ref={scrollRef}
 						className="scroller flex flex-row gap-x-8 overflow-x-scroll w-screen">
-						{rooms.map((room: any, key: number) => (
+						{data.map((room: any, key: number) => (
 							<RecentRooms
 								title={room?.title}
 								userName={room?.ownerId?.userName}
@@ -43,7 +44,7 @@ const Rooms = () => {
 					{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-					{rooms?.length && rooms.length > 3 ? (
+					{data?.length && data.length > 3 ? (
 						<>
 							<div
 								className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]   w-[3.125rem]

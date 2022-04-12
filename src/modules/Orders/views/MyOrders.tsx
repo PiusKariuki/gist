@@ -98,7 +98,7 @@ const MyOrders = () => {
 		},
 		{
 			name: "Qty",
-			selector: (row: any) => row?.itemId?.productId?.quantity,
+			selector: (row: any) => row?.itemId?.quantity,
 		},
 		{
 			name: "variations",
@@ -126,6 +126,7 @@ const MyOrders = () => {
 			selector: (row: any) => row.actions,
 		},
 	];
+   
 
 	return (
 		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">

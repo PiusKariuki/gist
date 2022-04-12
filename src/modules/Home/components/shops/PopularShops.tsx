@@ -1,16 +1,16 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useShop from "modules/shop/Hooks/useShop";
 import React, { useEffect, useRef } from "react";
 import useHorizontalScroll from "shared/hooks/useHorizontalScroll";
 import ViewShop from "./ViewShop";
 import "../../styles/shop.css";
 import useSpinner from "shared/components/spinner/useSpinner";
+import useFetch from "shared/hooks/useFetch";
 
 const Shops = () => {
-	const { shops, getRecentShops, load } = useShop();
+	const { data, getObject, load } = useFetch();
 	useEffect(() => {
-		getRecentShops();
+		getObject(`/shop`, "GET", {});
 	}, []);
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 	const { renderSpinner } = useSpinner();
@@ -25,8 +25,8 @@ const Shops = () => {
 			<div
 				ref={scrollRef}
 				className="scroller flex flex-row gap-x-8 overflow-x-scroll">
-				{shops.length > 0 &&
-					shops?.map((shop: any, key: number) => (
+				{data.length > 0 &&
+					data?.map((shop: any, key: number) => (
 						<ViewShop
 							name={shop?.name}
 							img={shop?.image}
@@ -37,7 +37,7 @@ const Shops = () => {
 				{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-				{shops?.length && shops.length > 5 ? (
+				{data?.length && data.length > 5 ? (
 					<>
 						<div
 							className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  w-[3.125rem] 
@@ -52,7 +52,7 @@ const Shops = () => {
 
 						<div
 							className="bg-[rgba(0,0,0,.3)] hover:bg-[rgba(0,0,0,.6)] z-10 hidden lg:flex 
-               lg:absolute text-[2rem] w-[3.125rem] h-[3.125rem] rounded-full right-10 top-[50%]">
+                     lg:absolute text-[2rem] w-[3.125rem] h-[3.125rem] rounded-full right-10 top-[50%]">
 							<FontAwesomeIcon
 								onClick={() => scrollRight(scrollRef)}
 								icon={faArrowRight}

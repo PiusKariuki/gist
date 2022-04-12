@@ -17,18 +17,9 @@ const useShop = () => {
 			setErrors(error);
 		}
 	};
-	const getRecentShops = async () => {
-		setLoad(true);
-		try {
-			let { data } = await Axios.get(`/shop`);
-			setShops(data);
-			setLoad(false);
-		} catch (error) {
-			setLoad(false);
-			setErrors(error);
-		}
-	};
-	return { shops, getShops, errors, load,getRecentShops };
+
+
+	return { shops, getShops, errors, load};
 };
 
 export default useShop;

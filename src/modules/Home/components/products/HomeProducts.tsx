@@ -5,11 +5,14 @@ import ViewProduct from "./ViewProduct";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useSpinner from "shared/components/spinner/useSpinner";
+import useFetch from "shared/hooks/useFetch";
 
 const Products = () => {
-	const { getRecentProducts, products, errors, load } = useProducts();
+	// const { getRecentProducts, products, errors, load } = useProducts();
+	const { data, getObject, load } = useFetch();
+   
 	useEffect(() => {
-		getRecentProducts();
+		getObject(`/products`, "GET");
 	}, []);
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 	const scrollRef = useRef<any>(null);
@@ -24,14 +27,14 @@ const Products = () => {
 			<div
 				ref={scrollRef}
 				className="scroller flex flex-row  overflow-x-scroll gap-x-8 md:flex-row ">
-				{products.map((product: any, key: number) => (
+				{data?.length>0 && data.map((product: any, key: number) => (
 					<ViewProduct
 						name={product?.name}
 						userName={product?.ownerId?.userName}
 						price={product?.price}
 						key={key}
 						id={product?._id}
-						image={product?.images[0]}
+						image={ product?.images?.length > 0 && product?.images[0]}
 						shopImage={product?.shopId?.image}
 					/>
 				))}
@@ -39,7 +42,7 @@ const Products = () => {
 			{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-			{products?.length && products?.length > 5 ? (
+			{data?.length && data?.length > 5 ? (
 				<>
 					{" "}
 					<div

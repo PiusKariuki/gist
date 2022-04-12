@@ -1,5 +1,7 @@
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useAddProduct from "../../Hooks/product/useAddProduct";
 
@@ -8,14 +10,20 @@ const AddProduct: React.FC = () => {
 		useAddProduct();
 	let { shopId } = useParams<string>();
 	const { renderSpinner } = useSpinner();
+   let navigate = useNavigate();
 	return (
 		<form
 			autoComplete="off"
 			name="addProduct"
-			className="flex flex-col gap-x-[8rem] lg:px-[3rem] lg:w-full"
+			className="flex flex-col gap-x-[8rem] px-[1rem] py-[3rem] lg:w-full relative"
 			onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 				addProduct(e, shopId);
 			}}>
+			<FontAwesomeIcon
+				icon={faCircleArrowLeft}
+				onClick={() => navigate(`/myAccount/shops`)}
+				className="back"
+			/>
 			<p className="text-[1.4rem] md:text-[1.8rem] text-gray-20 font-[700]">
 				New Product
 			</p>
@@ -25,9 +33,7 @@ const AddProduct: React.FC = () => {
 			<div className="flex flex-col md:flex-row md:space-x-10">
 				<div className="flex flex-col w-full">
 					{/* name */}
-					<label
-						htmlFor="name"
-						className="labels">
+					<label htmlFor="name" className="labels">
 						Product name
 					</label>
 					<input
@@ -42,9 +48,7 @@ const AddProduct: React.FC = () => {
 				</div>
 				<div className="flex flex-col w-full">
 					{/* price */}
-					<label
-						htmlFor="price"
-						className="labels">
+					<label htmlFor="price" className="labels">
 						Price(GC.)
 					</label>
 					<input
@@ -64,9 +68,7 @@ const AddProduct: React.FC = () => {
 			<div className="flex flex-col md:flex-row md:space-x-10">
 				<div className="flex flex-col w-full">
 					{/* description */}
-					<label
-						htmlFor="quantity"
-						className="labels">
+					<label htmlFor="quantity" className="labels">
 						Description
 					</label>
 					<textarea
@@ -80,9 +82,7 @@ const AddProduct: React.FC = () => {
 				</div>
 				<div className="flex flex-col w-full">
 					{/* quantity */}
-					<label
-						htmlFor="quantity"
-						className="labels">
+					<label htmlFor="quantity" className="labels">
 						Quantity
 					</label>
 					<input
@@ -102,9 +102,7 @@ const AddProduct: React.FC = () => {
 			<div className="flex flex-col md:flex-row md:space-x-10">
 				<div className="flex flex-col w-full">
 					{/* description */}
-					<label
-						htmlFor="variations"
-						className="labels">
+					<label htmlFor="variations" className="labels">
 						Variations
 					</label>
 					<input
