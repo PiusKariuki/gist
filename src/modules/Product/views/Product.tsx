@@ -55,7 +55,7 @@ const Product: React.FC = (): JSX.Element => {
 				<p
 					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                    border-b-4 ">
-					More products
+					{filteredProducts?.length > 1 ? "More Products" : "More like this"}
 				</p>
 				{/* ) : null} */}
 				<div
