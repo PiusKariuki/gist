@@ -3,6 +3,7 @@ import DataTable, { createTheme } from "react-data-table-component";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useTable from "shared/hooks/useTable";
 import EditOrder from "../components/EditOrder";
+import OrderInfo from "../components/OrderInfo";
 import useMyOrders from "../hooks/useMyOrders";
 import "../styles/orders.css";
 
@@ -36,7 +37,7 @@ const customStyles = {
 const MyOrders = () => {
 	const {
 		getOrderByShopID,
-		columns,
+		// columns,
 		load,
 		getMyShop,
 		open,
@@ -52,8 +53,9 @@ const MyOrders = () => {
 	const { renderSpinner } = useSpinner();
 	const formRef = useRef<any>();
 	const [actions, setActions] = useState(["view", "edit"]);
+	const [openInfo, setOpenInfo] = useState(false);
+	const [shippingObj, setShippingObj] = useState<any>({});
 	const { populate } = useTable();
-   
 
 	useEffect(() => {
 		getOrderByShopID(shopId);
@@ -63,14 +65,13 @@ const MyOrders = () => {
 		getMyShop();
 	}, []);
 
-   
 	/**
 	 * Description: Action btns click handler
 	 * @param {string} action
 	 * @param {string} target
 	 * @returns {any}
 	 */
-	const handleClick = async (action: string,target: string) => {
+	const handleClick = async (action: string, target: string) => {
 		switch (action) {
 			case "view":
 				await getOrderById(target);
@@ -85,6 +86,46 @@ const MyOrders = () => {
 				break;
 		}
 	};
+
+	const columns = [
+		{
+			name: "Date Placed",
+			selector: (row: any) => new Date(row.date).toLocaleDateString(),
+		},
+		{
+			name: "Product",
+			selector: (row: any) => row.itemId.productId.name,
+		},
+		{
+			name: "Qty",
+			selector: (row: any) => row.itemId.productId.quantity,
+		},
+		{
+			name: "variations",
+			selector: (row: any) => row.itemId.productId.variations,
+		},
+		{
+			name: "Status",
+			selector: (row: any) => row.status,
+		},
+		{
+			name: "Shipping Info",
+			selector: (row: any) => (
+				<button
+					onClick={() => {
+						setOpenInfo(true);
+						setShippingObj(row.shippingId);
+					}}
+					className="blue-btn mx-4 my-4 flex-shrink-0">
+					Info
+				</button>
+			),
+		},
+		{
+			name: "actions",
+			selector: (row: any) => row.actions,
+		},
+	];
 
 	return (
 		<div className="flex flex-col px-[2rem] py-[3rem]  gap-[2rem]">
@@ -101,7 +142,7 @@ const MyOrders = () => {
 					</button>
 					<p className="text-gray-20 font-semibold">/</p>
 					<button
-						disabled={actions.length <2}
+						disabled={actions.length < 2}
 						onClick={async () => {
 							setActions(["view"]);
 							await getOrdersByUserID();
@@ -121,6 +162,9 @@ const MyOrders = () => {
 					className={`${open ? "fixed z-50 right-[0%] top-[8%]" : "hidden"}`}>
 					<EditOrder setOpen={setOpen} orderId={orderId} shopId={shopId} />
 				</div>
+				{openInfo ? (
+					<OrderInfo setOpen={setOpenInfo} shippingId={shippingObj} />
+				) : null}
 
 				<DataTable
 					columns={columns}

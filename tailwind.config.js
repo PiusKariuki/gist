@@ -37,7 +37,7 @@ module.exports = {
 				blue: {
 					20: "#33546D",
 					30: "#4d4dff",
-               40: "#00BCD7",
+					40: "#00BCD7",
 					80: "#001E2B",
 				},
 				black: {
@@ -50,6 +50,15 @@ module.exports = {
 				},
 				brown: {
 					20: "#F5F5F5",
+				},
+				smoke: {
+					"darkest": "rgba(0, 0, 0, 0.9)",
+					"darker": "rgba(0, 0, 0, 0.75)",
+					"dark": "rgba(0, 0, 0, 0.6)",
+					"smoke": "rgba(0, 0, 0, 0.5)",
+					"light": "rgba(0, 0, 0, 0.4)",
+					"lighter": "rgba(0, 0, 0, 0.25)",
+					"lightest": "rgba(0, 0, 0, 0.1)",
 				},
 			},
 			backgroundImage: {

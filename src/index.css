@@ -37,6 +37,10 @@ body::-webkit-scrollbar {
 	.outline-btn {
 		@apply px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-blue-20 text-blue-20;
 	}
+	.red-outline-btn {
+		@apply px-[1rem] py-[0.3rem] bg-white outline outline-[0.125rem] rounded-md outline-red-500 text-red-500
+      focus:text-white focus:bg-red-500;
+	}
 
 	/* ..................................datatable rows................................... */
 	.fQfBPh {
