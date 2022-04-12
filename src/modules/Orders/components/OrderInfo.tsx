@@ -14,10 +14,9 @@ interface Props {
 
 const OrderInfo: React.FC<Props> = ({ shippingId,setOpen }) => {
 	return (
-		<div className="fixed inset-0 z-50 overflow-auto bg-smoke-light flex flex-col">
+		<div className="dialog-wrapper">
 			<div
-				className="flex flex-col relative px-10 py-16 bg-white w-full max-w-md m-auto
-          rounded-md  font-[600] text-xl gap-y-4">
+				className="dialog  font-[600] text-xl gap-y-4">
 				<p className="text-gray-20  justify-self-start">
 					Shipping Name:
 					<span className="text-blue-30">&nbsp;&nbsp;{shippingId.name}</span>

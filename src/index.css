@@ -21,6 +21,7 @@ body::-webkit-scrollbar {
 @tailwind utilities;
 
 @layer components {
+	/* custom btns */
 	.btn {
 		@apply bg-green-80 rounded-md hover:rounded-3xl border-green-60 hover:bg-green-50
            disabled:bg-gray-600 disabled:hover:rounded-md;
@@ -31,15 +32,44 @@ body::-webkit-scrollbar {
 	}
 	.blue-btn {
 		@apply bg-blue-20 rounded-xl  hover:rounded-3xl hover:bg-[#0f4d92] disabled:bg-gray-400
-     disabled:hover:rounded-md px-[0.8rem] py-[0.2rem] text-white font-[500] text-[1.2rem]
-      hover:scale-x-105 transition-all ease-in-out;
+     disabled:hover:rounded-md px-[1rem] py-[0.3rem] text-white  text-lg
+      hover:scale-x-105 transition-all ease-in-out font-semibold;
 	}
 	.outline-btn {
 		@apply px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-blue-20 text-blue-20;
 	}
 	.red-outline-btn {
-		@apply px-[1rem] py-[0.3rem] bg-white outline outline-[0.125rem] rounded-md outline-red-500 text-red-500
-      focus:text-white focus:bg-red-500;
+		@apply px-[1rem] py-[0.3rem] bg-white outline-none border-[0.1rem] rounded-xl border-red-500 
+      text-red-500 focus:text-white focus:bg-red-500 hover:rounded-3xl hover:bg-red-500 
+      hover:text-white text-lg font-semibold
+      hover:scale-x-105 transition-all ease-in-out;
+	}
+	/* ..................................dialogs................................... */
+
+	/* dialog-wrapper */
+	.dialog-wrapper {
+		@apply fixed inset-0 z-50 overflow-auto bg-smoke-light flex flex-col;
+	}
+	/* dialog */
+	.dialog {
+		@apply flex flex-col relative px-10 py-16 bg-white w-[90vw] max-w-md m-auto
+      rounded-md;
+	}
+	/* ..................................inputs................................... */
+	.inputs {
+		@apply text-blue-30 text-lg font-semibold h-[2.25rem] outline-none rounded-[0.25rem] 
+      px-[1rem] form-ring;
+	}
+	.textarea {
+		@apply text-blue-30 text-lg font-semibold  outline-none rounded-[0.25rem] 
+      px-[1rem] form-ring;
+	}
+	.labels {
+		@apply text-base font-medium mt-[2.25rem]  mb-[0.5rem];
+	}
+	/* ...................................back icon................................ */
+	.back {
+		@apply text-4xl absolute top-2 left-5 text-blue-30 hover:text-blue-900;
 	}
 
 	/* ..................................datatable rows................................... */

@@ -12,11 +12,9 @@ interface Props {
 const EditOrder: React.FC<Props> = ({ setOpen, orderId,shopId }) => {
 	const { editOrder, setStatus } = useMyOrders();
 	return (
-		<div className="flex w-screen h-screen opacity-90 bg-gray-200 z-50 ">
+		<div className="dialog-wrapper">
 			<div
-				className="flex flex-col py-[3rem] px-[2rem] relative bg-white justify-self-center
-             items-center rounded-md gap-y-[3rem] shadow-lg md:w-[30rem] opacity-100 self-center 
-             w-full mx-auto backdrop-blur-md">
+				className="dialog">
 				<FontAwesomeIcon
 					icon={faXmark}
 					color="red"

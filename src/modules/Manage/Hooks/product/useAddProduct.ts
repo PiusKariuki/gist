@@ -85,7 +85,7 @@ const useAddShop = () => {
 				description: desc,
 				variations,
 			});
-			navigate(`/myAccount/shops/add/${shopId}/images/${data.data._id}`);
+			navigate(`/myAccount/shops/add/${shopId}/images/${data.data._id}`,{replace:true});
 			clearAttributes();
 			setLoad(false);
 			Swal.fire({
@@ -126,7 +126,7 @@ const useAddShop = () => {
 				text: "Images uploaded successfully",
 				timer: 1000,
 			});
-			navigate(`/myAccount/shops/`);
+			navigate(`/myAccount/shops/`,{replace: true});
 			clearAttributes();
 			setLoad(false);
 		} catch (error: any) {

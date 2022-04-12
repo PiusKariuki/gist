@@ -54,10 +54,7 @@ const EditProfile = () => {
 				<div className="flex flex-col lg:flex-row  gap-[0rem] md:gap-[2rem] items-start">
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* fname */}
-						<label
-							htmlFor="fname"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                     mt-[3rem]  mb-[0.5rem] text-black-80">
+						<label htmlFor="fname" className="labels">
 							First Name
 						</label>
 						<input
@@ -68,17 +65,13 @@ const EditProfile = () => {
 							type="text"
 							id="fname"
 							name="fname"
-							className="h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
+							className="inputs"
 						/>
 					</div>
 
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* lname */}
-						<label
-							htmlFor="lname"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                     mt-[3rem] mb-[0.5rem] text-black-80">
+						<label htmlFor="lname" className="labels">
 							Last Name
 						</label>
 						<input
@@ -89,8 +82,7 @@ const EditProfile = () => {
 							type="text"
 							id="lname"
 							name="lname"
-							className="h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
+							className="inputs"
 						/>
 					</div>
 				</div>
@@ -101,10 +93,7 @@ const EditProfile = () => {
                ......................................*/}
 				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
-						<label
-							htmlFor="bio"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                        mt-[3rem] mb-[0.5rem] text-black-80">
+						<label htmlFor="bio" className="labels">
 							Bio
 						</label>
 						<textarea
@@ -115,15 +104,11 @@ const EditProfile = () => {
 							id="bio"
 							rows={3}
 							cols={6}
-							className=" outline-none text-blue-20
-                        rounded-[0.25rem] font-bold px-[1rem] form-ring"
+							className="textarea"
 						/>
 					</div>
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
-						<label
-							htmlFor="userName"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem]
-                      mt-[3rem]  mb-[0.5rem] text-black-80">
+						<label htmlFor="userName" className="labels">
 							Username
 						</label>
 						<input
@@ -133,8 +118,7 @@ const EditProfile = () => {
 							required
 							type="text"
 							id="userName"
-							className="h-[2.25rem] outline-none
-                   text-blue-20 rounded-[0.25rem] font-bold px-[1rem] form-ring"
+							className="inputs"
 						/>
 					</div>
 				</div>
@@ -146,10 +130,7 @@ const EditProfile = () => {
 				<div className="flex flex-col lg:flex-row gap-[0rem] md:gap-[2rem] items-start">
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* email */}
-						<label
-							htmlFor="email"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                     mt-[3rem]   mb-[0.5rem] text-black-80">
+						<label htmlFor="email" className="labels">
 							Email Address
 						</label>
 						<input
@@ -160,18 +141,13 @@ const EditProfile = () => {
 							type="text"
 							id="email"
 							name="email"
-							className="h-[2.25rem] outline-none 
-                     text-blue-20
-                     rounded-[0.25rem]  font-bold px-[1rem] form-ring"
+							className="inputs"
 						/>
 					</div>
 
 					<div className="flex flex-col w-[80vw] md:w-[80%] lg:w-[40%]">
 						{/* Phone */}
-						<label
-							htmlFor="phone"
-							className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] 
-                     mt-[3rem]  mb-[0.5rem] text-black-80">
+						<label htmlFor="phone" className="labels">
 							Phone Number
 						</label>
 						<PhoneInput
@@ -179,9 +155,7 @@ const EditProfile = () => {
 							country={"ke"}
 							value={phone}
 							onChange={handlePhoneChange}
-							className="h-[2.25rem] outline-none 
-                     text-blue-20 border-0 text-[1.3rem] tracking-wider
-                     rounded-[0.25rem]  font-[900] px-[1rem] form-ring"
+							className="inputs"
 						/>
 					</div>
 				</div>

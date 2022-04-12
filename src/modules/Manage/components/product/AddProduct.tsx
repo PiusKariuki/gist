@@ -27,8 +27,7 @@ const AddProduct: React.FC = () => {
 					{/* name */}
 					<label
 						htmlFor="name"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                pt-[2rem] ">
+						className="labels">
 						Product name
 					</label>
 					<input
@@ -38,17 +37,14 @@ const AddProduct: React.FC = () => {
 						value={name}
 						type="text"
 						id="name"
-						className=" h-[2.25rem] outline-none w-full
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring"
+						className=" inputs"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
 					{/* price */}
 					<label
 						htmlFor="price"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                pt-[2rem] ">
+						className="labels">
 						Price(GC.)
 					</label>
 					<input
@@ -58,9 +54,7 @@ const AddProduct: React.FC = () => {
 						value={price}
 						type="number"
 						id="price"
-						className=" h-[2.25rem] outline-none 
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring"
+						className="inputs"
 					/>
 				</div>
 			</div>
@@ -72,8 +66,7 @@ const AddProduct: React.FC = () => {
 					{/* description */}
 					<label
 						htmlFor="quantity"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                pt-[2rem] ">
+						className="labels">
 						Description
 					</label>
 					<textarea
@@ -82,17 +75,14 @@ const AddProduct: React.FC = () => {
 						rows={3}
 						value={desc}
 						id="desc"
-						className="  outline-none 
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring"
+						className="textarea"
 					/>
 				</div>
 				<div className="flex flex-col w-full">
 					{/* quantity */}
 					<label
 						htmlFor="quantity"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                pt-[2rem] ">
+						className="labels">
 						Quantity
 					</label>
 					<input
@@ -102,9 +92,7 @@ const AddProduct: React.FC = () => {
 						value={quantity}
 						type="number"
 						id="quantity"
-						className=" h-[2.25rem] outline-none 
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring"
+						className="inputs"
 					/>
 				</div>
 			</div>
@@ -116,8 +104,7 @@ const AddProduct: React.FC = () => {
 					{/* description */}
 					<label
 						htmlFor="variations"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                pt-[2rem] ">
+						className="labels">
 						Variations
 					</label>
 					<input
@@ -125,9 +112,7 @@ const AddProduct: React.FC = () => {
 						required
 						value={variations}
 						id="variations"
-						className="  outline-none 
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                  form-ring"
+						className="inputs"
 					/>
 				</div>
 				<div className="flex flex-col w-full"></div>

@@ -15,7 +15,7 @@ module.exports = {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"Dosis"', "sans-serif"],
+				sans: ['"Nunito"', "sans-serif"],
 			},
 			colors: {
 				gray: {
@@ -52,13 +52,13 @@ module.exports = {
 					20: "#F5F5F5",
 				},
 				smoke: {
-					"darkest": "rgba(0, 0, 0, 0.9)",
-					"darker": "rgba(0, 0, 0, 0.75)",
-					"dark": "rgba(0, 0, 0, 0.6)",
-					"smoke": "rgba(0, 0, 0, 0.5)",
-					"light": "rgba(0, 0, 0, 0.4)",
-					"lighter": "rgba(0, 0, 0, 0.25)",
-					"lightest": "rgba(0, 0, 0, 0.1)",
+					darkest: "rgba(0, 0, 0, 0.9)",
+					darker: "rgba(0, 0, 0, 0.75)",
+					dark: "rgba(0, 0, 0, 0.6)",
+					smoke: "rgba(0, 0, 0, 0.5)",
+					light: "rgba(0, 0, 0, 0.4)",
+					lighter: "rgba(0, 0, 0, 0.25)",
+					lightest: "rgba(0, 0, 0, 0.1)",
 				},
 			},
 			backgroundImage: {

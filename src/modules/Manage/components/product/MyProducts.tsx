@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useShopDetails from "../../../shop/Hooks/useShopDetails";
 import ViewMyProduct from "modules/Manage/components/product/ViewMyProduct";
-import { useRecoilValue } from "recoil";
-import { deleteOpen } from "../../store/store";
+
 import DeleteProduct from "./DeleteProduct";
 
 const MyShop: React.FC = (): JSX.Element => {
@@ -12,13 +11,13 @@ const MyShop: React.FC = (): JSX.Element => {
 	let { shopId } = useParams();
 	const { renderSpinner } = useSpinner();
 
-	const openDelete = useRecoilValue(deleteOpen);
 	const [productId, setProductId] = useState("");
 	const [productName, setProductName] = useState("");
+	const [openDelete, setOpenDelete] = useState(false);
 
 	useEffect(() => {
 		getShopDetails(shopId);
-	}, [openDelete]);
+	}, [openDelete,setOpenDelete]);
 
 	return (
 		<div className="flex flex-col w-full md:w-screen">
@@ -54,6 +53,7 @@ const MyShop: React.FC = (): JSX.Element => {
 										id={product?._id}
 										userName={product?.ownerId?.userName}
 										key={key}
+                              setOpenDelete={setOpenDelete}
 									/>
 								</div>
 							))}
@@ -75,7 +75,12 @@ const MyShop: React.FC = (): JSX.Element => {
 			{/*delete modal */}
 			{openDelete ? (
 				<div className="fixed top-[0%] md:top-[20%] md:right-[33%] z-50 bg-white shadow-xl">
-					<DeleteProduct shopId={shopId}  name={productName} productId={productId} />
+					<DeleteProduct
+						shopId={shopId}
+						name={productName}
+						productId={productId}
+                  setOpenDelete={setOpenDelete}
+					/>
 				</div>
 			) : null}
 		</div>

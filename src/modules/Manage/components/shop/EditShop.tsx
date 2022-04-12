@@ -4,10 +4,10 @@ import "shared/styles/phoneInput.css";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useEditShop from "../../Hooks/shop/useEditShop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCircleArrowLeft, faTrash } from "@fortawesome/free-solid-svg-icons";
 import useShop from "../../Hooks/shop/useShop";
 import DeleteShop from "./DeleteShop";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditShop: React.FC = () => {
 	const {
@@ -31,6 +31,7 @@ const EditShop: React.FC = () => {
 	const { getShopsByUserId } = useShop();
 	let { shopId } = useParams<string>();
 	const [openDelete, setOpenDelete] = useState(false);
+	let navigate = useNavigate();
 
 	const { renderSpinner } = useSpinner();
 	const hiddenInput = useRef<any>(null);
@@ -56,6 +57,13 @@ const EditShop: React.FC = () => {
 					/>
 				</div>
 			) : null}
+			{/* <div className="flex"> */}
+			<FontAwesomeIcon
+				icon={faCircleArrowLeft}
+				onClick={() => navigate(`/myAccount/shops`)}
+				className="back"
+			/>
+			{/* </div> */}
 
 			<form
 				autoComplete="off"
@@ -65,10 +73,7 @@ const EditShop: React.FC = () => {
 				className="flex flex-col md:flex-row gap-y-[0.5rem] md:space-x-10">
 				<div className=" flex flex-col w-full md:w-[45%]">
 					{/* shop Name */}
-					<label
-						htmlFor="shopName"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem]
-                     mb-[0.5rem] ">
+					<label htmlFor="shopName" className="labels">
 						Shop Name
 					</label>
 					<input
@@ -78,15 +83,10 @@ const EditShop: React.FC = () => {
 						required
 						type="text"
 						id="shopName"
-						className=" h-[2.25rem] outline-none 
-                     text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     form-ring"
+						className="inputs"
 					/>
 					{/* location */}
-					<label
-						htmlFor="location"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                pt-[2rem] ">
+					<label htmlFor="location" className="labels">
 						Location
 					</label>
 					<input
@@ -96,15 +96,10 @@ const EditShop: React.FC = () => {
 						value={location}
 						type="text"
 						id="location"
-						className=" h-[2.25rem] outline-none 
-                  text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                 form-ring"
+						className="inputs"
 					/>
 					{/* shop email */}
-					<label
-						htmlFor="email"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                   pt-[2rem] ">
+					<label htmlFor="email" className="labels">
 						Shop email
 					</label>
 					<input
@@ -114,16 +109,11 @@ const EditShop: React.FC = () => {
 						required
 						type="text"
 						id="email"
-						className=" h-[2.25rem] outline-none
-                     text-blue-20 rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     form-ring"
+						className="inputs"
 					/>
 					<p className="text-red-20">{mailError}</p>
 					{/* Phone Number */}
-					<label
-						htmlFor="phone"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                     pt-[2rem] ">
+					<label htmlFor="phone" className="labels">
 						Shop Telephone
 					</label>
 					<PhoneInput
@@ -132,14 +122,10 @@ const EditShop: React.FC = () => {
 						value={phone}
 						required={true}
 						onChange={handlePhoneChange}
-						className="h-[2.25rem] outline-none text-blue-20 border-0 text-[1.3rem]
-                  tracking-wider rounded-[0.25rem]  font-[900] px-[1rem] form-ring"
+						className="inputs"
 					/>
 					{/* text area */}
-					<label
-						htmlFor="desc"
-						className="font-bold leading-[1rem] tracking-[0.02rem] text-[1.2rem] mb-[0.5rem]
-                   pt-[2rem] ">
+					<label htmlFor="desc" className="labels">
 						Description
 					</label>
 					<textarea
@@ -150,9 +136,7 @@ const EditShop: React.FC = () => {
 						rows={5}
 						cols={50}
 						id="desc"
-						className=" outline-none text-blue-20
-                     rounded-[0.25rem] font-[600] text-[1.3rem] tracking-wide px-[1rem] 
-                     form-ring"
+						className="textarea"
 					/>
 				</div>
 				{renderSpinner(load)}
@@ -166,16 +150,14 @@ const EditShop: React.FC = () => {
 						<button
 							type="submit"
 							disabled={load}
-							className="bg-blue-20  px-[2rem] py-[0.3rem]  rounded-lg self-center text-white
-                     text-[1rem] font-[700] disabled:bg-gray-400">
+							className="blue-btn">
 							Update
 						</button>
 						<button
 							type="button"
 							onClick={() => setOpenDelete(true)}
 							disabled={load}
-							className="px-[1rem] py-[0.3rem] bg-white outline rounded-md outline-red-20
-                      text-red-20 hover:text-white hover:bg-red-20 font-[700]">
+							className="red-outline-btn">
 							Close shop
 						</button>
 					</div>

@@ -1,8 +1,6 @@
 import React from "react";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSetRecoilState } from "recoil";
-import { deleteOpen, productOpen } from "../../store/store";
 import { useNavigate, Link } from "react-router-dom";
 
 interface Props {
@@ -11,17 +9,16 @@ interface Props {
 	images: string;
 	userName: string;
 	id: string;
+	setOpenDelete: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ViewMyProduct: React.FC<Props> = ({
 	name,
 	price,
 	images,
-	userName,
 	id,
+   setOpenDelete
 }): JSX.Element => {
-	const setOpen = useSetRecoilState(productOpen);
-	const setOpenDelete = useSetRecoilState(deleteOpen);
 	let navigate = useNavigate();
    
 
