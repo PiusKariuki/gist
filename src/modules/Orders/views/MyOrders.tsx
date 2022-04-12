@@ -94,19 +94,19 @@ const MyOrders = () => {
 		},
 		{
 			name: "Product",
-			selector: (row: any) => row.itemId.productId.name,
+			selector: (row: any) => row?.itemId?.productId?.name,
 		},
 		{
 			name: "Qty",
-			selector: (row: any) => row.itemId.productId.quantity,
+			selector: (row: any) => row?.itemId?.productId?.quantity,
 		},
 		{
 			name: "variations",
-			selector: (row: any) => row.itemId.productId.variations,
+			selector: (row: any) => row?.itemId?.productId?.variations,
 		},
 		{
 			name: "Status",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row?.status,
 		},
 		{
 			name: "Shipping Info",

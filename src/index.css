@@ -57,11 +57,11 @@ body::-webkit-scrollbar {
 	}
 	/* ..................................inputs................................... */
 	.inputs {
-		@apply text-blue-30 text-lg font-semibold h-[2.25rem] outline-none rounded-[0.25rem] 
+		@apply text-blue-30 text-lg font-[550] h-[2.25rem] outline-none rounded-[0.25rem] 
       px-[1rem] form-ring;
 	}
 	.textarea {
-		@apply text-blue-30 text-lg font-semibold  outline-none rounded-[0.25rem] 
+		@apply text-blue-30 text-lg font-[550]   outline-none rounded-[0.25rem] 
       px-[1rem] form-ring;
 	}
 	.labels {
