@@ -12,6 +12,8 @@ const Cart = () => {
 	const setOpenCart = useSetRecoilState(cartOpen);
 	let navigate = useNavigate();
 
+   
+
 	return (
 		<div
 			className="w-[70vw] md:w-[30vw] lg:w-[20vw] flex flex-col px-[0.5rem] py-[2rem] gap-y-[0.5rem]
@@ -28,12 +30,13 @@ const Cart = () => {
 							amount={item.quantity}
 							id={item.id}
 							key={key}
+                     productId={item?.productId}
 						/>
 					))
 				) : (
 					<div
 						className="flex flex-row self-center items-center py-[3rem] gap-x-[2rem]
-                px-[2rem]">
+                  px-[2rem]">
 						<p className="text-red-20 font-[700] text-[1rem] md:text-[1rem]">
 							Your cart is empty.
 						</p>

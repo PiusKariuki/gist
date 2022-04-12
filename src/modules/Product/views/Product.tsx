@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
 import useProducts from "../hooks/useProducts";
@@ -18,18 +18,19 @@ const Product: React.FC = (): JSX.Element => {
 	const { shopDetails, getShopDetails } = useShopDetails();
 	const [filteredProducts, setFilteredProducts] = useState<any>([]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		getProductById(productId);
 	}, []);
 
 	useEffect(() => {
 		getShopDetails(product?.shopId?._id);
+	}, [product]);
+
+	useEffect(() => {
 		setFilteredProducts(
 			shopDetails.filter((product: any) => product._id !== productId)
 		);
-	}, [product]);
-   console.log(shopDetails);
-   
+	}, [shopDetails]);
 
 	return (
 		<div className="flex flex-col w-screen px-10 py-10">
@@ -49,16 +50,22 @@ const Product: React.FC = (): JSX.Element => {
 			</div>
 
 			{/* more products */}
-				<div className="flex flex-col w-full mt-8">
-					<p
-						className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
-             border-b-4 ">
-						More products
-					</p>
-					<div
-						className="flex flex-row flex-wrap w-full justify-items-start gap-y-4 gap-x-8 
+			<div className="flex flex-col w-full mt-8">
+				{/* {filteredProducts && filteredProducts.length > 0 ? ( */}
+				<p
+					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
+                   border-b-4 ">
+					More products
+				</p>
+				{/* ) : null} */}
+				<div
+					className="flex flex-row flex-wrap w-full justify-items-start gap-y-4 gap-x-8 
                mt-8">
-						{filteredProducts?.map((product: any, key: number) => (
+					{filteredProducts?.map((product: any, key: number) => (
+						<div
+							key={key}
+							onClick={() => getProductById(product?._id)}
+							className="">
 							<ShopProducts
 								image={product?.images[0]}
 								name={product?.name}
@@ -68,10 +75,10 @@ const Product: React.FC = (): JSX.Element => {
 								key={key}
 								shopId={shopDetails[0]?.shopId?._id}
 							/>
-						))}
-					</div>
+						</div>
+					))}
 				</div>
-
+			</div>
 		</div>
 	);
 };

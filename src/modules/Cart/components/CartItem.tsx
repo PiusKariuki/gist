@@ -1,6 +1,7 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 interface Props {
@@ -9,14 +10,26 @@ interface Props {
 	amount: number;
 	price: number;
 	id: string;
+	productId: string;
 }
 
-const CartItem: React.FC<Props> = ({ image, name, amount, price, id }) => {
+const CartItem: React.FC<Props> = ({
+	image,
+	name,
+	amount,
+	price,
+	id,
+	productId,
+}) => {
 	const { removeItem } = useCart();
+	const navigate = useNavigate();
 	return (
 		<div
+			onClick={() =>{
+            window.location.reload();
+            navigate(`/product/${productId}`)}}
 			className="flex flex-row flex-nowrap rounded-3xl py-[2rem] items-center
-            space-x-[0.7rem] lg:justify-between w-full">
+            space-x-[0.7rem] lg:justify-between w-full cursor-pointer">
 			{image?.length > 0 ? (
 				<img
 					src={image}

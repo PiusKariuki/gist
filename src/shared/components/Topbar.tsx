@@ -46,10 +46,10 @@ const Topbar = () => {
 					onChange={handleChange}
 					className={`${
 						searching
-							? " w-[70vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md px-4 md:px-[1.4rem] outline-none"
+							? " w-[60vw] md:w-[35vw] lg:w-[45vw] xl:w-[50vw] border-2 relative shadow-lg rounded-md px-4 md:px-[1.4rem] outline-none"
 							: token?.length < 1
-							? "little:w-[50vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
-							: "little:w-[50vw] border-2 relative shadow-lg rounded-md px-[2rem] outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							? "little:w-[40vw] border-2 relative shadow-lg rounded-md px-4 outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
+							: "little:w-[40vw] border-2 relative shadow-lg rounded-md px-4 outline-none md:w-[35vw] lg:w-[45vw] xl:w-[50vw]"
 					}`}
 					placeholder="search"
 					value={input}

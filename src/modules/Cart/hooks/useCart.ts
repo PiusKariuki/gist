@@ -15,7 +15,6 @@ const useCart = () => {
 	const setCartAtom = useSetRecoilState<any>(cartAtom);
 	const totalValue = useRecoilValue(cartSelector);
 	const cart = useRecoilValue(cartAtom);
-   
 
 	// the id is a uuid string to identify components in the cart to avoid deleting all similr
 	//products.
@@ -31,12 +30,23 @@ const useCart = () => {
 		id: string
 	) => {
 		const checkCart = cart.findIndex((el: any) => el.productId === productId);
-		if (checkCart !== -1)
+		if (checkCart !== -1) {
+			let filteredCart = cart.filter((el: any) => el.productId !== productId);
 			setCartAtom((prev: any) => [
-				prev[checkCart].quantity + quantity,
-				...prev,
+				{
+					name: name,
+					quantity: prev[checkCart].quantity + quantity,
+					price: price,
+					image: image,
+					shopId: shopId,
+					productId: productId,
+					sellerId: sellerId,
+					variation,
+					id: id,
+				},
+				...filteredCart,
 			]);
-		else {
+		} else {
 			setCartAtom((prev: any) => [
 				{
 					name: name,
