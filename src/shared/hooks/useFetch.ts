@@ -20,7 +20,7 @@ const useFetch = () => {
 	const [mongoErr, setMongoErr] = useState<any>();
 	const { Axios } = useRequest();
 	const [load, setLoad] = useState(false);
-   console.log(data);
+   // console.log(data);
    
 
 	const getObject = async (
