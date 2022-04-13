@@ -5,15 +5,15 @@ const Dates: React.FC<{ date: any }> = ({ date }) => {
   const [formatted, setFormmated] = useState<any>("");
   const [formattedtime, setFormmatedTime] = useState<any>("");
 
-	useEffect(() => {
-	  console.log(moment(date).calendar().split(" at").length);
-	  
+  useEffect(() => {
+    console.log(moment(date).calendar().split(" at").length);
+
     setFormmated(
       moment(date).calendar().split(" at").length > 1
         ? moment(date).calendar().split(" at")[0] + " at"
-        : moment(date).format("MMM Do, YYYY")
+        : moment(date).format("MMM Do, YYYY") + " at"
     );
-    setFormmatedTime(moment(date).calendar().split(" at")[1]);
+    setFormmatedTime(moment(date).format("LT"));
   }, [date]);
 
   return (
