@@ -31,6 +31,7 @@ const Product: React.FC = (): JSX.Element => {
 			shopDetails.filter((product: any) => product._id !== productId)
 		);
 	}, [shopDetails]);
+	console.log(product);
 
 	return (
 		<div className="flex flex-col w-screen px-10 py-10">
@@ -50,14 +51,14 @@ const Product: React.FC = (): JSX.Element => {
 			</div>
 
 			{/* more products */}
-			<div className="flex flex-col w-full mt-8">
-				{/* {filteredProducts && filteredProducts.length > 0 ? ( */}
-				<p
-					className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
+			<div className="flex flex-col w-full mt-20">
+				{filteredProducts && filteredProducts.length > 0 ? (
+					<p
+						className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
                    border-b-4 ">
-					{filteredProducts?.length > 1 ? "More Products" : "More like this"}
-				</p>
-				{/* ) : null} */}
+						{`More products from ${product?.ownerId?.userName}`}
+					</p>
+				) : null}
 				<div
 					className="flex flex-row flex-wrap w-full justify-items-start gap-y-4 gap-x-8 
                mt-8">

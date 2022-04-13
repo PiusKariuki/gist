@@ -16,9 +16,10 @@ const Shop: React.FC = (): JSX.Element => {
 
 	return (
 		<div className="flex w-screen flex-col gap-y-4 px-4">
-			{renderSpinner(load)}
 			{/* shop existence conditional */}
-			{ data && data.length ? (
+			{load ? (
+				renderSpinner(load)
+			) : data && data.length ? (
 				<div className="flex flex-col w-full">
 					<p
 						className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
@@ -50,8 +51,8 @@ const Shop: React.FC = (): JSX.Element => {
 					</div>
 				</div>
 			) : (
-				<p className="text-2xl md:text-3xl text-black-40  font-[700]">
-					No products available in this shop
+				<p className="text-2xl md:text-3xl text-black-40">
+					This shop has no products.
 				</p>
 			)}
 		</div>
