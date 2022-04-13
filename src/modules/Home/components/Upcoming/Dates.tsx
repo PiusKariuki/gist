@@ -6,9 +6,6 @@ const Dates: React.FC<{ date: any }> = ({ date }) => {
 
 	useEffect(() => {
 		console.log(moment(date).calendar());
-		// const today = Date();
-		// console.log(today);
-		
       setFormmated(moment(date).endOf('day').fromNow());	
 	}, [date]);
 
