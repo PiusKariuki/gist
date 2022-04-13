@@ -11,7 +11,7 @@ const Rooms = () => {
 	const { data, getObject, load } = useFetch();
 
 	useEffect(() => {
-		getObject("/rooms", "GET");
+		getObject("/rooms", "GET",{});
 	}, []);
 
 	const { scrollRight, scrollLeft } = useHorizontalScroll();

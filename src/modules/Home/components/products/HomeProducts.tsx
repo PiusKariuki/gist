@@ -12,7 +12,7 @@ const Products = () => {
 	const { data, getObject, load } = useFetch();
    
 	useEffect(() => {
-		getObject(`/products`, "GET");
+		getObject(`/products`, "GET",{});
 	}, []);
 	const { scrollRight, scrollLeft } = useHorizontalScroll();
 	const scrollRef = useRef<any>(null);
