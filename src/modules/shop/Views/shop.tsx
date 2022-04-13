@@ -11,14 +11,14 @@ const Shop: React.FC = (): JSX.Element => {
 	const { renderSpinner } = useSpinner();
 
 	useEffect(() => {
-		getObject(`/products/${shopId}`, "GET",{});
+		getObject(`/products/${shopId}`, "GET", {});
 	}, []);
 
 	return (
 		<div className="flex w-screen flex-col gap-y-4 px-4">
 			{renderSpinner(load)}
 			{/* shop existence conditional */}
-			{!load && data && data.length ? (
+			{ data && data.length ? (
 				<div className="flex flex-col w-full">
 					<p
 						className="text-[2rem] md:text-[2.5rem] text-black-40 font-[700]
@@ -49,7 +49,11 @@ const Shop: React.FC = (): JSX.Element => {
 						))}
 					</div>
 				</div>
-			) : null}
+			) : (
+				<p className="text-2xl md:text-3xl text-black-40  font-[700]">
+					No products available in this shop
+				</p>
+			)}
 		</div>
 	);
 };
