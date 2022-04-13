@@ -9,10 +9,6 @@ const Dates: React.FC<{ date: any }> = ({ date }) => {
     //  console.log(moment(date).calendar());
     setFormmated(moment(date).calendar().split(" at")[0]+" at");
     setFormmatedTime(moment(date).calendar().split(" at")[1]);
-
-   //  console.log(moment(date).calendar().split(" at")[0]);
-   //  console.log(moment(date).calendar().split(" at")[1]);
-	 ;
   }, [date]);
 
   return (
