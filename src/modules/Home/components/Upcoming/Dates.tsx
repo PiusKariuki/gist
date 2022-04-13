@@ -7,11 +7,12 @@ const Dates: React.FC<{ date: any }> = ({ date }) => {
 
 	useEffect(() => {
 		console.log(moment(date).calendar().split(" at").length);
+		console.log(moment(date).calendar().split(" at").length);
 
 		setFormmated(
 			moment(date).calendar().split(" at").length > 1
 				? moment(date).calendar().split(" at")[0] + " at"
-				: moment(date).calendar()
+				: moment(date).format("MMM Do, YYYY")
 		);
 		setFormmatedTime(moment(date).calendar().split(" at")[1]);
 	}, [date]);
@@ -21,8 +22,7 @@ const Dates: React.FC<{ date: any }> = ({ date }) => {
 			<p className=" font-black text-blue-20 ">
 				<span className="text-lg">{date > 0 && formatted}</span>
 				<br />
-            <span className="text-3xl">&nbsp;{date > 0 && formattedtime}</span>
-				
+				<span className="text-3xl">&nbsp;{date > 0 && formattedtime}</span>
 			</p>
 		</div>
 	);
