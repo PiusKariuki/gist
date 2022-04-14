@@ -17,14 +17,19 @@ const Dates: React.FC<{ date: any }> = ({ date }) => {
   }, [date]);
 
 	return (
-		<div className="absolute  w-full top-5 left-2 z-20">
-			<p className=" font-black text-blue-20 ">
-				<span className="text-lg">{date > 0 && formatted}</span>
-				<br />
-				<span className="text-3xl">&nbsp;{date > 0 && formattedtime}</span>
-			</p>
-		</div>
-	);
+    <div
+      className="absolute  w-full top-0  z-20 left-0 bottom-0 z-20 bg-[rgba(0,0,0,.3)]
+         w-full px-4 pt-2 rounded-b-md"
+    >
+      <p className=" font-black text-blue-20 ">
+        <span className="text-lg text-white">{date > 0 && formatted}</span>
+        <br />
+        <span className="text-3xl text-white">
+          &nbsp;{date > 0 && formattedtime}
+        </span>
+      </p>
+    </div>
+  );
 };
 
 export default Dates;
