@@ -58,7 +58,7 @@ const Upcoming = () => {
 							<div
 								className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]   w-[3.125rem]
                         h-[3.125rem] rounded-full
-                      z-40 hidden lg:flex lg:absolute  left-10 top-[50%] 
+                      z-40 hidden lg:flex lg:absolute  left-10 top-[50%]
                         ">
 								<FontAwesomeIcon
 									onClick={() => scrollLeft(scrollRef)}
@@ -74,7 +74,7 @@ const Upcoming = () => {
 								<FontAwesomeIcon
 									onClick={() => scrollRight(scrollRef)}
 									icon={faArrowRight}
-									className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
+									className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7] hey"
 								/>
 							</div>
 						</>
