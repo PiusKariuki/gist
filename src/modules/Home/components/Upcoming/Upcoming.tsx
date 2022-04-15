@@ -37,7 +37,11 @@ const Upcoming = () => {
                 price={room?.productPrice}
                 shopImage={room?.shopId?.image}
                 userImage={room?.ownerId?._id + ".png"}
-                productImage={room?.productIds !=undefined ? room?.productIds![0].images[0] : ""}
+                productImage={
+                  room?.productIds != undefined
+                    ? room?.productIds![0].images[0]
+                    : ""
+                }
                 roomId={room?._id}
                 key={key}
                 eventDate={room?.eventDate}
@@ -78,7 +82,7 @@ const Upcoming = () => {
         </>
       ) : (
         <p className="text-black-40 text-[1rem] md:text-[1.6rem] font-[500] mb-[2rem]">
-          No rooms available.
+          No events available.
         </p>
       )}
     </div>
