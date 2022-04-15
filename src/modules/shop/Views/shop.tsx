@@ -15,7 +15,7 @@ const Shop: React.FC = (): JSX.Element => {
 	}, []);
 
 	return (
-		<div className="flex w-screen flex-col gap-y-4 px-4">
+		<div className="flex w-screen flex-col gap-y-4 px-4 md:px-[6rem]">
 			{/* shop existence conditional */}
 			{load ? (
 				renderSpinner(load)

@@ -31,7 +31,7 @@ const Rooms = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col w-full">
+		<div className="flex flex-col w-full md:px-[4rem]">
 			{load ? (
 				renderSpinner(load)
 			) : (
@@ -81,3 +81,4 @@ const Rooms = () => {
 };
 
 export default Rooms;
+ 

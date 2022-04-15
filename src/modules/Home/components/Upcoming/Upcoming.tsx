@@ -58,17 +58,17 @@ const Upcoming = () => {
 							<div
 								className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]   w-[3.125rem]
                         h-[3.125rem] rounded-full
-                        z-50 hidden lg:flex lg:absolute  left-10 top-[50%] 
+                      z-40 hidden lg:flex lg:absolute  left-10 top-[50%] 
                         ">
 								<FontAwesomeIcon
 									onClick={() => scrollLeft(scrollRef)}
 									icon={faArrowLeft}
-									className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7] z-50"
+									className="flex text-[1.25rem] self-center mx-auto text-[#00bcd7]"
 								/>
 							</div>
 
 							<div
-								className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  z-50 hidden
+								className="bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]  z-40 hidden
                         lg:flex lg:absolute text-[2rem]
                         w-[3.125rem] h-[3.125rem] rounded-full right-10 top-[50%]">
 								<FontAwesomeIcon

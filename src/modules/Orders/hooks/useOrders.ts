@@ -37,7 +37,6 @@ const useOrders = () => {
 	const [shippingName, setShippingName] = useState<any>("");
 	const [openPreview, setOpenPreview] = useState(false);
 	const setUser = useSetRecoilState(user);
-   console.log(shipping?.addrress1);
    
 
 
@@ -110,7 +109,7 @@ const useOrders = () => {
 					quantity: item.quantity,
 					productOwnerId: item.sellerId,
 					shippingId: shipping?._id,
-					shippingAddress: `{"name": ${shipping?.name},"addrress1": ${shipping?.addrress1},"addrress2": ${shipping?.addrress2},"city": ${shipping?.city},"state":${shipping?.state},"phone": ${shipping?.phone},"userId": ${shipping?.userId?._id}}`,
+					shippingAddress: `{"name": "${shipping?.name}","addrress1": "${shipping?.addrress1}","addrress2": "${shipping?.addrress2}","city": "${shipping?.city}","state":"${shipping?.state}","phone": "${shipping?.phone}","userId": "${shipping?.userId?._id}"}`,
 					// shippingAddress: {
 					// 	name: shipping?.name,
 					// 	address1: shipping?.address1,
@@ -161,11 +160,11 @@ const useOrders = () => {
 			setCartAtom([]);
 			setOpenPreview(false);
 			navigate("/");
-		} catch (error) {
+		} catch (error:any) {         
 			setLoad(false);
 			Swal.fire({
 				icon: "error",
-				title: "Your order was not placed",
+				title: error.response.data.message
 			});
 		}
 	};
