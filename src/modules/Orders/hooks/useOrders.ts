@@ -8,16 +8,16 @@ import { user } from "shared/recoil/user";
 import Swal from "sweetalert2";
 
 interface UserObject {
-	token: string;
-	_id: string;
-	userName: string;
-	profilePhoto: string;
-	phonenumber: string;
-	email: string;
-	firstName: string;
-	lastName: string;
-	bio: string;
-	wallet: number;
+  token: string;
+  _id: string;
+  userName: string;
+  profilePhoto: string;
+  phonenumber: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  bio: string;
+  wallet: number;
 }
 
 const useOrders = () => {

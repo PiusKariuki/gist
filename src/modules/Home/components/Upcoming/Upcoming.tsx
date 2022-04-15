@@ -7,56 +7,57 @@ import useFetch from "shared/hooks/useFetch";
 import UpcomingCards from "./UpcomingCards";
 
 const Upcoming = () => {
-	const { renderSpinner } = useSpinner();
-	const { data, getObject, load } = useFetch();
+  const { renderSpinner } = useSpinner();
+  const { data, getObject, load } = useFetch();
 
-	useEffect(() => {
-		getObject("/rooms/events", "GET", {});
-	}, []);
+  useEffect(() => {
+    getObject("/rooms/events", "GET", {});
+  }, []);
 
-	const { scrollRight, scrollLeft } = useHorizontalScroll();
+  const { scrollRight, scrollLeft } = useHorizontalScroll();
 
-	const scrollRef = useRef<any>(null);
+  const scrollRef = useRef<any>(null);
 
-	return (
-		<div className="flex flex-col py-[3rem] h-full  relative pl-6 md:pl-16">
-			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem] ">
-				Upcoming Events
-			</p>
-			{data?.length > 0 ? (
-				<>
-					{renderSpinner(load)}
-					<div
-						onScroll={() =>
-							console.log(scrollRef?.current?.getBoundingClientRect())
-						}
-						ref={scrollRef}
-						className="scroller flex flex-row space-x-8 overflow-x-scroll w-screen">
-						{data.map((room: any, key: number) => (
-							<UpcomingCards
-								title={room?.title}
-								userName={room?.ownerId?.userName}
-								price={room?.productPrice}
-								shopImage={room?.shopId?.image}
-								userImage={room?.ownerId?._id + ".png"}
-								productImage={
-									room?.productIds != undefined
-										? room?.productIds![0].images[0]
-										: ""
-								}
-								roomId={room?._id}
-								key={key}
-								eventDate={room?.eventDate}
-							/>
-						))}
-					</div>
-					{/*......................................
+  return (
+    <div className="flex flex-col py-[3rem] h-full  relative pl-6 md:pl-16">
+      <p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem] ">
+        Upcoming Events
+      </p>
+      {data?.length > 0 ? (
+        <>
+          {renderSpinner(load)}
+          <div
+            onScroll={() =>
+              console.log(scrollRef?.current?.getBoundingClientRect())
+            }
+            ref={scrollRef}
+            className="scroller flex flex-row space-x-8 overflow-x-scroll w-screen"
+          >
+            {data.map((room: any, key: number) => (
+              <UpcomingCards
+                title={room?.title}
+                userName={room?.ownerId?.userName}
+                price={room?.productPrice}
+                shopImage={room?.shopId?.image}
+                userImage={room?.ownerId?._id + ".png"}
+                productImage={
+                  room?.productIds != undefined
+                    ? room?.productIds![0].images[0]
+                    : ""
+                }
+                roomId={room?._id}
+                key={key}
+                eventDate={room?.eventDate}
+              />
+            ))}
+          </div>
+          {/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-					{data?.length && data.length > 3 ? (
-						<>
-							<div
-								className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]   w-[3.125rem]
+          {data?.length && data.length > 3 ? (
+            <>
+              <div
+                className=" bg-[rgba(0,0,0,.3)]  hover:bg-[rgba(0,0,0,.6)]   w-[3.125rem]
                         h-[3.125rem] rounded-full
                       z-40 hidden lg:flex lg:absolute  left-10 top-[50%]
                         ">
