@@ -19,7 +19,7 @@ const Products = () => {
 	const { renderSpinner } = useSpinner();
 
 	return (
-		<div className="flex flex-col py-[3rem] px-[2rem] h-full  relative">
+		<div className="flex flex-col py-[3rem] pl-6 md:pl-16 h-full  relative">
 			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem]">
 				Recommended products
 			</p>
@@ -27,17 +27,18 @@ const Products = () => {
 			<div
 				ref={scrollRef}
 				className="scroller flex flex-row  overflow-x-scroll gap-x-8 md:flex-row ">
-				{data?.length>0 && data.map((product: any, key: number) => (
-					<ViewProduct
-						name={product?.name}
-						userName={product?.ownerId?.userName}
-						price={product?.price}
-						key={key}
-						id={product?._id}
-						image={ product?.images?.length > 0 && product?.images[0]}
-						shopImage={product?.shopId?.image}
-					/>
-				))}
+				{data?.length > 0 &&
+					data.map((product: any, key: number) => (
+						<ViewProduct
+							name={product?.name}
+							userName={product?.ownerId?.userName}
+							price={product?.price}
+							key={key}
+							id={product?._id}
+							image={product?.images?.length > 0 && product?.images[0]}
+							shopImage={product?.shopId?.image}
+						/>
+					))}
 			</div>
 			{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL

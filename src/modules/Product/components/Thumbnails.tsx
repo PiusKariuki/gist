@@ -34,7 +34,7 @@ const Thumbnails: React.FC<Props> = ({ images, setIndex }) => {
 				{/*......................................
                   *FLOATING BTNS FOR HORIZONTAL SCROLL
                ......................................*/}
-				{images?.length > 5 ? (
+				{images?.length > 4 ? (
 					<>
 						<div
 							className=" 

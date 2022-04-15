@@ -47,7 +47,7 @@ const Wallet = () => {
 
 
 	return (
-		<div className="flex flex-col px-[2rem] py-[3rem] space-y-10 ">
+		<div className="flex flex-col px-[2rem] py-[3rem] space-y-10 md:px-[6.5rem]">
 			<div
 				className="flex flex-col bg-gray-20 text-white rounded-2xl space-y-3 items-center 
             w-full md:w-[30vw] py-[0.5rem] md:ml-8 ">

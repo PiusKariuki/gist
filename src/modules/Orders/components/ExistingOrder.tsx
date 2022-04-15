@@ -39,7 +39,7 @@ const ExistingOrder: React.FC<{}> = () => {
 					Go back and input new info.
 				</p>
 			</div>
-			<p className="text-gray-20 font-[600]  text-[1.2rem] mb-8">
+			<p className="labels">
 				Final Step. Place your order
 			</p>
 			<div className="flex flex-col gap-y-[0.1rem] w-full md:w-[40%]  ">
@@ -49,13 +49,12 @@ const ExistingOrder: React.FC<{}> = () => {
 					// value={shipping}
 					required
 					id="shipping"
-					className=" h-[2.25rem] outline-none text-blue-40
-               rounded-[0.25rem]  font-bold px-[1rem] form-ring">
+					className="inputs">
 					<option
 						disabled
 						selected
 						value=""
-						className="text-[1rem] text-gray-20 font-[700]">
+						className="inputs">
 						{" "}
 						-- select a shipping address --{" "}
 					</option>
@@ -64,7 +63,7 @@ const ExistingOrder: React.FC<{}> = () => {
 							id={ship.name}
 							value={ship?._id}
 							key={key}
-							className="text-[1.2rem] text-blue-30 font-bold">
+							className="inputs">
 							{ship?.name}
 						</option>
 					))}

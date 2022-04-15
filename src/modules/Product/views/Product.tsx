@@ -28,7 +28,7 @@ const Product: React.FC = (): JSX.Element => {
 	}, []);
 
 	return (
-		<div className="flex flex-col w-screen px-10 py-10">
+		<div className="flex flex-col w-screen px-10 py-10 md:px-[6.5rem]">
 			<div className="flex flex-col md:flex-row w-full  mx-auto gap-x-10 gap-y-16">
 				<div className="flex flex-col w-full  space-y-10">
 					<MainImg setIndex={setIndex} images={data?.images} index={index} />
