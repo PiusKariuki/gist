@@ -62,7 +62,7 @@ body::-webkit-scrollbar {
 
 	.inputs {
 		@apply text-blue-30 text-lg font-[550] h-[2.25rem] outline-none rounded-[0.25rem] 
-      px-[1rem] form-ring;
+      px-[1rem] form-ring placeholder:text-blue-400 placeholder:font-medium;
 	}
 
 	.textarea {
