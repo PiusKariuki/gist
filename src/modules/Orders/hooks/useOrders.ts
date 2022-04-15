@@ -37,6 +37,8 @@ const useOrders = () => {
 	const [shippingName, setShippingName] = useState<any>("");
 	const [openPreview, setOpenPreview] = useState(false);
 	const setUser = useSetRecoilState(user);
+   console.log(shipping?.addrress1);
+   
 
 
 	const getShippingById = async (shippingId: any) => {

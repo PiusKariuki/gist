@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useSpinner from "shared/components/spinner/useSpinner";
+import useFetch from "shared/hooks/useFetch";
 import BuyModal from "../components/BuyModal";
+import Details from "../components/Details";
 import RoomImages from "../components/RoomImages";
-import RoomProducts from "../components/RoomProducts";
-import useRoom from "../hooks/useRoom";
+import Tabs from "../components/Tabs";
+import Video from "../components/Video";
 import "../styles/rooms.css";
 
 interface Props {
@@ -16,121 +18,49 @@ interface Props {
 }
 
 const Rooms = () => {
-	const { room, load, getRoomById } = useRoom();
+	// const { room, load, getRoomById } = useRoom();
+	const { data, getObject, load } = useFetch();
+
 	const { renderSpinner } = useSpinner();
 	let { roomId } = useParams();
 	const [details, setDetails] = useState(true);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
-		getRoomById(roomId);
+		getObject(`/rooms/rooms/${roomId}`, "GET", {});
 	}, []);
 
-
 	return (
-		<>
-			<div className="flex flex-col md:flex-row gap-y-[2rem] relative overflow-y-clip ]">
-				{/* <div className="fixed inset-y-80 inset-x-80 z-50">
-					{renderSpinner(load)}
-				</div> */}
+		<div className="flex flex-col w-full">
+			{load ? (
+				renderSpinner(load)
+			) : (
+				<div className="flex flex-col md:flex-row w-full md:gap-x-4">
+					<Video setOpen={setOpen} price={data?.productPrice} />
 
-				<div className="flex w-full relative">
-					<video
-						controls
-						src="/img/room.mp4"
-						className="h-[30vh] md:h-[80vh] md:w-[50vw] lg:px-[0.3rem]
-                  bg-black-70"></video>
-					<p
-						className="absolute top-[40%] md:top-[45%] left-[10%] translate-x-[-50%]
-                translate-y-[-50] text-white">
-						GC.{room?.productPrice}
-					</p>
-					<button
-						className="red-btn py-[0.5rem] absolute top-[50%] left-[10%] translate-x-[-50%]
-                   translate-y-[-50]
-                   mb-[4rem] z-10"
-						onClick={() => setOpen((prev: boolean) => !prev)}>
-						Buy
-					</button>
-				</div>
-
-				<div
-					className="flex flex-col px-[1rem] md:px-[2rem] md:mt-[8rem] gap-y-[2rem]
-               md:self-center w-full  md:h-[80vh]">
-					<div className="inline-flex sticky top-4 left-6">
-						<button
-							onClick={() => setDetails((prev: boolean) => !prev)}
-							className={`${details ? "bg-black-80 text-white" : "bg-white"}
-                     px-[3rem] py-[0.5rem] outline outline-black-80 text-[1.3rem] font-[700]
-                     rounded-l-md
-                     `}>
-							Details
-						</button>
-						<button
-							onClick={() => setDetails((prev: boolean) => !prev)}
-							className={`${!details ? "bg-black-80 text-white" : "bg-white"}
-                        px-[3rem] py-[0.5rem] outline outline-black-80 text-[1.3rem] font-[700]
-                        rounded-r-md
-                     `}>
-							Images
-						</button>
-					</div>
-
-					{/* shop details */}
-					{details ? (
-						<>
-							<div className="flex flex-row gap-x-[1rem]">
-								<div className="flex flex-col w-[16rem]">
-									<p className="text-black-80 font-[900] text-[1.4rem] mb-[1rem]">
-										{room?.title}
-										<br />
-										<span className="font-[300]">
-											by {room?.ownerId?.userName}
-										</span>
-									</p>
-								</div>
-								<div
-									style={{
-										backgroundImage: `url(/img/${room?.shopId?.image})`,
-									}}
-									className="flex w-[5rem] h-[5rem] rounded-full  self-center bg-center 
-                           bg-no-repeat bg-cover"
-								/>
-							</div>
-
-							{/* shop description */}
-							<div className="flex">
-								<p className="text-[1.2rem] text-black-80">
-									{room?.shopId?.description}
-								</p>
-							</div>
-						</>
-					) : null}
-
-					{/* products */}
-
-					<div className="flex flex-col md:max-h-screen  py-10">
+					<div
+						className="flex flex-col w-full py-8 md:py-0 overflow-y-scroll scrolle 
+               md:max-h-[80vh] border-b-2 gap-y-8">
+						<Tabs setDetails={setDetails} details={details} />
 						{details
-							? room?.productIds?.map((product: any, key: number) => (
-									<RoomProducts
-										key={key}
-										name={product.name}
-										quantity={product.quantity}
-										price={product.price}
-										image={product?.images[0]}
+							? data?.productIds?.map((product: any, key: number) => (
+									<Details
+										name={product?.name}
+										userName={data?.ownerId?.userName}
+										title={data?.title}
+										description={data?.shopId?.description}
 									/>
 							  ))
-							: room?.productIds?.map((product: any, key: number) => (
-									<div key={key} className="flex overflow-y-scroll scroller">
-										<RoomImages imgs={product.images} />
-									</div>
+							: //  room images
+							  data?.productIds?.map((product: any, key: number) => (
+									<RoomImages imgs={product.images} />
 							  ))}
 					</div>
-					{/* room images */}
 
-					<div className="fixed top-16  z-50">
+					{/* products */}
+					<div className="fixed top-16 right-0  z-50 shadow-2xl">
 						{open
-							? room?.productIds?.map((product: any, key: number) => (
+							? data?.productIds?.map((product: any, key: number) => (
 									<BuyModal
 										_id={product?._id}
 										name={product.name}
@@ -145,8 +75,8 @@ const Rooms = () => {
 							: null}
 					</div>
 				</div>
-			</div>
-		</>
+			)}
+		</div>
 	);
 };
 

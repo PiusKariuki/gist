@@ -21,18 +21,15 @@ body::-webkit-scrollbar {
 @tailwind utilities;
 
 @layer components {
-	/* custom btns */
-	.btn {
-		@apply bg-green-80 rounded-md hover:rounded-3xl border-green-60 hover:bg-green-50
-           disabled:bg-gray-600 disabled:hover:rounded-md;
-	}
 	.red-btn {
-		@apply bg-red-20 rounded-md  hover:rounded-xl hover:bg-red-600 disabled:bg-gray-400
-     disabled:hover:rounded-md px-[1rem] py-[1.4rem] text-white font-[700] text-[1.4rem];
+		@apply bg-red-500 rounded-md hover:rounded-3xl hover:bg-red-700 disabled:bg-gray-400
+      disabled:hover:rounded-md px-4 py-[0.2rem] text-white text-lg hover:scale-x-105 
+      transition-all ease-in-out font-semibold;
 	}
+
 	.blue-btn {
-		@apply bg-blue-20 rounded-xl  hover:rounded-3xl hover:bg-[#0f4d92] disabled:bg-gray-400
-     disabled:hover:rounded-md px-[1rem] py-[0.3rem] text-white  text-lg
+		@apply bg-blue-20 rounded-md  hover:rounded-3xl hover:bg-[#0f4d92] disabled:bg-gray-400
+     disabled:hover:rounded-md px-[1rem] py-[0.2rem] text-white  text-lg
       hover:scale-x-105 transition-all ease-in-out font-semibold;
 	}
 	.outline-btn {
@@ -44,30 +41,39 @@ body::-webkit-scrollbar {
       hover:text-white text-lg font-semibold
       hover:scale-x-105 transition-all ease-in-out;
 	}
-	/* ..................................dialogs................................... */
 
-	/* dialog-wrapper */
 	.dialog-wrapper {
 		@apply fixed inset-0 z-50 overflow-auto bg-smoke-light flex flex-col;
 	}
-	/* dialog */
+
 	.dialog {
 		@apply flex flex-col relative px-10 py-16 bg-white w-[90vw] max-w-md m-auto
       rounded-md;
 	}
-	/* ..................................inputs................................... */
+
+	.breadcrumb-active {
+		@apply text-blue-30 text-lg md:text-2xl font-semibold  mr-4 hover:underline
+      transition-all ease-in-out;
+	}
+
+	.breadcrumb-inactive {
+		@apply text-black-40 text-lg md:text-2xl font-semibold  mr-4;
+	}
+
 	.inputs {
 		@apply text-blue-30 text-lg font-[550] h-[2.25rem] outline-none rounded-[0.25rem] 
       px-[1rem] form-ring;
 	}
+
 	.textarea {
 		@apply text-blue-30 text-lg font-[550]   outline-none rounded-[0.25rem] 
       px-[1rem] form-ring;
 	}
+
 	.labels {
 		@apply text-base font-medium mt-[2.25rem]  mb-[0.5rem];
 	}
-	/* ...................................back icon................................ */
+
 	.back {
 		@apply text-4xl absolute top-2 left-5 text-blue-30 hover:text-blue-900;
 	}
@@ -94,10 +100,10 @@ body::-webkit-scrollbar {
 		justify-content: flex-start;
 	}
 
-	/* ................................gradient bg for cards........................ */
 	.gradient {
 		@apply bg-gradient-to-b from-[rgba(0,0,0,.25)] via-[hsla(0,0%,100%,0)] to-[rgba(0,0,0,.25)];
 	}
+
 	.form-ring {
 		@apply ring-1 ring-gray-300;
 	}

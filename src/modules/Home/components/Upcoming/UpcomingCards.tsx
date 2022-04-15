@@ -26,8 +26,8 @@ const UpcomingCards: React.FC<Props> = ({
 
   return (
     <div
-      className="flex flex-col bg-white card-border
-         rounded-lg hover:shadow-2xl relative"
+      className="flex flex-col bg-white card-border flex-shrink-0 
+      rounded-lg hover:shadow-2xl relative"
       onClick={() => navigate(`/rooms/${roomId}`)}
     >
       <Dates date={eventDate} />

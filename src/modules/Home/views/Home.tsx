@@ -37,7 +37,7 @@ const Home = () => {
 	return (
 
 		<div
-			className="flex flex-col flex-nowrap overflow-x-clip md:px-[4rem]">
+			className="flex flex-col flex-nowrap overflow-x-clip">
 			<div className="fixed top-0 inset-x-0 z-50 bg-white">
 				<Topbar />
             {/* <Black /> */}
@@ -60,7 +60,7 @@ const Home = () => {
 					<Menu setMenuOpen={setMenuOpen} />
 				</div>
 
-				<div ref={box} className=" mt-[6rem] md:mt-[6rem] ">
+				<div ref={box} className=" mt-[6rem] md:mt-[6rem]">
 					<Outlet />
 				</div>
 			</div>

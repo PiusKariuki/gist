@@ -17,7 +17,7 @@ const Shops = () => {
 	const scrollRef = useRef<any>(null);
 
 	return (
-		<div className="flex flex-col py-[3rem] px-[2rem] relative">
+		<div className="flex flex-col py-[3rem] pl-6 md:pl-16 relative">
 			<p className="text-black-40 text-[1.2rem] md:text-[1.6rem] font-[700] mb-[2rem]">
 				Popular shops
 			</p>
